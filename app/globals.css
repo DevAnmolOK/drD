@@ -21,7 +21,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-DmSans);
+  font-family: var(--font-inter);
 }
 
 @theme {
@@ -74,13 +74,13 @@ img {
 
 @media (min-width: 1501px) and (max-width: 1800px) {
   html {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 
 @media (min-width: 1901px) and (max-width: 2100px) {
   html {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
