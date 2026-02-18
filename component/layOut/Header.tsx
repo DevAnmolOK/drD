@@ -8,7 +8,7 @@ export default async function NavigationBar() {
     { label: "Home", href: "/", active: true },
     { label: "About Us", href: "/about-us" },
     { label: "Facility", href: "/facility" },
-    { label: "Products", href: "/products" },
+    { label: "Products", href: "/product" },
     { label: "Our Divisions", href: "/our-divisions" },
     { label: "New Launches", href: "/new-launches" },
     { label: "Gallery", href: "/gallery" },
