@@ -26,6 +26,10 @@ body {
 
 @theme {
   --color-white: oklch(100% 0 0);
+  --color-secondary: oklch(63% 0.213 32.44) /*#EE4223*/;
+  --color-bgSecondary: oklch(97.02% 0 0) /*#F5F5F5*/;
+  --color-bgSecondaryone: oklch(41.05% 0.0566 243.34) /*#2E4E67*/;
+  --color-bgSecondarytwo: oklch(32.81% 0.0355 244.32) /*#253746*/;
 }
 
 img {
@@ -124,9 +128,19 @@ img {
 }
 
 /* Use this to show the number input arrows */
-input[type="number"]::-webkit-inner-spin-button,
+/* input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   opacity: 1;
+} */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove number input arrows (Firefox) */
+input[type="number"] {
+  -moz-appearance: textfield;
 }
 
 .noOverflow::-webkit-scrollbar {
@@ -184,13 +198,13 @@ input[type="number"]::-webkit-outer-spin-button {
 /* ----------------------Custom Css-------------------- */
 
 /* hide scrollbar but allow scroll */
-/* .scrollbar-hide::-webkit-scrollbar {
+.scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
 .scrollbar-hide {
-  -ms-overflow-style: none; 
-  scrollbar-width: none; 
-} */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 .tringle-bottom {
   width: 0px;
