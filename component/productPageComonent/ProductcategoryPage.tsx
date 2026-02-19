@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 
 const ProductCard = dynamic(
-  () => import("../../components/productPageComonent/ProductCard"),
+  () => import("../../component/productPageComonent/ProductCard"),
 );
 
 interface ProductcategoryPageProps {

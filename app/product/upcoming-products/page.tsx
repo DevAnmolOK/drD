@@ -3,9 +3,9 @@
 // import type { Metadata } from "next";
 // import Banner from "@/components/HeroBanner";
 
-import CommonHeroSection from "@/components/common/CommonHeroSection";
-import ProductcategoryPage from "../../../components/productPageComonent/ProductcategoryPage";
-import { QuickLinksPageEndPoints } from "../../../../lib/service/QuickLinks";
+import CommonHeroSection from "../../../component/common/CommonHeroSection";
+import ProductcategoryPage from "../../../component/productPageComonent/ProductcategoryPage";
+// import { QuickLinksPageEndPoints } from "../../../../lib/service/QuickLinks";
 // import BreadcrumbSchemaOnly from "@/components/breadcrumbsScema/breadcrumbsSchema";
 
 // export async function generateMetadata(): Promise<Metadata> {
@@ -83,7 +83,22 @@ export default async function UpcommingProducts({
 
     // console.log("Transformed Products:", products);
     const prdtkey = "upcoming";
-    const data = await QuickLinksPageEndPoints.getCommingSoonBanner();
+    // const data = await QuickLinksPageEndPoints.getCommingSoonBanner();
+
+    const heroSectionData = {
+      badgeText: "Breadcrumbs",
+      title: {
+        normal: "Blogs",
+      },
+      description:
+        "Empower your pharma business with precise financial analytics. Calculate gross margins and net profits instantly to make informed pricing decisions.",
+      buttonText: "Scroll to use",
+      background: {
+        imageAlt: "Modern laboratory background",
+        imageSrc:
+          "https://lh3.googleusercontent.com/aida-public/AB6AXuDlhCxl2Vxag4giglyO3LRkbo1CCD0M2C2xp8aInGg_GtvGQQTne3cPlp4jncbvfjJQ_Xgtjh22jGzKNrHyiH5djBaJD-qol6WT4TXPCHPkfDmXqGNEJBdTSiFfdhxFLO6gCo8h3f1FobHNsLIP1KgizrslMR0Q0tZHzpU0md3rnJ0Stq3MCkjS76TSVHCBBzYISDJrEU5zOL1EJLtiO4teKHAtUwhRSMYV60XhybXAJZm5Moq-MFo9dEJJ6Zrmo-UWJ8sF_9x5U_uD",
+      },
+    };
 
     return (
       <>
@@ -92,7 +107,7 @@ export default async function UpcommingProducts({
           siteName="Eridanus HealthCare"
           title="Upcoming Products"
         /> */}
-        <CommonHeroSection heroSectionData={data?.heroSectionData} />
+        <CommonHeroSection heroSectionData={heroSectionData} />
         <div className="w-full h-full bg-white text-black flex items-center justify-center">
           <div className="wrapper w-full h-full mx-auto relative sm:mb-0 mb-[1.5rem]">
             <div className="pt-[0rem] pb-[2.5rem]">

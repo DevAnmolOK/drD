@@ -3,10 +3,11 @@ import dynamic from "next/dynamic";
 // import type { Metadata } from "next";
 // import Banner from "@/components/HeroBanner";
 // import BreadcrumbSchemaOnly from "@/components/breadcrumbsScema/breadcrumbsSchema";
-// import CommonHeroSection from "@/components/common/CommonHeroSection";
 
+import CommonHeroSection from "../../../component/common/CommonHeroSection";
 import ProductcategoryPage from "../../../component/productPageComonent/ProductcategoryPage";
-import { QuickLinksPageEndPoints } from "../../../lib/service/QuickLinks";
+
+// import { QuickLinksPageEndPoints } from "../../../lib/service/QuickLinks";
 
 // const ComponentsProduct = dynamic(
 //   () => import("../../../components/productPageComponent/Product")
@@ -89,21 +90,21 @@ export default async function NewLaunchProducts({
 
     // console.log("Transformed Products:", products);
     const prdtkey = "new_launched";
-    const data = await QuickLinksPageEndPoints.getNewLaunchBanner();
-    // const heroSectionData = {
-    //   badgeText: "Breadcrumbs",
-    //   title: {
-    //     normal: "MANUFACTURING",
-    //     //   highlight: "Calculator",
-    //   },
-    //   description: `Redefining pharmaceutical production with WHO-GMP compliant facilities. Our commitment to excellence ensures every dosage meets the highest global standards of safety and efficacy.`,
-    //   buttonText: "Vision Plus",
-    //   background: {
-    //     imageAlt: "Modern laboratory background",
-    //     imageSrc:
-    //       "https://lh3.googleusercontent.com/aida-public/AB6AXuAwvm5ETO-TKsTWwaU8LCyzg9_K10k9m_wLJBcUhNBfsIbCh3XFB6qm0JivbnpoV9nMk7tGsinPjktVcHIYKe3CuVcX2GvixCp1aDSIJf3fzaCmGCvkKvIgTtYSObSkv7pqvNHdXJMWpJAnYXg7-QAk1L2_mKmtoA9WcDBuOyVg7TclDoKf3Gb72fSeHTxltbWL5_KU6OtNIEamEJhM8UyZPVcX6Mo5Zn9HZFyqJ7i3HC0l-f6t3o6zhSTZ5Y-t7O8Ebd20rHBTUj3_",
-    //   },
-    // };
+    // const data = await QuickLinksPageEndPoints.getNewLaunchBanner();
+    const heroSectionData = {
+      badgeText: "Breadcrumbs",
+      title: {
+        normal: "MANUFACTURING",
+        //   highlight: "Calculator",
+      },
+      description: `Redefining pharmaceutical production with WHO-GMP compliant facilities. Our commitment to excellence ensures every dosage meets the highest global standards of safety and efficacy.`,
+      buttonText: "Vision Plus",
+      background: {
+        imageAlt: "Modern laboratory background",
+        imageSrc:
+          "https://lh3.googleusercontent.com/aida-public/AB6AXuAwvm5ETO-TKsTWwaU8LCyzg9_K10k9m_wLJBcUhNBfsIbCh3XFB6qm0JivbnpoV9nMk7tGsinPjktVcHIYKe3CuVcX2GvixCp1aDSIJf3fzaCmGCvkKvIgTtYSObSkv7pqvNHdXJMWpJAnYXg7-QAk1L2_mKmtoA9WcDBuOyVg7TclDoKf3Gb72fSeHTxltbWL5_KU6OtNIEamEJhM8UyZPVcX6Mo5Zn9HZFyqJ7i3HC0l-f6t3o6zhSTZ5Y-t7O8Ebd20rHBTUj3_",
+      },
+    };
     return (
       <>
         {/* <BreadcrumbSchemaOnly
@@ -111,7 +112,7 @@ export default async function NewLaunchProducts({
           siteName="Eridanus HealthCare"
           title="New Launch Products"
         /> */}
-        {/* <CommonHeroSection heroSectionData={data?.heroSectionData} /> */}
+        <CommonHeroSection heroSectionData={heroSectionData} />
         <div className="w-full h-full bg-white text-black flex items-center justify-center">
           <div className="wrapper w-full h-full mx-auto relative sm:mb-0 mb-[1.5rem]">
             <div className="pt-[0rem] pb-[2.5rem]">
