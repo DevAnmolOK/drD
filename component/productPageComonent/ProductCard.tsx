@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-// import { calculatePtsPtr } from "@/utils/pharmaPricing";
+// import { calculatePtsPtr } from "@/utils/pharmaPricing";/
 import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
