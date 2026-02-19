@@ -438,3 +438,22 @@ input[type="number"] {
   color: var(--color-secondary);
   font-weight: 600;
 }
+
+
+/* ==== sliky Slider ======= */
+/* Ensure dots are visible and colored */
+.slick-dots li button:before {
+  color: black !important; 
+  font-size: 12px !important;
+  opacity: 0.5;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #000 !important; 
+  opacity: 1;
+}
+
+/* Add space so dots don't overlap content */
+.slick-dots {
+  bottom: -35px !important;
+}
