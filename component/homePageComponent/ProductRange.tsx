@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import { FiArrowRight } from 'react-icons/fi';
+import TagBadge from '../ui/TagBadge';
+import Button from '../ui/Button';
 
 const ayurvedicData = {
   tag: 'OUR PRODUCT RANGE',
@@ -44,10 +46,7 @@ export default function ProductRange() {
       <div className='wrapper mx-auto px-4 sm:px-6 lg:px-0'>
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-10'>
           <div className='max-w-5xl'>
-            <span className='inline-block text-xs font-medium tracking-wide px-3 py-1 rounded-full border border-gray-300 text-[#253746] mb-4'>
-              {ayurvedicData.tag}
-            </span>
-
+             <TagBadge text={ayurvedicData.tag}/>
             <h2 className='text-2xl sm:text-3xl lg:text-[42px] leading-tight text-[#253746]'>
               {ayurvedicData.title.line}
               <span className='font-semibold'>{ayurvedicData.title.line1}</span>
@@ -59,14 +58,9 @@ export default function ProductRange() {
               {ayurvedicData.description}
             </p>
           </div>
-          <a
-            href={ayurvedicData.cta.link}
-            className='inline-flex items-center gap-3 bg-[#2e4353] text-white px-6 py-3 rounded-full text-base font-medium hover:bg-[#243847] transition'>
+          <Button>
             {ayurvedicData.cta.label}
-            <span className='w-7 h-7 bg-[#EE4223] rounded-full flex items-center justify-center'>
-              <FiArrowRight size={16} />
-            </span>
-          </a>
+          </Button>
         </div>
 
         {/* Cards */}

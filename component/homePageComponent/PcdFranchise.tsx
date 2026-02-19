@@ -1,5 +1,7 @@
 import Image from "next/image";
-import { FaArrowRight } from "react-icons/fa";
+import TagBadge from "../ui/TagBadge";
+import Button from "../ui/Button";
+
 export default function PcdFranchise() {
   const content = {
     leftCard: {
@@ -36,10 +38,10 @@ export default function PcdFranchise() {
   };
 
   return (
-    <section className="w-full bg-gray-100 py-16 px-6 md:px-20">
+    <section className="w-full bg-white py-16 px-6 ">
       <div className="wrapper m-auto grid grid-cols-1 md:grid-cols-[35%_63%] gap-[2%] items-center">
         {/* LEFT CARD */}
-        <div className="bg-gradient-to-br from-[#0f2a3f] to-[#1c3c54] text-white rounded-2xl p-10 max-w-[427]">
+        <div className="bg-gradient-to-br from-[#0f2a3f] to-[#1c3c54] text-white rounded-2xl p-10 max-w-[427px]">
           <div className="mb-6">
             <Image
               src={content.leftCard.image}
@@ -49,25 +51,16 @@ export default function PcdFranchise() {
               className="object-contain"
             />
           </div>
-
           <h2 className="text-2xl md:text-=[32px] font-normal leading-relaxed">
             {content.leftCard.title}
           </h2>
-
-          <button className="mt-8 inline-flex items-center gap-3 bg-white text-[#253746] px-6 py-3 rounded-full font-normal shadow hover:shadow-lg transition">
-            {content.leftCard.buttonText}
-            <span className="bg-orange-500 text-white p-2 rounded-full">
-              <FaArrowRight size={14} />
-            </span>
-          </button>
+          <Button bgColor="#ffffff" textColor="#253746" className="mt-8" arrowBg="#ef4444">
+             {content.leftCard.buttonText}
+          </Button>
         </div>
-
         {/* RIGHT CONTENT */}
         <div>
-          <div className="inline-block border border-gray-300 rounded-full px-4 py-1 text-sm text-gray-600 mb-4">
-            {content.rightSection.badge}
-          </div>
-
+          <TagBadge text={content.rightSection.badge} className="mb-4"/>
           <h1 className="text-3xl md:text-[43px] font-normal text-[#253746] leading-tight mb-6">
             {content.rightSection.heading}
           </h1>

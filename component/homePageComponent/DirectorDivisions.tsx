@@ -6,10 +6,10 @@ const directorData = {
   photo: '/images/homePage/director.png',
   description: `Dharam Pal, a visionary business leader with extensive experience in the pharmaceutical industry, founded Dr. D Pharma with the objective of delivering high-quality, affordable healthcare solutions. As the driving force behind the company, he oversees strategic growth, long-term planning, and operational excellence while maintaining strong ethical standards and a positive organizational culture. His leadership, commitment to quality, and industry insight have played a pivotal role in establishing Dr. D Pharma as a trusted and growing name in the pharmaceutical sector.`,
   socials: [
-    { icon: 'facebook', url: '#' },
-    { icon: 'twitter', url: '#' },
-    { icon: 'instagram', url: '#' },
-    { icon: 'linkedin', url: '#' },
+    { icon: '/images/fb.png', url: '#' },
+    { icon: '/images/inst.png', url: '#' },
+    { icon: '/images/tw.png', url: '#' },
+    { icon: '/images/linkedIn.png', url: '#' },
   ],
 };
 
@@ -23,78 +23,101 @@ const divisions = [
   '/images/homePage/ic7.png',
 ];
 
+// import Image from "next/image";
+
 export default function DirectorDivisions() {
   return (
     <section>
-      <div className=' px-4 sm:px-6 lg:px-0'>
-        <div className='grid grid-cols-1 md:grid-cols-2 '>
+      <div className="px-4 sm:px-6 lg:px-0">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+          
           {/* LEFT — DIRECTOR */}
-          <div className='bg-[#243847] text-white p-8 md:p-10'>
-            <div className='py-16 w-2xl m-auto pl-30'>
-              <h2 className='text-2xl md:text-[48px] mb-6'>
-                Meet Our
-                <span className='font-semibold text-[48px]'>Director</span>
+          <div className="bg-[#243847] text-white p-6 sm:p-8 md:p-10">
+            <div className="py-10 md:py-16 max-w-2xl mx-auto md:pl-10 lg:pl-20">
+              
+              <h2 className="text-2xl sm:text-3xl md:text-[48px] mb-6">
+                Meet Our{" "}
+                <span className="font-semibold">Director</span>
               </h2>
-              <div className='flex items-start gap-6 mb-6'>
-                <div className='relative w-[140px] h-[160px] rounded-xl overflow-hidden'>
+
+              <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-8 md:mb-10">
+                
+                {/* image */}
+                <div className="relative w-[180px] h-[180px] sm:w-[220px] sm:h-[220px] md:w-[242px] md:h-[239px] rounded-[15px] overflow-hidden">
                   <Image
                     src={directorData.photo}
                     alt={directorData.name}
                     fill
-                    className='object-cover'
+                    className="object-cover"
                   />
                 </div>
-                <div>
-                  <h3 className='text-lg font-bold'>{directorData.name}</h3>
-                  <p className='text-sm text-gray-300 mb-3'>
+
+                {/* text */}
+                <div className="text-center sm:text-left">
+                  <h3 className="text-lg md:text-[28px] font-bold">
+                    {directorData.name}
+                  </h3>
+
+                  <p className="text-lg md:text-[28px] text-white mb-3">
                     {directorData.role}
                   </p>
-                  <div className='flex gap-2'>
+
+                  <div className="flex justify-center sm:justify-start gap-2">
                     {directorData.socials.map((s, i) => (
                       <div
                         key={i}
-                        className='w-8 h-8 bg-white/90 rounded flex items-center justify-center'>
-                        <span className='text-[#243847] text-sm'>
-                          {s.icon[0].toUpperCase()}
-                        </span>
+                        className="w-9 h-9 md:w-10 md:h-10 bg-white rounded flex items-center justify-center"
+                      >
+                        <Image
+                          src={s.icon}
+                          alt="social-icon"
+                          width={12}
+                          height={12}
+                          className="object-contain"
+                        />
                       </div>
                     ))}
                   </div>
                 </div>
               </div>
 
-              <p className='text-base leading-relaxed text-white font-normal'>
+              <p className="text-sm sm:text-base leading-relaxed text-white font-normal">
                 {directorData.description}
               </p>
             </div>
           </div>
 
           {/* RIGHT — DIVISIONS */}
-          <div className='bg-[#eef1f4] p-8 md:p-10 '>
-            <div className='py-16 max-w-xl '>
-              <h2 className='text-2xl md:text-[48px] mb-8 text-[#253746]'>
-                Our <span className='font-semibold'>Divisions</span>
+          <div className="bg-[#eef1f4] p-6 sm:p-8 md:p-10">
+            <div className="py-10 md:py-16 max-w-2xl ">
+
+              <h2 className="text-2xl sm:text-3xl md:text-[48px] mb-8 text-[#253746]">
+                Our <span className="font-semibold">Divisions</span>
               </h2>
-              <div className='grid grid-cols-3 gap-6 justify-items-start'>
+              <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-start">
                 {divisions.map((logo, i) => (
                   <div
                     key={i}
-                    className='bg-white rounded-full w-[140px]  h-[140px] flex items-center justify-center shadow-sm mx-auto'>
-                    <div className='relative w-[99px] h-[90px]'>
+                    className="bg-white rounded-full w-[110px] h-[110px] sm:w-[130px] sm:h-[130px] md:w-[140px] md:h-[140px] flex items-center justify-center shadow-sm"
+                  >
+                    <div className="relative w-[70px] h-[70px] sm:w-[85px] sm:h-[85px] md:w-[99px] md:h-[90px]">
                       <Image
                         src={logo}
-                        alt='Division'
+                        alt="Division"
                         fill
-                        className='object-contain'
+                        className="object-contain"
                       />
                     </div>
                   </div>
                 ))}
               </div>
+
             </div>
           </div>
+
         </div>
       </div>
     </section>
   );
 }
+
