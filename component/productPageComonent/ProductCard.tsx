@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-// import { calculatePtsPtr } from "@/utils/pharmaPricing";
+// import { calculatePtsPtr } from "@/utils/pharmaPricing";/
 import { useRouter } from "next/navigation";
 
 interface ProductCardProps {
@@ -14,7 +14,7 @@ export default function ProductCard({ data }: ProductCardProps) {
   //     stockistMargin: 10,
   //   });
   const url = process.env.NEXT_PUBLIC_PRODUCT_URL;
-  const imageUrl = data.image ? `${url}/${data.image}` : "/images/fallback.png";
+  const imageUrl = data.image ? `${url}/${data.image}` : "/fallback.png";
   // : "/images/placeholder.jpg";
   // console.log("data", data);
   const router = useRouter();

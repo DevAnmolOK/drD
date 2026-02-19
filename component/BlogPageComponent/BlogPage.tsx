@@ -29,7 +29,7 @@ const BlogListPage = ({ data, meta, categorey }: BlogListProps) => {
 
   const AllCategories = [
     { name: "All", slug: "All", id: "All" },
-    ...categorey.map((item) => ({
+    ...categorey?.map((item: any) => ({
       name: item.name,
       slug: item.slug,
       id: item.id,
@@ -55,11 +55,11 @@ const BlogListPage = ({ data, meta, categorey }: BlogListProps) => {
         params.append("search", debouncedSearch);
       }
       if (selectedCategory !== "All") {
-        const categoryId = AllCategories.find(
-          (c) => c.id === selectedCategory,
-        )?.id;
-        if (categoryId) {
-          params.append("categories", String(categoryId));
+        const categorySlug = AllCategories.find(
+          (c) => c.slug === selectedCategory,
+        )?.slug;
+        if (categorySlug) {
+          params.append("category", String(categorySlug));
         }
       }
       // console.log(
@@ -154,7 +154,7 @@ const BlogListPage = ({ data, meta, categorey }: BlogListProps) => {
             <button
               onClick={handleShowMore}
               disabled={loading}
-              className="px-8 py-3 rounded-lg text-white text-xl font-bold bg-gradient-to-r from-textSecondary to-textPrimary"
+              className="px-8 py-3 rounded-lg text-white text-xl font-bold bg-secondary"
             >
               {loading ? "Loading..." : "Show More"}
             </button>

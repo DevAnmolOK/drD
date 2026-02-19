@@ -93,7 +93,7 @@ const BlogDetailPage = ({
             </div>
 
             <div className="mb-8">
-              <div className="flex items-center gap-3 mb-4">
+              {/* <div className="flex items-center gap-3 mb-4">
                 {data?.category.map((cate: any, index: any) => (
                   <span
                     className="bg-textPrimary/10 text-textPrimary px-4 py-1 rounded-full text-sm font-semibold"
@@ -102,15 +102,15 @@ const BlogDetailPage = ({
                     {cate}
                   </span>
                 ))}
-              </div>
+              </div> */}
 
-              <h2 className="text-3xl md:text-5xl font-bold text-Midnight mb-4 ">
+              {/* <h2 className="text-3xl md:text-5xl font-bold text-Midnight mb-4 ">
                 {data?.name}
-              </h2>
+              </h2> */}
 
-              <p className="text-xl text-border mb-6  leading-[1.4000] ">
+              {/* <p className="text-xl text-border mb-6  leading-[1.4000] ">
                 {data?.description}
-              </p>
+              </p> */}
 
               {/* Author Info */}
               <div className="flex items-center justify-between flex-wrap gap-4 pb-6 border-b border-gray-200">
@@ -224,14 +224,14 @@ const BlogDetailPage = ({
                         />
                         {post?.category?.length > 0 && (
                           <div className="absolute top-2 right-2">
-                            <span className="bg-primary text-secondary px-3 py-1 rounded-full text-xs font-semibold">
-                              {post?.category[0]}
+                            <span className="text-white bg-secondary px-3 py-1 rounded-full text-xs font-semibold">
+                              {post?.category}
                             </span>
                           </div>
                         )}
                       </div>
                       <h4 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors line-clamp-2">
-                        {post?.title}
+                        {post?.name}
                       </h4>
                       <p className="text-gray-600 text-xs mb-4">
                         {post?.readTime || "5 min read"}

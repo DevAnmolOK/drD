@@ -30,6 +30,8 @@ body {
   --color-bgSecondary: oklch(97.02% 0 0) /*#F5F5F5*/;
   --color-bgSecondaryone: oklch(41.05% 0.0566 243.34) /*#2E4E67*/;
   --color-bgSecondarytwo: oklch(32.81% 0.0355 244.32) /*#253746*/;
+  --color-heading: oklch(49.65% 0.0016 286.34) /*#626263*/;
+  --color-description: oklch(32.81% 0.0355 244.32) /*#253746*/;
 }
 
 img {
@@ -228,7 +230,7 @@ input[type="number"] {
   font-weight: 700;
   line-height: 130%;
   letter-spacing: -2%;
-  color: var(--color-Vulcan);
+  color: var(--color-heading);
   margin-top: 1rem;
 }
 .blog-content div {
@@ -297,7 +299,7 @@ input[type="number"] {
 
 /* Links */
 .blog-content a {
-  color: var(--color-primary);
+  color: var(--color-secondary);
   text-decoration: underline;
 }
 
@@ -318,14 +320,14 @@ input[type="number"] {
   list-style-type: disc;
 }
 .blog-content ul li::marker {
-  color: var(--color-Midnight);
+  color: var(--color-description);
 }
 
 .blog-content ol {
   list-style-type: decimal;
 }
 .blog-content ol li::marker {
-  color: var(--color-Midnight);
+  color: var(--color-description);
 }
 
 .blog-content ul li {
@@ -337,7 +339,7 @@ input[type="number"] {
 
 /* Blockquote */
 .blog-content blockquote {
-  border-left: 4px solid var(--color-bgSecondary);
+  border-left: 4px solid var(--color-secondary);
   background: rgb(19, 107, 184, 0.1);
   padding: 1rem;
   margin: 1.5rem 0;
@@ -365,15 +367,15 @@ input[type="number"] {
 
 /*---------- Code ----------*/
 .blog-content code {
-  background: var(--color-sectionBg);
+  background: var(--color-bgSecondary);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
 }
 
 .blog-content pre {
-  background: var(--color-bgPrimary);
+  background: var(--color-bgSecondary);
   margin: 1rem 0rem;
-  color: var(--color-Midnight);
+  color: var(--color-heading);
   padding: 1rem;
   border-radius: 8px;
   overflow-x: auto;
@@ -388,17 +390,17 @@ input[type="number"] {
 
 .blog-content table th,
 .blog-content table td {
-  border: 1px solid var(--color-border1);
+  border: 1px solid var(--color-heading);
   padding: 0.8rem;
 }
 
 .blog-content table th {
-  background: var(--color-sectionBg);
-  color: var(--color-Vulcan);
+  background: var(--color-bgSecondary);
+  color: var(--color-description);
 }
 
 .blog-content table td {
-  color: var(--color-border);
+  color: var(--color-description);
 }
 
 /*---------- Horizontal line ----------*/
@@ -433,6 +435,6 @@ input[type="number"] {
 }
 
 .toc-item.active a {
-  color: var(--color-primary);
+  color: var(--color-secondary);
   font-weight: 600;
 }
