@@ -27,13 +27,13 @@ export default function DirectorDivisions() {
   return (
     <section>
       <div className=' px-4 sm:px-6 lg:px-0'>
-        <div className='grid lg:grid-cols-2 '>
+        <div className='grid grid-cols-1 md:grid-cols-2 '>
           {/* LEFT — DIRECTOR */}
           <div className='bg-[#243847] text-white p-8 md:p-10'>
             <div className='py-16 w-2xl m-auto pl-30'>
               <h2 className='text-2xl md:text-[48px] mb-6'>
                 Meet Our
-                <span className='font-semibold text-[48px]'> Director</span>
+                <span className='font-semibold text-[48px]'>Director</span>
               </h2>
               <div className='flex items-start gap-6 mb-6'>
                 <div className='relative w-[140px] h-[160px] rounded-xl overflow-hidden'>
@@ -45,11 +45,11 @@ export default function DirectorDivisions() {
                   />
                 </div>
                 <div>
-                  <h3 className='text-lg font-semibold'>{directorData.name}</h3>
+                  <h3 className='text-lg font-bold'>{directorData.name}</h3>
                   <p className='text-sm text-gray-300 mb-3'>
                     {directorData.role}
                   </p>
-                  {/* <div className='flex gap-2'>
+                  <div className='flex gap-2'>
                     {directorData.socials.map((s, i) => (
                       <div
                         key={i}
@@ -59,7 +59,7 @@ export default function DirectorDivisions() {
                         </span>
                       </div>
                     ))}
-                  </div> */}
+                  </div>
                 </div>
               </div>
 
