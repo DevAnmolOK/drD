@@ -3,7 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   images: {
-    domains: ["app.drdpharma.in"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "app.drdpharma.in",
+        pathname: "/**",
+      },
+      // Add more domains as needed
+    ],
   },
 };
 

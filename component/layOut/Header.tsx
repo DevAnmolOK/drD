@@ -1,9 +1,97 @@
-import Image from 'next/image';
-import Link from 'next/link';
-import { FiSearch, FiMenu, FiArrowRight } from 'react-icons/fi';
-import { LuSearch } from 'react-icons/lu';
+"use client";
+import { useEffect, useState, useRef } from "react";
+import { searchApi, Product } from "@/utills/globalProductSearch";
+import { useRouter } from "next/navigation";
+import { useDebounce } from "@/hooks/useDebounce";
+import Image from "next/image";
+import Link from "next/link";
+import { FiSearch, FiMenu, FiArrowRight } from "react-icons/fi";
+import { LuSearch } from "react-icons/lu";
 
-export default async function NavigationBar() {
+export default function NavigationBar({ navBar, productMenu }: any) {
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hoveredProductCategory, setHoveredProductCategory] = useState(null);
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchIconRef = useRef<any>(null);
+  const searchInputRef = useRef<any>(null);
+  const [results, setResults] = useState<Product[]>([]);
+  // const [results, setResults] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const { buttonLink, buttonName, headerImage, menu } = navBar || {};
+
+  const debouncedQuery = useDebounce(searchQuery, 500);
+  //  Scroll detection
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const productCategoryArray = [
+    {
+      key: "Product Form",
+      data: productMenu?.productTypes || [],
+      paramKey: "type_slug", // Parent key
+      route: "/product-forms",
+    },
+    {
+      key: "Therapathic",
+      data: productMenu?.categories || [],
+      paramKey: "therapatic_slug",
+      route: "/product-category",
+    },
+    {
+      key: "Concerns",
+      data: productMenu?.concerns || [],
+      paramKey: "concern_slug",
+      route: "/product-concern",
+    },
+    {
+      key: "Speciality",
+      data: productMenu?.specialities || [],
+      paramKey: "speciality_slug",
+      route: "/product-speciality",
+    },
+  ];
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      // console.log("Searching for:", searchQuery);
+      setShowSearch(false);
+      setSearchQuery("");
+    }
+  };
+  //  API call whenever debounced query changes
+  useEffect(() => {
+    const fetchResults = async () => {
+      if (!debouncedQuery.trim()) {
+        setResults([]);
+        return;
+      }
+      setLoading(true);
+      // setError(null);
+      try {
+        const res = await searchApi(debouncedQuery);
+        setResults(res.products);
+      } catch (err) {
+        console.error(err);
+        // setError("Failed to fetch results.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchResults();
+  }, [debouncedQuery]);
+  const url = process.env.NEXT_PUBLIC_PRODUCT_URL;
   const navItems = [
     { label: "Home", href: "/", active: true },
     { label: "About Us", href: "/about-us" },
@@ -16,9 +104,9 @@ export default async function NavigationBar() {
 
   return (
     <>
-      <div className='w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E]'>
-        <div className='  h-full  h-[4.625rem] w-full max-w-[101.625rem] flex items-center justify-between '>
-          <div className='flex items-center gap-3 relative w-[5.625rem] h-[4.625rem] '>
+      <div className="w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] bg-black/80">
+        <div className="  h-full  h-[4.625rem] w-full max-w-[101.625rem] flex items-center justify-between 2xl:px-0 sm:px-8 px-6">
+          <div className="flex items-center gap-3 relative w-[5.625rem] h-[4.625rem] ">
             <Image
               src='/images/dpharma-logo.svg'
               alt='Dr D Pharma'
@@ -57,19 +145,146 @@ export default async function NavigationBar() {
               </Link>
 
               {/* SEARCH */}
-              <button className='text-white hover:opacity-80 transition'>
+              <button
+                className="text-white hover:opacity-80 transition "
+                onClick={() => setShowSearch(true)}
+                ref={searchIconRef}
+              >
                 <LuSearch size={36} />
               </button>
 
               {/* MOBILE MENU */}
               <button
                 // onClick={() => setMobileOpen(!mobileOpen)}
-                className='text-white hover:opacity-80 transition'>
+                className="text-white hover:opacity-80 transition lg:hidden"
+              >
                 <FiMenu size={26} />
               </button>
             </div>
           </div>
         </div>
+
+        {showSearch && (
+          <div className="fixed inset-0 bg-black/90 z-[9999] flex items-start justify-center pt-20 ">
+            <div className="relative bg-white w-full max-w-4xl mx-4 rounded-[1rem] shadow-2xl z-50 max-h-[80vh]">
+              {/* Close Button */}
+              <div className="absolute -right-4  sm:-top-4 -top-5 z-20">
+                <button
+                  onClick={() => setShowSearch(false)}
+                  className="p-2    bg-gray-100 hover:bg-gray-300 rounded-full transition"
+                >
+                  <svg
+                    className="w-6 h-6 text-gray-500"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Search Input */}
+              <div className="p-2 sm:p-4">
+                <form onSubmit={handleSearchSubmit} className="">
+                  <div className="relative">
+                    <input
+                      ref={searchInputRef}
+                      type="text"
+                      value={searchQuery}
+                      onChange={(e) => setSearchQuery(e.target.value)}
+                      placeholder="Search products"
+                      className="w-full text-plg sm:px-6 px-3 py-4 border-1 text-textPrimary border-textGray rounded-xl focus:outline-none focus:border-gray-500 focus:ring-1 focus:ring-gray-500 focus:ring-opacity-20 transition-all duration-200 placeholder:text-textGray"
+                    />
+                    <button
+                      type="submit"
+                      className="absolute right-3 top-1/2 transform -translate-y-1/2 bg-secondary/70 text-white px-5 py-3 rounded-full hover:bg-opacity-90 transition-colors duration-200"
+                    >
+                      <LuSearch />
+                    </button>
+                  </div>
+                </form>
+
+                {/* Fake Results */}
+                {searchQuery && (
+                  <div className="mt-6 text-textGray">
+                    <p>
+                      Searching for: <strong>{searchQuery}</strong>
+                    </p>
+                  </div>
+                )}
+
+                <div className=" overflow-y-auto max-h-[60vh] mt-4">
+                  {loading && (
+                    <p className="text-gray-500 text-center">Loading...</p>
+                  )}
+                  {error && <p className="text-red-500 text-center">{error}</p>}
+                  {!loading && !error && results.length > 0 && (
+                    <ul className="divide-y divide-gray-200 grid sm:grid-cols-2 grid-cols-1 ">
+                      {results.map((item, index) => (
+                        <li key={index} className="py-3 px-2 hover:bg-link/10 ">
+                          <Link
+                            href={`/product/${item.slug}`}
+                            onClick={() => {
+                              setShowSearch(false);
+                              setTimeout(() => router.refresh(), 50);
+                            }}
+                          >
+                            <div className="flex gap-2">
+                              <img
+                                src={
+                                  item?.images?.[0]?.url
+                                    ? `${url}/${item?.images?.[0]?.url.replace(
+                                        /^\/+/,
+                                        "",
+                                      )}`
+                                    : "/images/fallback.png"
+                                }
+                                height={100}
+                                width={100}
+                                alt={item?.name || "VisionPuls Healthcare"}
+                                className="object-contain"
+                              />
+
+                              <div className="flex flex-col">
+                                <div className="flex gap-1 items-center justify-between">
+                                  <div className="font-medium text-textPrimary">
+                                    {item?.name || " "}
+                                  </div>
+
+                                  <div className="text-[0.65rem] text-secondary bg-secondary/10 py-0.5 px-1 rounded-[4px] ">
+                                    {item?.type_id?.[0]?.name}
+                                  </div>
+                                </div>
+
+                                <span className="text-dt text-textSecondary line-clamp-2">
+                                  {item?.details}
+                                </span>
+                              </div>
+                            </div>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {!loading &&
+                    !error &&
+                    debouncedQuery &&
+                    results.length === 0 && (
+                      <p className="text-gray-500 text-center py-8">
+                        No results found for <strong>{debouncedQuery}</strong>
+                      </p>
+                    )}
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );

@@ -77,7 +77,7 @@ export default function TableOfContents({
         {toc.map((item) => (
           <li
             key={item.id}
-            className={` toc-item block  px-3 text-black hover:bg-textPrimary/10 hover:text-bgSecondary rounded-lg transition-colors text-sm font-medium leading-[1.7500]  tracking-[-2%] level-${
+            className={` toc-item block  px-3 text-black hover:bg-textPrimary/10 hover:text-secondary rounded-lg transition-colors text-sm font-medium leading-[1.7500]  tracking-[-2%] level-${
               item.level
             } ${activeId === item.id ? "active" : ""}`}
           >

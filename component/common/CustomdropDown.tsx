@@ -32,7 +32,7 @@ const CategoryDropdown = ({
       <button
         type="button"
         onClick={() => setOpen((prev) => !prev)}
-        className="w-full flex items-center justify-between px-4 py-3 rounded-lg text-base font-semibold bg-textSecondary/10 text-textSecondary  hover:bg-gray-200 transition-all"
+        className=" w-full flex items-center justify-between px-4 py-3 rounded-lg text-base font-semibold bg-bgSecondaryone/10 text-textSecondary  hover:bg-gray-200 transition-all"
       >
         <span>{selectedCategoryName}</span>
         <FiChevronDown
@@ -49,13 +49,13 @@ const CategoryDropdown = ({
             <button
               key={category.id}
               onClick={() => {
-                setSelectedCategory(category.id);
+                setSelectedCategory(category.slug);
                 setOpen(false);
               }}
               className={`w-full text-left px-4 py-3 text-base font-semibold transition-all ${
                 selectedCategory === category.id
-                  ? "bg-bgSecondary text-secondary hover:bg-secondary/10"
-                  : "hover:bg-textPrimary/10 text-textSecondary"
+                  ? "bg- text-secondary hover:bg-secondary/10"
+                  : "hover:bg-secondary/10 text-textSecondary"
               }`}
             >
               {category.name}
