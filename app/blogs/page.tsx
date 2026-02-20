@@ -38,6 +38,7 @@ export default async function Blogs() {
   const BlogsData = AllBlogs?.data;
   const GetCategorey = await BlogEndPoints.getBlogCategories();
   const { heroSectionData } = AllBlogs || {};
+  // console.log("HeroSectionData:", heroSectionData);
   // const heroSectionData = {
   //   badgeText: "Breadcrumbs",
   //   title: {

@@ -8,7 +8,7 @@ const ComponentsProduct = dynamic(
   () => import("../../component/productPageComonent/Products"),
 );
 import CommonHeroSection from "../../component/common/CommonHeroSection";
-// import { ProductApiEndPoints } from "@/lib/service/ProdcutsApiEndPoints";
+import { ProductApiEndPoints } from "@/lib/service/ProdcutsApiEndPoints";
 
 // export async function generateMetadata(): Promise<Metadata> {
 //   try {
@@ -26,23 +26,22 @@ interface ProductsProps {
 }
 
 export default async function Products({ params }: ProductsProps) {
-  const heroSectionData = {
-    badgeText: "Breadcrumbs",
-    title: {
-      normal: "Blogs",
-    },
-    description:
-      "Empower your pharma business with precise financial analytics. Calculate gross margins and net profits instantly to make informed pricing decisions.",
-    buttonText: "Scroll to use",
-    background: {
-      imageAlt: "Modern laboratory background",
-      imageSrc:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDlhCxl2Vxag4giglyO3LRkbo1CCD0M2C2xp8aInGg_GtvGQQTne3cPlp4jncbvfjJQ_Xgtjh22jGzKNrHyiH5djBaJD-qol6WT4TXPCHPkfDmXqGNEJBdTSiFfdhxFLO6gCo8h3f1FobHNsLIP1KgizrslMR0Q0tZHzpU0md3rnJ0Stq3MCkjS76TSVHCBBzYISDJrEU5zOL1EJLtiO4teKHAtUwhRSMYV60XhybXAJZm5Moq-MFo9dEJJ6Zrmo-UWJ8sF_9x5U_uD",
-    },
-  };
+  // const heroSectionData = {
+  //   badgeText: "Breadcrumbs",
+  //   title: {
+  //     normal: "Blogs",
+  //   },
+  //   description:
+  //     "Empower your pharma business with precise financial analytics. Calculate gross margins and net profits instantly to make informed pricing decisions.",
+  //   buttonText: "Scroll to use",
+  //   background: {
+  //     imageAlt: "Modern laboratory background",
+  //     imageSrc:
+  //       "https://lh3.googleusercontent.com/aida-public/AB6AXuDlhCxl2Vxag4giglyO3LRkbo1CCD0M2C2xp8aInGg_GtvGQQTne3cPlp4jncbvfjJQ_Xgtjh22jGzKNrHyiH5djBaJD-qol6WT4TXPCHPkfDmXqGNEJBdTSiFfdhxFLO6gCo8h3f1FobHNsLIP1KgizrslMR0Q0tZHzpU0md3rnJ0Stq3MCkjS76TSVHCBBzYISDJrEU5zOL1EJLtiO4teKHAtUwhRSMYV60XhybXAJZm5Moq-MFo9dEJJ6Zrmo-UWJ8sF_9x5U_uD",
+  //   },
+  // };
 
-  // const bannerResp = await ProductApiEndPoints.productBanner();
-  // const { heroSectionData } = bannerResp?.data || {};
+  const bannerResp = await ProductApiEndPoints.productBanner();
 
   try {
     let typeId = "";
@@ -111,7 +110,7 @@ export default async function Products({ params }: ProductsProps) {
           siteName="Eridanus HealthCare"
           title="Products"
         /> */}
-        <CommonHeroSection heroSectionData={heroSectionData} />
+        <CommonHeroSection heroSectionData={bannerResp?.heroSectionData} />
         <div className="w-full h-full  text-black flex items-center justify-center m-8">
           <div className="wrapper w-full h-full mx-auto relative sm:mb-0 mb-[1.5rem]">
             <div className=" pb-[2.5rem]">

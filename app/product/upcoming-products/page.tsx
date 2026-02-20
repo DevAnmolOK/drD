@@ -5,7 +5,7 @@
 
 import CommonHeroSection from "../../../component/common/CommonHeroSection";
 import ProductcategoryPage from "../../../component/productPageComonent/ProductcategoryPage";
-// import { QuickLinksPageEndPoints } from "../../../../lib/service/QuickLinks";
+import { QuickLinksPageEndPoints } from "../../../lib/service/QuickLinks";
 // import BreadcrumbSchemaOnly from "@/components/breadcrumbsScema/breadcrumbsSchema";
 
 // export async function generateMetadata(): Promise<Metadata> {
