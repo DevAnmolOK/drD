@@ -27,10 +27,6 @@ export default function CommonHeroSection({
 
         <div className="relative wrapper mx-auto z-10  w-full">
           <div className="">
-            {/* <span className="inline-block px-4 py-1.5 bg-secondary/10 text-secondary rounded-full text-xs font-bold tracking-widest uppercase mb-4 border border-secondary/20">
-              {heroSectionData?.badgeText}
-            </span> */}
-
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">
               {heroSectionData?.title?.normal}{" "}
               {heroSectionData?.title?.highlight && (
@@ -46,12 +42,12 @@ export default function CommonHeroSection({
             )}
 
             <div className="flex flex-wrap gap-4">
-              <div className="rounded-full px-6 py-3  bg-secondary text-white align-middle leading-[1.4063]  text-base font-bold  hover:bg-red-700 transition flex items-center">
+              <Link href={`${heroSectionData?.buttonLink}`} className="rounded-full px-6 py-3  bg-secondary text-white align-middle leading-[1.4063]  text-base font-bold  hover:bg-red-700 transition flex items-center">
                 {heroSectionData?.buttonText}{" "}
                 <span className="material-symbols-outlined text-xl">
                   <MdOutlineArrowDownward />
                 </span>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

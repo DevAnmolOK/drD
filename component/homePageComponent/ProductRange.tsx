@@ -1,77 +1,72 @@
 import Image from 'next/image';
 import { FiArrowRight } from 'react-icons/fi';
+import TagBadge from '../ui/TagBadge';
+import Button from '../ui/Button';
 
-const ayurvedicData = {
-  tag: 'OUR PRODUCT RANGE',
-  title: {
-    line: 'Complete ',
-    line1: ' Ayurvedic Product Solutions',
-    line2: 'Under One Roof',
-  },
-  description:
-    'A comprehensive portfolio spanning Ayurvedic third-party manufacturing, nutraceutical supplies, and allopathic medicines—crafted with quality, compliance, and consistency.',
-  cta: {
-    label: 'Our Complete Ayurvedic Product Range',
-    link: '#',
-  },
-  cards: [
-    {
-      title: 'Ayurvedic Product Range',
-      text: 'Ayurvedic product is the traditional and an antique medical procedure to treat disease.',
-      icon: '/SVG/Ayurvedic 01.svg',
-    },
-    {
-      title: 'Allopathic Product Range',
-      text: 'Nowadays there is a huge demand for Pharmaceutical products in the market.',
-      icon: '/SVG/Ayurvedic 02.svg',
-    },
-    {
-      title: 'Nutraceutical Third Party List',
-      text: 'The demand for Nutraceutical drugs has increased in the past few years.',
-      icon: '/SVG/Ayurvedic 03.svg',
-    },
-    {
-      title: 'Ayurvedic Third Party List',
-      text: 'Dr. D Pharma, with quality production, offers the best ayurvedic third party manufacturing opportunities.',
-      icon: '/SVG/Ayurvedic 04.svg',
-    },
-  ],
-};
+// const ayurvedicData = {
+//   tag: 'OUR PRODUCT RANGE',
+//   title: {
+//     line: 'Complete ',
+//     line1: ' Ayurvedic Product Solutions',
+//     line2: 'Under One Roof',
+//   },
+//   description:
+//     'A comprehensive portfolio spanning Ayurvedic third-party manufacturing, nutraceutical supplies, and allopathic medicines—crafted with quality, compliance, and consistency.',
+//   cta: {
+//     label: 'Our Complete Ayurvedic Product Range',
+//     link: '#',
+//   },
+//   cards: [
+//     {
+//       title: 'Ayurvedic Product Range',
+//       text: 'Ayurvedic product is the traditional and an antique medical procedure to treat disease.',
+//       icon: '/SVG/Ayurvedic 01.svg',
+//     },
+//     {
+//       title: 'Allopathic Product Range',
+//       text: 'Nowadays there is a huge demand for Pharmaceutical products in the market.',
+//       icon: '/SVG/Ayurvedic 02.svg',
+//     },
+//     {
+//       title: 'Nutraceutical Third Party List',
+//       text: 'The demand for Nutraceutical drugs has increased in the past few years.',
+//       icon: '/SVG/Ayurvedic 03.svg',
+//     },
+//     {
+//       title: 'Ayurvedic Third Party List',
+//       text: 'Dr. D Pharma, with quality production, offers the best ayurvedic third party manufacturing opportunities.',
+//       icon: '/SVG/Ayurvedic 04.svg',
+//     },
+//   ],
+// };
 
-export default function ProductRange() {
+export default function ProductRange({ homeProductRange }: any) {
+  const { tag, title, description, cta, cards } = homeProductRange?.data || {};
   return (
     <section className='bg-[#fff] py-14 md:py-16'>
       <div className='wrapper mx-auto px-4 sm:px-6 lg:px-0'>
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-10'>
           <div className='max-w-5xl'>
-            <span className='inline-block text-xs font-medium tracking-wide px-3 py-1 rounded-full border border-gray-300 text-[#253746] mb-4'>
-              {ayurvedicData.tag}
-            </span>
-
+             <TagBadge text={tag}/>
             <h2 className='text-2xl sm:text-3xl lg:text-[42px] leading-tight text-[#253746]'>
-              {ayurvedicData.title.line}
-              <span className='font-semibold'>{ayurvedicData.title.line1}</span>
+              {title.line}
+              <span className='font-semibold mx-2'>{ title.line1}</span>
               <br />
-              {ayurvedicData.title.line2}
+              {title.line2}
             </h2>
 
             <p className='text-[#626263] mt-3 text-sm sm:text-base leading-relaxed'>
-              {ayurvedicData.description}
+              {description}
             </p>
           </div>
-          <a
-            href={ayurvedicData.cta.link}
-            className='inline-flex items-center gap-3 bg-[#2e4353] text-white px-6 py-3 rounded-full text-base font-medium hover:bg-[#243847] transition'>
-            {ayurvedicData.cta.label}
-            <span className='w-7 h-7 bg-[#EE4223] rounded-full flex items-center justify-center'>
-              <FiArrowRight size={16} />
-            </span>
-          </a>
+          <Button href={cta?.link}>
+            {cta.label}
+          </Button>
         </div>
 
         {/* Cards */}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5'>
-          {ayurvedicData.cards.map((card, i) => (
+          {cards.map((card: any, i: any) => (
             <div
               key={i}
               className='bg-[#F5F5F5] rounded-[16px] p-6 min-h-[160px] flex flex-col gap-3  '>
