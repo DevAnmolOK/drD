@@ -100,7 +100,7 @@ const EnquiryForm = ({
         })) || [];
       setLocations(mapped);
 
-      console.log("Pincode Details:", data);
+      // console.log("Pincode Details:", data);
     } catch (error) {
       console.error("Faild to fetch Address", error);
       return null;
@@ -212,7 +212,7 @@ const EnquiryForm = ({
             .join(", ")}`
         : `City: ${formData.city}`;
 
-    console.log("Address:", address);
+    // console.log("Address:", address);
 
     const payload = {
       name: formData.name,

@@ -7,4 +7,4 @@ export const CertificatePageEndPoints = {
       cache: "dynamic",
     });
   },
-}
+};

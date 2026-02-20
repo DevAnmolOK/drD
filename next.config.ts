@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: "app.drdpharma.in",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "drdpharma.whdev.in",
+        pathname: "/**",
+      },
       // Add more domains as needed
     ],
   },

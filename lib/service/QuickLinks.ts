@@ -24,14 +24,14 @@ export const QuickLinksPageEndPoints = {
 
   getOfferPageBanner: () => {
     return apiFetch({
-      endpoint: "page/offers",
+      endpoint: "/page/offers",
       cache: "dynamic",
     });
   },
 
   getCertificateBanner: () => {
     return apiFetch({
-      endpoint: "page/offers",
+      endpoint: "/page/certificatess",
       cache: "dynamic",
     });
   },

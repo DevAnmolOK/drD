@@ -7,6 +7,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { FiSearch, FiMenu, FiArrowRight } from "react-icons/fi";
 import { LuSearch } from "react-icons/lu";
+import Cookies from "js-cookie";
+import { BiCaretDown } from "react-icons/bi";
+import MobileNav from "./MobileNav";
 
 export default function NavigationBar({ navBar, productMenu }: any) {
   const router = useRouter();
@@ -108,38 +111,206 @@ export default function NavigationBar({ navBar, productMenu }: any) {
         <div className="  h-full  h-[4.625rem] w-full max-w-[101.625rem] flex items-center justify-between 2xl:px-0 sm:px-8 px-6">
           <div className="flex items-center gap-3 relative w-[5.625rem] h-[4.625rem] ">
             <Image
-              src='/images/dpharma-logo.svg'
-              alt='Dr D Pharma'
+              src="/images/dpharma-logo.svg"
+              alt="Dr D Pharma"
               fill
               unoptimized
-              className=''
+              className=""
             />
           </div>
-          <div className=' text-white  flex gap-10'>
-            <nav className='hidden lg:flex items-center gap-8'>
-              {navItems.map((item) => (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={`relative px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${
-                    item.active ?
-                      'text-white border-b  border-white'
-                    : 'text-white '
-                  }`}>
-                  {item.label}
+          <div className=" flex flex-row gap-12">
+            <nav className={`hidden lg:flex items-center  gap-8  text-white`}>
+              {menu?.map((item: any, index: any) => {
+                const isProduct = item?.label === "Product";
+                const haveChild =
+                  item?.is_dropdown && item?.submenu?.length > 0;
+                return (
+                  <div
+                    className={`relative group px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${
+                      item.active
+                        ? "text-white border-b  border-white"
+                        : "text-white "
+                    }`}
+                    key={index}
+                  >
+                    {isProduct ? (
+                      <Link
+                        href={item?.href || "#"}
+                        className="hover:text-red-600 transition"
+                        //     onClick={() => {
+                        //       setTimeout(() => router.refresh(), 50);
+                        //     }}
+                      >
+                        {
+                          <div
+                            className={`cursor-pointer text-[1.0369rem] font-inter font-medium text-nowrap flex items-center gap-1 `}
+                          >
+                            {item.label}
 
-                  {/* Active underline */}
-                </Link>
-              ))}
+                            <BiCaretDown
+                              className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
+                              size={18}
+                            />
+                          </div>
+                        }
+                      </Link>
+                    ) : haveChild ? (
+                      <button
+                        className={`cursor-pointer hover:text-red-600 transition text-[1.0369rem] font-inter font-medium  text-nowrap flex items-center gap-1 `}
+                      >
+                        {item.label}
+                        <BiCaretDown
+                          className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
+                          size={18}
+                        />
+                      </button>
+                    ) : (
+                      <Link
+                        href={item?.href || "#"}
+                        className="hover:text-red-600 transition"
+                        // onClick={() => {
+                        //   setTimeout(() => router.refresh(), 50);
+                        // }}
+                      >
+                        <div
+                          className={`cursor-pointer text-[1.0369rem] font-inter font-medium  text-nowrap flex items-center gap-1 `}
+                        >
+                          {item.label}
+                        </div>
+                      </Link>
+                    )}
+
+                    {/* Dropdown menu for Products */}
+                    {isProduct && (
+                      <div className="absolute -left-1 rounded-[0.5rem] hidden group-hover:block bg-white custom-drop-shadow2 z-50 w-fit max-w-[15rem]">
+                        {productCategoryArray
+                          ?.filter((category: any) => category.data?.length > 0)
+                          .map((category: any, categoryIndex: any) => (
+                            <div
+                              className="relative group"
+                              key={categoryIndex}
+                              onMouseEnter={() =>
+                                setHoveredProductCategory(categoryIndex)
+                              }
+                              onMouseLeave={() =>
+                                setHoveredProductCategory(null)
+                              }
+                            >
+                              <div className="block border-b border-b-[#e8e8e8] hover:border-b mx-1 hover:border-b-secondary cursor-pointer group">
+                                <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 text-nowrap mb-0.5 py-3 flex justify-between ">
+                                  <span className="">{category.key}</span>
+                                  <span className="">
+                                    {category.data?.length > 0 && (
+                                      <BiCaretDown
+                                        className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
+                                        size={14}
+                                      />
+                                    )}
+                                  </span>
+                                </div>
+                              </div>
+
+                              {category.data?.length > 0 && (
+                                <ul
+                                  className={`absolute overflow-visible max-h-[25rem] overflow-y-scroll left-full top-0 rounded-[0.5rem] bg-white custom-drop-shadow2 z-[50] w-fit min-w-[15rem] ${
+                                    hoveredProductCategory === categoryIndex
+                                      ? "block"
+                                      : "hidden"
+                                  }`}
+                                >
+                                  {category.data.map(
+                                    (item: any, itemIndex: any) => {
+                                      // Determine display name
+                                      let displayName =
+                                        item.type_name ||
+                                        item.name ||
+                                        item.title ||
+                                        item.label ||
+                                        "Not specified";
+
+                                      // Replace any variant of "Na" with "Not specified"
+                                      if (/^na$/i.test(displayName.trim())) {
+                                        displayName = "Not-Specified";
+                                      }
+
+                                      displayName = displayName.replace(
+                                        /-/g,
+                                        " ",
+                                      );
+                                      return (
+                                        <li key={itemIndex}>
+                                          {/* {item?.slug && ( */}
+                                          <Link
+                                            href={
+                                              item.slug
+                                                ? `${category.route}/${item.slug}`
+                                                : `#`
+                                            }
+                                            onClick={() => {
+                                              //Save parent key in cookie
+                                              Cookies.set(
+                                                "productMenuKey",
+                                                category.paramKey,
+                                                {
+                                                  path: "/",
+                                                },
+                                              );
+                                              setTimeout(
+                                                () => router.refresh(),
+                                                50,
+                                              );
+                                            }}
+                                            className="block border-b border-b-[#e8e8e8] hover:border-b mx-1 hover:border-b-secondary text-nowrap min-w-[10rem]"
+                                          >
+                                            <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 w-full mb-0.5 py-3">
+                                              {displayName}
+                                            </div>
+                                          </Link>
+                                          {/* )} */}
+                                        </li>
+                                      );
+                                    },
+                                  )}
+                                </ul>
+                              )}
+                            </div>
+                          ))}
+                      </div>
+                    )}
+                    {/* Other dropdown menus */}
+                    {haveChild && !isProduct && (
+                      <div className="absolute overflow-hidden -left-1 rounded-[0.5rem] hidden group-hover:block bg-white custom-drop-shadow2 z-50 w-fit max-w-[15rem]">
+                        {item?.submenu?.map((child: any, index: number) => {
+                          return (
+                            <Link
+                              key={index}
+                              href={child?.href || "#"}
+                              className="block border-b border-b-[#e8e8e8] hover:border-b hover:border-b-secondary"
+                              onClick={() => {
+                                setTimeout(() => router.refresh(), 50);
+                              }}
+                            >
+                              <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 text-nowrap mb-0.5 py-3">
+                                {child?.label}
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </nav>
-            {/* RIGHT SECTION */}
-            <div className='flex items-center gap-10'>
-              {/* CTA BUTTON */}
+
+            {/* ACTIONS + MOBILE NAV */}
+            <div className="flex items-center gap-10 ">
               <Link
-                href='/contact-us'
-                className='hidden md:flex items-center gap-3 bg-white text-black px-6 py-3 rounded-full font-semibold text-[15px] shadow-md hover:shadow-lg transition'>
+                href="/contact-us"
+                className="hidden md:flex items-center gap-3 bg-white text-black px-6 py-3 rounded-full font-semibold text-[15px] shadow-md hover:shadow-lg transition"
+              >
                 Contact Us
-                <span className='bg-[#f04e23] text-white rounded-full w-8 h-8 flex items-center justify-center'>
+                <span className="bg-[#f04e23] text-white rounded-full w-8 h-8 flex items-center justify-center">
                   <FiArrowRight size={18} />
                 </span>
               </Link>
@@ -153,13 +324,13 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                 <LuSearch size={36} />
               </button>
 
-              {/* MOBILE MENU */}
-              <button
-                // onClick={() => setMobileOpen(!mobileOpen)}
-                className="text-white hover:opacity-80 transition lg:hidden"
-              >
-                <FiMenu size={26} />
-              </button>
+              <div className="lg:hidden w-10 h-10 rounded-full border flex items-center justify-center text-xl">
+                <MobileNav
+                  navigation={navBar?.menu}
+                  logoUrl={headerImage?.src}
+                  productMenu={productMenu}
+                />
+              </div>
             </div>
           </div>
         </div>
