@@ -3,8 +3,7 @@ import TagBadge from "../ui/TagBadge";
 import Button from "../ui/Button";
 
 export default function PcdFranchise({ homeLifeEasy }: any) {
-
-  const { leftCard,rightSection } = homeLifeEasy.data || {};
+  const { leftCard, rightSection } = homeLifeEasy.data || {};
 
   // const content = {
   //   leftCard: {
@@ -40,9 +39,6 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
   //   },
   // };
 
-  console.log(leftCard);
-  
-  
   return (
     <section className="w-full bg-white py-16 px-6 ">
       <div className="wrapper m-auto grid grid-cols-1 md:grid-cols-[35%_63%] gap-[2%] items-center">
@@ -60,13 +56,19 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
           <h2 className="text-2xl md:text-=[32px] font-normal leading-relaxed">
             {leftCard.title}
           </h2>
-          <Button href={leftCard.button.href} bgColor="#ffffff" textColor="#253746" className="mt-8" arrowBg="#ef4444">
-             {leftCard.button.text}
+          <Button
+            href={leftCard.button.href}
+            bgColor="#ffffff"
+            textColor="#253746"
+            className="mt-8"
+            arrowBg="#ef4444"
+          >
+            {leftCard.button.text}
           </Button>
         </div>
         {/* RIGHT CONTENT */}
         <div>
-          <TagBadge text={rightSection.badge} className="mb-4"/>
+          <TagBadge text={rightSection.badge} className="mb-4" />
           <h1 className="text-3xl md:text-[43px] font-normal text-[#253746] leading-tight mb-6">
             {rightSection.heading}
           </h1>
@@ -80,7 +82,7 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
           </h3>
 
           <ul className="space-y-2 text-[#626263]">
-            {rightSection.points.map((item:any, index:number) => (
+            {rightSection.points.map((item: any, index: number) => (
               <li key={index} className="flex items-center gap-3 align-center">
                 <span className="text-[#626263] mt-1 text-base inline-flex items-center justify-center ">
                   <Image

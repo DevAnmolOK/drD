@@ -44,7 +44,7 @@ export default async function RootLayout({
       <body className={`${sans.variable} antialiased`}>
         <NavigationBar navBar={navBar} productMenu={productMenu} />
         {children}
-        <Footer />
+        <Footer data={footer} />
       </body>
     </html>
   );
