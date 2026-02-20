@@ -52,7 +52,6 @@ heading_start
   //   ],
   // };
 
-  console.log(data,"data");
   
 
   return (

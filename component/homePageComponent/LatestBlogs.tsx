@@ -22,7 +22,7 @@ export default function LatestBlogs({ homeBlogs }: any) {
   //       image: "/images/pcd01.png",
   //       title:
   //         "Top 4 Medical PCD Products with High Demand in the Indian Pharma Market",
-  //       href: "/blog/top-4-medical-pcd-products",
+  //       href: "/top-4-medical-pcd-products",
   //     },
   //     {
   //       image: "/images/pcd02.png",
@@ -33,6 +33,7 @@ export default function LatestBlogs({ homeBlogs }: any) {
   //   ],
   // };
 
+  
   return (
     <section className="bg-white py-16">
       <div className="wrapper mx-auto px-4">
