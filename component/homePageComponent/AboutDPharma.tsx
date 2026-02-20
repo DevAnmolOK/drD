@@ -58,7 +58,7 @@ export default function AboutDPharma({ homeAboutData }: any) {
           </div>
 
           {/* Illustration */}
-          <div className="absolute mt-12 w-full max-w-[754px] h-[154px] hidden lg:block ">
+          <div className="absolute mt-25 w-full max-w-[824px] h-[154px] hidden lg:block ">
             <Image
               src={aboutData.images.illustration}
               alt="Illustration"
