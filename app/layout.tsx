@@ -14,7 +14,6 @@ const sans = localFont({
   display: "swap",
 });
 
-
 export const metadata: Metadata = {
   title: " DR D Pharma",
   description:
