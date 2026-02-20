@@ -1,12 +1,14 @@
+
 /** @format */
 
 import { apiFetch } from "../api/fetcher";
 
-// api/v1/page/about-us
-export const AboutPageEndPoints = {
-  companyProfile: () => {
+// // api/v1/page/galleries
+
+export const GalleryPageEndPoints = {
+  gallery: () => {
     return apiFetch({
-      endpoint: "page/about-us",
+      endpoint: "page/galleries",
       cache: "dynamic",
     });
   },

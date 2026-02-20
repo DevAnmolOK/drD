@@ -27,10 +27,6 @@ export default function CommonHeroSection({
 
         <div className="relative wrapper mx-auto z-10  w-full">
           <div className="">
-            {/* <span className="inline-block px-4 py-1.5 bg-secondary/10 text-secondary rounded-full text-xs font-bold tracking-widest uppercase mb-4 border border-secondary/20">
-              {heroSectionData?.badgeText}
-            </span> */}
-
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">
               {heroSectionData?.title?.normal}{" "}
               {heroSectionData?.title?.highlight && (
