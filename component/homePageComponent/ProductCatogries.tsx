@@ -1,39 +1,41 @@
 import Image from 'next/image';
 
-const categories = [
-  {
-    type: 'intro',
-    title: `Our Product Categories Different categories of product range`,
-    icon: '/SVG/iconcat.png',
-  },
-  {
-    title: 'Pediatric Range',
-    image: '/images/homePage/proCat1.png',
-  },
-  {
-    title: 'Antibiotics Range',
-    image: '/images/homePage/abtibiotic.png',
-  },
-  {
-    title: 'Orthopedic Range',
-    image: '/images/homePage/ortho.png',
-  },
-  {
-    title: 'Injectable Range',
-    image: '/images/homePage/injec.png',
-  },
-  {
-    title: 'Gynecology Range',
-    image: '/images/homePage/gyno.png',
-  },
-];
+// const categories1 = [
+//   {
+//     type: 'intro',
+//     title: `Our Product Categories Different categories of product range`,
+//     icon: '/SVG/iconcat.png',
+//   },
+//   {
+//     title: 'Pediatric Range',
+//     image: '/images/homePage/proCat1.png',
+//   },
+//   {
+//     title: 'Antibiotics Range',
+//     image: '/images/homePage/abtibiotic.png',
+//   },
+//   {
+//     title: 'Orthopedic Range',
+//     image: '/images/homePage/ortho.png',
+//   },
+//   {
+//     title: 'Injectable Range',
+//     image: '/images/homePage/injec.png',
+//   },
+//   {
+//     title: 'Gynecology Range',
+//     image: '/images/homePage/gyno.png',
+//   },
+// ];
 
-export default function ProductCategories() {
+export default function ProductCategories({ homeCategories }: any) {
+  const {categories} = homeCategories?.data || [];
+  
   return (
     <section className='bg-[#F5F5F5] py-12 md:py-16'>
       <div className='wrapper m-auto px-4 sm:px-6 lg:px-0'>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
-          {categories.map((item: any, i) => {
+          {categories.map((item: any, i:any) => {
             if (item.type === 'intro') {
               return (
                 <div
@@ -41,7 +43,7 @@ export default function ProductCategories() {
                   className='bg-[#2e4353] text-white rounded-[16px] p-8 flex flex-col justify-around min-h-[425px] py-16'>
                   <div className='w-15 h-15 mb-4'>
                     <Image
-                      src={item.icon}
+                      src={item.image}
                       alt='Icon'
                       width={75}
                       height={75}

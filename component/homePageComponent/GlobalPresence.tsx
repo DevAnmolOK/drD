@@ -2,27 +2,29 @@ import Image from "next/image";
 import TagBadge from "../ui/TagBadge";
 import Button from "../ui/Button";
 
-export default function GlobalPresence() {
-  const data = {
-    tag: "GLOBAL FOOTPRINT",
-    title: "Global Presence Trusted Worldwide",
+export default function GlobalPresence({ homeGlobalFootprint }: any) {
+  const {data} = homeGlobalFootprint || {};
 
-    map: "/images/mapbg.png",
+  // const data = {
+  //   tag: "GLOBAL FOOTPRINT",
+  //   title: "Global Presence Trusted Worldwide",
 
-    locations: [
-      "Jammu & Kashmir, India",
-      "Solan, Himachal Pradesh, India",
-    ],
+  //   map: "/images/mapbg.png",
 
-    card: {
-      icon: "/SVG/map-icon.svg",
-      text: "We are steadily expanding our global footprint by delivering high-quality, reliable, and affordable healthcare solutions across international markets.",
-      button: {
-        label: "Learn More",
-        href: "/about",
-      },
-    },
-  };
+  //   locations: [
+  //     "Jammu & Kashmir, India",
+  //     "Solan, Himachal Pradesh, India",
+  //   ],
+
+  //   card: {
+  //     icon: "/SVG/map-icon.svg",
+  //     text: "We are steadily expanding our global footprint by delivering high-quality, reliable, and affordable healthcare solutions across international markets.",
+  //     button: {
+  //       label: "Learn More",
+  //       href: "/about",
+  //     },
+  //   },
+  // };
 
   return (
     <section className="bg-[#f5f6f7] py-16 px-4 md:px-10">
@@ -51,11 +53,11 @@ export default function GlobalPresence() {
               alt="World Map"
               width={900}
               height={450}
-              className="w-full h-auto object-contain"
+              className="w-full h-auto object-cover "
             />
 
             {/* Locations */}
-            <div className="flex flex-wrap justify-end flex-col gap-3">
+            {/* <div className="flex flex-wrap justify-end flex-col gap-3">
               {data.locations.map((loc, i) => (
                 <div
                   key={i}
@@ -67,7 +69,7 @@ export default function GlobalPresence() {
                   {loc}
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Info Card */}

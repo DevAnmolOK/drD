@@ -2,49 +2,58 @@ import Image from "next/image";
 import TagBadge from "../ui/TagBadge";
 import Button from "../ui/Button";
 
-export default function OurStrengths() {
-  const data = {
-    tag: "OUR STRENGTHS",
-    title: "The Foundation Of Our Excellence",
-    desc: `Our excellence is built on a strong foundation of quality-driven processes, regulatory compliance, and industry expertise. From sourcing clinically approved raw materials to implementing strict quality control at every stage of manufacturing, we ensure consistency, safety, and reliability in every product.`,
-    bgImage: "/images/ourStrengthbg.png",
+export default function OurStrengths({ homeOurStrengths }: any) {
+   const {data} = homeOurStrengths || {};
+   const {
+heading_bold,
+heading_start
+} = data.title || {};
 
-    cards: [
-      {
-        image: "/images/pcd01.png",
-        title: "PCD Pharma Franchise Business Opportunity",
-        desc: "Best PCD Pharma Franchise in India - Dr. D Pharma is an ISO Certified Company that is a proud supplier and franchiser in the Indian pharmaceutical market that gives manufacturing and marketing services of Pharma Products in Pan India.",
-        points: [
-          "Antibiotic",
-          "Ayurvedic",
-          "Gynaecology Products",
-          "Pain Killer Gel",
-          "Protein Powder",
-          "Pediatric Range",
-        ],
-        button: {
-          label: "Learn More",
-          href: "/services",
-        },
-      },
-      {
-        image: "/images/pcd02.png",
-        title: "Third Party Pharmaceutical Manufacturer",
-        desc: "Dr. D Pharma is a leading pharmaceutical company that offers unique third-party pharmaceutical manufacturing services in Chandigarh.",
-        points: [
-          "Sourcing",
-          "Quality Check",
-          "Manufacturing",
-          "Production",
-          "Packaging",
-        ],
-        button: {
-          label: "Learn More",
-          href: "/services",
-        },
-      },
-    ],
-  };
+  // const data = {
+  //   tag: "OUR STRENGTHS",
+  //   title: "The Foundation Of Our Excellence",
+  //   desc: `Our excellence is built on a strong foundation of quality-driven processes, regulatory compliance, and industry expertise. From sourcing clinically approved raw materials to implementing strict quality control at every stage of manufacturing, we ensure consistency, safety, and reliability in every product.`,
+  //   bgImage: "/images/ourStrengthbg.png",
+
+  //   cards: [
+  //     {
+  //       image: "/images/pcd01.png",
+  //       title: "PCD Pharma Franchise Business Opportunity",
+  //       desc: "Best PCD Pharma Franchise in India - Dr. D Pharma is an ISO Certified Company that is a proud supplier and franchiser in the Indian pharmaceutical market that gives manufacturing and marketing services of Pharma Products in Pan India.",
+  //       points: [
+  //         "Antibiotic",
+  //         "Ayurvedic",
+  //         "Gynaecology Products",
+  //         "Pain Killer Gel",
+  //         "Protein Powder",
+  //         "Pediatric Range",
+  //       ],
+  //       button: {
+  //         label: "Learn More",
+  //         href: "/services",
+  //       },
+  //     },
+  //     {
+  //       image: "/images/pcd02.png",
+  //       title: "Third Party Pharmaceutical Manufacturer",
+  //       desc: "Dr. D Pharma is a leading pharmaceutical company that offers unique third-party pharmaceutical manufacturing services in Chandigarh.",
+  //       points: [
+  //         "Sourcing",
+  //         "Quality Check",
+  //         "Manufacturing",
+  //         "Production",
+  //         "Packaging",
+  //       ],
+  //       button: {
+  //         label: "Learn More",
+  //         href: "/services",
+  //       },
+  //     },
+  //   ],
+  // };
+
+  console.log(data,"data");
+  
 
   return (
     <section className="relative py-16">
@@ -60,14 +69,14 @@ export default function OurStrengths() {
           />
 
           <h2 className="text-3xl md:text-[44px] font-light mb-6">
-            The Foundation Of{" "}
-            <span className="font-semibold">Our Excellence</span>
+            {heading_start}
+            <span className="font-semibold">{heading_bold}</span>
           </h2>
 
           <p className="text-white leading-relaxed text-base">{data.desc}</p>
         </div>
         <div className="lg:col-span-2 grid md:grid-cols-2 gap-10 lg:relative lg:top-[25%] ">
-          {data.cards.map((card, i) => (
+          {data?.cards.map((card:any, i:number) => (
             <div
               key={i}
               className="bg-white rounded-2xl p-6 shadow-xl flex flex-col"
@@ -87,7 +96,7 @@ export default function OurStrengths() {
               </h3>
               <p className="text-sm text-[#6b7280] mb-4">{card.desc}</p>
               <ul className="space-y-2 mb-6">
-                {card.points.map((p, idx) => (
+                {card.points.map((p :any, idx:number) => (
                   <li
                     key={idx}
                     className="flex items-center gap-2 text-base text-[#626263] font-medium"

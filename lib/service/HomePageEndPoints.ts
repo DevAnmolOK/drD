@@ -3,74 +3,104 @@
 import { apiFetch, apiPost } from "../api/fetcher";
 
 export const HomePageEndPoints = {
-  heroBanner: () => {
+
+  homeBannerSection: () => {
     return apiFetch({
-      endpoint: "section/homepage-hero-section",
+      endpoint: "section/home-banner-section",
       cache: "dynamic",
     });
   },
 
-  whoWeAre: () => {
+  homeAbout: () => {
     return apiFetch({
-      endpoint: "section/homepage-who-we-are",
+      endpoint: "section/home-about",
       cache: "dynamic",
     });
   },
 
-  faqs: () => {
+  homeDirectorData: () => {
     return apiFetch({
-      endpoint: "section/hompage-faqs",
+      endpoint: "section/home-director-data",
+      cache: "dynamic",
+    });
+  },  
+
+
+  homeTrustedBy: () => {
+    return apiFetch({
+      endpoint: "section/home-trusted-by",
       cache: "dynamic",
     });
   },
 
-  calculatorSection: () => {
+  homeCategories: () => {
     return apiFetch({
-      endpoint: "section/homepage-calculator-section",
+      endpoint: "section/home-categories",
       cache: "dynamic",
     });
   },
 
-  customerReviews: () => {
+  homeProductRange: () => {
     return apiFetch({
-      endpoint: "section/homepage-customer-reviews",
+      endpoint: "section/home-product-range",
+      cache: "dynamic",
+    });
+  },
+  
+  homeLifeEasy: () => {
+    return apiFetch({
+      endpoint: "section/home-life-easy",
+      cache: "dynamic",
+    });
+  },
+ 
+  homeManufacturingPartners: () => {
+    return apiFetch({
+      endpoint: "section/home-manufacturing-partners",
       cache: "dynamic",
     });
   },
 
-  trustedPharma: () => {
+  homeChooseUs: () => { 
     return apiFetch({
-      endpoint: "section/homepage-trusted-pharma",
+      endpoint: "section/home-choose-us",
+      cache: "dynamic",
+    });
+  } ,
+
+  homeBlogs: () => {
+    return apiFetch({
+      endpoint: "section/home-blogs",
       cache: "dynamic",
     });
   },
 
-  homePageBlogs: () => {
+  homeTestimonials: () => {
     return apiFetch({
-      endpoint: "section/homepage-blogs",
+      endpoint: "section/home-testimonials",
+      cache: "dynamic",
+    });
+  } ,
+
+  homeOurStrengths: () => {
+    return apiFetch({
+      endpoint: "section/home-our-strengths",
       cache: "dynamic",
     });
   },
 
-  divisions: () => {
+  homeGlobalFootprint: () => {
     return apiFetch({
-      endpoint: "section/homepage-divisions",
-      cache: "dynamic",
-    });
-  },
-  // /api/v1/section/homepage-why-choose-us
-  whyChooseUs: () => {
-    return apiFetch({
-      endpoint: "section/homepage-why-choose-us",
+      endpoint: "section/home-global-footprint",
       cache: "dynamic",
     });
   },
 
-  // /api/v1/section/homepage-promotional-input
-  promotionalInput: () => {
+  // /api/v1/section/home-product-listing
+  homeProductListing: () => {
     return apiFetch({
-      endpoint: "section/homepage-promotional-input",
+      endpoint: "section/home-product-listing",
       cache: "dynamic",
     });
-  },
+  }
 };

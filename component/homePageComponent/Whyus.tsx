@@ -1,43 +1,11 @@
 import Image from "next/image";
 import TagBadge from "../ui/TagBadge";
 
-export default function WhyUs() {
-  const data = {
-    tag: "Why choose us",
-    title:
-      "The Best Pharma Company For Franchise & Third Party Manufacturing Services",
-
-    imageLeft: {
-      img: "/images/why1.png",
-      alt: "Manufacturing",
-    },
-
-    imageRight: {
-      img: "/images/why2.png",
-      alt: "Doctor",
-    },
-
-    cards: [
-      {
-        title: "Monopoly Rights",
-        desc: "Dr. D Pharma offers PCD monopoly rights of dedicated and hard-working pharmacists in select locations in India. Our employees are given the opportunity to work independently in their area. We offer an exclusive range of affordable pharmaceutical products to reach more people and to gain more profit.",
-      },
-      {
-        title: "Pharma Franchise",
-        desc: "We invite Pharma experts from all over the country to come and be a part of Dr. D Pharma, and start your own company in the pharmaceutical industry. You can get a wide range of different pharmaceutical products for us for pharmaceutical franchise businesses across India.",
-      },
-      {
-        title: "Quality Assurance",
-        desc: "The quality of our products makes us reliable and contributes significantly to our success. We have the best quality assurance team and all the products we offer are quality checked. From raw material receiving to pharmaceutical packaging.",
-      },
-    ],
-  };
-
+export default function WhyUs({ homeChooseUs }: any) {
+  const data = homeChooseUs.data || {};
   return (
     <section className="bg-[#f3f4f6] py-14 px-4 md:px-10">
       <div className="wrapper mx-auto">
-
-        {/* Header */}
         <div className="flex flex-col items-center max-w-[1155px] mx-auto">
           <TagBadge text={data.tag} className="mb-4" />
           <h2 className="text-center text-2xl md:text-[38px] lg:text-[44px] font-medium text-[#2b3a42] mb-10">
@@ -72,7 +40,7 @@ export default function WhyUs() {
           </div>
 
           {/* Remaining cards */}
-          {data.cards.slice(1).map((card, i) => (
+          {data.cards.slice(1).map((card:any, i:number) => (
             <Card key={i} {...card} />
           ))}
         </div>
@@ -82,14 +50,14 @@ export default function WhyUs() {
 }
 
 /* reusable text card */
-function Card({ title, desc }: { title: string; desc: string }) {
+function Card({ title, description }: { title: string; description: string }) {
   return (
     <div className="bg-white rounded-2xl p-6">
       <h3 className="text-[34px] font-normal text-[#253746] mb-3">
         {title}
       </h3>
       <p className="text-sm text-[#626263] leading-relaxed">
-        {desc}
+        {description}
       </p>
     </div>
   );
