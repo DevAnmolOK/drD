@@ -3,32 +3,34 @@ import { IoIosCheckmark } from "react-icons/io";
 import TagBadge from "../ui/TagBadge";
 import Button from "../ui/Button";
 
-const aboutData = {
-  tag: "ABOUT DR. PHARMA",
-  title: {
-    line1: "India’s Best",
-    line2: "Pharmaceutical Company",
-  },
-  description: `Dr. D Pharma is an ISO certified Company that was established in 2010 and has been famous for bringing quality-oriented pharmaceutical products into the market. With the help of our skilled and dedicated co-operations across India, we have gained a great position as the India's Best Pharmaceutical Company. The firm is nationally known for its effective, quality, durable and efficient medicines which are available at the affordable rates. We have more the 800+ Pharma products in various sections like tablets, capsules, injections, etc. `,
-  features: [
-    "3 Factories ,36400㎡ covering, 150+ workers",
-    "professional quality inspection teams",
-    "Focus on Sustainability",
-    "Product Design & Development",
-  ],
-  images: {
-    main: "/images/homePage/about01.jpg",
-    badge: "/images/homePage/aboutlogo.png",
-    illustration: "/images/homePage/dAbout1.svg",
-    side: "/images/homePage/dAbout.jpg",
-  },
-  cta: {
-    lable: "",
-    href: "",
-  },
-};
+// const aboutData = {
+//   tag: "ABOUT DR. PHARMA",
+//   title: {
+//     line1: "India’s Best",
+//     line2: "Pharmaceutical Company",
+//   },
+//   description: `Dr. D Pharma is an ISO certified Company that was established in 2010 and has been famous for bringing quality-oriented pharmaceutical products into the market. With the help of our skilled and dedicated co-operations across India, we have gained a great position as the India's Best Pharmaceutical Company. The firm is nationally known for its effective, quality, durable and efficient medicines which are available at the affordable rates. We have more the 800+ Pharma products in various sections like tablets, capsules, injections, etc. `,
+//   features: [
+//     "3 Factories ,36400㎡ covering, 150+ workers",
+//     "professional quality inspection teams",
+//     "Focus on Sustainability",
+//     "Product Design & Development",
+//   ],
+//   images: {
+//     main: "/images/homePage/about01.jpg",
+//     badge: "/images/homePage/aboutlogo.png",
+//     illustration: "/images/homePage/dAbout1.svg",
+//     side: "/images/homePage/dAbout.jpg",
+//   },
+//   cta: {
+//     lable: "",
+//     href: "",
+//   },
+// };
 
-export default function AboutDPharma() {
+export default function AboutDPharma({ homeAboutData }: any) {
+    const aboutData = homeAboutData?.data || {};
+    
   return (
     <section className="bg-[#fff] py-16">
       <div className="wrapper m-auto px-6 lg:px-0 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_50%] gap-y-12 lg:gap-[5%] items-start">
@@ -68,9 +70,6 @@ export default function AboutDPharma() {
 
         {/* RIGHT */}
         <div className="space-y-6 w-full">
-          {/* <span className='inline-block text-xs font-bold px-4 py-2 rounded-full bg-white border border-gray-200 text-[#253746] capitalize'>
-            {aboutData.tag}
-          </span> */}
           <TagBadge text={aboutData.tag} />
 
           <h2 className="text-3xl lg:text-[48px]  text-[##253746] leading-tight font-normal">
@@ -79,15 +78,13 @@ export default function AboutDPharma() {
               {aboutData.title.line2}
             </span>
           </h2>
-
           <p className="text-[#626263] leading-relaxed text-base">
             {aboutData.description}
           </p>
-
           <div className="flex flex-col md:flex-row items-start gap-6 pt-4 md:justify-between">
             <div>
               <ul className="space-y-3  text-[#626263] text-base">
-                {aboutData.features.map((item, i) => (
+                {aboutData.features.map((item:any, i:number) => (
                   <li key={i} className="flex items-center gap-3">
                     <span className="w-6 h-6 bg-[#EE4223] rounded-full flex justify-center items-center ">
                       <IoIosCheckmark size={20} className="text-white" />

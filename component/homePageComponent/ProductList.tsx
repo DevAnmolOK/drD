@@ -31,16 +31,18 @@ const products = [
   },
 ];
 
-export default function ProductList() {
-  const data = {
-    tag: "our Products List",
-    title: {
-      normal: "We Offer",
-      highlight: "High Quality",
-      end: "Range of Pharmaceuticals products",
-    },
-    desc: `Dr. D Pharma has brought a number of high-quality and highly effective pharmaceutical products to the market. Over the years the company has built a healthy and diverse line of drugs that have made us the Best Pharmaceuticals Company in Chandigarh. With the use of innovative and advanced technology, we have successfully tackled the most serious health problems in society. We offer innovative products of unique quality in the industry.`,
-  };
+export default function ProductList({ homeProductListing }: any) {
+  const { data } = homeProductListing || {};
+  
+  // const data = {
+  //   tag: "our Products List",
+  //   title: {
+  //     normal: "We Offer",
+  //     highlight: "High Quality",
+  //     end: "Range of Pharmaceuticals products",
+  //   },
+  //   desc: `Dr. D Pharma has brought a number of high-quality and highly effective pharmaceutical products to the market. Over the years the company has built a healthy and diverse line of drugs that have made us the Best Pharmaceuticals Company in Chandigarh. With the use of innovative and advanced technology, we have successfully tackled the most serious health problems in society. We offer innovative products of unique quality in the industry.`,
+  // };
 
   return (
     <section className="bg-white">
@@ -54,7 +56,7 @@ export default function ProductList() {
           </h2>
 
           <p className="text-[#626263] leading-relaxed text-base">
-            {data.desc}
+            {data.description}
           </p>
         </div>
         <div className="wrapper m-auto pt-16 flex items-center justify-center">
