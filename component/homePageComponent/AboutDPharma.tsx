@@ -31,7 +31,7 @@ const aboutData = {
 export default function AboutDPharma() {
   return (
     <section className="bg-[#fff] py-16">
-      <div className="wrapper m-auto px-6 lg:px-0 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[42%_58%] gap-y-12 lg:gap-[2%] items-start">
+      <div className="wrapper m-auto px-6 lg:px-0 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_50%] gap-y-12 lg:gap-[5%] items-start">
         <div className="space-y-4 m-auto lg:m-0 w-full">
           <div className="relative">
             <div className="relative w-full h-[540px] rounded-[16px] overflow-hidden">
@@ -56,7 +56,7 @@ export default function AboutDPharma() {
           </div>
 
           {/* Illustration */}
-          <div className="absolute mt-12 w-full max-w-[660px] h-[154px] hidden lg:block ">
+          <div className="absolute mt-12 w-full max-w-[754px] h-[154px] hidden lg:block ">
             <Image
               src={aboutData.images.illustration}
               alt="Illustration"

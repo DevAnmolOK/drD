@@ -73,16 +73,17 @@ function BlogCard({
   href: string;
 }) {
   return (
-    <div className="relative rounded-2xl overflow-hidden group">
+    <div className="relative rounded-[15px] overflow-hidden group">
       {/* Image */}
       <Image
         src={image}
         alt={title}
         width={600}
         height={380}
-        className="w-full h-[260px] md:h-[320px] object-cover"
+        className="w-full h-[280px] md:h-[380px] object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.7),transparent)]" />
+      {/* <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" /> */}
       <div className="absolute bottom-5 left-5 right-16 text-white text-lg md:text-[24px] font-medium  lient-camp-2 leading-snug">
         {title}
       </div>
