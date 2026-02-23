@@ -32,8 +32,8 @@ export default function AboutDPharma({ homeAboutData }: any) {
     const aboutData = homeAboutData?.data || {};
     
   return (
-    <section className="bg-white py-16">
-      <div className="wrapper m-auto px-6 lg:px-0 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_50%] gap-y-12 lg:gap-[5%] items-start">
+    <section className="bg-[#fff] py-16">
+      <div className="wrapper relative m-auto px-6 lg:px-0 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_50%] gap-y-12 lg:gap-[5%] items-start">
         <div className="space-y-4 m-auto lg:m-0 w-full">
           <div className="relative">
             <div className="relative w-full h-[540px] rounded-[16px] overflow-hidden">
@@ -58,12 +58,12 @@ export default function AboutDPharma({ homeAboutData }: any) {
           </div>
 
           {/* Illustration */}
-          <div className="absolute mt-25 w-full max-w-[824px] h-[154px] hidden lg:block ">
+          <div className="absolute mt-25 w-full max-w-[51.5rem] h-[9.625rem] hidden lg:block  bottom-0">
             <Image
               src={aboutData.images.illustration}
               alt="Illustration"
               fill
-              className="object-cover "
+              className="object-cover"
             />
           </div>
         </div>
@@ -72,7 +72,7 @@ export default function AboutDPharma({ homeAboutData }: any) {
         <div className="space-y-6 w-full">
           <TagBadge text={aboutData.tag} />
 
-          <h2 className="text-3xl lg:text-[3rem]  text-[##253746] leading-tight font-normal">
+          <h2 className="text-3xl lg:text-[48px]  text-[##253746] leading-tight font-normal">
             {aboutData.title.line1} <br />
             <span className="font-bold lg:text-[43px] text-2xl">
               {aboutData.title.line2}
@@ -94,13 +94,10 @@ export default function AboutDPharma({ homeAboutData }: any) {
                 ))}
               </ul>
 
-              {/* <button className='bg-[#0c2d48] mt-8 text-white px-6 py-3 rounded-full flex items-center gap-2 hover:bg-[#0a243b] transition'>
-                About Us
-                <span className='w-6 h-6 rounded-full bg-red-500 flex items-center justify-center text-sm'>
-                  →
-                </span>
-              </button> */}
-              <Button href="/about" className="mt-8">About Us</Button>
+        
+            <div>
+                <Button href="/about" className="mt-8">About Us</Button>
+            </div>
             </div>
 
             {/* Side Image */}

@@ -40,7 +40,11 @@ export default function Footer({ data }: any) {
       address: `Village Bhatoli Khurd, Officer Colony, Opposite Birla Textile, Sector 5, Baddi, Himachal Pradesh 173205`,
     },
   };
-  
+
+  const {bottomBar} = data || {};
+
+  console.log("footer data", data?.map?.embedUrl);
+    
   return (
     <footer className="bg-gradient-to-r from-[#1c2a3a] via-[#1f2f44] to-[#16222f] text-white w-full">
       <div className="wrapper mx-auto w-full  pb-6 pt-14">
@@ -125,7 +129,6 @@ export default function Footer({ data }: any) {
               </div>
               <div className="  sm:w-[32.5%] ">
                 {/* <h3 className="text-lg font-semibold mb-6">Information</h3> */}
-
                 <div className="grid grid-cols-2 gap-6   mt-14">
                   <div className="text-base align-middle font-normal leading-[1.5000] flex flex-col gap-5">
                     {data?.informationMenu?.column2?.map(
@@ -144,9 +147,10 @@ export default function Footer({ data }: any) {
                   <iframe
                     // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54773.00740713477!2d76.82159773491381!3d30.90587516593629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ff569da45e4bb%3A0xde121e5eea7ece12!2sDr.%20D%20Pharma%20-%20Derma%20Range%20%7C%20Ortho%20Range%20%7C%20Gynae%20Range!5e0!3m2!1sen!2sin!4v1771331898755!5m2!1sen!2sin"
                     src={data?.map?.embedUrl}
+                    // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54803.955002698014!2d76.8797917486328!3d30.85175370000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ff569da45e4bb%3A0xde121e5eea7ece12!2sDr.%20D%20Pharma%20-%20Derma%20Range%20%7C%20Ortho%20Range%20%7C%20Gynae%20Range!5e0!3m2!1sen!2sin!4v1771838078711!5m2!1sen!2sin"
                     width="100%"
                     height="100%"
-                    style={{ border: 0 }}
+                    style={{ border: 0}}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
@@ -176,7 +180,7 @@ export default function Footer({ data }: any) {
                       >
                         {data}
                       </p>
-                    ),
+                    )
                   )}
                 </div>
               </div>
@@ -219,14 +223,15 @@ export default function Footer({ data }: any) {
         {/* DIVIDER */}
         <div className="border-t border-[#626263] text-white/40 mt-8 pt-4 flex flex-col md:flex-row justify-between  gap-4">
           <p className=" text-sm font-normal align-middle">
-            © 2026 by{" "}
+            {/* © 2026 by{" "}
             <span className="underline cursor-pointer font-semibold align-middle">
               Dr. D Pharma
-            </span>
+            </span> */}
+            {bottomBar?.copyright}
           </p>
 
           <div className="flex gap-4  text-sm font-normal align-middle">
-            {data?.bottomBar?.links?.map((item: any, index: number) => (
+            {bottomBar?.links?.map((item: any, index: number) => (
               <div className="flex gap-4" key={index}>
                 <Link href={item?.href}>{item?.label}</Link>
                 {index !== data.bottomBar.links.length - 1 && <span>|</span>}
