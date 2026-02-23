@@ -439,17 +439,16 @@ input[type="number"] {
   font-weight: 600;
 }
 
-
 /* ==== sliky Slider ======= */
 /* Ensure dots are visible and colored */
 .slick-dots li button:before {
-  color: black !important; 
+  color: black !important;
   font-size: 12px !important;
   opacity: 0.5;
 }
 
 .slick-dots li.slick-active button:before {
-  color: #000 !important; 
+  color: #000 !important;
   opacity: 1;
 }
 

@@ -109,15 +109,17 @@ export default function NavigationBar({ navBar, productMenu }: any) {
     <>
       <div className="w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] bg-black/80">
         <div className="  h-full  h-[4.625rem] w-full max-w-[101.625rem] flex items-center justify-between 2xl:px-0 sm:px-8 px-6">
-          <div className="flex items-center gap-3 relative w-[5.625rem] h-[4.625rem] ">
-            <Image
-              src="/images/dpharma-logo.svg"
-              alt="Dr D Pharma"
-              fill
-              unoptimized
-              className=""
-            />
-          </div>
+          <Link href="/">
+            <div className="flex items-center gap-3 relative w-[5.625rem] h-[4.625rem] ">
+              <Image
+                src="/images/dpharma-logo.svg"
+                alt="Dr D Pharma"
+                fill
+                unoptimized
+                className=""
+              />
+            </div>
+          </Link>
           <div className=" flex flex-row gap-12">
             <nav className={`hidden lg:flex items-center  gap-8  text-white`}>
               {menu?.map((item: any, index: any) => {

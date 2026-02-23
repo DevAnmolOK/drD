@@ -25,6 +25,13 @@ export const CommonEndPoints = {
     });
   },
 
+  termsconditions: () => {
+    return apiFetch({
+      endpoint: "page/terms-conditions",
+      cache: "dynamic",
+    });
+  },
+
   // /api/v1/page/terms-conditions
   termsConditions: () => {
     return apiFetch({
