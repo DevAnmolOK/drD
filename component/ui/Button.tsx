@@ -25,10 +25,10 @@ export default function Button({
     <>
       <span>{children}</span>
       <span
-        className="w-6 h-6 rounded-full flex items-center justify-center text-sm text-white"
+        className="w-8 h-8 rounded-full flex items-center justify-center text-sm text-white shadow-lg"
         style={{ backgroundColor: arrowBg }}
-      >
-       <FaArrowRight size={12} />
+      > 
+       <FaArrowRight size={12}  />
       </span>
     </>
   );
