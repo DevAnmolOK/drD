@@ -312,7 +312,10 @@ export default function FacilityPage() {
                   </h3>
                   <ul className="space-y-3">
                     {infrastructureData?.section?.points.map((point, index) => (
-                      <li key={index} className="flex items-start gap-2">
+                      <li
+                        key={index}
+                        className="flex items-start  gap-2 "
+                      >
                         <span className="w-6 h-6 bg-[#EE4223] rounded-full flex justify-center items-center ">
                           <IoIosCheckmark size={20} className="text-white" />
                         </span>
@@ -472,9 +475,9 @@ export default function FacilityPage() {
                 {WhyChooseUsDAta?.section?.keyPoints?.map((point, index) => (
                   <div
                     key={index}
-                    className="bg-white/5 border border-white/10 p-8 rounded-xl flex gap-4 text-white"
+                    className="bg-white/5 border border-white/10 p-4 sm:p-8 rounded-xl flex gap-4 text-white"
                   >
-                    <span className="w-8 h-8 bg-[#EE4223] rounded-full flex justify-center items-center">
+                    <span className="min-w-8 h-8 bg-[#EE4223] rounded-full flex justify-center items-center">
                       <IoIosCheckmark size={20} className="text-white" />
                     </span>
                     <span className=" text-lg font-medium">{point}</span>

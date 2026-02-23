@@ -139,7 +139,7 @@ export default function Footer({ data }: any) {
               </div>
               {/*  MAP */}
               <div className="  sm:w-[42.5%]">
-                <div className="relative w-full h-[16.188rem]  overflow-hidden">
+                <div className="relative w-full h-[16.188rem]  overflow-hidden sm:mt-0 mt-8">
                   <iframe
                     // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54773.00740713477!2d76.82159773491381!3d30.90587516593629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ff569da45e4bb%3A0xde121e5eea7ece12!2sDr.%20D%20Pharma%20-%20Derma%20Range%20%7C%20Ortho%20Range%20%7C%20Gynae%20Range!5e0!3m2!1sen!2sin!4v1771331898755!5m2!1sen!2sin"
                     src={data?.map?.embedUrl}
@@ -225,9 +225,13 @@ export default function Footer({ data }: any) {
           </p>
 
           <div className="flex gap-4  text-sm font-normal align-middle">
-            <Link href="#">Terms & Conditions</Link>
-            <span>|</span>
-            <Link href="#">Privacy Policy</Link>
+            {data?.bottomBar?.links?.map((item: any, index: number) => (
+              <div className="flex gap-4" key={index}>
+                <Link href={item?.href}>{item?.label}</Link>
+                {index !== data.bottomBar.links.length - 1 && <span>|</span>}
+              </div>
+            ))}
+            {/* <Link href="#">Privacy Policy</Link> */}
           </div>
         </div>
       </div>

@@ -12,7 +12,6 @@ import { BiCaretDown } from "react-icons/bi";
 import MobileNav from "./MobileNav";
 import { usePathname } from "next/navigation";
 
-
 export default function NavigationBar({ navBar, productMenu }: any) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -29,16 +28,17 @@ export default function NavigationBar({ navBar, productMenu }: any) {
   const { buttonLink, buttonName, headerImage, menu } = navBar || {};
   const pathname = usePathname();
   const debouncedQuery = useDebounce(searchQuery, 500);
-
+  // console.log("if scrolled :", scrolled);
 
   useEffect(() => {
-  const handleScroll = () => {
-    setScrolled(window.scrollY > 15);
-  };
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 15);
+    };
 
-  window.addEventListener("scroll", handleScroll);
-  return () => window.removeEventListener("scroll", handleScroll);
-}, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const productCategoryArray = [
     {
       key: "Product Form",
@@ -96,6 +96,7 @@ export default function NavigationBar({ navBar, productMenu }: any) {
 
     fetchResults();
   }, [debouncedQuery]);
+
   const url = process.env.NEXT_PUBLIC_PRODUCT_URL;
   // const navItems = [
   //   { label: "Home", href: "/", active: true },
@@ -109,16 +110,20 @@ export default function NavigationBar({ navBar, productMenu }: any) {
 
   return (
     <>
-    <div
-  className={`
+      {/* <div
+        className={`
     w-full items-center justify-center flex h-[6.25rem]
-    sticky top-0 z-[100]
+    sticky top-0 z-100              
     border-b border-[#FFFFFF2E]
     transition-all duration-300
     ${scrolled ? "bg-[#051B2E] backdrop-blur-md shadow-md" : "bg-transparent"}
-  `}
->
-      {/* <div className="w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] "> */}
+  `} 
+      >
+  */}
+      <div
+        className={`w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] ${scrolled ? " bg-linear-to-r from-[#1c2a3a]/90 via-[#1f2f44]/90 to-[#16222f]/90 " : "bg-transparent"} `}
+      >
+        {/* <div className="w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] "> */}
         <div className="  h-full  h-[4.625rem] w-full max-w-[101.625rem] flex items-center justify-between 2xl:px-0 sm:px-8 px-6">
           <Link href="/">
             <div className="flex items-center gap-3 relative w-[5.625rem] h-[4.625rem] ">
@@ -137,14 +142,16 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                 const isProduct = item?.label === "Product";
                 const haveChild =
                   item?.is_dropdown && item?.submenu?.length > 0;
-                   const isActive =
-    pathname === item?.href ||
-    (item?.href !== "/" && pathname?.startsWith(item?.href));
+                const isActive =
+                  pathname === item?.href ||
+                  (item?.href !== "/" && pathname?.startsWith(item?.href));
                 return (
                   <div
                     className={`relative group px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${
-        isActive ? "text-white border-b border-white" : "text-white"
-      }`}
+                      isActive
+                        ? "text-white border-b border-white"
+                        : "text-white"
+                    }`}
                     key={index}
                   >
                     {isProduct ? (

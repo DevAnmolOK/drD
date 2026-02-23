@@ -107,19 +107,19 @@ export default function MobileNav({
 
       {/* Mobile Navigation Overlay */}
       <div
-        className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out ${
+        className={`fixed inset-0 bg-white z-50 transform transition-transform duration-300 ease-in-out  ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } flex flex-col`}
       >
         {/* Header with Close Button */}
-        <div className="flex items-center justify-between min-h-[5.4375] sm:min-h-[6.4375rem] p-4 border-b border-gray-200 sticky top-0 bg-[#1D2F3E] z-50">
+        <div className="flex items-center justify-between  min-h-[6.25rem] p-4 border-b border-gray-200 sticky top-0 bg-[#1D2F3E] z-50">
           <Link
             href="/"
             onClick={() => {
               setTimeout(() => router.refresh(), 50);
             }}
           >
-            <div className=" relative h-14 sm:h-18 w-26 sm:w-33.5 overflow-hidden ">
+            <div className="flex items-center gap-3 relative w-[5.625rem] h-[4.625rem] ">
               <Image
                 src={logoUrl || "/homePage/hlogo.png"}
                 alt="VisionPlus"
