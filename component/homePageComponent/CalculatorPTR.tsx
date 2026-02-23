@@ -126,7 +126,7 @@ export default function PtrPtsCalculator() {
             <p className="text-lg mb-10 leading-relaxed font-normal">
               {ui.headings.desc}
             </p>
-            <h2 className="text-lg lg:text-[1.75rem] font-bold mb-6">
+            <h2 className="text-lg lg:text-[1.75rem] font-bold mb-6 text-black">
               {ui.headings.inputTitle}
             </h2>
             <div className="space-y-6 mb-40 lg:mb-0">
