@@ -102,7 +102,7 @@ export default function AboutDPharma({ homeAboutData }: any) {
 
             {/* Side Image */}
             <div className="hidden md:block">
-              <div className="relative w-[220px] sm:w-[260px] lg:w-[300px] aspect-[398/538] rounded-[16px] overflow-hidden shadow-md">
+              <div className="relative w-[13.75rem] sm:w-[16.25rem] lg:w-[18.75rem] aspect-[398/538] rounded-[1rem] overflow-hidden shadow-md">
                 <Image
                   src={aboutData.images.side}
                   alt="Pharmacist"

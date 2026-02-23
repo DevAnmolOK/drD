@@ -111,9 +111,9 @@ export default async function Products({ params }: ProductsProps) {
           title="Products"
         /> */}
         <CommonHeroSection heroSectionData={bannerResp?.heroSectionData} />
-        <div className="w-full h-full  text-black flex items-center justify-center m-8">
+        <div className="w-full h-full  text-black flex items-center justify-center m-8 m-auto">
           <div className="wrapper w-full h-full mx-auto relative sm:mb-0 mb-[1.5rem]">
-            <div className=" pb-[2.5rem]">
+            <div className="pb-[2.5rem] md:py-8">
               {transformProducts.length > 0 ? (
                 <ComponentsProduct
                   filterMenu={menu}
