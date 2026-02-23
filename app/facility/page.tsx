@@ -370,9 +370,9 @@ export default async function FacilityPage() {
                       key={index}
                       className="bg-white/5 backdrop-blur-md border border-white/10 p-6 rounded-xl hover:shadow-xl transition flex flex-col gap-4"
                     >
-                      <div className="border h-[6rem] w-[6rem] relative overflow-hidden ">
+                      <div className=" h-[6rem] w-[6rem] relative overflow-hidden ">
                         <Image
-                          src="/Webp/Divisions 07.webp"
+                          src={cert?.image}
                           alt={cert?.certification}
                           fill
                           className="object-contain"
