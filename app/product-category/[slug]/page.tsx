@@ -177,7 +177,7 @@ export default async function Productcategory({
 }: DivisionPreviewProps) {
   const { slug } = await params;
 
-  const bannerResp = await ProductApiEndPoints.productCategory();
+  const bannerResp = await ProductApiEndPoints.productBanner();
   // const { heroSectionData } = bannerResp?.data || {};
 
   const cookieStore = await cookies();

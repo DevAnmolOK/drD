@@ -174,7 +174,7 @@ const baseUrl = process.env.NEXT_PUBLIC_IMAGE_URL;
 export default async function ProductForm({ params }: DivisionPreviewProps) {
   const { slug } = await params;
 
-  const bannerResp = await ProductApiEndPoints.productConcern();
+  const bannerResp = await ProductApiEndPoints.productBanner();
   // const { heroSectionData } = bannerResp?.data || {};
 
   const cookieStore = await cookies();
