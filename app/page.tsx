@@ -16,15 +16,16 @@ import PtrPtsCalculator from "@/component/homePageComponent/CalculatorPTR";
 import LatestBlogs from "@/component/homePageComponent/LatestBlogs";
 import { HomePageEndPoints } from "@/lib/service/HomePageEndPoints";
 
-export default  async function Home() {
+export default async function Home() {
   const homeBannerSection = await HomePageEndPoints.homeBannerSection();
   const homeAboutData = await HomePageEndPoints.homeAbout();
   const homeDirectorData = await HomePageEndPoints.homeDirectorData();
-  const homeTrustedBy = await HomePageEndPoints.homeTrustedBy();  
+  const homeTrustedBy = await HomePageEndPoints.homeTrustedBy();
   const homeCategories = await HomePageEndPoints.homeCategories();
   const homeProductRange = await HomePageEndPoints.homeProductRange();
   const homeLifeEasy = await HomePageEndPoints.homeLifeEasy();
-  const homeManufacturingPartners = await HomePageEndPoints.homeManufacturingPartners();
+  const homeManufacturingPartners =
+    await HomePageEndPoints.homeManufacturingPartners();
   const homeChooseUs = await HomePageEndPoints.homeChooseUs();
   const homeBlogs = await HomePageEndPoints.homeBlogs();
   const homeTestimonials = await HomePageEndPoints.homeTestimonials();
@@ -36,18 +37,20 @@ export default  async function Home() {
     <>
       <HeroSection homeBannerSection={homeBannerSection} />
       <AboutDPharma homeAboutData={homeAboutData} />
-      <ProductCategories homeCategories={homeCategories}/>
-      <TrustedSection  homeTrustedBy={homeTrustedBy}/>
+      <ProductCategories homeCategories={homeCategories} />
+      <TrustedSection homeTrustedBy={homeTrustedBy} />
       <ProductRange homeProductRange={homeProductRange} />
       <DirectorDivisions homeDirectorData={homeDirectorData} />
-      <PcdFranchise  homeLifeEasy={homeLifeEasy}/>
-      <ManifacturingPartners homeManufacturingPartners={homeManufacturingPartners} />
+      <PcdFranchise homeLifeEasy={homeLifeEasy} />
+      <ManifacturingPartners
+        homeManufacturingPartners={homeManufacturingPartners}
+      />
       <WhyUs homeChooseUs={homeChooseUs} />
       <GlobalPresence homeGlobalFootprint={homeGlobalFootprint} />
-      <OurStrengths homeOurStrengths={homeOurStrengths}/>
-      <ProductList homeProductListing={homeProductListing}/>
+      <OurStrengths homeOurStrengths={homeOurStrengths} />
+      <ProductList homeProductListing={homeProductListing} />
       <PtrPtsCalculator />
-      <Reviews  homeTestimonials={homeTestimonials}/>
+      <Reviews homeTestimonials={homeTestimonials} />
       <LatestBlogs homeBlogs={homeBlogs} />
     </>
   );

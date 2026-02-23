@@ -3,7 +3,12 @@ import TagBadge from "../ui/TagBadge";
 import CenterMode from "../common/SwipeSlider";
 import ProductCard from "../common/ProductCard";
 import SwipeSlider from "../common/SwipeSlider";
+import SlickSlider from "../common/ProductSlider";
+// import dynamic from "next/dynamic";
 
+// const SlickSlider = dynamic(() => import("../common/ProductSlider"), {
+//   ssr: false,
+// });
 const products = [
   {
     image: "/images/p1.png",
@@ -13,7 +18,7 @@ const products = [
     image: "/images/p.png",
     name: "Ovacare Plus – Ovulation & fertility support",
   },
-    {
+  {
     image: "/images/p2.png",
     name: "Femprolite – Hormonal Balance Support",
   },
@@ -21,7 +26,7 @@ const products = [
     image: "/images/p3.png",
     name: "Ovacare Plus – Ovulation & fertility support",
   },
-    {
+  {
     image: "/images/p1.png",
     name: "Femprolite – Hormonal Balance Support",
   },
@@ -33,7 +38,7 @@ const products = [
 
 export default function ProductList({ homeProductListing }: any) {
   const { data } = homeProductListing || {};
-  
+
   // const data = {
   //   tag: "our Products List",
   //   title: {
@@ -60,11 +65,13 @@ export default function ProductList({ homeProductListing }: any) {
           </p>
         </div>
         <div className="wrapper m-auto pt-16 flex items-center justify-center">
-    <SwipeSlider>
-  {products.map((p, i) => (
-    <ProductCard key={i} {...p} />
-  ))}
-</SwipeSlider>
+          <div className="">
+            <SlickSlider
+              products={products || []}
+              CardComponent={ProductCard}
+              slideToShow={products?.length > 4 ? 4 : products?.length || 1}
+            />
+          </div>
         </div>
       </div>
     </section>
