@@ -8,7 +8,7 @@ export default function WhyUs({ homeChooseUs }: any) {
       <div className="wrapper mx-auto">
         <div className="flex flex-col items-center max-w-[1155px] mx-auto">
           <TagBadge text={data.tag} className="mb-4" />
-          <h2 className="text-center text-2xl md:text-[2.375rem] lg:text-[44px] font-medium text-[#2b3a42] mb-10">
+          <h2 className="text-center text-2xl md:text-[2.375rem] lg:text-[3rem] font-medium text-[#2b3a42] mb-10">
             {data.title}
           </h2>
         </div>
@@ -53,7 +53,7 @@ export default function WhyUs({ homeChooseUs }: any) {
 function Card({ title, description }: { title: string; description: string }) {
   return (
     <div className="bg-white rounded-2xl p-6">
-      <h3 className="text-[3rem] font-normal text-[#253746] mb-3">
+      <h3 className="text-2xl md:text-[2.125rem] font-normal text-[#253746] mb-3">
         {title}
       </h3>
       <p className="text-sm text-[#626263] leading-relaxed">
