@@ -47,7 +47,7 @@ export default function ProductRange({ homeProductRange }: any) {
       <div className='wrapper mx-auto px-4 sm:px-6 lg:px-0'>
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-10'>
           <div className='max-w-5xl'>
-             <TagBadge text={tag}/>
+             <TagBadge text={tag} className='mb-4'/>
             <h2 className='text-2xl sm:text-3xl lg:text-[42px] leading-tight text-[#253746]'>
               {title.line}
               <span className='font-semibold mx-2'>{ title.line1}</span>

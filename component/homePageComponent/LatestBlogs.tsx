@@ -40,7 +40,7 @@ export default function LatestBlogs({ homeBlogs }: any) {
         <div className="flex items-end justify-between mb-10">
           <div>
             <TagBadge text={header.tag} className="mb-3" />
-            <h2 className="md:text-3xl lg:text-[48px] font-normal  text-[#253746]">
+            <h2 className="md:text-3xl lg:text-[3rem] font-normal  text-[#253746]">
               {header.title.line1}
               <span className="font-semibold"> {header.title.line2}</span>
             </h2>

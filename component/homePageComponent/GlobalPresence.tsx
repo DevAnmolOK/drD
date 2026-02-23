@@ -32,7 +32,7 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
           <div>
             <TagBadge text={data.tag} className="mb-4" />
-            <h2 className="text-2xl lg:text-[43px] font-medium text-[#253746] ">
+            <h2 className="text-2xl lg:text-[3rem] font-medium text-[#253746] ">
               Global Presence <span className="font-bold">Trusted</span> Worldwide
             </h2>
           </div>

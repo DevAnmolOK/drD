@@ -53,7 +53,7 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
               className="object-contain"
             />
           </div>
-          <h2 className="text-2xl md:text-=[32px] font-normal leading-relaxed">
+          <h2 className="text-2xl md:text-[2rem] font-normal leading-relaxed">
             {leftCard.title}
           </h2>
           <Button
@@ -69,7 +69,7 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
         {/* RIGHT CONTENT */}
         <div>
           <TagBadge text={rightSection.badge} className="mb-4" />
-          <h1 className="text-3xl md:text-[43px] font-normal text-[#253746] leading-tight mb-6">
+          <h1 className="text-3xl md:text-[3rem] font-normal text-[#253746] leading-tight mb-6">
             {rightSection.heading}
           </h1>
 

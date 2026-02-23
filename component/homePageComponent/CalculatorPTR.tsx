@@ -116,7 +116,7 @@ export default function PtrPtsCalculator() {
         <div className="flex flex-col justify-center p-8 lg:p-12 lg:pr-60 lg:pl-0 ">
           <div className="max-w-lg w-full m-auto lg:ml-auto lg:mr-0">
             <div className="flex items-center gap-3 mb-2">
-              <h1 className=" text-4xl lg:text-[48px] font-bold text-black leading-tight">
+              <h1 className=" text-4xl lg:text-[3rem] font-bold text-black leading-tight">
                 {ui.headings.titleMain}
                 <span className="text-black font-normal font-light ml-2">
                   {ui.headings.titleSub}
@@ -126,7 +126,7 @@ export default function PtrPtsCalculator() {
             <p className="text-lg mb-10 leading-relaxed font-normal">
               {ui.headings.desc}
             </p>
-            <h2 className="text-lg lg:text-[27px] font-bold mb-6">
+            <h2 className="text-lg lg:text-[1.75rem] font-bold mb-6">
               {ui.headings.inputTitle}
             </h2>
             <div className="space-y-6 mb-40 lg:mb-0">
@@ -183,7 +183,7 @@ export default function PtrPtsCalculator() {
         <div className="flex flex-col justify-center p-8 lg:p-12 lg:px-20 text-white">
           <div className="max-w-lg w-full m-auto lg:mr-auto lg:ml-0">
             <div className="flex items-center gap-4 mb-10">
-              <h2 className="text-4xl lg:text-[48px] font-bold">
+              <h2 className="text-4xl lg:text-[3rem] font-bold">
                 {ui.headings.resultMain}{" "}
                 <span className="opacity-40 font-light">
                   {ui.headings.resultSub}

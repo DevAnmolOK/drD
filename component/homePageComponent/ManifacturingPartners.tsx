@@ -35,7 +35,7 @@ export default function ManufacturingPartners({ homeManufacturingPartners }: any
       <div className="wrapper m-auto items-center text-center">
         <TagBadge text={tag} className="mb-4" />
 
-        <h3 className="text-2xl md:text-[43px] font-semibold text-[#000] leading-tight mb-6">
+        <h3 className="text-2xl md:text-[3rem] font-semibold text-[#000] leading-tight mb-6">
           {title}
         </h3>
 

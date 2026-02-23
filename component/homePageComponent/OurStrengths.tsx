@@ -68,7 +68,7 @@ heading_start
             className="mb-6 bg-white/5 border-white/20 text-white"
           />
 
-          <h2 className="text-3xl md:text-[44px] font-light mb-6">
+          <h2 className="text-3xl md:text-[3rem] font-light mb-6">
             {heading_start}
             <span className="font-semibold">{heading_bold}</span>
           </h2>
