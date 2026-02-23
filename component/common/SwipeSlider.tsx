@@ -10,6 +10,14 @@ interface CenterSliderProps {
 }
 
 export default function SwipeSlider({ children }: CenterSliderProps) {
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null; // ✅ prevents mobile break
+
   const settings = {
     className: "center",
     centerMode: true,
@@ -18,40 +26,31 @@ export default function SwipeSlider({ children }: CenterSliderProps) {
     slidesToShow: 4,
     speed: 2000,
     arrows: false,
-    dots: true, 
-    autoplay: true, 
+    dots: true,
+    autoplay: true,
     autoplaySpeed: 3500,
     pauseOnHover: true,
-responsive: [
-  {
-    breakpoint: 1024, 
-    settings: {
-      slidesToShow: 2,
-      centerPadding: "40px",
-    },
-  },
-  {
-    breakpoint: 768, 
-    settings: {
-      slidesToShow: 2,
-      centerPadding: "20px",
-    },
-  },
-  {
-    breakpoint: 640, 
-    settings: {
-      slidesToShow: 1,
-      centerPadding: "0px",
-    },
-  },
-]
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 2, centerPadding: "40px" },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 2, centerPadding: "20px" },
+      },
+      {
+        breakpoint: 640,
+        settings: { slidesToShow: 1, centerPadding: "0px" },
+      },
+    ],
   };
 
   return (
-    <div className="slider-container w-full pb-12"> 
+    <div className="slider-container w-full pb-12">
       <Slider {...settings}>
-        {React.Children.map(children, (child) => (
-          <div className="outline-none px-2 pb-8 focus:outline-none">
+        {React.Children.map(children, (child, i) => (
+          <div key={i} className="outline-none px-2 pb-8">
             {child}
           </div>
         ))}

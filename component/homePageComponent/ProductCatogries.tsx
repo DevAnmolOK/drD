@@ -32,7 +32,7 @@ export default function ProductCategories({ homeCategories }: any) {
   const {categories} = homeCategories?.data || [];
   
   return (
-    <section className='bg-[#F5F5F5] py-12 md:py-16'>
+    <section className='bg-color-secondary py-12 md:py-16'>
       <div className='wrapper m-auto px-4 sm:px-6 lg:px-0'>
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
           {categories.map((item: any, i:any) => {

@@ -40,6 +40,7 @@ export default function Footer({ data }: any) {
       address: `Village Bhatoli Khurd, Officer Colony, Opposite Birla Textile, Sector 5, Baddi, Himachal Pradesh 173205`,
     },
   };
+  
   return (
     <footer className="bg-gradient-to-r from-[#1c2a3a] via-[#1f2f44] to-[#16222f] text-white w-full">
       <div className="wrapper mx-auto w-full  pb-6 pt-14">
@@ -101,9 +102,9 @@ export default function Footer({ data }: any) {
           </div>
 
           {/* right section */}
-          <div className="  md:w-[74%] ">
+          <div className="md:w-[74%] ">
             {/* info */}
-            <div className=" flex sm:flex-row flex-col w-full">
+            <div className="flex sm:flex-row flex-col w-full">
               {/* menu */}
               <div className="  sm:w-[25%]">
                 <h3 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8">
@@ -163,7 +164,7 @@ export default function Footer({ data }: any) {
                     alt={data?.contact?.phone?.alt || "phone"}
                     unoptimized
                     fill
-                    className="object-contain"
+                    className="object-contain p-2"
                   />
                 </div>
                 <div>
@@ -187,7 +188,7 @@ export default function Footer({ data }: any) {
                     alt={data?.contact?.phone?.alt || "email"}
                     unoptimized
                     fill
-                    className="object-contain"
+                    className="object-contain p-2"
                   />
                 </div>
                 <p className=" text-base font-medium leading-[1.4063] align-middle lowercase">
@@ -196,13 +197,13 @@ export default function Footer({ data }: any) {
               </div>
 
               <div className="flex items-center gap-4  lg:w-[42.5%]">
-                <div className="min-h-[2.75rem] min-w-[2.75rem] relative  border  border-white p-3 rounded-sm">
+                <div className="min-h-[2.75rem] min-w-[2.75rem] relative  border  border-white  rounded-sm">
                   <Image
                     src={data?.contact?.address?.icon}
                     alt={data?.contact?.address?.alt || "address"}
                     unoptimized
                     fill
-                    className="object-contain"
+                    className="object-contain p-2"
                   />
                 </div>
                 <p className="text-base font-medium leading-[1.4063] ">

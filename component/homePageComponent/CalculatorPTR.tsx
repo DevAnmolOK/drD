@@ -17,7 +17,7 @@ export default function PtrPtsCalculator() {
     stockistDefault: 10,
     theme: {
       leftBg: "bg-[#FAFAFA]",
-      rightBg: "bg-[#1A202C]",
+      rightBg: "bg-[#172836]",
       accent: "text-[#EE4223]",
     },
 
@@ -113,7 +113,7 @@ export default function PtrPtsCalculator() {
 
       <div className="relative z-10 w-full wrapper grid grid-cols-1 lg:grid-cols-2 items-start py-16 ">
         {/* LEFT */}
-        <div className="flex flex-col justify-center p-8 lg:p-12 lg:pr-60 lg:pl-0 ">
+        <div className="flex flex-col justify-center lg:p-8 lg:p-12 lg:pr-60 lg:pl-0 ">
           <div className="max-w-lg w-full m-auto lg:ml-auto lg:mr-0">
             <div className="flex items-center gap-3 mb-2">
               <h1 className=" text-4xl lg:text-[3rem] font-bold text-black leading-tight">

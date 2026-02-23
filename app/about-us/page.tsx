@@ -9,7 +9,7 @@ import { AboutPageEndPoints } from '@/lib/service/AboutUsPageEndPoints';
 export default  async function page() {
 const {data} = await AboutPageEndPoints.companyProfile();
 const { heroSectionData,commitmentSectionData ,visionMissionData,coreValuesData,directorMessageData,timelineData} = data;
-  
+
   return (
     <>
     <CommonHeroSection heroSectionData={heroSectionData} />

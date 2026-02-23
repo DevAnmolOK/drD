@@ -27,7 +27,7 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
   // };
 
   return (
-    <section className="bg-[#f5f6f7] py-16 px-4 md:px-10">
+    <section className="bg-white py-16 ">
       <div className="wrapper m-auto">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
           <div>
@@ -44,10 +44,10 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
         </div>
 
         {/* Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch ">
           
           {/* Map */}
-          <div className="lg:col-span-2  p-4 flex flex-col items-center">
+          <div className="lg:col-span-2  p-4 flex flex-col items-center ">
             <Image
               src={data.map}
               alt="World Map"
@@ -73,8 +73,7 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
           </div>
 
           {/* Info Card */}
-          <div className="rounded-[15px] text-white  bg-[#0f2a3c]  flex items-center justify-center p-8">
-            
+          <div className="rounded-[15px] text-white bg-[#0f2a3c]  flex items-center justify-center p-8 ">
             <div>
               <Image
                 src={data.card.icon}
@@ -83,8 +82,7 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
                 height={72}
                 className="w-12 h-12 sm:w-14 sm:h-14 md:w-[60px] md:h-[60px] lg:w-[75px] lg:h-[75px] mb-6 object-contain"
                />
-
-              <p className="text-2xl md:text-[32px] leading-relaxed text-white font-normal">
+              <p className="text-2xl md:text-[32px] leading-relaxed text-white font-normal ">
                 {data.card.text}
               </p>
             </div>

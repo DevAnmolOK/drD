@@ -26,7 +26,7 @@ body {
 
 @theme {
   --color-white: oklch(100% 0 0);
-  --color-secondary: oklch(63% 0.213 32.44) /*#EE4223*/;
+  --color-secondary: oklch(0.9702 0 0); /*#F5F5F5*/;
   --color-bgSecondary: oklch(97.02% 0 0) /*#F5F5F5*/;
   --color-bgSecondaryone: oklch(41.05% 0.0566 243.34) /*#2E4E67*/;
   --color-bgSecondarytwo: oklch(32.81% 0.0355 244.32) /*#253746*/;
@@ -64,6 +64,10 @@ img {
   html {
     font-size: 14px;
   }
+}
+
+.bg-color-secondary {
+  background-color: var(--color-secondary);
 }
 
 @media (min-width: 768px) and (max-width: 1300px) {

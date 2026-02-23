@@ -29,7 +29,7 @@ import Image from "next/image";
 export default function CommitmentSection({ commitmentSectionData }: any) {  
   const {  cards,header, highlights } = commitmentSectionData;
   return (
-    <section className="py-20 bg-[#f6f6f6]">
+    <section className="py-20 bg-color-secondary">
       <div className="wrapper m-auto px-6 lg:px-0 grid lg:grid-cols-2 gap-12 items-start">
         {/* LEFT */}
         <div>
