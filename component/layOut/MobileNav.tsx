@@ -34,7 +34,6 @@ export default function MobileNav({
   logoUrl,
   productMenu,
 }: MobileNavProp) {
-  // console.log("NavigationData:", navigation);
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
   const [openSubDropdown, setOpenSubDropdown] = useState<number | null>(null);

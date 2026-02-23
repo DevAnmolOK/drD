@@ -59,9 +59,11 @@ export default function ProductRange({ homeProductRange }: any) {
               {description}
             </p>
           </div>
-          <Button href={cta?.link}>
+      <div className='py-3 lg:py-0'>
+            <Button href={cta?.link}>
             {cta.label}
           </Button>
+      </div>
         </div>
 
         {/* Cards */}

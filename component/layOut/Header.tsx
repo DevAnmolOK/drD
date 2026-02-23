@@ -10,6 +10,8 @@ import { LuSearch } from "react-icons/lu";
 import Cookies from "js-cookie";
 import { BiCaretDown } from "react-icons/bi";
 import MobileNav from "./MobileNav";
+import { usePathname } from "next/navigation";
+
 
 export default function NavigationBar({ navBar, productMenu }: any) {
   const router = useRouter();
@@ -25,18 +27,18 @@ export default function NavigationBar({ navBar, productMenu }: any) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { buttonLink, buttonName, headerImage, menu } = navBar || {};
-
+  const pathname = usePathname();
   const debouncedQuery = useDebounce(searchQuery, 500);
-  //  Scroll detection
+
+
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+  const handleScroll = () => {
+    setScrolled(window.scrollY > 15);
+  };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
   const productCategoryArray = [
     {
       key: "Product Form",
@@ -67,11 +69,11 @@ export default function NavigationBar({ navBar, productMenu }: any) {
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      // console.log("Searching for:", searchQuery);
       setShowSearch(false);
       setSearchQuery("");
     }
   };
+
   //  API call whenever debounced query changes
   useEffect(() => {
     const fetchResults = async () => {
@@ -95,19 +97,28 @@ export default function NavigationBar({ navBar, productMenu }: any) {
     fetchResults();
   }, [debouncedQuery]);
   const url = process.env.NEXT_PUBLIC_PRODUCT_URL;
-  const navItems = [
-    { label: "Home", href: "/", active: true },
-    { label: "About Us", href: "/about-us" },
-    { label: "Facility", href: "/facility" },
-    { label: "Products", href: "/product" },
-    { label: "Our Divisions", href: "/our-divisions" },
-    { label: "New Launches", href: "/new-launches" },
-    { label: "Gallery", href: "/gallery" },
-  ];
+  // const navItems = [
+  //   { label: "Home", href: "/", active: true },
+  //   { label: "About Us", href: "/about-us" },
+  //   { label: "Facility", href: "/facility" },
+  //   { label: "Products", href: "/product" },
+  //   { label: "Our Divisions", href: "/our-divisions" },
+  //   { label: "New Launches", href: "/new-launches" },
+  //   { label: "Gallery", href: "/gallery" },
+  // ];
 
   return (
     <>
-      <div className="w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] bg-black/80">
+    <div
+  className={`
+    w-full items-center justify-center flex h-[6.25rem]
+    sticky top-0 z-[100]
+    border-b border-[#FFFFFF2E]
+    transition-all duration-300
+    ${scrolled ? "bg-[#051B2E] backdrop-blur-md shadow-md" : "bg-transparent"}
+  `}
+>
+      {/* <div className="w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] "> */}
         <div className="  h-full  h-[4.625rem] w-full max-w-[101.625rem] flex items-center justify-between 2xl:px-0 sm:px-8 px-6">
           <Link href="/">
             <div className="flex items-center gap-3 relative w-[5.625rem] h-[4.625rem] ">
@@ -126,13 +137,14 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                 const isProduct = item?.label === "Product";
                 const haveChild =
                   item?.is_dropdown && item?.submenu?.length > 0;
+                   const isActive =
+    pathname === item?.href ||
+    (item?.href !== "/" && pathname?.startsWith(item?.href));
                 return (
                   <div
                     className={`relative group px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${
-                      item.active
-                        ? "text-white border-b  border-white"
-                        : "text-white "
-                    }`}
+        isActive ? "text-white border-b border-white" : "text-white"
+      }`}
                     key={index}
                   >
                     {isProduct ? (
@@ -326,7 +338,7 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                 <LuSearch size={36} />
               </button>
 
-              <div className="lg:hidden w-10 h-10 rounded-full border flex items-center justify-center text-xl">
+              <div className="lg:hidden w-10 h-10 rounded-full  flex items-center justify-center text-xl">
                 <MobileNav
                   navigation={navBar?.menu}
                   logoUrl={headerImage?.src}
