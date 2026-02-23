@@ -22,7 +22,6 @@ import React from 'react'
 export default async function page() {
   const ourDivisionsData = await OurdivisonPageEndPoints.ourDivisions();
   const {heroSectionData , data} = ourDivisionsData;
-console.log(ourDivisionsData,"ourDivisionsData");
 
 
   return (
