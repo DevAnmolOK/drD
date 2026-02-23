@@ -8,7 +8,7 @@ export default function TrustedSection({ homeTrustedBy }: any) {
   return (
     <section className="w-full bg-gradient-to-r from-[#253746]  to-[#162836] text-white py-20 px-6">
       <div className="wrapper mx-auto ">
-        <h2 className=" text-[3rem] font-normal  leading-[1.1667] align-middle capitalize tracking-[1.5px]  mb-16">
+        <h2 className="text-3xl md:text-[3rem] font-normal  leading-[1.1667] align-middle capitalize tracking-[1.5px]  md:mb-16 md:text-center lg:text-left">
           {heading_start}
           <span className="font-bold mx-2">{heading_bold}</span> {heading_end}
         </h2>
@@ -17,7 +17,7 @@ export default function TrustedSection({ homeTrustedBy }: any) {
           {stats?.map((item:any, index:any) => (
             <div
               key={index}
-              className={`flex flex-col ${index === 0 ? "lg:items-start items-center justify-center" : " items-center justify-center"}  py-10 lg:py-0`}
+              className={`flex flex-col ${index === 0 ? "lg:items-start md:items-center  justify-center" : "md:items-center justify-center"}  py-10 lg:py-0`}
             >
               <div className="">
                 <div className="mb-2 h-[3rem] w-[3rem] relative overflow-hidden">

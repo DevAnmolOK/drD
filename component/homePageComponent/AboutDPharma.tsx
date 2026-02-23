@@ -72,7 +72,7 @@ export default function AboutDPharma({ homeAboutData }: any) {
         <div className="space-y-6 w-full">
           <TagBadge text={aboutData.tag} />
 
-          <h2 className="text-3xl lg:text-[48px]  text-[##253746] leading-tight font-normal">
+          <h2 className="text-3xl lg:text-[3rem]  text-[##253746] leading-tight font-normal">
             {aboutData.title.line1} <br />
             <span className="font-bold lg:text-[43px] text-2xl">
               {aboutData.title.line2}

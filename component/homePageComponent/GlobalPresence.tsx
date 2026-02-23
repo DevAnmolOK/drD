@@ -32,7 +32,7 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
         <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-10">
           <div>
             <TagBadge text={data.tag} className="mb-4" />
-            <h2 className="text-2xl lg:text-[43px] font-medium text-[#253746] ">
+            <h2 className="text-2xl lg:text-[3rem] font-medium text-[#253746] ">
               Global Presence <span className="font-bold">Trusted</span> Worldwide
             </h2>
           </div>
@@ -73,7 +73,7 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
           </div>
 
           {/* Info Card */}
-          <div className="rounded-[15px]  text-white  bg-[#0f2a3c]  flex items-center justify-center p-8">
+          <div className="rounded-[15px] text-white  bg-[#0f2a3c]  flex items-center justify-center p-8">
             
             <div>
               <Image
@@ -81,10 +81,10 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
                 alt="location"
                 width={72}
                 height={72}
-                className="mb-6"
-              />
+                className="w-12 h-12 sm:w-14 sm:h-14 md:w-[60px] md:h-[60px] lg:w-[75px] lg:h-[75px] mb-6 object-contain"
+               />
 
-              <p className="text-[32px] leading-relaxed text-white font-normal">
+              <p className="text-2xl md:text-[32px] leading-relaxed text-white font-normal">
                 {data.card.text}
               </p>
             </div>

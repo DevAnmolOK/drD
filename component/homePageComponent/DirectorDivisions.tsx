@@ -11,12 +11,10 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
         <div className="w-full md:w-1/2 h-full bg-[#243847]" />
         <div className="w-full md:w-1/2 h-full bg-[#EEF1F4]" />
       </div>  
-
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2">
-        
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 items-start">
         <div className="flex flex-col justify-center py-16 px-6 sm:px-10 md:px-16 lg:pl-24 lg:pr-12">
           <div className="max-w-2xl text-white">
-            <h2 className="text-3xl md:text-[48px] leading-tight mb-8">
+            <h2 className="text-3xl md:text-[3rem] leading-tight mb-8 text-center md:text-left">
               Meet Our <span className="font-semibold ">Director</span>
             </h2>
 
@@ -61,7 +59,7 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
               </div>
             </div>
 
-            <p className="text-base md:text-lg leading-relaxed opacity-90 font-light">
+            <p className="text-base md:text-lg leading-relaxed opacity-90 font-light pb-10">
               {description}
             </p>
           </div>
@@ -70,7 +68,7 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
         {/* RIGHT — DIVISIONS SECTION */}
         <div className="flex flex-col justify-center py-16 px-6 sm:px-10 md:px-16 lg:pr-24 lg:pl-12 bg-[#EEF1F4] md:bg-transparent">
           <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-[48px] leading-tight mb-12 text-[#243847]">
+            <h2 className="text-3xl md:text-[3rem] leading-tight mb-12 text-[#243847] text-center md:text-left">
               Our <span className="font-semibold ">Divisions</span>
             </h2>
 

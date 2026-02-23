@@ -49,7 +49,7 @@ export default function ProductList({ homeProductListing }: any) {
       <div className="wrapper mx-auto py-20">
         <div className="flex flex-col items-center text-center lg:mt-16 mx-auto">
           <TagBadge text={data.tag} className="mb-4" />
-          <h2 className="text-3xl md:text-[44px] font-light mb-6">
+          <h2 className="text-3xl md:text-[3rem] font-light mb-6">
             {data.title.normal}
             <span className="font-semibold mx-2">{data.title.highlight}</span>
             {data.title.end}

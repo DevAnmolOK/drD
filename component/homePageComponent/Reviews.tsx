@@ -62,7 +62,7 @@ export default function Reviews({ homeTestimonials }: any) {
   return (
     <div className="bg-[#F5F5F5] py-14 md:py-16">
       <div className="flex flex-col items-center text-center pb-6 mx-auto">
-        <h2 className="text-3xl md:text-[44px] font-light mb-6">
+        <h2 className="text-3xl md:text-[3rem] font-light mb-6">
           {heading_start}
           <span className="font-semibold mx-2">{heading_bold}</span>
           {heading_end}
