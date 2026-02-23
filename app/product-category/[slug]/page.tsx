@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { TransformProducts } from "../../../utills/transformProducts";
 
 import ProductListingPage from "../../../component/productPageComonent/ProductListingPage";
-// import { ProductApiEndPoints } from "../../../../lib/service/ProdcutsApiEndPoints";
+import { ProductApiEndPoints } from "../../../lib/service/ProdcutsApiEndPoints";
 interface DivisionPreviewProps {
   params: Promise<{ slug: string }>;
 }
@@ -177,7 +177,7 @@ export default async function Productcategory({
 }: DivisionPreviewProps) {
   const { slug } = await params;
 
-  // const bannerResp = await ProductApiEndPoints.productCategory();
+  const bannerResp = await ProductApiEndPoints.productCategory();
   // const { heroSectionData } = bannerResp?.data || {};
 
   const cookieStore = await cookies();
@@ -187,6 +187,7 @@ export default async function Productcategory({
   const transformedData = productData
     ? { ...productData, products: TransformProducts(productData.products) }
     : null;
+
   const heroSectionData = {
     badgeText: "Breadcrumbs",
     title: {
@@ -216,7 +217,7 @@ export default async function Productcategory({
                 // <ProductcategoryPage product={transformedData} />
                 <ProductListingPage
                   // metaData={categoryMetaData}
-                  heroSectionData={heroSectionData}
+                  heroSectionData={bannerResp?.heroSectionData}
                   product={productData}
                   istype={true}
                   slug={slug}

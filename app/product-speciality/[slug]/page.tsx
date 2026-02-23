@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import type { Metadata } from "next";
 import { TransformProducts } from "../../../utills/transformProducts";
 import ProductListingPage from "../../../component/productPageComonent/ProductListingPage";
-// import { ProductApiEndPoints } from "../../../../lib/service/ProdcutsApiEndPoints";
+import { ProductApiEndPoints } from "../../../lib/service/ProdcutsApiEndPoints";
 interface DivisionPreviewProps {
   params: Promise<{ slug: string }>;
 }
@@ -173,7 +173,7 @@ export default async function Productspeciality({
   params,
 }: DivisionPreviewProps) {
   const { slug } = await params;
-  // const bannerResp = await ProductApiEndPoints.productCategory();
+  const bannerResp = await ProductApiEndPoints.productCategory();
   // const { heroSectionData } = bannerResp?.data || {};
   const cookieStore = await cookies();
   const parentKey = cookieStore.get("productMenuKey")?.value || null;
@@ -214,7 +214,7 @@ export default async function Productspeciality({
                 // <ProductcategoryPage product={transformedData} />
                 <ProductListingPage
                   // metaData={categoryMetaData}
-                  heroSectionData={heroSectionData}
+                  heroSectionData={bannerResp?.heroSectionData}
                   product={productData}
                   istype={true}
                   slug={slug}
