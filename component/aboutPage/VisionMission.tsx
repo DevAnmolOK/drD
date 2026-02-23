@@ -12,7 +12,7 @@ export default function VisionMission({ visionMissionData }: any) {
               <div
                 key={item.id}
                 className={`p-10 md:p-14 flex flex-col justify-center gap-6
-                ${isDark ? "bg-black text-white" : "bg-gray-100 text-black"}`}
+                ${isDark ? "bg-[#172836] text-white" : "bg-color-secondary text-black"}`}
               >
                 <div>
                   <Image

@@ -40,7 +40,7 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
   // };
 
   return (
-    <section className="w-full bg-white py-16 px-6 ">
+    <section className="w-full bg-white py-16  ">
       <div className="wrapper m-auto grid grid-cols-1 md:grid-cols-[35%_63%] gap-[2%] items-center">
         {/* LEFT CARD */}
         <div className="bg-gradient-to-br from-[#0f2a3f] to-[#1c3c54] text-white rounded-2xl p-10 max-w-[427px]">

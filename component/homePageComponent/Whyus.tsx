@@ -4,7 +4,7 @@ import TagBadge from "../ui/TagBadge";
 export default function WhyUs({ homeChooseUs }: any) {
   const data = homeChooseUs.data || {};
   return (
-    <section className="bg-[#f3f4f6] py-14 px-4 md:px-10">
+    <section className="bg-color-secondary py-14  ">
       <div className="wrapper mx-auto">
         <div className="flex flex-col items-center max-w-[1155px] mx-auto">
           <TagBadge text={data.tag} className="mb-4" />

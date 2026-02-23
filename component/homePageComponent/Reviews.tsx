@@ -60,7 +60,7 @@ export default function Reviews({ homeTestimonials }: any) {
   const { heading_start, heading_bold, heading_end } = title || {};
 
   return (
-    <div className="bg-[#F5F5F5] py-14 md:py-16">
+    <div className="bg-color-secondary py-14 md:py-16">
       <div className="flex flex-col items-center text-center pb-6 mx-auto">
         <h2 className="text-3xl md:text-[3rem] font-light mb-6">
           {heading_start}

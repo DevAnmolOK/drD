@@ -31,7 +31,7 @@ export default function ManufacturingPartners({ homeManufacturingPartners }: any
   const { tag, title, partners } = homeManufacturingPartners.data ||   {};
 
   return (
-    <div className="w-full bg-white py-16 px-6 md:px-20">
+    <div className="w-full bg-white py-16 md:px-20">
       <div className="wrapper m-auto items-center text-center">
         <TagBadge text={tag} className="mb-4" />
 

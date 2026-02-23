@@ -12,7 +12,7 @@ export default function OurDivison({ data }: any) {
   };
 
   return (
-    <section className="bg-[#f4f7fb] py-16">
+    <section className="bg-color-secondary py-16">
       <div className="wrapper m-auto px-6 lg:px-0">
         <div className="max-w-3xl mb-12">
           <h2 className="text-3xl md:text-[48px] font-serif font-semibold mb-4">

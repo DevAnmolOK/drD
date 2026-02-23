@@ -5,20 +5,21 @@ export default function DirectorMessage({ directorMessageData }: any) {
 
   return (
     <section className="bg-black text-white py-16">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="wrapper mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="rounded-[15px] overflow-hidden border border-white/10">
+          <div className="rounded-[15px] overflow-hidden ">
             {data.image?.src && (
-              <Image
-                src={data.image?.src}
-                alt={data.image?.alt || "Director"}
-                width={700}
-                height={520}
-                className="w-full object-cover"
-              />
+              <div className="relative w-full h-[260px] sm:h-[360px] md:h-[420px] lg:h-[520px]">
+                <Image
+                  src={data.image?.src}
+                  alt={data.image?.alt || "Director"}
+                  fill
+                  className="object-contain w-full h-full"
+                />
+              </div>
             )}
           </div>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-6 text-center">
             <p className="uppercase tracking-[0.25em] text-white/60 text-sm">
               {data.badgeText}
             </p>

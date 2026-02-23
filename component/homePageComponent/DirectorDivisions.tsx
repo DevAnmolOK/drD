@@ -8,8 +8,8 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
   return (
     <section className="relative w-full overflow-hidden">
       <div className="absolute inset-0 flex flex-col md:flex-row z-0">
-        <div className="w-full md:w-1/2 h-full bg-[#243847]" />
-        <div className="w-full md:w-1/2 h-full bg-[#EEF1F4]" />
+        <div className="w-full md:w-1/2 h-full bg-[#1D2F3E] " />
+        <div className="w-full md:w-1/2 h-full bg-color-secondary" />
       </div>  
       <div className="relative z-10 w-full max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 items-start">
         <div className="flex flex-col justify-center py-16 px-6 sm:px-10 md:px-16 lg:pl-24 lg:pr-12">
@@ -18,14 +18,14 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
               Meet Our <span className="font-semibold ">Director</span>
             </h2>
 
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 mb-10 flex-wrap">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 mb-6 flex-wrap">
               {/* Photo */}
               <div className="relative w-[180px] h-[180px] md:w-[240px] md:h-[240px] flex-shrink-0 rounded-2xl overflow-hidden ">
                 <Image
                   src={photo}
                   alt={name}
                   fill
-                  className="object-cover"
+                  className="object-cover h-full w-full"
                 />
               </div>
 
@@ -59,7 +59,7 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
               </div>
             </div>
 
-            <p className="text-base md:text-lg leading-relaxed opacity-90 font-light pb-10">
+            <p className="text-base md:text-lg leading-relaxed  font-light mb-10">
               {description}
             </p>
           </div>

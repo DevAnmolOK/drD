@@ -43,7 +43,7 @@ import Button from '../ui/Button';
 export default function ProductRange({ homeProductRange }: any) {
   const { tag, title, description, cta, cards } = homeProductRange?.data || {};
   return (
-    <section className='bg-[#fff] py-14 md:py-16'>
+    <section className='bg-white py-14 md:py-16'>
       <div className='wrapper mx-auto px-4 sm:px-6 lg:px-0'>
         <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-10'>
           <div className='max-w-5xl'>

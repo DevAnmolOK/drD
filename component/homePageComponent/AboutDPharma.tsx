@@ -32,7 +32,7 @@ export default function AboutDPharma({ homeAboutData }: any) {
     const aboutData = homeAboutData?.data || {};
     
   return (
-    <section className="bg-[#fff] py-16">
+    <section className="bg-white py-16">
       <div className="wrapper m-auto px-6 lg:px-0 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_50%] gap-y-12 lg:gap-[5%] items-start">
         <div className="space-y-4 m-auto lg:m-0 w-full">
           <div className="relative">
