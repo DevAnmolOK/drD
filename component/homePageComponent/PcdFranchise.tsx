@@ -53,9 +53,10 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
               className="object-contain"
             />
           </div>
-          <h2 className="text-2xl md:text-[2rem] font-normal leading-relaxed">
+          <h2 className="text-2xl md:text-[2rem] font-normal leading-relaxed text-white">
             {leftCard.title}
           </h2>
+
           <Button
             href={leftCard.button.href}
             bgColor="#ffffff"
@@ -69,10 +70,13 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
         {/* RIGHT CONTENT */}
         <div>
           <TagBadge text={rightSection.badge} className="mb-4" />
-          <h1 className="text-3xl md:text-[3rem] font-normal text-[#253746] leading-tight mb-6">
-            {rightSection.heading}
-          </h1>
-
+          <h2 className="text-2xl  lg:text-[3rem] leading-tight text-[#253746] py-2">
+            {rightSection.left_heading}
+            <span className="font-semibold ">
+              {rightSection.bold_heading}
+            </span>
+            {rightSection.right_heading}
+          </h2>
           <p className="text-[#626263] mb-6 leading-relaxed font-normal text-base">
             {rightSection.description}
           </p>
@@ -84,7 +88,7 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
           <ul className="space-y-2 text-[#626263]">
             {rightSection.points.map((item: any, index: number) => (
               <li key={index} className="flex items-center gap-3 align-center">
-                <span className="text-[#626263] mt-1 text-base inline-flex items-center justify-center ">
+                <span className="text-[#626263] mt-1 text-base inline-flex items-center justify-center">
                   <Image
                     src={"/SVG/arrow.svg"}
                     alt="icon"

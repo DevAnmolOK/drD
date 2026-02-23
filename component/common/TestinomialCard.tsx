@@ -11,7 +11,7 @@ export default function TestimonialCard(data: {
   };
 }) {
   return (
-    <div className="relative w-[320px]">
+    <div className="relative max-w-[320px]">
       <div className="bg-[#FFFFFF] rounded-[24px] p-6 pb-10 shadow-sm">
         <div className="flex gap-1 mb-2">
           {Array.from({ length: data.rating }).map((_, i) => (

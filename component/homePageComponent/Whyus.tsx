@@ -8,13 +8,15 @@ export default function WhyUs({ homeChooseUs }: any) {
       <div className="wrapper mx-auto">
         <div className="flex flex-col items-center max-w-[1155px] mx-auto">
           <TagBadge text={data.tag} className="mb-4" />
-          <h2 className="text-center text-2xl md:text-[2.375rem] lg:text-[3rem] font-medium text-[#2b3a42] mb-10">
-            {data.title}
+          <h2 className="text-2xl sm:text-3xl lg:text-[42px] leading-tight text-[#253746] py-2 text-center pb-4">
+            {data.left_title}
+            <span className="font-semibold mx-2">{data.bold_title}</span>
+            <br />
+            {data.right_title}
           </h2>
         </div>
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Left image */}
           <div className="bg-white rounded-2xl overflow-hidden">
             <Image
               src={data.imageLeft.img}
@@ -27,8 +29,6 @@ export default function WhyUs({ homeChooseUs }: any) {
 
           {/* First card */}
           <Card {...data.cards[0]} />
-
-          {/* Right tall image */}
           <div className="md:row-span-2 bg-white rounded-2xl overflow-hidden">
             <Image
               src={data.imageRight.img}
@@ -38,9 +38,7 @@ export default function WhyUs({ homeChooseUs }: any) {
               className="w-full h-full object-cover"
             />
           </div>
-
-          {/* Remaining cards */}
-          {data.cards.slice(1).map((card:any, i:number) => (
+          {data.cards.slice(1).map((card: any, i: number) => (
             <Card key={i} {...card} />
           ))}
         </div>
@@ -56,9 +54,7 @@ function Card({ title, description }: { title: string; description: string }) {
       <h3 className="text-2xl md:text-[2.125rem] font-normal text-[#253746] mb-3">
         {title}
       </h3>
-      <p className="text-sm text-[#626263] leading-relaxed">
-        {description}
-      </p>
+      <p className="text-sm text-[#626263] leading-relaxed">{description}</p>
     </div>
   );
 }

@@ -16,7 +16,7 @@ export default function SwipeSlider({ children }: CenterSliderProps) {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; // ✅ prevents mobile break
+  if (!mounted) return null; 
 
   const settings = {
     className: "center",
