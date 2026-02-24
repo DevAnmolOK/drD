@@ -22,6 +22,11 @@ export async function searchApi(query: string): Promise<SearchApiResponse> {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/products?name=${query}&limit=20`,
       {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": `${process.env.NEXT_PUBLIC_SECRET_API_KEY}`,
+        },
         cache: "no-store",
       },
     );

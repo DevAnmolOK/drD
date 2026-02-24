@@ -16,6 +16,7 @@ async function getProductBySlug(slug: string) {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "x-api-key": `${process.env.NEXT_PUBLIC_SECRET_API_KEY}`,
         },
         next: { revalidate: 60 },
       },
