@@ -80,15 +80,13 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
                 alt="location"
                 width={72}
                 height={72}
-                className="w-12 h-12 sm:w-14 sm:h-14 md:w-[60px] md:h-[60px] lg:w-[75px] lg:h-[75px] mb-6 object-contain"
+                className="w-12 h-12 sm:w-14 sm:h-14 md:w-15 md:h-15 lg:w-18.75 lg:h-18.75 mb-6 object-contain"
                />
-              <p className="text-2xl md:text-[32px] leading-relaxed text-white font-normal ">
+              <p className="text-2xl md:text-[2rem] leading-relaxed text-white font-normal ">
                 {data.card.text}
               </p>
             </div>
-
           </div>
-
         </div>
       </div>
     </section>

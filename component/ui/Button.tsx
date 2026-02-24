@@ -25,7 +25,7 @@ export default function Button({
     <>
       <span>{children}</span>
       <span
-        className="w-8 h-8 rounded-full flex items-center justify-center text-sm text-white shadow-lg"
+        className="w-8 h-8 rounded-full flex items-center justify-center text-md text-white shadow-lg"
         style={{ backgroundColor: arrowBg }}
       > 
        <FaArrowRight size={12}  />
@@ -34,7 +34,7 @@ export default function Button({
   );
 
   const baseStyle =
-    "inline-flex items-center gap-2 px-6 py-3 rounded-full transition";
+    "inline-flex items-center gap-2 px-5 py-3 rounded-full transition text-[1.125rem] font-normal ";
 
   const style = {
     backgroundColor: bgColor,

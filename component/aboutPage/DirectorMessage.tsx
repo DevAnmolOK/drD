@@ -9,7 +9,7 @@ export default function DirectorMessage({ directorMessageData }: any) {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="rounded-[15px] overflow-hidden ">
             {data.image?.src && (
-              <div className="relative w-full h-[260px] sm:h-[360px] md:h-[420px] lg:h-[520px]">
+              <div className="relative w-full h-65 sm:h-90 md:h-105 lg:h-130">
                 <Image
                   src={data.image?.src}
                   alt={data.image?.alt || "Director"}

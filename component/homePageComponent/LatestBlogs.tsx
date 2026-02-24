@@ -88,7 +88,7 @@ function BlogCard({
         href={href}
         className="absolute bottom-5 right-5 w-10 h-10 bg-[#E53E3E] rounded-full flex items-center justify-center text-white text-lg group-hover:scale-110 transition"
       >
-        <FaArrowRight size={12} />
+        <FaArrowRight size={14} className="rotate-320" />
       </Link>
     </div>
   );
