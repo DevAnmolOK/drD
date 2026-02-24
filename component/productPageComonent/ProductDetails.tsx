@@ -116,7 +116,6 @@ export default function ClientProductDetails({
       ],
     ) || 0;
 
-
   const productImages = singleProduct?.products?.[0]?.images || [];
   const orderedImages = [
     ...productImages.filter((img: any) => img.type === "IMG"),
@@ -180,7 +179,7 @@ export default function ClientProductDetails({
                 <div className="  bg-secondary/10 font-medium px-3 py-1 rounded-[0.25rem] text-secondary">
                   {singleProduct?.products?.[0]?.division_id?.[0]?.name}
                 </div>
-                <div className=" bg-textPrimary/10 font-medium py-1 px-6    rounded-[0.25rem] text-textPrimary">
+                <div className=" bg-bgSecondaryone/20 font-medium py-1 px-6    rounded-[0.25rem] text-textPrimary">
                   {singleProduct?.products?.[0]?.type_id?.[0]?.name}
                 </div>
               </div>
@@ -201,7 +200,7 @@ export default function ClientProductDetails({
                   </div>
                 )}
                 {singleProduct?.products?.[0]?.upcoming && (
-                  <div className=" bg-textPrimary/10 animate-pulse shadow-lg ml-[1rem] mt-4  font-medium px-3 py-0.5 rounded-[0.25rem] text-primary2">
+                  <div className=" bg-bgSecondaryone/10 animate-pulse shadow-lg ml-[1rem] mt-4  font-medium px-3 py-0.5 rounded-[0.25rem] text-primary2">
                     Upcomming !
                   </div>
                 )}
@@ -227,7 +226,7 @@ export default function ClientProductDetails({
                 </div> */}
 
               <div className="flex items-center gap-3 mb-6 mt-4">
-                <div className="text-3xl font-bold text-[var(--color-primary2)]">
+                <div className="text-3xl font-bold text-bgSecondaryone">
                   ₹
                   {
                     singleProduct?.products?.[0]?.packingVarient?.[0]?.price?.[
@@ -258,12 +257,12 @@ export default function ClientProductDetails({
                 </p>
               </div> */}
 
-              <div className="bg-link/10 rounded-lg p-4 mb-6 gap-3   ">
-                <span className="text-lg font-noraml text-textPrimary text-nowrap">
+              <div className="bg-bgSecondaryone/10 rounded-lg p-4 mb-6 gap-3   ">
+                <span className="text-lg font-noraml text-bgSecondarytwo text-nowrap">
                   Composition / Active Ingredients :
                 </span>
 
-                <h3 className="text-plg text-textPrimary leading-relaxed font-bold">
+                <h3 className="text-plg text-bgSecondarytwo leading-relaxed font-bold">
                   {singleProduct?.products?.[0]?.details}
                 </h3>
               </div>
@@ -282,10 +281,10 @@ export default function ClientProductDetails({
                   </p>
                 </div>
                 <div className="bg-white p-4 rounded-lg flex items-center gap-2 border border-[#e8e8e8]">
-                  <p className="text-[var(--color-black)] font-medium text-pbase">
+                  <p className="text-black font-medium text-pbase">
                     Dimensions:
                   </p>
-                  <p className="font-medium text-[var(--color-subitle)]">
+                  <p className="font-medium text-heading  ">
                     {singleProduct?.products?.[0]?.packingVarient?.[0]?.packing}
                   </p>
                 </div>
@@ -293,7 +292,7 @@ export default function ClientProductDetails({
                   <p className="text-[var(--color-black)] font-medium text-pbase">
                     Min Order Qty:
                   </p>
-                  <p className="font-medium text-[var(--color-subitle)]">
+                  <p className="font-medium text-heading">
                     {singleProduct?.products?.[0]?.min_order_qty}
                   </p>
                 </div>
@@ -301,7 +300,7 @@ export default function ClientProductDetails({
                   <p className="text-[var(--color-black)] font-medium text-pbase">
                     G. S. T (%)
                   </p>
-                  <p className="font-medium text-[var(--color-subitle)] pl-[0.5rem]">
+                  <p className="font-medium text-heading pl-[0.5rem]">
                     {gst} %
                   </p>
                 </div>

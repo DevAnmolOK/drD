@@ -96,7 +96,14 @@ const ProductListingPage = ({
       const url = `${
         process.env.NEXT_PUBLIC_PRODUCTS_API_URL
       }/products?${pKey}=${cSlug}&${params.toString()}`;
-      const res = await fetch(url, { cache: "no-store" });
+      const res = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": `${process.env.NEXT_PUBLIC_SECRET_API_KEY}`,
+        },
+        cache: "no-store",
+      });
       if (!res.ok) throw new Error("Failed to fetch products");
 
       const data = await res.json();

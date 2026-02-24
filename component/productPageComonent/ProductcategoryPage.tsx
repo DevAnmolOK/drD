@@ -16,7 +16,6 @@ export default function ProductcategoryPage({
   product,
   filterKey,
 }: ProductcategoryPageProps) {
-
   const transformProducts = (products: any[] = []) =>
     products.map((data: any) => {
       const images = data?.images || [];
