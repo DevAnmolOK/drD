@@ -78,7 +78,6 @@ const baseUrl = process.env.NEXT_PUBLIC_PRODUCT_URL;
 //       : `${process.env.NEXT_PUBLIC_CLIENT_URL}${canonical}`;
 
 //     const image = result?.products?.[0]?.images?.[0]?.url;
-//     // console.log("image", image);
 //     const appleIconUrl = `${baseUrl}/icons/apple-touch-icon.png`;
 
 //     return meta

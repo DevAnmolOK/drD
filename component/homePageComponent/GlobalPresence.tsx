@@ -4,7 +4,7 @@ import Button from "../ui/Button";
 
 export default function GlobalPresence({ homeGlobalFootprint }: any) {
   const {data} = homeGlobalFootprint || {};
-
+  const {title_start, title_bold, title_end} = data || {};
   // const data = {
   //   tag: "GLOBAL FOOTPRINT",
   //   title: "Global Presence Trusted Worldwide",
@@ -33,7 +33,7 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
           <div>
             <TagBadge text={data.tag} className="mb-4" />
             <h2 className="text-2xl lg:text-[3rem] font-medium text-[#253746] ">
-              Global Presence <span className="font-bold">Trusted</span> Worldwide
+              {title_start} <span className="font-bold">{title_bold}</span> {title_end}
             </h2>
           </div>
           <div className="mt-6 md:mt-0">

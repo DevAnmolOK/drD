@@ -2,7 +2,6 @@ interface MapProps {
   data?: any;
 }
 export default function Map({ data }: MapProps) {
-  // console.log("Contact Us Data", mapEmbedCode);
   return (
     <>
       <div className="container mx-auto px-4 md:px-8 ">

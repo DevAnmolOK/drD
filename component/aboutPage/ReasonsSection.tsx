@@ -1,16 +1,6 @@
 /** @format */
 
 import React from "react";
-import {
-  FaLightbulb,
-  FaSearch,
-  FaChess,
-  FaCogs,
-  FaUsers,
-  FaChalkboardTeacher,
-  FaRocket,
-  FaRunning,
-} from "react-icons/fa";
 import Image from "next/image";
 
 type TimelineItem = {
@@ -25,22 +15,23 @@ type TimelineItem = {
 
 export default function Infographic({
   timelineData,
+  timelineTag,
 }: {
   timelineData: TimelineItem[];
+  timelineTag?: any;
 }) {
-
+const {timelineHeading,timelineHeadingBold,timelineSubHeading} = timelineTag || {};
   return (
     <section className="w-full bg-white py-16 ">
       <div className="wrapper mx-auto">
         {/* TOP TITLE */}
         <div className="flex justify-center items-center flex-col mb-15">
           <h2 className="text-2xl sm:text-3xl lg:text-[42px] leading-tight text-[#253746]">
-            Many More Reason Why Join
-            <span className="font-semibold"> Dr. D Pharma</span>
+            {timelineHeading}
+            <span className="font-semibold"> {timelineHeadingBold}</span>
           </h2>
           <p className="text-[#626263] mt-3 text-sm sm:text-base leading-relaxed">
-            Join VisionPlus Healthcare and grow with trusted products, strong
-            support, and a partner-first approach to success.
+            {timelineSubHeading}
           </p>
         </div>
         {/* TIMELINE WRAPPER */}

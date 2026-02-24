@@ -162,7 +162,6 @@ export default function Product({
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
-          // console.log("Loading more products...");
           setPage((prevPage) => prevPage + 1);
         }
       },

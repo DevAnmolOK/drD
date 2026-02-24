@@ -47,7 +47,6 @@ export default async function UpcommingProducts({
     }
 
     const products = await res.json();
-    // console.log("products", products);
 
     const transformProducts = products?.products?.map((data: any) => ({
       division: data?.division_id?.[0]?.name,
@@ -81,7 +80,6 @@ export default async function UpcommingProducts({
       </div>;
     }
 
-    // console.log("Transformed Products:", products);
     const prdtkey = "upcoming";
     // const data = await QuickLinksPageEndPoints.getCommingSoonBanner();
 

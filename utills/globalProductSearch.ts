@@ -34,7 +34,6 @@ export async function searchApi(query: string): Promise<SearchApiResponse> {
     if (!res.ok) throw new Error("Failed to fetch search results");
 
     const data = await res.json();
-    // console.log("Searchresult", data);
 
     // Return the data as SearchApiResponse
     return data || { products: [] };

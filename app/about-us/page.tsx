@@ -8,16 +8,16 @@ import { AboutPageEndPoints } from '@/lib/service/AboutUsPageEndPoints';
 
 export default  async function page() {
 const {data} = await AboutPageEndPoints.companyProfile();
-const { heroSectionData,commitmentSectionData ,visionMissionData,coreValuesData,directorMessageData,timelineData} = data;
+const { heroSectionData,commitmentSectionData ,visionMissionData,coreValuesData,directorMessageData,timelineData,core_values_heading,signature,timeline} = data;
 
   return (
     <>
     <CommonHeroSection heroSectionData={heroSectionData} />
     <CommitmentSection commitmentSectionData={commitmentSectionData}/>
-    <VisionMission visionMissionData={visionMissionData}/>
+    <VisionMission visionMissionData={visionMissionData} core_values_heading={core_values_heading}/>
     <CoreValues coreValuesData={coreValuesData}/>
-    <DirectorMessage directorMessageData={directorMessageData}/>
-    <ReasonsSection timelineData={timelineData}/>
+    <DirectorMessage directorMessageData={directorMessageData} />
+    <ReasonsSection timelineData={timelineData} timelineTag={timeline}/>
     </>
   )
 }

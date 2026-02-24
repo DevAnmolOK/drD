@@ -64,7 +64,6 @@ export default function NavigationBar({ navBar, productMenu }: any) {
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
-      // console.log("Searching for:", searchQuery);
       setShowSearch(false);
       setSearchQuery("");
     }

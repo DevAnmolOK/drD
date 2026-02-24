@@ -27,7 +27,6 @@ export default function ClientProductDetails({
   const [selectedImage, setSelectedImage] = useState(0);
   const [activeTab, setActiveTab] = useState("description");
   const [isModelOpen, setIsModelopen] = useState(false);
-  // console.log("selectedImage", selectedImage);
 
   useEffect(() => {
     if (isModelOpen) {
@@ -117,7 +116,6 @@ export default function ClientProductDetails({
       ],
     ) || 0;
 
-  // console.log("singleProduct", singleProduct);
 
   const productImages = singleProduct?.products?.[0]?.images || [];
   const orderedImages = [
@@ -125,7 +123,6 @@ export default function ClientProductDetails({
     ...productImages.filter((img: any) => img.type === "VIS"),
   ];
 
-  // console.log("orderedImages:", orderedImages);
   return (
     <>
       <div className="min-h-screen  w-full">

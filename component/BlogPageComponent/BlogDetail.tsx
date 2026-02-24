@@ -17,7 +17,6 @@ import { GrUpdate } from "react-icons/gr";
 import { MdCreate } from "react-icons/md";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL_IMAGE;
-// console.log("Base_Url:", BASE_URL);
 
 function addBaseUrlToImages(html: string) {
   if (!html) return html;
@@ -51,7 +50,6 @@ const BlogDetailPage = ({
   related,
   services,
 }: BlogDetailProps) => {
-  // console.log("BLOG Details:", data);
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [likes, setLikes] = useState(234);
   const [hasLiked, setHasLiked] = useState(false);

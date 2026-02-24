@@ -16,7 +16,6 @@ export default function ProductCard({ data }: ProductCardProps) {
   const url = process.env.NEXT_PUBLIC_PRODUCT_URL;
   const imageUrl = data.image ? `${url}/${data.image}` : "/fallback.png";
   // : "/images/placeholder.jpg";
-  // console.log("data", data);
   const router = useRouter();
   return (
     <>
