@@ -116,7 +116,6 @@ export default function ClientProductDetails({
       ],
     ) || 0;
 
-
   const productImages = singleProduct?.products?.[0]?.images || [];
   const orderedImages = [
     ...productImages.filter((img: any) => img.type === "IMG"),
