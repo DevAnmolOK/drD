@@ -59,7 +59,6 @@ const EnquiryForm = ({
     message: "",
     selectedLocations: [],
   });
-  // console.log("SelectedProduct on Enquirey form:", selectedProducts);
   const [locations, setLocations] = useState<
     { value: string; label: string }[]
   >([]);
@@ -100,7 +99,6 @@ const EnquiryForm = ({
         })) || [];
       setLocations(mapped);
 
-      // console.log("Pincode Details:", data);
     } catch (error) {
       console.error("Faild to fetch Address", error);
       return null;
@@ -212,7 +210,6 @@ const EnquiryForm = ({
             .join(", ")}`
         : `City: ${formData.city}`;
 
-    // console.log("Address:", address);
 
     const payload = {
       name: formData.name,
@@ -223,7 +220,6 @@ const EnquiryForm = ({
       address: address,
       message: messageWithProducts,
     };
-    // console.log("Payload:", payload);
     try {
       const response = await fetch(
         `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/enquiry/save`,

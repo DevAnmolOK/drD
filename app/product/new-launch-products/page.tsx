@@ -49,15 +49,12 @@ export default async function NewLaunchProducts({
         },
       },
     );
-    // console.log("Response Status:", await res.json());
 
     if (!res.ok) {
       throw new Error(`Failed to fetch products. Status: ${res.status}`);
     }
 
     const products = await res.json();
-    // console.log("products", products);
-
     const transformProducts = products?.products?.map((data: any) => {
       const images = data?.images || [];
       const imgImages = images.filter((img: any) => img.type === "IMG");
@@ -88,7 +85,6 @@ export default async function NewLaunchProducts({
       </div>;
     }
 
-    // console.log("Transformed Products:", products);
     const prdtkey = "new_launched";
     const data = await QuickLinksPageEndPoints.getNewLaunchBanner();
     // const heroSectionData = {

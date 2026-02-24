@@ -7,7 +7,6 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
 
  } = homeDirectorData?.data || {};
 
-  console.log(homeDirectorData?.data,"123456");
   
   
   return (

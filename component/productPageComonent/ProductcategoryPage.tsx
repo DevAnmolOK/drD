@@ -16,7 +16,6 @@ export default function ProductcategoryPage({
   product,
   filterKey,
 }: ProductcategoryPageProps) {
-  // console.log("key rendered:", filterKey);
 
   const transformProducts = (products: any[] = []) =>
     products.map((data: any) => {
@@ -99,7 +98,6 @@ export default function ProductcategoryPage({
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !loading) {
-          // console.log("Loading more products...");
           setPage((prev) => prev + 1);
         }
       },
@@ -121,7 +119,6 @@ export default function ProductcategoryPage({
     }
   }, [page, fetchMoreProducts]);
 
-  // console.log("products:", products);
   return (
     <div className="w-full h-full">
       {products.length > 0 ? (

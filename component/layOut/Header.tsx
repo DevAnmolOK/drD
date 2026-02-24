@@ -28,7 +28,6 @@ export default function NavigationBar({ navBar, productMenu }: any) {
   const { buttonLink, buttonName, headerImage, menu } = navBar || {};
   const pathname = usePathname();
   const debouncedQuery = useDebounce(searchQuery, 500);
-  // console.log("if scrolled :", scrolled);
 
   useEffect(() => {
     const handleScroll = () => {

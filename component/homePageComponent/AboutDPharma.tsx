@@ -30,9 +30,8 @@ import Button from "../ui/Button";
 
 export default function AboutDPharma({ homeAboutData }: any) {
     const aboutData = homeAboutData?.data || {};
-
-    
-    
+    const {cta} = aboutData || {};
+     
   return (
     <section className="bg-[#fff] py-16">
       <div className="wrapper relative m-auto px-6 lg:px-0 grid grid-cols-1 md:grid-cols-1 lg:grid-cols-[45%_50%] gap-y-12 lg:gap-[5%] items-start">
@@ -73,7 +72,6 @@ export default function AboutDPharma({ homeAboutData }: any) {
         {/* RIGHT */}
         <div className="space-y-6 w-full">
           <TagBadge text={aboutData.tag} />
-
           <h2 className="text-3xl lg:text-[48px]  text-[##253746] leading-tight font-normal">
             {aboutData.title.line1} <br />
             <span className="font-bold lg:text-[43px] text-2xl">
@@ -96,10 +94,9 @@ export default function AboutDPharma({ homeAboutData }: any) {
                 ))}
               </ul>
             <div>
-                <Button href="/about" className="mt-8">About Us</Button>
+                <Button href={cta?.href} className="mt-8">{cta?.lable}</Button>
             </div>
             </div>
-
             {/* Side Image */}
             <div className="hidden md:block">
               <div className="relative w-[13.75rem] sm:w-[16.25rem] lg:w-[18.75rem] aspect-[398/538] rounded-[1rem] overflow-hidden shadow-md">

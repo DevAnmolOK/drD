@@ -17,7 +17,6 @@ export default function FloatingEnquiryPanel({
 
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
-  // console.log("selectedProductsttttttttttttttt", selectedProducts);
 
   return (
     <>

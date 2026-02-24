@@ -1,5 +1,6 @@
 import Image from "next/image";
 export default function CoreValues({ coreValuesData }: any) {
+  
   return (
     <section className="py-16 bg-color-secondary">
       <div className="wrapper m-auto px-6 lg:px-0">

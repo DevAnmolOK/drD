@@ -167,14 +167,12 @@ const ProductListingPage = ({
     metaData?.data?.[0]?.editorcontent || `<p>Content not available.</p>`;
 
   const handleParentKey = (key: string) => {
-    // console.log(" parentkey from handleParentKey:", key);
     if (key) {
       setPkey(key);
     }
   };
 
   const handleSlug = (slug: string) => {
-    // console.log("get slug from handleSlug:", slug);
     if (slug) {
       setCSlug(slug);
     }

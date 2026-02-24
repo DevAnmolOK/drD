@@ -7,7 +7,6 @@ import { FaUser } from "react-icons/fa";
 import Image from "next/image";
 
 export default function BlogCard({ post }: any) {
-  // console.log("Post:", post?.slug);
   const router = useRouter();
   return (
     <Link

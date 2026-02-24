@@ -84,7 +84,6 @@ const baseUrl = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 //     const result = await res.json();
 
-//     // console.log("result", result);
 
 //     const logo = await fetch(
 //       `${process.env.NEXT_PUBLIC_IMAGE_URL}/api/global-setting?populate=logo`,
@@ -92,7 +91,6 @@ const baseUrl = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 //     const logoData = await logo.json();
 //     const logoo = logoData?.data?.logo?.url;
-//     // console.log("logo0Data", logoo);
 
 //     const meta = result?.data?.[0]?.seo;
 

@@ -1,8 +1,11 @@
 import Image from "next/image";
-export default function VisionMission({ visionMissionData }: any) {
+export default function VisionMission({ visionMissionData,core_values_heading }: any) {
   return (
     <section className="w-full py-12">
       <div className="wrapper m-auto px-6 lg:px-0">
+        <h2 className="text-center text-3xl md:text-4xl font-serif font-semibold mb-12">
+          {core_values_heading}
+        </h2>
         <div className="grid md:grid-cols-2 rounded-3xl overflow-hidden shadow-sm">
           {visionMissionData.map((item:any, index:number) => {
             // const isDark = item.variant === "dark";
