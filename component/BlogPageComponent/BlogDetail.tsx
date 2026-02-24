@@ -228,7 +228,7 @@ const BlogDetailPage = ({
                           </div>
                         )}
                       </div>
-                      <h4 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-blue-600 transition-colors line-clamp-2">
+                      <h4 className="font-semibold text-gray-900 text-sm mb-1 group-hover:text-se transition-colors line-clamp-2">
                         {post?.name}
                       </h4>
                       <p className="text-gray-600 text-xs mb-4">

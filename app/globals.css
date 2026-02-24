@@ -303,12 +303,12 @@ input[type="number"] {
 
 /* Links */
 .blog-content a {
-  color: var(--color-secondary);
+  color: var(--color-heading);
   text-decoration: underline;
 }
 
 .blog-content a:hover {
-  color: var(--color-bgSecondary);
+  color: var(--color-secondary);
 }
 
 /* Lists */

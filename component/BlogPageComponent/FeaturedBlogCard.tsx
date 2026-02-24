@@ -29,7 +29,7 @@ export default function FeaturedBlogCard({ post }: any) {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute top-4 left-4">
-                <span className="bg-bgSecondary text-white px-4 py-1 rounded-full text-sm font-semibold">
+                <span className="bg-secondary text-white px-4 py-1 rounded-full text-sm font-semibold">
                   Featured
                 </span>
               </div>
@@ -48,21 +48,21 @@ export default function FeaturedBlogCard({ post }: any) {
                 </span>
               </div>
 
-              <h3 className="sm:text-3xl font-bold mb-4 group-hover:text-primary transition-colors text-Vulcan text-2xl tracking-[-2%] leading-[130%]">
-                {post.title}
+              <h3 className="sm:text-3xl font-bold mb-4 group-hover:text-secondary transition-colors text-Vulcan text-2xl tracking-[-2%] leading-[130%]">
+                {post?.name}
               </h3>
 
               <p className="mb-6 text-lg text-border leading-[1.7500] font-medium tracking-[-2%]">
-                {post.description}
+                {post?.description || "N/A"}
               </p>
 
               <div className="flex items-center justify-between">
                 <span className="text-border font-medium flex items-center gap-1">
                   <FaUser className="w-4 h-4" />
-                  {post.author}
+                  {post?.author}
                 </span>
-                <button className="flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all">
-                  Read More
+                <button className="flex items-center gap-2 text-secondary font-semibold group-hover:gap-3 transition-all">
+                  Read 
                   <MdArrowForward className="w-5 h-5" />
                 </button>
               </div>
