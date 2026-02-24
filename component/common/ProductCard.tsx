@@ -22,7 +22,7 @@ export default function ProductCard({ data }: ProductCardProps) {
       >
         <div className="relative w-full h-[22rem] mb-6">
           <Image
-            src={data?.image ? `${url}/${data?.image}` : `/images/fallback.png`}
+            src={data?.image ? `${url}/${data?.image}` : `/fallback.png`}
             fill
             alt={data?.title ? data?.title : " Dr.D Pharma Product"}
             className="object-contain"
