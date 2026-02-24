@@ -3,7 +3,12 @@
 import Image from 'next/image';
 import React from 'react';
 export default function DirectorDivisions({ homeDirectorData }: any) {
-  const { name, role, photo, description, socials,divisions } = homeDirectorData?.data || {};
+  const { name, role, photo, description, socials,divisions,director_heading,director_heading_bold,division_heading,division_heading_bold
+
+ } = homeDirectorData?.data || {};
+
+  console.log(homeDirectorData?.data,"123456");
+  
   
   return (
     <section className="relative w-full overflow-hidden">
@@ -15,9 +20,8 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
         <div className="flex flex-col justify-center py-16 px-6 sm:px-10 md:px-16 lg:pl-24 lg:pr-12">
           <div className="max-w-2xl text-white">
             <h2 className="text-3xl md:text-[3rem] leading-tight mb-8 text-center md:text-left">
-              Meet Our <span className="font-semibold ">Director</span>
+              {director_heading} <span className="font-semibold ">{director_heading_bold}</span>
             </h2>
-
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 mb-6 flex-wrap">
               {/* Photo */}
               <div className="relative w-[180px] h-[180px] md:w-[240px] md:h-[240px] flex-shrink-0 rounded-2xl overflow-hidden ">
@@ -69,9 +73,8 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
         <div className="flex flex-col justify-center py-16 px-6 sm:px-10 md:px-16 lg:pr-24 lg:pl-12 bg-[#EEF1F4] md:bg-transparent">
           <div className="max-w-2xl">
             <h2 className="text-3xl md:text-[3rem] leading-tight mb-12 text-[#243847] text-center md:text-left">
-              Our <span className="font-semibold ">Divisions</span>
+              {division_heading} <span className="font-semibold ">{division_heading_bold}</span>
             </h2>
-
             {/* Responsive Grid for Logos */}
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 justify-items-center sm:justify-items-start">
               {divisions?.map((logo:any, i:number) => (
@@ -92,7 +95,6 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

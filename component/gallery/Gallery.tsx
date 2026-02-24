@@ -84,9 +84,8 @@ export default function Gallery({ galleryData }: any) {
           >
             <button
               onClick={() => setActiveImage(null)}
-              className="absolute top-12 right-2 md:top-30 md:right-4 lg:-top-3 lg:right-15 
-        bg-white text-black rounded-full p-2 shadow-lg
-        hover:scale-110 transition z-10"
+              className="absolute top-12 right-2 md:top-30 md:right-4 lg:-top-3 lg:right-15bg-white text-black rounded-full p-2 shadow-lg
+ hover:scale-110 transition z-10"
             >
               <FiX size={22} />
             </button>

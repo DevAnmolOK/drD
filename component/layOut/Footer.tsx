@@ -172,12 +172,13 @@ export default function Footer({ data }: any) {
                 <div>
                   {data?.contact?.phone?.numbers?.map(
                     (data: any, index: any) => (
-                      <p
+                      <a
+                        href={`tel:${data}`}
                         className=" text-base font-medium leading-[1.4063] align-middle"
                         key={index}
                       >
                         {data}
-                      </p>
+                      </a>
                     ),
                   )}
                 </div>
@@ -193,9 +194,15 @@ export default function Footer({ data }: any) {
                     className="object-contain p-2"
                   />
                 </div>
-                <p className=" text-base font-medium leading-[1.4063] align-middle lowercase">
+                {/* <p className=" text-base font-medium leading-[1.4063] align-middle lowercase">
                   {data?.contact?.email?.value}
-                </p>
+                </p> */}
+                <a
+  href={`mailto:${data?.contact?.email?.value}`}
+  className="text-base font-medium leading-[1.4063] align-middle lowercase hover:underline"
+>
+  {data?.contact?.email?.value}
+</a>
               </div>
 
               <div className="flex items-center gap-4  lg:w-[42.5%]">

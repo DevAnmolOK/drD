@@ -9,7 +9,7 @@ export default function QuickAnswers({ faqSection }: any) {
   return (
     <div className="bg-[#FAFAFA] relative">
       <div className="wrapper m-auto lg:py-16 py-12 lg:px-0 px-6">
-        <SectionHeading cssClass="text-center " title={heading} />
+        <SectionHeading cssClass="text-center" title={heading} />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mt-8">
           <div className="pt-6 ">
             <Accordion data={faqData} />
