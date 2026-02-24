@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     shortcut: "/images/dr-d.png",
     apple: "/images/dr-d.png",
   },
-    robots: {
+  robots: {
     index: false,
     follow: false,
   },

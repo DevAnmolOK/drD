@@ -18,6 +18,7 @@ async function fetchProductCategoryData(slug: string) {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
+          "x-api-key": `${process.env.NEXT_PUBLIC_SECRET_API_KEY}`,
         },
       },
     );
@@ -82,7 +83,6 @@ const baseUrl = process.env.NEXT_PUBLIC_IMAGE_URL;
 //     }
 
 //     const result = await res.json();
-
 
 //     const logo = await fetch(
 //       `${process.env.NEXT_PUBLIC_IMAGE_URL}/api/global-setting?populate=logo`,

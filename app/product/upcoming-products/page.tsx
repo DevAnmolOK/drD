@@ -81,7 +81,7 @@ export default async function UpcommingProducts({
     }
 
     const prdtkey = "upcoming";
-    // const data = await QuickLinksPageEndPoints.getCommingSoonBanner();
+    const data = await QuickLinksPageEndPoints.getCommingSoonBanner();
 
     const heroSectionData = {
       badgeText: "Breadcrumbs",
@@ -105,7 +105,7 @@ export default async function UpcommingProducts({
           siteName="Eridanus HealthCare"
           title="Upcoming Products"
         /> */}
-        <CommonHeroSection heroSectionData={heroSectionData} />
+        <CommonHeroSection heroSectionData={data?.heroSectionData} />
         <div className="w-full h-full bg-white text-black flex items-center justify-center">
           <div className="wrapper w-full h-full mx-auto relative sm:mb-0 mb-[1.5rem]">
             <div className="pt-[0rem] pb-[2.5rem]">
