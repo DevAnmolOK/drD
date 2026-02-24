@@ -174,10 +174,10 @@ export default function Footer({ data }: any) {
                     (data: any, index: any) => (
                       <a
                         href={`tel:${data}`}
-                        className=" text-base font-medium leading-[1.4063] align-middle"
+                        className="text-base font-medium leading-[1.4063] align-middle"
                         key={index}
                       >
-                        {data}
+                        <p>{data}</p>
                       </a>
                     ),
                   )}
@@ -198,11 +198,11 @@ export default function Footer({ data }: any) {
                   {data?.contact?.email?.value}
                 </p> */}
                 <a
-  href={`mailto:${data?.contact?.email?.value}`}
-  className="text-base font-medium leading-[1.4063] align-middle lowercase hover:underline"
->
-  {data?.contact?.email?.value}
-</a>
+                  href={`mailto:${data?.contact?.email?.value}`}
+                  className="text-base font-medium leading-[1.4063] align-middle lowercase hover:underline"
+                >
+                  {data?.contact?.email?.value}
+                </a>
               </div>
 
               <div className="flex items-center gap-4  lg:w-[42.5%]">

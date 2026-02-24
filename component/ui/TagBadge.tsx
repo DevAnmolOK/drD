@@ -18,15 +18,13 @@ export default function TagBadge({
     <span
       className={`inline-flex items-center gap-2 text-[0.75rem] font-semibold px-4 py-2 rounded-full bg-white border border-gray-200 text-[#253746] uppercase  ${className}`}
     >
-      {/* {icon && ( */}
         <Image
           src={icon || `/SVG/tag-icon.svg`}
           alt={iconAlt}
-          width={22}
-          height={22}
-          className="object-contain"
+          width={24}
+          height={24}
+          className="w-6 h-6 object-contain shrink-0"
         />
-      {/* )} */}
       {text}
     </span>
   );

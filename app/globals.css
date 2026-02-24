@@ -24,6 +24,14 @@ body {
   font-family: var(--font-inter);
 }
 
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: none;
+}
+
 @theme {
   --color-white: oklch(100% 0 0);
   --color-secondary: oklch(63% 0.213 32.44); /*#EE4223*/
@@ -78,7 +86,7 @@ img {
 
 @media (min-width: 1301px) and (max-width: 1500px) {
   html {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 

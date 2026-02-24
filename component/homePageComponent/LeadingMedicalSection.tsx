@@ -20,19 +20,19 @@ export default function TrustedSection({ homeTrustedBy }: any) {
               className={`flex flex-col ${index === 0 ? "lg:items-start md:items-center  justify-center" : "md:items-center justify-center"}  py-10 lg:py-0`}
             >
               <div className="">
-                <div className="mb-2 h-[3rem] w-[3rem] relative overflow-hidden">
+                <div className="mb-2 h-[2.5rem] w-[2.375rem] relative overflow-hidden">
                   <Image
                     src={item?.icon}
                     alt={item?.label}
                     fill
                     unoptimized
-                    className=" object-contain"
+                    className="object-contain w-full h-full"
                   />
                 </div>
                 <div className="text-[3rem] font-normal  mb-2 align-middle ">
                   {item.number}
                 </div>
-                <p className="text-base  font-normal align-middle leading-[180%] max-w-[10rem] md:w-full">
+                <p className="text-[1rem] font-normal align-middle w-full">
                   {item.label}
                 </p>
               </div>

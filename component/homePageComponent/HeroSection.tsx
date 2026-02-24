@@ -30,7 +30,7 @@ export default async function HeroSection({ homeBannerSection }: any) {
         <div className="px-8  relative z-10  w-full flex text-white  md:mb-0 sm:pb-[3rem] max-w-[101.625rem]  md:mt-[15rem]">
           <div className=" h-full  items-center justify-center   flex flex-col   lg:mt-[1.25rem]">
             <div className=" flex flex-col pb-[2rem]">
-              <h1 className=" text-[3rem] md:text-[5.25rem] align-middle  sm:leading-[1.1190] font-bold w-full lg:w-[60%] text-white mt-[1rem] sm:mt-0  ">
+              <h1 className=" text-[3rem] md:text-[5.25rem] align-middle  sm:leading-[1.1190] font-bold w-full lg:w-[65%] text-white mt-[1rem] sm:mt-0  ">
                 {title?.normal}
               </h1>
               <div className="flex sm:flex-row flex-col sm:mt-20 mt-8 w-full lg:w-[40%]  gap-10 ">

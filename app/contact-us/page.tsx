@@ -18,6 +18,8 @@ export default async function ContactUSPage() {
     embdData:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54773.00740713477!2d76.82159773491381!3d30.90587516593629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ff569da45e4bb%3A0xde121e5eea7ece12!2sDr.%20D%20Pharma%20-%20Derma%20Range%20%7C%20Ortho%20Range%20%7C%20Gynae%20Range!5e0!3m2!1sen!2sin!4v1771331898755!5m2!1sen!2sin",
   };
+
+  
   return (
     <div className="scroll-smooth  transition-colors duration-300 ">
       <CommonHeroSection heroSectionData={heroSectionData} />
@@ -36,7 +38,6 @@ export default async function ContactUSPage() {
                   <h3 className="text-heading text-[3rem] font-normal  leading-[1.1667] align-middle capitalize tracking-[1.5px]  mb-4">
                     {office.officeTitle}
                   </h3>
-
                   {office?.details?.map((item: any, idx: number) => {
                     const Icon = item.icon;
                     return (

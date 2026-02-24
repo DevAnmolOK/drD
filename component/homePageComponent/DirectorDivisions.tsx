@@ -52,9 +52,9 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
                       <Image
                         src={s.icon}
                         alt="social"
-                        width={30}
-                        height={30}
-                        className="object-contain"
+                        width={50}
+                        height={50}
+                        className="object-contain w-full h-full"
                       />
                     </a>
                   ))}
@@ -81,12 +81,12 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
                   key={i}
                   className="bg-white rounded-full w-32 h-32 md:w-36 md:h-36 flex items-center justify-center shadow-lg shadow-black/5 hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer"
                 >
-                  <div className="relative w-20 h-20 md:w-24 md:h-24">
+                  <div className="relative w-[6.188rem] h-[6rem] md:w-24 md:h-24">
                     <Image
                       src={logo.icon}
                       alt="Division Logo"
                       fill
-                      className="object-contain"
+                      className="object-contain w-full h-full"
                     />
                   </div>
                 </div>
