@@ -36,7 +36,7 @@ const products = [
   },
 ];
 
-export default function ProductList({ homeProductListing }: any) {
+export default function ProductList({ homeProductListing, productData }: any) {
   const { data } = homeProductListing || {};
 
   // const data = {
@@ -48,6 +48,18 @@ export default function ProductList({ homeProductListing }: any) {
   //   },
   //   desc: `Dr. D Pharma has brought a number of high-quality and highly effective pharmaceutical products to the market. Over the years the company has built a healthy and diverse line of drugs that have made us the Best Pharmaceuticals Company in Chandigarh. With the use of innovative and advanced technology, we have successfully tackled the most serious health problems in society. We offer innovative products of unique quality in the industry.`,
   // };
+  const formatProductData = productData?.map((item: any) => {
+    const imgImage = item?.images?.filter((img: any) => img.type === "IMG");
+    return {
+      img: imgImage,
+      image: imgImage?.[0]?.url,
+      title: item?.name,
+      subtitle: item?.packingVarient?.[0]?.packing,
+      slug: item?.slug,
+      details: item?.details,
+    };
+  });
+  const url = process.env.NEXT_PUBLIC_PRODUCT_URL;
 
   return (
     <section className="bg-white">
@@ -65,11 +77,15 @@ export default function ProductList({ homeProductListing }: any) {
           </p>
         </div>
         <div className="wrapper m-auto pt-16 flex items-center justify-center">
-          <div className="">
+          <div className="h-full">
             <SlickSlider
-              products={products || []}
+              products={formatProductData || []}
               CardComponent={ProductCard}
-              slideToShow={products?.length > 4 ? 4 : products?.length || 1}
+              slideToShow={
+                formatProductData?.length > 4
+                  ? 3.5
+                  : formatProductData?.length || 1
+              }
             />
           </div>
         </div>
