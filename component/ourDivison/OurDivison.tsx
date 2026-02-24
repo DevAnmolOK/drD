@@ -25,7 +25,6 @@ export default function OurDivison({ data }: any) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {divisions?.map((item: any, i: number) => {
             const expanded = openIndex === i;
-
             return (
               <div
                 key={item.id || item.title || i} 

@@ -30,6 +30,8 @@ import Button from "../ui/Button";
 
 export default function AboutDPharma({ homeAboutData }: any) {
     const aboutData = homeAboutData?.data || {};
+
+    
     
   return (
     <section className="bg-[#fff] py-16">
@@ -93,8 +95,6 @@ export default function AboutDPharma({ homeAboutData }: any) {
                   </li>
                 ))}
               </ul>
-
-        
             <div>
                 <Button href="/about" className="mt-8">About Us</Button>
             </div>
