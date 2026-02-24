@@ -34,7 +34,7 @@ export default function SlickSlider({
       {
         breakpoint: 1420,
         settings: {
-          slidesToShow: 4.5,
+          slidesToShow: 3,
           slidesToScroll: 1,
           centerMode: false,
         },
@@ -42,7 +42,7 @@ export default function SlickSlider({
       {
         breakpoint: 1200,
         settings: {
-          slidesToShow: 4,
+          slidesToShow: 3,
           slidesToScroll: 1,
           centerMode: false,
         },
@@ -50,7 +50,7 @@ export default function SlickSlider({
       {
         breakpoint: 1050,
         settings: {
-          slidesToShow: 3.5,
+          slidesToShow: 3,
           slidesToScroll: 1,
           centerMode: false,
         },
@@ -58,7 +58,7 @@ export default function SlickSlider({
       {
         breakpoint: 770,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 2.75,
           slidesToScroll: 1,
           centerMode: false,
         },
@@ -121,7 +121,7 @@ export default function SlickSlider({
           <div
             key={index}
             // className={`w-full h-full justify-between items-center flex flex-row overflow-hidden ${
-            className={`px-6 flex ${slideToShow === 1 ? "px-4" : ""}  gap-4 `}
+            className={`px-6 flex ${slideToShow === 1 ? "px-4" : ""}  gap-4`}
           >
             <CardComponent data={data} />
           </div>

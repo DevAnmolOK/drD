@@ -15,6 +15,7 @@ import Reviews from "@/component/homePageComponent/Reviews";
 import PtrPtsCalculator from "@/component/homePageComponent/CalculatorPTR";
 import LatestBlogs from "@/component/homePageComponent/LatestBlogs";
 import { HomePageEndPoints } from "@/lib/service/HomePageEndPoints";
+import fetchProducts from "@/utills/fetchProdutcs";
 
 export default async function Home() {
   const homeBannerSection = await HomePageEndPoints.homeBannerSection();
@@ -32,6 +33,7 @@ export default async function Home() {
   const homeOurStrengths = await HomePageEndPoints.homeOurStrengths();
   const homeGlobalFootprint = await HomePageEndPoints.homeGlobalFootprint();
   const homeProductListing = await HomePageEndPoints.homeProductListing();
+  const produts = await fetchProducts();
 
   return (
     <>
@@ -48,7 +50,10 @@ export default async function Home() {
       <WhyUs homeChooseUs={homeChooseUs} />
       <GlobalPresence homeGlobalFootprint={homeGlobalFootprint} />
       <OurStrengths homeOurStrengths={homeOurStrengths} />
-      <ProductList homeProductListing={homeProductListing} />
+      <ProductList
+        homeProductListing={homeProductListing}
+        productData={produts?.products}
+      />
       <PtrPtsCalculator />
       <Reviews homeTestimonials={homeTestimonials} />
       <LatestBlogs homeBlogs={homeBlogs} />
