@@ -48,6 +48,11 @@ export default async function Products({ params }: ProductsProps) {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/products?typeid=${typeId}`,
       {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": `${process.env.NEXT_PUBLIC_SECRET_API_KEY}`,
+        },
         next: { revalidate: 60 },
       },
     );

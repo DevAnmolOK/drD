@@ -232,7 +232,7 @@ export default function Footer({ data }: any) {
             {bottomBar?.links?.map((item: any, index: number) => (
               <div className="flex gap-4" key={index}>
                 <Link href={item?.href}>{item?.label}</Link>
-                {index !== data.bottomBar.links.length - 1 && <span>|</span>}
+                {index < bottomBar.links.length - 1 && <span>|</span>}
               </div>
             ))}
             {/* <Link href="#">Privacy Policy</Link> */}

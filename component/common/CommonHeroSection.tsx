@@ -42,7 +42,10 @@ export default function CommonHeroSection({
             )}
 
             <div className="flex flex-wrap gap-4">
-              <Link href={`${heroSectionData?.buttonLink}`} className="rounded-full px-6 py-3  bg-secondary text-black align-middle leading-[1.4063]  text-base font-semibold  hover:bg-red-700 transition flex items-center">
+              <Link
+                href={`${heroSectionData?.buttonLink}`}
+                className="rounded-full px-6 py-3  bg-secondary text-black align-middle leading-[1.4063]  text-base font-semibold  hover:bg-red-700 transition flex items-center"
+              >
                 {heroSectionData?.buttonText}{" "}
                 <span className="material-symbols-outlined text-xl">
                   <MdOutlineArrowDownward />
