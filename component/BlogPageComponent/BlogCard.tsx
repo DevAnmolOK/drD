@@ -59,7 +59,7 @@ export default function BlogCard({ post }: any) {
           <div className="flex items-center justify-between pt-4 border-t border-gray-100">
             <span className="text-sm text-border font-medium flex items-center gap-1">
               <FaUser className="w-4 h-4 inline-block mr-1" />
-              {post?.author}
+              
             </span>
             <button className="text-secondary font-semibold text-sm flex items-center gap-1 group-hover:gap-4 transition-all">
               Read

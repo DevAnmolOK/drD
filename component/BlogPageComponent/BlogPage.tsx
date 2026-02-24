@@ -62,7 +62,7 @@ const BlogListPage = ({ data, meta, categorey }: BlogListProps) => {
           params.append("category", String(categorySlug));
         }
       }
-  
+
       //  Always build safe URL
       // const url = `${base?.replace(/\/$/, "")}/posts/filters?${params.toString()}`;
       const url = `${base}posts/filters?${params.toString()}`;
