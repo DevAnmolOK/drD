@@ -90,7 +90,7 @@ const baseUrl = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 //     const logoData = await logo.json();
 //     const logoo = logoData?.data?.logo?.url;
-\
+
 //     const meta = result?.data?.[0]?.seo;
 
 //     if (!meta) {
