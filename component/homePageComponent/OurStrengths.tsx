@@ -3,11 +3,8 @@ import TagBadge from "../ui/TagBadge";
 import Button from "../ui/Button";
 
 export default function OurStrengths({ homeOurStrengths }: any) {
-   const {data} = homeOurStrengths || {};
-   const {
-heading_bold,
-heading_start
-} = data.title || {};
+  const { data } = homeOurStrengths || {};
+  const { heading_bold, heading_start } = data.title || {};
 
   // const data = {
   //   tag: "OUR STRENGTHS",
@@ -52,9 +49,6 @@ heading_start
   //   ],
   // };
 
-  
-  
-
   return (
     <section className="relative py-16">
       <div className="absolute inset-0">
@@ -69,14 +63,14 @@ heading_start
           />
 
           <h2 className="text-3xl md:text-[3rem] font-light mb-6">
-            {heading_start}
+            {heading_start}{" "}
             <span className="font-semibold">{heading_bold}</span>
           </h2>
 
           <p className="text-white leading-relaxed text-base">{data.desc}</p>
         </div>
         <div className="lg:col-span-2 grid md:grid-cols-2 gap-10 lg:relative lg:top-[25%] ">
-          {data?.cards.map((card:any, i:number) => (
+          {data?.cards.map((card: any, i: number) => (
             <div
               key={i}
               className="bg-white rounded-2xl p-6 shadow-xl flex flex-col"
@@ -96,7 +90,7 @@ heading_start
               </h3>
               <p className="text-sm text-[#6b7280] mb-4">{card.desc}</p>
               <ul className="space-y-2 mb-6">
-                {card.points.map((p :any, idx:number) => (
+                {card.points.map((p: any, idx: number) => (
                   <li
                     key={idx}
                     className="flex items-center gap-2 text-base text-[#626263] font-medium"
