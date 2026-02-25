@@ -118,6 +118,7 @@ export default function PtrPtsCalculator() {
             <div className="flex items-center gap-3 mb-2">
               <h1 className=" text-4xl lg:text-[3rem] font-bold text-black leading-tight">
                 {ui.headings.titleMain}
+                  {" "}
                 <span className="text-black font-normal  ml-2">
                   {ui.headings.titleSub}
                 </span>

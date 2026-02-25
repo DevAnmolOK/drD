@@ -1,5 +1,3 @@
-
-
 import Image from "next/image";
 import CommonHeroSection from "@/component/common/CommonHeroSection";
 import { IoIosCheckmark } from "react-icons/io";
@@ -17,279 +15,6 @@ export default async function FacilityPage() {
     whyChooseUsData,
   } = data;
 
-  // const heroSectionData = {
-  //   badgeText: "Breadcrumbs",
-  //   title: {
-  //     normal: "Blogs",
-  //   },
-  //   description:
-  //     "Empower your pharma business with precise financial analytics. Calculate gross margins and net profits instantly to make informed pricing decisions.",
-  //   buttonText: "Scroll to use",
-  //   background: {
-  //     imageAlt: "Modern laboratory background",
-  //     imageSrc:
-  //       "https://lh3.googleusercontent.com/aida-public/AB6AXuDlhCxl2Vxag4giglyO3LRkbo1CCD0M2C2xp8aInGg_GtvGQQTne3cPlp4jncbvfjJQ_Xgtjh22jGzKNrHyiH5djBaJD-qol6WT4TXPCHPkfDmXqGNEJBdTSiFfdhxFLO6gCo8h3f1FobHNsLIP1KgizrslMR0Q0tZHzpU0md3rnJ0Stq3MCkjS76TSVHCBBzYISDJrEU5zOL1EJLtiO4teKHAtUwhRSMYV60XhybXAJZm5Moq-MFo9dEJJ6Zrmo-UWJ8sF_9x5U_uD",
-  //   },
-  // };
-
-  // const infrastructureData = {
-  //   heading_start: " Our",
-  //   heading_bold: "Infrastructure & Manufacturing",
-  //   heading_end: " Excellence",
-  //   description: `At Dr. D Pharma, we operate world-class manufacturing
-  //                 facilities located in Himachal Pradesh, designed to meet both
-  //                 domestic and global pharmaceutical standards.`,
-  //   section: {
-  //     description: `At Dr. D Pharma, we operate world-class manufacturing facilities located in Himachal Pradesh, designed to meet both domestic and global pharmaceutical standards. Our manufacturing units are built according to WHO, GMP, and ISO guidelines with fully automated processing lines, enabling efficient production with minimal manual intervention. Each unit is equipped with modern machinery and technology, ensuring high-quality output at every stage of the production process.`,
-  //     heading: "Our infrastructure includes:",
-  //     points: [
-  //       "High-capacity production halls with advanced processing lines",
-  //       "Dedicated blending, granulation, tablet compression & capsule filling",
-  //       "Temperature-controlled warehouses",
-  //       "Cleanrooms & sanitary environments",
-  //       "Robust utilities: HVAC, compressed air, water treatment",
-  //       "Well-planned logistics & shipment systems",
-  //     ],
-  //     image: "/images/infrastructure.jpg",
-  //     imageAlt: "Manufacturing Infrastructure",
-  //   },
-  // };
-
-  // const certificateData = {
-  //   heading_start: " Our",
-  //   heading_bold: "Certifications & Quality",
-  //   heading_end: " Assurance",
-  //   description: `Quality remains at the forefront of everything we do at Dr. D Pharma. Our facilities are certified and audited under globally recognized standards, reflecting our commitment to safety, quality, and compliance.`,
-  //   section: {
-  //     description: `At Dr. D Pharma, we operate world-class manufacturing facilities located in Himachal Pradesh, designed to meet both domestic and global pharmaceutical standards. Our manufacturing units are built according to WHO, GMP, and ISO guidelines with fully automated processing lines, enabling efficient production with minimal manual intervention. Each unit is equipped with modern machinery and technology, ensuring high-quality output at every stage of the production process.`,
-  //     heading: "Our infrastructure includes:",
-  //     certificate: [
-  //       {
-  //         image: "",
-  //         certification: "WHO Compliance",
-  //         describe:
-  //           "  Ensures that our manufacturing processes meet international safety, quality, and hygiene standards established by the World Health Organization for pharmaceutical production.",
-  //       },
-  //       {
-  //         image: "",
-  //         certification: "GMP Certification",
-  //         describe:
-  //           "  Confirms that our products are consistently produced and controlled according to strict quality standards, minimizing risks in pharmaceutical manufacturing",
-  //       },
-  //       {
-  //         image: "",
-  //         certification: "ISO Quality Certification",
-  //         describe:
-  //           " Demonstrates our commitment to maintaining a structured and efficient quality management system that ensures continuous improvement and customer satisfaction.",
-  //       },
-  //     ],
-  //   },
-  // };
-
-  // const capabilitiesDAta = {
-  //   heading_start: " Our",
-  //   heading_bold: "Capabilities & Production",
-  //   heading_end: " Strength",
-  //   description: `Dr. D Pharma’s manufacturing capabilities are built around flexibility, precision, and high-volume production. Our strengths include:`,
-  //   section: {
-  //     description: `At Dr. D Pharma, we operate world-class manufacturing facilities located in Himachal Pradesh, designed to meet both domestic and global pharmaceutical standards. Our manufacturing units are built according to WHO, GMP, and ISO guidelines with fully automated processing lines, enabling efficient production with minimal manual intervention. Each unit is equipped with modern machinery and technology, ensuring high-quality output at every stage of the production process.`,
-  //     heading: "Our infrastructure includes:",
-  //     certificate: [
-  //       {
-  //         image: "",
-  //         heading: "Wide Product Formulation Range",
-  //         description: `We are capable of producing a broad spectrum of pharmaceutical dosage forms,
-  //            This allows us to cater to diverse therapeutic segments such as anti-infectives, derma care, gynaecology care, nutraceuticals, and more.
-  //            such as:`,
-  //         keyPoints: [
-  //           "Tablets & Coated Tablets",
-  //           "Capsules (Hard & Soft Gel)",
-  //           "Syrups & Liquid Formulations",
-  //           "Injectables",
-  //           "Nutraceuticals",
-  //           "Specialized Healthcare Formulations",
-  //         ],
-  //       },
-  //       {
-  //         image: "",
-  //         heading: `Advanced Production Processes`,
-  //         description: `Our manufacturing prowess includes:`,
-  //         keyPoints: [
-  //           `Controlled blending & mixing techniques`,
-  //           `Precision granulation & compression`,
-  //           `Automated syrup filling lines`,
-  //           ` High-efficiency coating & packaging systems`,
-  //           ` Continuous monitoring via process sensors`,
-  //         ],
-  //       },
-  //       {
-  //         image: "",
-  //         heading: "R&D & Innovation Focus",
-  //         description: `We continuously invest in research and development to innovate formulations that align with current market needs. Our R&D unit collaborates closely with quality and production teams to:`,
-  //         keyPoints: [
-  //           ` Formulate new drug variants`,
-  //           `Improve existing product efficacy`,
-  //           `Ensure speedy regulatory approvals for emerging healthcare requirements`,
-  //         ],
-  //       },
-  //     ],
-  //   },
-  // };
-
-  // const WhyChooseUsDAta = {
-  //   heading_start: "Why",
-  //   heading_bold: "Choose Dr. D Pharma",
-  //   heading_end: " Facility",
-  //   description: `Our infrastructure and operational excellence make us a trusted choice for business partnerships, franchise opportunities, and third-party manufacturing collaborations.`,
-  //   section: {
-  //     description: `Choosing Dr. D Pharma means partnering with a pharmaceutical firm that values:`,
-  //     keyPoints: [
-  //       "Quality over quantity",
-  //       "Compliance with international standards",
-  //       "Transparent & ethical practices",
-  //       "Fast delivery through efficient logistics",
-  //       "Expert QA/QC validated products",
-  //     ],
-  //   },
-  // };
-
-  // const facilityData = {
-  //   heroSectionData: {
-  //     badgeText: "Breadcrumbs",
-  //     title: {
-  //       normal: "Blogs",
-  //     },
-  //     description:
-  //       "Empower your pharma business with precise financial analytics. Calculate gross margins and net profits instantly to make informed pricing decisions.",
-  //     buttonText: "Scroll to use",
-  //     background: {
-  //       imageAlt: "Modern laboratory background",
-  //       imageSrc:
-  //         "https://lh3.googleusercontent.com/aida-public/AB6AXuDlhCxl2Vxag4giglyO3LRkbo1CCD0M2C2xp8aInGg_GtvGQQTne3cPlp4jncbvfjJQ_Xgtjh22jGzKNrHyiH5djBaJD-qol6WT4TXPCHPkfDmXqGNEJBdTSiFfdhxFLO6gCo8h3f1FobHNsLIP1KgizrslMR0Q0tZHzpU0md3rnJ0Stq3MCkjS76TSVHCBBzYISDJrEU5zOL1EJLtiO4teKHAtUwhRSMYV60XhybXAJZm5Moq-MFo9dEJJ6Zrmo-UWJ8sF_9x5U_uD",
-  //     },
-  //   },
-
-  //   infrastructureData: {
-  //     heading_start: " Our",
-  //     heading_bold: "Infrastructure & Manufacturing",
-  //     heading_end: " Excellence",
-  //     description: `At Dr. D Pharma, we operate world-class manufacturing
-  //                 facilities located in Himachal Pradesh, designed to meet both
-  //                 domestic and global pharmaceutical standards.`,
-  //     section: {
-  //       description: `At Dr. D Pharma, we operate world-class manufacturing facilities located in Himachal Pradesh, designed to meet both domestic and global pharmaceutical standards. Our manufacturing units are built according to WHO, GMP, and ISO guidelines with fully automated processing lines, enabling efficient production with minimal manual intervention. Each unit is equipped with modern machinery and technology, ensuring high-quality output at every stage of the production process.`,
-  //       heading: "Our infrastructure includes:",
-  //       points: [
-  //         "High-capacity production halls with advanced processing lines",
-  //         "Dedicated blending, granulation, tablet compression & capsule filling",
-  //         "Temperature-controlled warehouses",
-  //         "Cleanrooms & sanitary environments",
-  //         "Robust utilities: HVAC, compressed air, water treatment",
-  //         "Well-planned logistics & shipment systems",
-  //       ],
-  //       image: "/images/infrastructure.jpg",
-  //       imageAlt: "Manufacturing Infrastructure",
-  //     },
-  //   },
-
-  //   certificateData: {
-  //     heading_start: " Our",
-  //     heading_bold: "Certifications & Quality",
-  //     heading_end: " Assurance",
-  //     description: `Quality remains at the forefront of everything we do at Dr. D Pharma. Our facilities are certified and audited under globally recognized standards, reflecting our commitment to safety, quality, and compliance.`,
-  //     section: {
-  //       description: `At Dr. D Pharma, we operate world-class manufacturing facilities located in Himachal Pradesh, designed to meet both domestic and global pharmaceutical standards. Our manufacturing units are built according to WHO, GMP, and ISO guidelines with fully automated processing lines, enabling efficient production with minimal manual intervention. Each unit is equipped with modern machinery and technology, ensuring high-quality output at every stage of the production process.`,
-  //       heading: "Our infrastructure includes:",
-  //       certificate: [
-  //         {
-  //           image: "",
-  //           certification: "WHO Compliance",
-  //           describe:
-  //             "  Ensures that our manufacturing processes meet international safety, quality, and hygiene standards established by the World Health Organization for pharmaceutical production.",
-  //         },
-  //         {
-  //           image: "",
-  //           certification: "GMP Certification",
-  //           describe:
-  //             "  Confirms that our products are consistently produced and controlled according to strict quality standards, minimizing risks in pharmaceutical manufacturing",
-  //         },
-  //         {
-  //           image: "",
-  //           certification: "ISO Quality Certification",
-  //           describe:
-  //             " Demonstrates our commitment to maintaining a structured and efficient quality management system that ensures continuous improvement and customer satisfaction.",
-  //         },
-  //       ],
-  //     },
-  //   },
-
-  //   capabilitiesDAta: {
-  //     heading_start: " Our",
-  //     heading_bold: "Capabilities & Production",
-  //     heading_end: " Strength",
-  //     description: `Dr. D Pharma’s manufacturing capabilities are built around flexibility, precision, and high-volume production. Our strengths include:`,
-  //     section: {
-  //       description: `At Dr. D Pharma, we operate world-class manufacturing facilities located in Himachal Pradesh, designed to meet both domestic and global pharmaceutical standards. Our manufacturing units are built according to WHO, GMP, and ISO guidelines with fully automated processing lines, enabling efficient production with minimal manual intervention. Each unit is equipped with modern machinery and technology, ensuring high-quality output at every stage of the production process.`,
-  //       heading: "Our infrastructure includes:",
-  //       certificate: [
-  //         {
-  //           image: "",
-  //           heading: "Wide Product Formulation Range",
-  //           description: `We are capable of producing a broad spectrum of pharmaceutical dosage forms,
-  //            This allows us to cater to diverse therapeutic segments such as anti-infectives, derma care, gynaecology care, nutraceuticals, and more.
-  //            such as:`,
-  //           keyPoints: [
-  //             "Tablets & Coated Tablets",
-  //             "Capsules (Hard & Soft Gel)",
-  //             "Syrups & Liquid Formulations",
-  //             "Injectables",
-  //             "Nutraceuticals",
-  //             "Specialized Healthcare Formulations",
-  //           ],
-  //         },
-  //         {
-  //           image: "",
-  //           heading: `Advanced Production Processes`,
-  //           description: `Our manufacturing prowess includes:`,
-  //           keyPoints: [
-  //             `Controlled blending & mixing techniques`,
-  //             `Precision granulation & compression`,
-  //             `Automated syrup filling lines`,
-  //             ` High-efficiency coating & packaging systems`,
-  //             ` Continuous monitoring via process sensors`,
-  //           ],
-  //         },
-  //         {
-  //           image: "",
-  //           heading: "R&D & Innovation Focus",
-  //           description: `We continuously invest in research and development to innovate formulations that align with current market needs. Our R&D unit collaborates closely with quality and production teams to:`,
-  //           keyPoints: [
-  //             ` Formulate new drug variants`,
-  //             `Improve existing product efficacy`,
-  //             `Ensure speedy regulatory approvals for emerging healthcare requirements`,
-  //           ],
-  //         },
-  //       ],
-  //     },
-  //   },
-
-  //   WhyChooseUsDAta: {
-  //     heading_start: "Why",
-  //     heading_bold: "Choose Dr. D Pharma",
-  //     heading_end: " Facility",
-  //     description: `Our infrastructure and operational excellence make us a trusted choice for business partnerships, franchise opportunities, and third-party manufacturing collaborations.`,
-  //     section: {
-  //       description: `Choosing Dr. D Pharma means partnering with a pharmaceutical firm that values:`,
-  //       keyPoints: [
-  //         "Quality over quantity",
-  //         "Compliance with international standards",
-  //         "Transparent & ethical practices",
-  //         "Fast delivery through efficient logistics",
-  //         "Expert QA/QC validated products",
-  //       ],
-  //     },
-  //   },
-  // };
   return (
     <>
       <div className=" w-full mx-auto">
@@ -303,7 +28,7 @@ export default async function FacilityPage() {
                   {infrastructureData?.heading_start}
                   <span className="font-bold">
                     {" "}
-                    {infrastructureData?.heading_bold}
+                    {infrastructureData?.heading_bold}{" "}
                   </span>
                   {infrastructureData?.heading_end}
                 </h2>
@@ -354,7 +79,7 @@ export default async function FacilityPage() {
                   {certificateData?.heading_start}
                   <span className="font-bold">
                     {" "}
-                    {certificateData?.heading_bold}
+                    {certificateData?.heading_bold}{" "}
                   </span>
                   {certificateData?.heading_end}
                 </h2>
@@ -406,7 +131,7 @@ export default async function FacilityPage() {
                   {capabilitiesData?.heading_start}
                   <span className="font-bold">
                     {" "}
-                    {capabilitiesData?.heading_bold}
+                    {capabilitiesData?.heading_bold}{" "}
                   </span>
                   {capabilitiesData?.heading_end}
                 </h2>
@@ -472,7 +197,7 @@ export default async function FacilityPage() {
                   {whyChooseUsData?.heading_start}
                   <span className="font-bold">
                     {" "}
-                    {whyChooseUsData?.heading_bold}
+                    {whyChooseUsData?.heading_bold}{" "}
                   </span>
                   {whyChooseUsData?.heading_end}
                 </h2>

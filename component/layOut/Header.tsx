@@ -141,9 +141,52 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                 const isProduct = item?.label === "Product";
                 const haveChild =
                   item?.is_dropdown && item?.submenu?.length > 0;
-                const isActive =
-                  pathname === item?.href ||
-                  (item?.href !== "/" && pathname?.startsWith(item?.href));
+                // const isActive =
+                //   pathname === item?.href ||
+                //   (item?.href !== "/" && pathname?.startsWith(item?.href));
+                // const isActive = (() => {
+                //   if (pathname === item?.href) return true;
+
+                //   if (item?.href !== "/" && pathname?.startsWith(item?.href))
+                //     return true;
+
+                //   if (item?.is_dropdown && item?.submenu?.length > 0) {
+                //     return item.submenu.some((child: any) =>
+                //       pathname?.startsWith(child?.href),
+                //     );
+                //   }
+
+                //   return false;
+                // })();
+                const isActive = (() => {
+                  // 1 Exact match
+                  if (pathname === item?.href) return true;
+                  //  If dropdown → check submenu first
+                  if (item?.is_dropdown && item?.submenu?.length > 0) {
+                    const submenuMatch = item.submenu.some((child: any) =>
+                      pathname?.startsWith(child?.href),
+                    );
+                    if (submenuMatch) return true;
+                  }
+                  //  Special case: prevent Product from activating
+                  if (
+                    item?.label === "Product" &&
+                    (pathname?.startsWith("/product/new-launch-products") ||
+                      pathname?.startsWith("/product/upcoming-products"))
+                  ) {
+                    return false;
+                  }
+                  //  Normal parent match
+                  if (
+                    item?.href !== "/" &&
+                    item?.href !== "#" &&
+                    pathname?.startsWith(item?.href)
+                  ) {
+                    return true;
+                  }
+                  return false;
+                })();
+
                 return (
                   <div
                     className={`relative group px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${
