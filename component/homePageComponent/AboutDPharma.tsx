@@ -81,13 +81,22 @@ export default function AboutDPharma({ homeAboutData }: any) {
 
           {/* AREA THREE - Side Image (Hidden on Mobile) */}
           <div className="md:[grid-area:three] hidden md:flex justify-end self-start">
-            <div className="relative w-full rounded-[14px] overflow-hidden">
+            {/* <div className="relative w-full rounded-[14px] overflow-hidden">
               <Image
                 src={aboutData.images.side}
                 alt="Pharmacist"
                 width={398}
                 height={598}
                 className="object-contain "
+              />
+            </div> */}
+            <div className="relative w-full max-w-99.5 rounded-[14px] overflow-hidden">
+              <Image
+                src={aboutData.images.side}
+                alt="Pharmacist"
+                width={398}
+                height={598}
+                className="w-full h-auto object-contain"
               />
             </div>
           </div>
@@ -99,7 +108,7 @@ export default function AboutDPharma({ homeAboutData }: any) {
               alt="Illustration"
               width={829}
               height={217}
-              className="w-full h-auto max-w-207.25 object-contain"
+              className="w-full max-w-207.25 object-cover"
             />
           </div>
         </div>
