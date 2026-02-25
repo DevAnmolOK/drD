@@ -84,17 +84,20 @@ export default function Gallery({ galleryData }: any) {
           >
             <button
               onClick={() => setActiveImage(null)}
-              className="absolute top-12 right-2 md:top-30 md:right-4 lg:-top-3 lg:right-15bg-white text-black rounded-full p-2 shadow-lg
+              className="group absolute top-4 right-8 md:top-3 md:right-12 lg:top-4 lg:right-15 bg-white hover:bg-secondary  text-black rounded-full p-2 shadow-lg bg-white
  hover:scale-110 transition z-10"
             >
-              <FiX size={22} />
+              <FiX size={22} className="text-black  group-hover:text-white" />
             </button>
-            <Image
-              src={activeImage}
-              alt="Gallery preview"
-              fill
-              className="rounded-xl object-contain w-full"
-            />
+
+            <div className="relative w-full aspect-[15/15] rounded-xl overflow-hidden">
+              <Image
+                src={activeImage}
+                alt="Gallery preview"
+                fill
+                className="object-contain"
+              />
+            </div>
           </div>
         </div>
       )}
