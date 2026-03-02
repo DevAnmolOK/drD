@@ -107,6 +107,8 @@ export default function NavigationBar({ navBar, productMenu }: any) {
   //   { label: "Gallery", href: "/gallery" },
   // ];
 
+  console.log(navBar, "navBar");
+
   return (
     <>
       {/* <div
@@ -126,13 +128,15 @@ export default function NavigationBar({ navBar, productMenu }: any) {
         <div className="  h-full  h-[4.625rem] w-full max-w-[101.625rem] flex items-center justify-between 2xl:px-0 sm:px-8 px-6">
           <Link href="/">
             <div className="flex items-center gap-3 relative w-[5.625rem] h-[4.625rem] ">
-              <Image
-                src="/images/dpharma-logo.svg"
-                alt="Dr D Pharma"
-                fill
-                unoptimized
-                className=""
-              />
+              {headerImage?.src && (
+                <Image
+                  src={headerImage?.src}
+                  alt="Dr D Pharma"
+                  fill
+                  unoptimized
+                  className=""
+                />
+              )}
             </div>
           </Link>
           <div className=" flex flex-row gap-12">
