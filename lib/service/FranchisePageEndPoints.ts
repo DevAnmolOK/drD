@@ -1,12 +1,13 @@
 /** @format */
 
-import { apiFetch } from '../api/fetcher';
+import { apiFetch } from "../api/fetcher";
 
 export const FranchisePageEndPoints = {
-	franchisePage: () => {
-		return apiFetch({
-			endpoint: '/page/pcd-pharma-franchise',
-			cache: 'dynamic',
-		});
-	},
+  // /api/v1/page/pharma-franchise
+  franchisePage: () => {
+    return apiFetch({
+      endpoint: "page/pharma-franchise",
+      cache: "dynamic",
+    });
+  },
 };

@@ -1,45 +1,45 @@
 // components/ProductCategories.tsx
 
-export default function ProductCategories() {
-  const data = {
-    title: "Product Categories",
-    subheading:
-      "Explore our high-demand portfolio designed for prescription confidence and business growth.",
-    categories: [
-      {
-        title: "Tablets",
-        desc: "Antibiotics, anti-inflammatory, antifungal, antihistamine, cardiac-diabetic, gastro, neurology, ortho.",
-      },
-      {
-        title: "Capsules",
-        desc: "Hard gelatin & softgel in multiple strengths; enhanced bioavailability and patient compliance.",
-      },
-      {
-        title: "Syrups & Suspensions",
-        desc: "Pediatric & adult formulations — palatable, stable, and therapeutically effective.",
-      },
-      {
-        title: "Injections",
-        desc: "Sterile small-volume parenterals; critical care & emergency support with strict aseptic controls.",
-      },
-      {
-        title: "Ointments & Creams",
-        desc: "Dermatology care for infections, inflammation, acne, and wound management.",
-      },
-      {
-        title: "Nutraceuticals",
-        desc: "Immunity boosters, bone & joint health, vitamins, minerals, antioxidants, probiotics.",
-      },
-      {
-        title: "Ayurvedic / Herbal",
-        desc: "Traditional formulations for digestion, liver care, respiratory wellness, and vitality.",
-      },
-      {
-        title: "New Launches",
-        desc: "Market-researched SKUs aligned with prescribing trends and patient needs.",
-      },
-    ],
-  };
+export default function ProductCategories({ data }: any) {
+  // const data = {
+  //   title: "Product Categories",
+  //   subheading:
+  //     "Explore our high-demand portfolio designed for prescription confidence and business growth.",
+  //   categories: [
+  //     {
+  //       title: "Tablets",
+  //       desc: "Antibiotics, anti-inflammatory, antifungal, antihistamine, cardiac-diabetic, gastro, neurology, ortho.",
+  //     },
+  //     {
+  //       title: "Capsules",
+  //       desc: "Hard gelatin & softgel in multiple strengths; enhanced bioavailability and patient compliance.",
+  //     },
+  //     {
+  //       title: "Syrups & Suspensions",
+  //       desc: "Pediatric & adult formulations — palatable, stable, and therapeutically effective.",
+  //     },
+  //     {
+  //       title: "Injections",
+  //       desc: "Sterile small-volume parenterals; critical care & emergency support with strict aseptic controls.",
+  //     },
+  //     {
+  //       title: "Ointments & Creams",
+  //       desc: "Dermatology care for infections, inflammation, acne, and wound management.",
+  //     },
+  //     {
+  //       title: "Nutraceuticals",
+  //       desc: "Immunity boosters, bone & joint health, vitamins, minerals, antioxidants, probiotics.",
+  //     },
+  //     {
+  //       title: "Ayurvedic / Herbal",
+  //       desc: "Traditional formulations for digestion, liver care, respiratory wellness, and vitality.",
+  //     },
+  //     {
+  //       title: "New Launches",
+  //       desc: "Market-researched SKUs aligned with prescribing trends and patient needs.",
+  //     },
+  //   ],
+  // };
 
   return (
     <section className="bg-white py-16 px-6">
@@ -53,7 +53,7 @@ export default function ProductCategories() {
         </div>
         {/* Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {data.categories.map((item, i) => (
+          {data.categories.map((item: any, i: number) => (
             <div
               key={i}
               className="
