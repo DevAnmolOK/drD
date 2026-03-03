@@ -7,8 +7,6 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
   const { data } = homeGlobalFootprint || {};
   const { title_start, title_bold, title_end, embedMaps } = data || {};
   const { first_source } = embedMaps || {};
-  // const mapSrc =
-  //   "https://www.google.com/maps?q=ESRI%20India%20Technologies%20Pvt.%20Ltd.|Dr.%20D%20Pharma%20Derma%20Range%20Ortho%20Range%20Gynae%20Range&output=embed";
 
   const getLocationsFromUrl = (url: string) => {
     const match = url.match(/q=([^&]+)/);
