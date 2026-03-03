@@ -6,7 +6,7 @@ import { FaLocationDot } from "react-icons/fa6";
 export default function GlobalPresence({ homeGlobalFootprint }: any) {
   const { data } = homeGlobalFootprint || {};
   const { title_start, title_bold, title_end, embedMaps } = data || {};
-  const { first_source } = embedMaps || {};
+  const { first_source, second_source } = embedMaps || {};
 
   const getLocationsFromUrl = (url: string) => {
     const match = url.match(/q=([^&]+)/);
@@ -14,6 +14,7 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
     const decoded = decodeURIComponent(match[1]);
     return decoded.split("|");
   };
+
   const locations = getLocationsFromUrl(first_source);
 
   return (
@@ -40,16 +41,16 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
             <div className="w-full  space-y-12">
               <div>
                 <div className="overflow-hidden">
-                  {/* {first_source && ( */}
-                  <iframe
-                    width="100%"
-                    height="420"
-                    loading="lazy"
-                    src={first_source}
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                  {/* )} */}
+                  {second_source && (
+                    <iframe
+                      width="100%"
+                      height="420"
+                      loading="lazy"
+                      src={second_source}
+                      allowFullScreen
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                  )}
                 </div>
                 <div className="text-center flex justify-center py-4 flex-col">
                   {locations?.map((loc: any) => {
