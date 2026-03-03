@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import React, { useState } from "react";
@@ -18,16 +18,14 @@ export default function OurDivison({ data }: any) {
           <h2 className="text-3xl md:text-[48px] font-serif font-semibold mb-4">
             {heading}
           </h2>
-          <p className="text-2xl text-[#555] leading-relaxed">
-            {subheading}
-          </p>
+          <p className="text-2xl text-[#555] leading-relaxed">{subheading}</p>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {divisions?.map((item: any, i: number) => {
             const expanded = openIndex === i;
             return (
               <div
-                key={item.id || item.title || i} 
+                key={item.id || item.title || i}
                 className="
                   bg-white rounded-[15px] p-6
                   border border-[#e6ecf5]
@@ -61,7 +59,7 @@ export default function OurDivison({ data }: any) {
                 {item.description && (
                   <>
                     <p
-                      className={`text-base text-[#000] leading-relaxed font-normal
+                      className={`text-base text-black leading-relaxed font-normal
                       ${expanded ? "" : "line-clamp-3"}`}
                     >
                       {item.description}

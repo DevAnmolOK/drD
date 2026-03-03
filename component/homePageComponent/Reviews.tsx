@@ -70,7 +70,7 @@ export default function Reviews({ homeTestimonials }: any) {
       </div>
       <div className="wrapper mx-auto px-4 sm:px-6 lg:px-0">
         <SwipeSlider>
-          {testimonials.map((t: any, i: number) => (
+          {testimonials?.map((t: any, i: number) => (
             <TestimonialCard key={i} {...t} />
           ))}
         </SwipeSlider>

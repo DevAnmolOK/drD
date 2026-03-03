@@ -87,27 +87,9 @@ export default async function NewLaunchProducts({
 
     const prdtkey = "new_launched";
     const data = await QuickLinksPageEndPoints.getNewLaunchBanner();
-    // const heroSectionData = {
-    //   badgeText: "Breadcrumbs",
-    //   title: {
-    //     normal: "MANUFACTURING",
-    //     //   highlight: "Calculator",
-    //   },
-    //   description: `Redefining pharmaceutical production with WHO-GMP compliant facilities. Our commitment to excellence ensures every dosage meets the highest global standards of safety and efficacy.`,
-    //   buttonText: "Vision Plus",
-    //   background: {
-    //     imageAlt: "Modern laboratory background",
-    //     imageSrc:
-    //       "https://lh3.googleusercontent.com/aida-public/AB6AXuAwvm5ETO-TKsTWwaU8LCyzg9_K10k9m_wLJBcUhNBfsIbCh3XFB6qm0JivbnpoV9nMk7tGsinPjktVcHIYKe3CuVcX2GvixCp1aDSIJf3fzaCmGCvkKvIgTtYSObSkv7pqvNHdXJMWpJAnYXg7-QAk1L2_mKmtoA9WcDBuOyVg7TclDoKf3Gb72fSeHTxltbWL5_KU6OtNIEamEJhM8UyZPVcX6Mo5Zn9HZFyqJ7i3HC0l-f6t3o6zhSTZ5Y-t7O8Ebd20rHBTUj3_",
-    //   },
-    // };
+
     return (
       <>
-        {/* <BreadcrumbSchemaOnly
-          baseUrl={process.env.NEXT_PUBLIC_CLIENT_URL}
-          siteName="Eridanus HealthCare"
-          title="New Launch Products"
-        /> */}
         <CommonHeroSection heroSectionData={data?.heroSectionData} />
         <div className="w-full h-full bg-white text-black flex items-center justify-center ">
           <div className="wrapper w-full h-full mx-auto relative sm:mb-0 mb-[1.5rem]">

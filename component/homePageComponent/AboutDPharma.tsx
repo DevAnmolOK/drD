@@ -38,23 +38,27 @@ export default function AboutDPharma({ homeAboutData }: any) {
           <div className="md:[grid-area:one] flex flex-col items-start">
             <div className="w-full">
               <div className="relative w-full rounded-2xl overflow-hidden">
-                <Image
-                  src={aboutData.images.main}
-                  alt="Lab Team"
-                  width={532}
-                  height={653}
-                  className="w-full h-auto object-contain"
-                />
+                {aboutData.images.main && (
+                  <Image
+                    src={aboutData.images.main}
+                    alt="Lab Team"
+                    width={532}
+                    height={653}
+                    className="w-full h-auto object-contain"
+                  />
+                )}
               </div>
               <div className="relative hidden md:flex justify-center w-full">
                 <div className="absolute bottom-5 left-1/2 -translate-x-1/2 translate-y-1/2">
-                  <Image
-                    src={aboutData.images.badge}
-                    alt="Badge"
-                    width={120}
-                    height={120}
-                    className="w-16 sm:w-20 md:w-30 h-auto object-contain"
-                  />
+                  {aboutData.images.badge && (
+                    <Image
+                      src={aboutData.images.badge}
+                      alt="Badge"
+                      width={120}
+                      height={120}
+                      className="w-16 sm:w-20 md:w-30 h-auto object-contain"
+                    />
+                  )}
                 </div>
               </div>
             </div>
@@ -63,7 +67,7 @@ export default function AboutDPharma({ homeAboutData }: any) {
           {/* AREA FIVE - Features */}
           <div className="md:[grid-area:five] self-start">
             <ul className="space-y-4 text-[#626263] text-base">
-              {aboutData.features?.map((item: any, i: number) => (
+              {aboutData?.features?.map((item: any, i: number) => (
                 <li key={i} className="flex items-start gap-3">
                   <span className="w-6 h-6 bg-[#EE4223] rounded-full flex-shrink-0 flex items-center justify-center mt-0.5">
                     <IoIosCheckmark size={18} className="text-white" />
@@ -91,25 +95,29 @@ export default function AboutDPharma({ homeAboutData }: any) {
               />
             </div> */}
             <div className="relative w-full max-w-99.5 rounded-[14px] overflow-hidden">
-              <Image
-                src={aboutData.images.side}
-                alt="Pharmacist"
-                width={398}
-                height={598}
-                className="w-full h-auto object-contain"
-              />
+              {aboutData.images.side && (
+                <Image
+                  src={aboutData.images.side}
+                  alt="Pharmacist"
+                  width={398}
+                  height={598}
+                  className="w-full h-auto object-contain"
+                />
+              )}
             </div>
           </div>
 
           {/* AREA TWO - Illustration (Hidden on Mobile) */}
           <div className="md:[grid-area:two] hidden lg:block self-start ">
-            <Image
-              src={aboutData.images.illustration}
-              alt="Illustration"
-              width={829}
-              height={217}
-              className="w-full max-w-207.25 object-cover"
-            />
+            {aboutData.images.illustration && (
+              <Image
+                src={aboutData.images.illustration}
+                alt="Illustration"
+                width={829}
+                height={217}
+                className="w-full max-w-207.25 object-cover"
+              />
+            )}
           </div>
         </div>
       </div>

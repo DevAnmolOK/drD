@@ -26,9 +26,10 @@ import Image from "next/image";
 //   ],
 // };
 
-
-export default function ManufacturingPartners({ homeManufacturingPartners }: any) {
-  const { tag, title, partners } = homeManufacturingPartners.data ||   {};
+export default function ManufacturingPartners({
+  homeManufacturingPartners,
+}: any) {
+  const { tag, title, partners } = homeManufacturingPartners.data || {};
 
   return (
     <div className="w-full bg-white py-16 md:px-20">
@@ -40,18 +41,20 @@ export default function ManufacturingPartners({ homeManufacturingPartners }: any
         </h3>
 
         <div className="flex flex-wrap justify-center">
-          {partners.map((partner:any, index:number) => (
+          {partners?.map((partner: any, index: number) => (
             <div
               key={index}
               className="flex justify-center items-center border border-[#E8E8E8] p-4 m-2 h-[124px] w-[266px]"
             >
-              <Image
-                src={partner.logo}
-                alt={partner.name}
-                height={18}
-                width={150}
-                className="object-contain h-[108px]"
-              />
+              {partner.logo && (
+                <Image
+                  src={partner.logo}
+                  alt={partner.name}
+                  height={18}
+                  width={150}
+                  className="object-contain h-[108px]"
+                />
+              )}
             </div>
           ))}
         </div>

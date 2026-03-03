@@ -3,11 +3,6 @@ import { FiPercent, FiClock, FiXCircle } from "react-icons/fi";
 import OffersList from "../../component/offerPageComponent/OfersList";
 import CommonHeroSection from "../../component/common/CommonHeroSection";
 import { QuickLinksPageEndPoints } from "../../lib/service/QuickLinks";
-// import Banner from "@/components/HeroBanner";
-// import { createMetaData } from "@/utils/fetchData";
-// import type { Metadata } from "next";
-// import BreadcrumbSchemaOnly from "@/components/breadcrumbsScema/breadcrumbsSchema";
-// Types
 
 interface BaseOffer {
   id: number;
@@ -19,11 +14,6 @@ interface BaseOffer {
   validUntil: string;
   isPopular?: boolean;
 }
-
-// export async function generateMetadata(): Promise<Metadata> {
-//   const data = await createMetaData("/offers", "offer-page");
-//   return { ...data };
-// }
 
 interface ExpiredOffer extends BaseOffer {
   expiredOn: string;
