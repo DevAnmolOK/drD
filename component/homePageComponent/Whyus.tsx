@@ -18,25 +18,29 @@ export default function WhyUs({ homeChooseUs }: any) {
         {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div className="bg-white rounded-2xl overflow-hidden">
-            <Image
-              src={data.imageLeft.img}
-              alt={data.imageLeft.alt}
-              width={500}
-              height={320}
-              className="w-full h-full object-cover"
-            />
+            {data.imageLeft.img && (
+              <Image
+                src={data.imageLeft.img}
+                alt={data.imageLeft.alt}
+                width={500}
+                height={320}
+                className="w-full h-full object-cover"
+              />
+            )}
           </div>
 
           {/* First card */}
           <Card {...data.cards[0]} />
           <div className="md:row-span-2 bg-white rounded-2xl overflow-hidden">
-            <Image
-              src={data.imageRight.img}
-              alt={data.imageRight.alt}
-              width={500}
-              height={600}
-              className="w-full h-full object-cover"
-            />
+            {data.imageRight.img && (
+              <Image
+                src={data.imageRight.img}
+                alt={data.imageRight.alt}
+                width={500}
+                height={600}
+                className="w-full h-full object-cover"
+              />
+            )}
           </div>
           {data.cards.slice(1).map((card: any, i: number) => (
             <Card key={i} {...card} />

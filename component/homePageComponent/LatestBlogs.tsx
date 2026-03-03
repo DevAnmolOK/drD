@@ -6,34 +6,7 @@ import Link from "next/link";
 
 export default function LatestBlogs({ homeBlogs }: any) {
   const { header, blogs } = homeBlogs.data || {};
-  // const data = {
-  //   header: {
-  //     tag: "OUR BLOGS",
-  //     titleTag:"Latest",
-  //     title: " News & Blogs",
-  //     button: {
-  //       label: "All Blogs",
-  //       href: "/blogs",
-  //     },
-  //   },
 
-  //   blogs: [
-  //     {
-  //       image: "/images/pcd01.png",
-  //       title:
-  //         "Top 4 Medical PCD Products with High Demand in the Indian Pharma Market",
-  //       href: "/top-4-medical-pcd-products",
-  //     },
-  //     {
-  //       image: "/images/pcd02.png",
-  //       title:
-  //         "Most Profitable Medical PCD Products for Pharma Franchise Business",
-  //       href: "/blog/profitable-medical-pcd-products",
-  //     },
-  //   ],
-  // };
-
-  
   return (
     <section className="bg-white py-16">
       <div className="wrapper mx-auto px-4">
@@ -73,13 +46,15 @@ function BlogCard({
   return (
     <div className="relative rounded-[15px] overflow-hidden group">
       {/* Image */}
-      <Image
-        src={image}
-        alt={title}
-        width={600}
-        height={380}
-        className="w-full h-[280px] md:h-[380px] object-cover"
-      />
+      {image && (
+        <Image
+          src={image}
+          alt={title}
+          width={600}
+          height={380}
+          className="w-full h-70 md:h-95 object-cover"
+        />
+      )}
       <div className="absolute inset-0 bg-[linear-gradient(to_top,rgba(0,0,0,0.7),transparent)]" />
       <div className="absolute bottom-5 left-5 right-16 text-white text-lg md:text-[24px] font-medium  lient-camp-2 leading-snug">
         {title}

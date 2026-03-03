@@ -74,28 +74,51 @@ export default function Gallery({ galleryData }: any) {
       </div>
       {/* MODAL POPUP */}
       {activeImage && (
+        //         <div
+        //           className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+        //           onClick={() => setActiveImage(null)}
+        //         >
+        //           <div
+        //             className="relative max-w-2xl w-full h-[60vh]"
+        //             onClick={(e) => e.stopPropagation()}
+        //           >
+        //             <button
+        //               onClick={() => setActiveImage(null)}
+        //               className="group absolute top-4 right-8 md:top-3 md:right-12 lg:top-4 lg:right-15 bg-white hover:bg-secondary  text-black rounded-full p-2 shadow-lg bg-white
+        //  hover:scale-110 transition z-10"
+        //             >
+        //               <FiX size={22} className="text-black  group-hover:text-white" />
+        //             </button>
+
+        //             <div className="relative w-full aspect-[15/15] rounded-xl overflow-hidden">
+        //               <Image
+        //                 src={activeImage}
+        //                 alt="Gallery preview"
+        //                 fill
+        //                 className="object-contain"
+        //               />
+        //             </div>
+        //           </div>
+        //         </div>
         <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 cursor-pointer"
           onClick={() => setActiveImage(null)}
         >
           <div
-            className="relative max-w-2xl w-full h-[60vh]"
+            className="relative w-fit max-w-5xl max-h-[90vh] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setActiveImage(null)}
-              className="group absolute top-4 right-8 md:top-3 md:right-12 lg:top-4 lg:right-15 bg-white hover:bg-secondary  text-black rounded-full p-2 shadow-lg bg-white
- hover:scale-110 transition z-10"
+              className="absolute -top-12 -right-2 md:-right-8 bg-white hover:bg-black text-black hover:text-white rounded-full p-2 shadow-lg transition transform hover:scale-110 z-50"
             >
-              <FiX size={22} className="text-black  group-hover:text-white" />
+              <FiX size={24} />
             </button>
-
-            <div className="relative w-full aspect-[15/15] rounded-xl overflow-hidden">
-              <Image
+            <div className="relative overflow-hidden rounded-xl">
+              <img
                 src={activeImage}
                 alt="Gallery preview"
-                fill
-                className="object-contain"
+                className="max-w-full max-h-[85vh] object-contain block shadow-2xl"
               />
             </div>
           </div>

@@ -27,7 +27,7 @@ export default function page() {
       <HeroSection />
       <AboutSection />
       <ProductCategories />
-      <WhyChooseUs/>
+      <WhyChooseUs />
     </div>
   );
 }
