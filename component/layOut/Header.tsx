@@ -107,8 +107,6 @@ export default function NavigationBar({ navBar, productMenu }: any) {
   //   { label: "Gallery", href: "/gallery" },
   // ];
 
-  console.log(navBar, "navBar");
-
   return (
     <>
       {/* <div
