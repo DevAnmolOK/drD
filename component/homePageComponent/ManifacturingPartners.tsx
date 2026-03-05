@@ -38,26 +38,28 @@ export default function ManufacturingPartners({
           text={tag}
           className="mb-4 text-[0.75rem] font-medium text-[#253746]"
         />
-
-        <h3 className="text-2xl md:text-[3rem] font-semibold text-[#000] leading-tight mb-6">
+        <h3 className="text-2xl md:text-[3rem] font-semibold text-black leading-tight mb-6">
           {title}
         </h3>
-
         <div className="flex flex-wrap justify-center">
           {partners?.map((partner: any, index: number) => (
             <div
               key={index}
-              className="flex justify-center items-center border border-[#E8E8E8] p-4 m-2 h-[124px] w-[266px]"
+              className="flex flex-col items-center justify-center border border-[#E8E8E8] rounded-lg p-4 m-2 w-66.5 h-31 text-center bg-white"
             >
               {partner.logo && (
-                <Image
-                  src={partner.logo}
-                  alt={partner.name}
-                  height={18}
-                  width={150}
-                  className="object-contain h-[108px]"
-                />
+                <div className="relative w-full h-15 flex items-center justify-center mb-2">
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    fill
+                    className="object-contain"
+                  />
+                </div>
               )}
+              <p className="text-xl font-medium text-[#253746] leading-tight">
+                {partner.name}
+              </p>
             </div>
           ))}
         </div>
