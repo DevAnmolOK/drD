@@ -95,7 +95,6 @@ export default function NavigationBar({ navBar, productMenu }: any) {
 
     fetchResults();
   }, [debouncedQuery]);
-
   const url = process.env.NEXT_PUBLIC_PRODUCT_URL;
   // const navItems = [
   //   { label: "Home", href: "/", active: true },
@@ -394,6 +393,7 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                   navigation={navBar?.menu}
                   logoUrl={headerImage?.src}
                   productMenu={productMenu}
+                  navBar={navBar}
                 />
               </div>
             </div>

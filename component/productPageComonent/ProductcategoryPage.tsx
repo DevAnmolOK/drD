@@ -139,11 +139,11 @@ export default function ProductcategoryPage({
           )}
 
           {/* End of products */}
-          {!hasMore && (
+          {/* {!hasMore && (
             <div className="text-center py-6 text-gray-500">
               No more products to load
             </div>
-          )}
+          )} */}
 
           {/* Infinite scroll target */}
           <div ref={observerRef} className="h-10" />
