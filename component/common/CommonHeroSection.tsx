@@ -12,7 +12,7 @@ export default function CommonHeroSection({
 }: CommonHeroSectionProps) {
   return (
     <section className="-mt-[6.35rem]">
-      <div className="relative min-h-[450px] flex items-center overflow-hidden bg-[#1e293b] pt-52 pb-20 ">
+      <div className="relative min-h-112.5 flex items-center overflow-hidden bg-[#1e293b] pt-52 pb-20 ">
         {heroSectionData?.background?.imageAlt && (
           <img
             alt={heroSectionData?.background?.imageAlt || "logo"}
@@ -24,7 +24,6 @@ export default function CommonHeroSection({
         )}
 
         <div className="absolute inset-0 bg-gradient-to-r from-[#1e293b] via-[#1e293b]/70 to-transparent"></div>
-
         <div className="relative wrapper mx-auto z-10  w-full">
           <div className="">
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">
@@ -40,7 +39,6 @@ export default function CommonHeroSection({
                 {heroSectionData?.description}
               </p>
             )}
-
             <div className="flex flex-wrap gap-4">
               <Link
                 href={`${heroSectionData?.buttonLink}`}
