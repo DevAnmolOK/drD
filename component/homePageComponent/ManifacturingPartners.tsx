@@ -34,7 +34,10 @@ export default function ManufacturingPartners({
   return (
     <div className="w-full bg-white py-16 md:px-20">
       <div className="wrapper m-auto items-center text-center">
-        <TagBadge text={tag} className="mb-4" />
+        <TagBadge
+          text={tag}
+          className="mb-4 text-[0.75rem] font-medium text-[#253746]"
+        />
 
         <h3 className="text-2xl md:text-[3rem] font-semibold text-[#000] leading-tight mb-6">
           {title}
