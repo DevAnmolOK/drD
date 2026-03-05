@@ -6,6 +6,16 @@ import Footer from "@/component/layOut/Footer";
 import localFont from "next/font/local";
 import fetchProductMenu from "@/utills/fetchProductMenu";
 import { CommonEndPoints } from "../lib/service/CommonEndPoints";
+import { getNewLaunchesProducts } from "@/utills/newLaunches";
+import { getUpcomingProducts } from "@/utills/getUpcomingProducts";
+import { getPromotionalOffers } from "@/utills/getPromotionalOffers";
+import { fetchOffers } from "@/utills/fetchOffers";
+import { fetchCertificates } from "@/utills/fetchCertificates";
+import { BlogEndPoints } from "@/lib/service/BlogsEndPoints";
+
+interface NewLaunchProductsProps {
+  params: Promise<{ typeId: string }>;
+}
 
 const sans = localFont({
   src: "../public/fonts/DMSans-VariableFont_opsz,wght.ttf",
@@ -37,22 +47,30 @@ export default async function RootLayout({
   const navBar = await CommonEndPoints.menu();
   const footer = await CommonEndPoints.footerMenu();
   const productMenu = await fetchProductMenu();
-  const navItems = [
-    { label: "Home", href: "/", active: true },
-    { label: "About Us", href: "/about-us" },
-    { label: "Facility", href: "/facility" },
-    { label: "Products", href: "/product" },
-    { label: "Our Divisions", href: "/our-divisions" },
-    { label: "New Launches", href: "/new-launches" },
-    { label: "Gallery", href: "/gallery" },
-  ];
+  const newLaunchProducts = await getNewLaunchesProducts();
+  const upcomingProducts = await getUpcomingProducts();
+  const { promo } = await getPromotionalOffers();
+  const { validOffers, expiredOffers } = await fetchOffers();
+  const { certificates } = await fetchCertificates();
+  const AllBlogs = await BlogEndPoints.blogList();
+
   return (
     <html lang="en">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body className={`${sans.variable} antialiased`}>
-        <NavigationBar navBar={navBar} productMenu={productMenu} />
+        <NavigationBar
+          navBar={navBar}
+          productMenu={productMenu}
+          certificates={certificates}
+          AllBlogs={AllBlogs}
+          newLaunchProducts={newLaunchProducts}
+          upCommingProducts={upcomingProducts}
+          validOffers={validOffers}
+          expiredOffers={expiredOffers}
+          promo={promo}
+        />
         {children}
         <Footer data={footer} />
       </body>

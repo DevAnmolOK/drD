@@ -12,7 +12,17 @@ import { BiCaretDown } from "react-icons/bi";
 import MobileNav from "./MobileNav";
 import { usePathname } from "next/navigation";
 
-export default function NavigationBar({ navBar, productMenu }: any) {
+export default function NavigationBar({
+  navBar,
+  productMenu,
+  certificates,
+  AllBlogs,
+  newLaunchProducts,
+  upCommingProducts,
+  validOffers,
+  expiredOffers,
+  promo,
+}: any) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
