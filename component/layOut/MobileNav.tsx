@@ -294,10 +294,10 @@ export default function MobileNav({
                 {/* Regular Dropdown */}
                 {haveChild && !isProduct && openDropdown === data.id && (
                   <div className="bg-gray-50 border-t border-gray-200">
-                    {data.submenu.map((child: any, childIndex: number) => (
+                    {data?.submenu?.map((child: any, childIndex: number) => (
                       <a
                         key={childIndex}
-                        href={child?.slug?.slug ? `${child.slug.slug}` : "#"}
+                        href={child?.href ? `${child.href}` : "#"}
                         className="block px-6 py-3 text-plg font-normal text-subitle hover:text-link border-b border-gray-200 last:border-b-0"
                         onClick={toggleNav}
                       >
