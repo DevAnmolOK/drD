@@ -52,7 +52,7 @@ export default function OurDivison({ data }: any) {
                   {item.title}
                 </h3>
                 {item.subtitle && (
-                  <p className="text-base font-medium text-primary mb-2">
+                  <p className="text-base font-medium text-primary mb-2 leading-clamp-2 h-12">
                     {item.subtitle}
                   </p>
                 )}
