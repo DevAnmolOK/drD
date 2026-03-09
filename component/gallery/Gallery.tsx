@@ -101,11 +101,11 @@ export default function Gallery({ galleryData }: any) {
         //           </div>
         //         </div>
         <div
-          className="fixed inset-0 z-50 bg-black/80 flex items-center justify-center p-4 cursor-pointer"
+          className="fixed inset-0 z-100 bg-black/80 flex items-center justify-center p-4 cursor-pointer "
           onClick={() => setActiveImage(null)}
         >
           <div
-            className="relative w-fit max-w-5xl max-h-[90vh] flex flex-col items-center"
+            className="relative w-fit max-w-5xl max-h-[50vh] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button

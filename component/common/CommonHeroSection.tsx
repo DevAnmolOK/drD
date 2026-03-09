@@ -42,7 +42,7 @@ export default function CommonHeroSection({
             <div className="flex flex-wrap gap-4">
               <Link
                 href={`${heroSectionData?.buttonLink}`}
-                className="rounded-full px-6 py-3  bg-secondary text-white align-middle leading-[1.4063]  text-base font-semibold  hover:bg-red-700 transition flex items-center"
+                className="rounded-full px-6 py-3  bg-secondary text-white align-middle leading-[1.4063]  text-base font-semibold  hover:bg-red-700 transition flex items-center z-0 "
               >
                 {heroSectionData?.buttonText}{" "}
                 <span className="material-symbols-outlined text-xl">
