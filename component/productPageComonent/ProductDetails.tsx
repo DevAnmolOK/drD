@@ -135,7 +135,7 @@ export default function ClientProductDetails({
                   src={
                     orderedImages[selectedImage]
                       ? `${baseUrl}/${orderedImages[selectedImage]?.url}`
-                      : "/placeholder.jpg"
+                      : "/fallback.png"
                   }
                   alt={singleProduct?.[0]?.name || "Product Image"}
                   fill
@@ -158,9 +158,7 @@ export default function ClientProductDetails({
                     >
                       <Image
                         src={
-                          img?.url
-                            ? `${baseUrl}/${img?.url}`
-                            : "/placeholder.jpg"
+                          img?.url ? `${baseUrl}/${img?.url}` : "/fallback.png"
                         }
                         fill
                         unoptimized

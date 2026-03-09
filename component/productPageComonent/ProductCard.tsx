@@ -50,7 +50,7 @@ export default function ProductCard({ data }: ProductCardProps) {
                     )}
                     {data?.upcoming && (
                       <div className=" text-pxs bg-secondary/80 text-black animate-pulse shadow-lg ml-[1rem] flex items-center text-nowrap  font-medium px-3 py-0.5 rounded-[0.25rem] text-primary2">
-                        Upcomming !
+                        Upcoming !
                       </div>
                     )}
                   </div>
@@ -93,7 +93,7 @@ export default function ProductCard({ data }: ProductCardProps) {
               <div className="w-[40%]   flex items-center justify-center rounded-[0.75rem] border   border-gray-100 bg-gray-50">
                 <div className="relative aspect-square w-[12rem] overflow-hidden">
                   <Image
-                    src={imageUrl}
+                    src={imageUrl || "/fallback.png"}
                     alt={data.name}
                     fill
                     className="object-contain "

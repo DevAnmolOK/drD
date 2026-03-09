@@ -107,7 +107,7 @@ const ProductEnquiryModal: React.FC<EnquiryModalProps> = ({
                   src={
                     data?.images?.[0]?.url
                       ? `${baseUrl}/${data?.images?.[0]?.url}`
-                      : "/fallback/f7.png"
+                      : "/fallback.png"
                   }
                   fill
                   className="object-contain "
@@ -155,7 +155,7 @@ const ProductEnquiryModal: React.FC<EnquiryModalProps> = ({
                     src={
                       data?.images?.[0]?.url
                         ? `${baseUrl}/${data?.images?.[0]?.url}`
-                        : "/fallback/f7.png"
+                        : "/fallback.png"
                     }
                     fill
                     className="object-cover"
