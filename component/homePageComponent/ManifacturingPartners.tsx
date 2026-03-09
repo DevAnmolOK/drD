@@ -29,19 +29,22 @@ import Image from "next/image";
 export default function ManufacturingPartners({
   homeManufacturingPartners,
 }: any) {
-  const { tag, title, partners } = homeManufacturingPartners.data || {};
+  const { tag, title, partners, group_logo } =
+    homeManufacturingPartners.data || {};
 
   return (
     <div className="w-full bg-white py-16 md:px-20">
-      <div className="wrapper m-auto items-center text-center">
-        <TagBadge
-          text={tag}
-          className="mb-4 text-[0.75rem] font-medium text-[#253746]"
-        />
-        <h3 className="text-2xl md:text-[3rem] font-semibold text-black leading-tight mb-6">
-          {title}
-        </h3>
-        <div className="flex flex-wrap justify-center">
+      <div className="wrapper m-auto  grid grid-cols-1 lg:grid-cols-2 gap-5 items-center ">
+        <div>
+          <TagBadge
+            text={tag}
+            className="mb-4 text-[0.75rem] font-medium text-[#253746]"
+          />
+          <h3 className="text-2xl md:text-[3.5rem] font-semibold text-black mb-6 leading-8 md:leading-[3.75rem]">
+            {title}
+          </h3>
+        </div>
+        {/* <div className="flex flex-wrap justify-center">
           {partners?.map((partner: any, index: number) => (
             <div
               key={index}
@@ -62,6 +65,15 @@ export default function ManufacturingPartners({
               </p>
             </div>
           ))}
+        </div> */}
+        <div>
+          <Image
+            src={group_logo}
+            alt={title}
+            width={900}
+            height={400}
+            className="h-[18.75rem] md:h-[31.25rem] lg:h-[37.5rem] w-full object-contain "
+          />
         </div>
       </div>
     </div>
