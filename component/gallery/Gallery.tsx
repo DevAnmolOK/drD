@@ -29,10 +29,10 @@ export default function Gallery({ galleryData }: any) {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
   return (
-    <div className="bg-white">
-      <div className="wrapper m-auto lg:px-0 px-4 py-10">
+    <div className="bg-white py-10">
+      <div className="wrapper m-auto lg:px-0 px-4 ">
         <SectionHeading
-          cssClass="text-left"
+          cssClass="text-center"
           title={heading}
           subTitle={subHeading}
         />
@@ -105,12 +105,12 @@ export default function Gallery({ galleryData }: any) {
           onClick={() => setActiveImage(null)}
         >
           <div
-            className="relative w-fit max-w-5xl max-h-[50vh] flex flex-col items-center"
+            className="relative w-fit max-w-5xl max-h-[50rem] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setActiveImage(null)}
-              className="absolute -top-12 -right-2 md:-right-8 bg-white hover:bg-black text-black hover:text-white rounded-full p-2 shadow-lg transition transform hover:scale-110 z-50"
+              className="absolute -top-12 -right-2 md:-right-8 bg-white hover:bg-secondary text-black hover:text-white rounded-full p-2 shadow-lg transition transform hover:scale-110 z-50"
             >
               <FiX size={24} />
             </button>

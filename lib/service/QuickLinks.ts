@@ -35,4 +35,11 @@ export const QuickLinksPageEndPoints = {
       cache: "dynamic",
     });
   },
+
+  getEventsBanner: () => {
+    return apiFetch({
+      endpoint: "/page/events",
+      cache: "dynamic",
+    });
+  },
 };
