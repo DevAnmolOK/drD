@@ -16,6 +16,7 @@ import PtrPtsCalculator from "@/component/homePageComponent/CalculatorPTR";
 import LatestBlogs from "@/component/homePageComponent/LatestBlogs";
 import { HomePageEndPoints } from "@/lib/service/HomePageEndPoints";
 import fetchProducts from "@/utills/fetchProdutcs";
+import VideoBanner from "@/component/video/VideoBanner";
 
 export default async function Home() {
   const homeBannerSection = await HomePageEndPoints.homeBannerSection();
@@ -34,6 +35,7 @@ export default async function Home() {
   const homeGlobalFootprint = await HomePageEndPoints.homeGlobalFootprint();
   const homeProductListing = await HomePageEndPoints.homeProductListing();
   const produts = await fetchProducts();
+  const { data } = await HomePageEndPoints.homeVideoSection();
 
   return (
     <>
@@ -44,6 +46,7 @@ export default async function Home() {
       <ProductRange homeProductRange={homeProductRange} />
       <DirectorDivisions homeDirectorData={homeDirectorData} />
       <PcdFranchise homeLifeEasy={homeLifeEasy} />
+      <VideoBanner homeVideoSection={data} />
       <ManifacturingPartners
         homeManufacturingPartners={homeManufacturingPartners}
       />

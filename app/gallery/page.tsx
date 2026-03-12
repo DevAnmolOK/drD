@@ -7,6 +7,7 @@ import React from "react";
 export default async function page() {
   const data = await GalleryPageEndPoints.gallery();
   const { GalleryData, faq, heroSectionData } = data;
+
   return (
     <div>
       <CommonHeroSection heroSectionData={heroSectionData} />
