@@ -12,7 +12,17 @@ import { BiCaretDown } from "react-icons/bi";
 import MobileNav from "./MobileNav";
 import { usePathname } from "next/navigation";
 
-export default function NavigationBar({ navBar, productMenu }: any) {
+export default function NavigationBar({
+  navBar,
+  productMenu,
+  certificates,
+  AllBlogs,
+  newLaunchProducts,
+  upCommingProducts,
+  validOffers,
+  expiredOffers,
+  promo,
+}: any) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -28,6 +38,7 @@ export default function NavigationBar({ navBar, productMenu }: any) {
   const { buttonLink, buttonName, headerImage, menu } = navBar || {};
   const pathname = usePathname();
   const debouncedQuery = useDebounce(searchQuery, 500);
+  const shouldUseSolidHeader = scrolled || pathname !== "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -95,7 +106,6 @@ export default function NavigationBar({ navBar, productMenu }: any) {
 
     fetchResults();
   }, [debouncedQuery]);
-
   const url = process.env.NEXT_PUBLIC_PRODUCT_URL;
 
   return (
@@ -108,13 +118,15 @@ export default function NavigationBar({ navBar, productMenu }: any) {
         <div className="  h-full  h-[4.625rem] w-full max-w-[101.625rem] flex items-center justify-between 2xl:px-0 sm:px-8 px-6">
           <Link href="/">
             <div className="flex items-center gap-3 relative w-[5.625rem] h-[4.625rem] ">
-              <Image
-                src="/images/dpharma-logo.svg"
-                alt="Dr D Pharma"
-                fill
-                unoptimized
-                className=""
-              />
+              {headerImage?.src && (
+                <Image
+                  src={headerImage?.src}
+                  alt="Dr D Pharma"
+                  fill
+                  unoptimized
+                  className=""
+                />
+              )}
             </div>
           </Link>
           <div className=" flex flex-row gap-12">
@@ -207,35 +219,37 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                       </Link>
                     )}
 
-                    {/* Dropdown menu for Products */}
-                    {isProduct && (
-                      <div className="absolute -left-1 rounded-[0.5rem] hidden group-hover:block bg-white custom-drop-shadow2 z-50 w-fit max-w-[15rem]">
-                        {productCategoryArray
-                          ?.filter((category: any) => category.data?.length > 0)
-                          .map((category: any, categoryIndex: any) => (
-                            <div
-                              className="relative group"
-                              key={categoryIndex}
-                              onMouseEnter={() =>
-                                setHoveredProductCategory(categoryIndex)
-                              }
-                              onMouseLeave={() =>
-                                setHoveredProductCategory(null)
-                              }
-                            >
-                              <div className="block border-b border-b-[#e8e8e8] hover:border-b mx-1 hover:border-b-secondary cursor-pointer group">
-                                <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 text-nowrap mb-0.5 py-3 flex justify-between ">
-                                  <span className="">{category.key}</span>
-                                  <span className="">
-                                    {category.data?.length > 0 && (
-                                      <BiCaretDown
-                                        className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
-                                        size={14}
-                                      />
-                                    )}
-                                  </span>
+                      {/* Dropdown menu for Products */}
+                      {isProduct && (
+                        <div className="absolute -left-1 rounded-[0.5rem] hidden group-hover:block bg-white custom-drop-shadow2 z-50 w-fit max-w-[15rem]">
+                          {productCategoryArray
+                            ?.filter(
+                              (category: any) => category.data?.length > 0,
+                            )
+                            .map((category: any, categoryIndex: any) => (
+                              <div
+                                className="relative group"
+                                key={categoryIndex}
+                                onMouseEnter={() =>
+                                  setHoveredProductCategory(categoryIndex)
+                                }
+                                onMouseLeave={() =>
+                                  setHoveredProductCategory(null)
+                                }
+                              >
+                                <div className="block border-b border-b-[#e8e8e8] hover:border-b mx-1 hover:border-b-secondary cursor-pointer group">
+                                  <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 text-nowrap mb-0.5 py-3 flex justify-between ">
+                                    <span className="">{category.key}</span>
+                                    <span className="">
+                                      {category.data?.length > 0 && (
+                                        <BiCaretDown
+                                          className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
+                                          size={14}
+                                        />
+                                      )}
+                                    </span>
+                                  </div>
                                 </div>
-                              </div>
 
                               {category.data?.length > 0 && (
                                 <ul
@@ -356,6 +370,7 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                   navigation={navBar?.menu}
                   logoUrl={headerImage?.src}
                   productMenu={productMenu}
+                  navBar={navBar}
                 />
               </div>
             </div>

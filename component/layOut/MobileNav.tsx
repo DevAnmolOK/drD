@@ -27,12 +27,14 @@ interface MobileNavProp {
   therapathic?: any;
   speciality?: any;
   productMenu: any;
+  navBar?: any;
 }
 
 export default function MobileNav({
   navigation,
   logoUrl,
   productMenu,
+  navBar,
 }: MobileNavProp) {
   const [isOpen, setIsOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
@@ -41,6 +43,7 @@ export default function MobileNav({
     null,
   );
   const pathname = "/"; // Replace with usePathname() if needed
+  const { buttonLink, buttonName } = navBar || {};
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
@@ -70,25 +73,25 @@ export default function MobileNav({
       key: "Product Form",
       data: productMenu?.productTypes || [],
       paramKey: "type_slug", // Parent key
-      route: "/product-forms",
+      route: "#",
     },
     {
       key: "Therapathic",
       data: productMenu?.categories || [],
       paramKey: "therapatic_slug",
-      route: "/product-category",
+      route: "#",
     },
     {
       key: "Concerns",
       data: productMenu?.concerns || [],
       paramKey: "concern_slug",
-      route: "/product-concern",
+      route: "#",
     },
     {
       key: "Speciality",
       data: productMenu?.specialities || [],
       paramKey: "speciality_slug",
-      route: "/product-speciality",
+      route: "#",
     },
   ];
 
@@ -310,11 +313,11 @@ export default function MobileNav({
           {/* Contact Us Button */}
           <div className="px-4 py-8">
             <a
-              href="/contact"
+              href={buttonLink || "/contact-us"}
               className="block w-full bg-secondary text-white text-center py-3 px-6 rounded-lg font-semibold text-pxl"
               onClick={toggleNav}
             >
-              Contact Us →
+              {buttonName || "Contact Us"} →
             </a>
           </div>
         </div>

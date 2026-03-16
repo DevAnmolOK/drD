@@ -3,7 +3,6 @@
 import { apiFetch, apiPost } from "../api/fetcher";
 
 export const HomePageEndPoints = {
-
   homeBannerSection: () => {
     return apiFetch({
       endpoint: "section/home-banner-section",
@@ -23,8 +22,7 @@ export const HomePageEndPoints = {
       endpoint: "section/home-director-data",
       cache: "dynamic",
     });
-  },  
-
+  },
 
   homeTrustedBy: () => {
     return apiFetch({
@@ -46,14 +44,14 @@ export const HomePageEndPoints = {
       cache: "dynamic",
     });
   },
-  
+
   homeLifeEasy: () => {
     return apiFetch({
       endpoint: "section/home-life-easy",
       cache: "dynamic",
     });
   },
- 
+
   homeManufacturingPartners: () => {
     return apiFetch({
       endpoint: "section/home-manufacturing-partners",
@@ -61,12 +59,12 @@ export const HomePageEndPoints = {
     });
   },
 
-  homeChooseUs: () => { 
+  homeChooseUs: () => {
     return apiFetch({
       endpoint: "section/home-choose-us",
       cache: "dynamic",
     });
-  } ,
+  },
 
   homeBlogs: () => {
     return apiFetch({
@@ -80,7 +78,7 @@ export const HomePageEndPoints = {
       endpoint: "section/home-testimonials",
       cache: "dynamic",
     });
-  } ,
+  },
 
   homeOurStrengths: () => {
     return apiFetch({
@@ -102,5 +100,12 @@ export const HomePageEndPoints = {
       endpoint: "section/home-product-listing",
       cache: "dynamic",
     });
-  }
+  },
+  // /api/v1/section/home-video-section
+  homeVideoSection: () => {
+    return apiFetch({
+      endpoint: "section/home-video-section",
+      cache: "dynamic",
+    });
+  },
 };

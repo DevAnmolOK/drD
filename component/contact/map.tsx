@@ -12,9 +12,7 @@ export default function Map({ data }: MapProps) {
             {data?.heading_end}
           </p>
         </div>
-
         <div className="bg-gray-200 h-96 rounded-lg overflow-hidden">
-          {/* You would integrate a real map here */}
           <div className="w-full  h-full  flex items-center justify-center">
             <iframe
               loading="lazy"
@@ -25,11 +23,8 @@ export default function Map({ data }: MapProps) {
               height={"500"}
               style={{
                 border: 0,
-
                 margin: 0,
-
                 padding: 0,
-
                 // filter:
                 //   "brightness(100%) contrast(100%) saturate(0%) blur(0px) hue-rotate(0deg)",
               }}

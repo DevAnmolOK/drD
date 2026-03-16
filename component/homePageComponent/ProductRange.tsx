@@ -1,7 +1,7 @@
-import Image from 'next/image';
-import { FiArrowRight } from 'react-icons/fi';
-import TagBadge from '../ui/TagBadge';
-import Button from '../ui/Button';
+import Image from "next/image";
+import { FiArrowRight } from "react-icons/fi";
+import TagBadge from "../ui/TagBadge";
+import Button from "../ui/Button";
 
 // const ayurvedicData = {
 //   tag: 'OUR PRODUCT RANGE',
@@ -43,48 +43,49 @@ import Button from '../ui/Button';
 export default function ProductRange({ homeProductRange }: any) {
   const { tag, title, description, cta, cards } = homeProductRange?.data || {};
   return (
-    <section className='bg-white py-14 md:py-16'>
-      <div className='wrapper mx-auto px-4 sm:px-6 lg:px-0'>
-        <div className='flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-10'>
-          <div className='max-w-5xl'>
-             <TagBadge text={tag} className='mb-4'/>
-            <h2 className='text-2xl sm:text-3xl lg:text-[42px] leading-tight text-[#253746]'>
+    <section className="bg-white py-14 md:py-16">
+      <div className="wrapper mx-auto px-4 sm:px-6 lg:px-0">
+        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2 mb-10">
+          <div className="max-w-5xl">
+            <TagBadge text={tag} className="mb-4" />
+            <h2 className="text-2xl sm:text-3xl lg:text-[42px] leading-tight text-[#253746]">
               {title.line}
-              <span className='font-semibold mx-2'>{ title.line1}</span>
+              <span className="font-semibold mx-2">{title.line1}</span>
               <br />
               {title.line2}
             </h2>
 
-            <p className='text-[#626263] mt-3 text-sm sm:text-base leading-relaxed'>
+            <p className="text-[#626263] mt-3 text-sm sm:text-base leading-relaxed">
               {description}
             </p>
           </div>
-      <div className='py-3 lg:py-0'>
-            <Button href={cta?.link}>
-            {cta.label}
-          </Button>
-      </div>
+          <div className="py-3 lg:py-0">
+            <Button href={cta?.link}>{cta.label}</Button>
+          </div>
         </div>
 
         {/* Cards */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5'>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {cards.map((card: any, i: any) => (
             <div
               key={i}
-              className='bg-[#F5F5F5] rounded-[16px] p-6 min-h-[160px] flex flex-col gap-3  '>
-              <div className='text-2xl'>
-                <Image
-                  src={card?.icon}
-                  alt='icon'
-                  height={48}
-                  width={50}
-                  className='object-contain'
-                />
+              className="bg-[#F5F5F5] rounded-[16px] p-6 min-h-[160px] flex flex-col gap-3  "
+            >
+              <div className="text-2xl">
+                {card?.icon && (
+                  <Image
+                    src={card?.icon}
+                    alt="icon"
+                    height={48}
+                    width={50}
+                    className="object-contain"
+                  />
+                )}
               </div>
-              <h3 className='text-[#253746] font-normal text-2xl'>
+              <h3 className="text-[#253746] font-normal text-2xl">
                 {card.title}
               </h3>
-              <p className='text-[#626263] text-base leading-relaxed font-normal'>
+              <p className="text-[#626263] text-base leading-relaxed font-normal">
                 {card.text}
               </p>
             </div>
