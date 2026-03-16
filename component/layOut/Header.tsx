@@ -97,28 +97,10 @@ export default function NavigationBar({ navBar, productMenu }: any) {
   }, [debouncedQuery]);
 
   const url = process.env.NEXT_PUBLIC_PRODUCT_URL;
-  // const navItems = [
-  //   { label: "Home", href: "/", active: true },
-  //   { label: "About Us", href: "/about-us" },
-  //   { label: "Facility", href: "/facility" },
-  //   { label: "Products", href: "/product" },
-  //   { label: "Our Divisions", href: "/our-divisions" },
-  //   { label: "New Launches", href: "/new-launches" },
-  //   { label: "Gallery", href: "/gallery" },
-  // ];
 
   return (
     <>
-      {/* <div
-        className={`
-    w-full items-center justify-center flex h-[6.25rem]
-    sticky top-0 z-100              
-    border-b border-[#FFFFFF2E]
-    transition-all duration-300
-    ${scrolled ? "bg-[#051B2E] backdrop-blur-md shadow-md" : "bg-transparent"}
-  `} 
-      >
-  */}
+
       <div
         className={`w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] ${scrolled ? " bg-linear-to-r from-[#1c2a3a]/90 via-[#1f2f44]/90 to-[#16222f]/90 " : "bg-transparent"} `}
       >
@@ -141,23 +123,6 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                 const isProduct = item?.label === "Product";
                 const haveChild =
                   item?.is_dropdown && item?.submenu?.length > 0;
-                // const isActive =
-                //   pathname === item?.href ||
-                //   (item?.href !== "/" && pathname?.startsWith(item?.href));
-                // const isActive = (() => {
-                //   if (pathname === item?.href) return true;
-
-                //   if (item?.href !== "/" && pathname?.startsWith(item?.href))
-                //     return true;
-
-                //   if (item?.is_dropdown && item?.submenu?.length > 0) {
-                //     return item.submenu.some((child: any) =>
-                //       pathname?.startsWith(child?.href),
-                //     );
-                //   }
-
-                //   return false;
-                // })();
                 const isActive = (() => {
                   // 1 Exact match
                   if (pathname === item?.href) return true;
@@ -189,20 +154,19 @@ export default function NavigationBar({ navBar, productMenu }: any) {
 
                 return (
                   <div
-                    className={`relative group px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${
-                      isActive
-                        ? "text-white border-b border-white"
-                        : "text-white"
-                    }`}
+                    className={`relative group px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${isActive
+                      ? "text-white border-b border-white"
+                      : "text-white"
+                      }`}
                     key={index}
                   >
                     {isProduct ? (
                       <Link
                         href={item?.href || "#"}
                         className="hover:text-red-600 transition"
-                        //     onClick={() => {
-                        //       setTimeout(() => router.refresh(), 50);
-                        //     }}
+                      //     onClick={() => {
+                      //       setTimeout(() => router.refresh(), 50);
+                      //     }}
                       >
                         {
                           <div
@@ -231,9 +195,9 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                       <Link
                         href={item?.href || "#"}
                         className="hover:text-red-600 transition"
-                        // onClick={() => {
-                        //   setTimeout(() => router.refresh(), 50);
-                        // }}
+                      // onClick={() => {
+                      //   setTimeout(() => router.refresh(), 50);
+                      // }}
                       >
                         <div
                           className={`cursor-pointer text-[1.0369rem] font-inter font-medium  text-nowrap flex items-center gap-1 `}
@@ -275,11 +239,10 @@ export default function NavigationBar({ navBar, productMenu }: any) {
 
                               {category.data?.length > 0 && (
                                 <ul
-                                  className={`absolute overflow-visible max-h-[25rem] overflow-y-scroll left-full top-0 rounded-[0.5rem] bg-white custom-drop-shadow2 z-[50] w-fit min-w-[15rem] ${
-                                    hoveredProductCategory === categoryIndex
-                                      ? "block"
-                                      : "hidden"
-                                  }`}
+                                  className={`absolute overflow-visible max-h-[25rem] overflow-y-scroll left-full top-0 rounded-[0.5rem] bg-white custom-drop-shadow2 z-[50] w-fit min-w-[15rem] ${hoveredProductCategory === categoryIndex
+                                    ? "block"
+                                    : "hidden"
+                                    }`}
                                 >
                                   {category.data.map(
                                     (item: any, itemIndex: any) => {
@@ -340,6 +303,7 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                           ))}
                       </div>
                     )}
+
                     {/* Other dropdown menus */}
                     {haveChild && !isProduct && (
                       <div className="absolute overflow-hidden -left-1 rounded-[0.5rem] hidden group-hover:block bg-white custom-drop-shadow2 z-50 w-fit max-w-[15rem]">
@@ -474,9 +438,9 @@ export default function NavigationBar({ navBar, productMenu }: any) {
                                 src={
                                   item?.images?.[0]?.url
                                     ? `${url}/${item?.images?.[0]?.url.replace(
-                                        /^\/+/,
-                                        "",
-                                      )}`
+                                      /^\/+/,
+                                      "",
+                                    )}`
                                     : "/images/fallback.png"
                                 }
                                 height={100}
