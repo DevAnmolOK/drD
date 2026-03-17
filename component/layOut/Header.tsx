@@ -110,18 +110,9 @@ export default function NavigationBar({
 
   return (
     <>
-      {/* <div
-        className={`
-    w-full items-center justify-center flex h-[6.25rem]
-    sticky top-0 z-100              
-    border-b border-[#FFFFFF2E]
-    transition-all duration-300
-    ${scrolled ? "bg-[#051B2E] backdrop-blur-md shadow-md" : "bg-transparent"}
-  `} 
-      >
-  */}
+
       <div
-        className={`w-full items-center justify-center flex h-[6.25rem] z-999 sticky top-0 border-b border-[#FFFFFF2E] ${shouldUseSolidHeader ? "bg-linear-to-r from-[#1c2a3a]/90 via-[#1f2f44]/90 to-[#16222f]/90" : "bg-transparent"} `}
+        className={`w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] ${shouldUseSolidHeader ? " bg-linear-to-r from-[#1c2a3a]/90 via-[#1f2f44]/90 to-[#16222f]/90 " : "bg-transparent"} `}
       >
         {/* <div className="w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] "> */}
         <div className="  h-full  h-[4.625rem] w-full max-w-[101.625rem] flex items-center justify-between 2xl:px-0 sm:px-8 px-6">
@@ -140,125 +131,93 @@ export default function NavigationBar({
           </Link>
           <div className=" flex flex-row gap-12">
             <nav className={`hidden lg:flex items-center  gap-8  text-white`}>
-              {menu
-                ?.filter((item: any) => {
-                  const label = item.label;
-                  if (label === "Certificates") return certificates?.length > 0;
-                  if (label === "Blogs") return AllBlogs?.data?.length > 0;
-                  if (label === "New Launches")
-                    return newLaunchProducts?.products?.length > 0;
-                  if (label === "Coming Soon")
-                    return upCommingProducts?.products?.length > 0;
-                  if (label === "Offers")
-                    return validOffers?.length > 0 || expiredOffers?.length > 0;
-                  if (label === "Promotions") return promo?.length > 0;
-                  return true;
-                })
-                .map((item: any, index: any) => {
-                  const isProduct = item?.label === "Product";
-                  const haveChild =
-                    item?.is_dropdown && item?.submenu?.length > 0;
-                  // const isActive =
-                  //   pathname === item?.href ||
-                  //   (item?.href !== "/" && pathname?.startsWith(item?.href));
-                  // const isActive = (() => {
-                  //   if (pathname === item?.href) return true;
-
-                  //   if (item?.href !== "/" && pathname?.startsWith(item?.href))
-                  //     return true;
-
-                  //   if (item?.is_dropdown && item?.submenu?.length > 0) {
-                  //     return item.submenu.some((child: any) =>
-                  //       pathname?.startsWith(child?.href),
-                  //     );
-                  //   }
-
-                  //   return false;
-                  // })();
-                  const isActive = (() => {
-                    // 1 Exact match
-                    if (pathname === item?.href) return true;
-                    //  If dropdown → check submenu first
-                    if (item?.is_dropdown && item?.submenu?.length > 0) {
-                      const submenuMatch = item.submenu.some((child: any) =>
-                        pathname?.startsWith(child?.href),
-                      );
-                      if (submenuMatch) return true;
-                    }
-                    //  Special case: prevent Product from activating
-                    if (
-                      item?.label === "Product" &&
-                      (pathname?.startsWith("/product/new-launch-products") ||
-                        pathname?.startsWith("/product/upcoming-products"))
-                    ) {
-                      return false;
-                    }
-                    //  Normal parent match
-                    if (
-                      item?.href !== "/" &&
-                      item?.href !== "#" &&
-                      pathname?.startsWith(item?.href)
-                    ) {
-                      return true;
-                    }
+              {menu?.map((item: any, index: any) => {
+                const isProduct = item?.label === "Product";
+                const haveChild =
+                  item?.is_dropdown && item?.submenu?.length > 0;
+                const isActive = (() => {
+                  // 1 Exact match
+                  if (pathname === item?.href) return true;
+                  //  If dropdown → check submenu first
+                  if (item?.is_dropdown && item?.submenu?.length > 0) {
+                    const submenuMatch = item.submenu.some((child: any) =>
+                      pathname?.startsWith(child?.href),
+                    );
+                    if (submenuMatch) return true;
+                  }
+                  //  Special case: prevent Product from activating
+                  if (
+                    item?.label === "Product" &&
+                    (pathname?.startsWith("/product/new-launch-products") ||
+                      pathname?.startsWith("/product/upcoming-products"))
+                  ) {
                     return false;
-                  })();
+                  }
+                  //  Normal parent match
+                  if (
+                    item?.href !== "/" &&
+                    item?.href !== "#" &&
+                    pathname?.startsWith(item?.href)
+                  ) {
+                    return true;
+                  }
+                  return false;
+                })();
 
-                  return (
-                    <div
-                      className={`relative group px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${
-                        isActive
-                          ? "text-white border-b border-white"
-                          : "text-white"
+                return (
+                  <div
+                    className={`relative group px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${isActive
+                      ? "text-white border-b border-white"
+                      : "text-white"
                       }`}
-                      key={index}
-                    >
-                      {isProduct ? (
-                        <Link
-                          href={item?.href || "#"}
-                          className="hover:text-red-600 transition"
-                          //     onClick={() => {
-                          //       setTimeout(() => router.refresh(), 50);
-                          //     }}
-                        >
-                          {
-                            <div
-                              className={`cursor-pointer text-[1.0369rem] font-inter font-medium text-nowrap flex items-center gap-1 `}
-                            >
-                              {item.label}
-
-                              <BiCaretDown
-                                className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
-                                size={18}
-                              />
-                            </div>
-                          }
-                        </Link>
-                      ) : haveChild ? (
-                        <button
-                          className={`cursor-pointer hover:text-red-600 transition text-[1.0369rem] font-inter font-medium  text-nowrap flex items-center gap-1 `}
-                        >
-                          {item.label}
-                          <BiCaretDown
-                            className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
-                            size={18}
-                          />
-                        </button>
-                      ) : (
-                        <Link
-                          href={item?.href || "#"}
-                          className="hover:text-red-600 transition"
-                          // onClick={() => {
-                          //   setTimeout(() => router.refresh(), 50);
-                          // }}
-                        >
+                    key={index}
+                  >
+                    {isProduct ? (
+                      <Link
+                        href={item?.href || "#"}
+                        className="hover:text-red-600 transition"
+                      //     onClick={() => {
+                      //       setTimeout(() => router.refresh(), 50);
+                      //     }}
+                      >
+                        {
                           <div
-                            className={`cursor-pointer text-[1.0369rem] font-inter font-medium  text-nowrap flex items-center gap-1 `}
+                            className={`cursor-pointer text-[1.0369rem] font-inter font-medium text-nowrap flex items-center gap-1 `}
                           >
                             {item.label}
+
+                            <BiCaretDown
+                              className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
+                              size={18}
+                            />
                           </div>
-                        </Link>
-                      )}
+                        }
+                      </Link>
+                    ) : haveChild ? (
+                      <button
+                        className={`cursor-pointer hover:text-red-600 transition text-[1.0369rem] font-inter font-medium  text-nowrap flex items-center gap-1 `}
+                      >
+                        {item.label}
+                        <BiCaretDown
+                          className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
+                          size={18}
+                        />
+                      </button>
+                    ) : (
+                      <Link
+                        href={item?.href || "#"}
+                        className="hover:text-red-600 transition"
+                      // onClick={() => {
+                      //   setTimeout(() => router.refresh(), 50);
+                      // }}
+                      >
+                        <div
+                          className={`cursor-pointer text-[1.0369rem] font-inter font-medium  text-nowrap flex items-center gap-1 `}
+                        >
+                          {item.label}
+                        </div>
+                      </Link>
+                    )}
 
                       {/* Dropdown menu for Products */}
                       {isProduct && (
@@ -292,97 +251,97 @@ export default function NavigationBar({
                                   </div>
                                 </div>
 
-                                {category.data?.length > 0 && (
-                                  <ul
-                                    className={`absolute overflow-visible max-h-[25rem] overflow-y-scroll left-full top-0 rounded-[0.5rem] bg-white custom-drop-shadow2 z-[50] w-fit min-w-[15rem] ${
-                                      hoveredProductCategory === categoryIndex
-                                        ? "block"
-                                        : "hidden"
+                              {category.data?.length > 0 && (
+                                <ul
+                                  className={`absolute overflow-visible max-h-[25rem] overflow-y-scroll left-full top-0 rounded-[0.5rem] bg-white custom-drop-shadow2 z-[50] w-fit min-w-[15rem] ${hoveredProductCategory === categoryIndex
+                                    ? "block"
+                                    : "hidden"
                                     }`}
-                                  >
-                                    {category.data.map(
-                                      (item: any, itemIndex: any) => {
-                                        // Determine display name
-                                        let displayName =
-                                          item.type_name ||
-                                          item.name ||
-                                          item.title ||
-                                          item.label ||
-                                          "Not specified";
+                                >
+                                  {category.data.map(
+                                    (item: any, itemIndex: any) => {
+                                      // Determine display name
+                                      let displayName =
+                                        item.type_name ||
+                                        item.name ||
+                                        item.title ||
+                                        item.label ||
+                                        "Not specified";
 
-                                        // Replace any variant of "Na" with "Not specified"
-                                        if (/^na$/i.test(displayName.trim())) {
-                                          displayName = "Not-Specified";
-                                        }
+                                      // Replace any variant of "Na" with "Not specified"
+                                      if (/^na$/i.test(displayName.trim())) {
+                                        displayName = "Not-Specified";
+                                      }
 
-                                        displayName = displayName.replace(
-                                          /-/g,
-                                          " ",
-                                        );
-                                        return (
-                                          <li key={itemIndex}>
-                                            {/* {item?.slug && ( */}
-                                            <Link
-                                              href={
-                                                item.slug
-                                                  ? `${category.route}/${item.slug}`
-                                                  : `#`
-                                              }
-                                              onClick={() => {
-                                                //Save parent key in cookie
-                                                Cookies.set(
-                                                  "productMenuKey",
-                                                  category.paramKey,
-                                                  {
-                                                    path: "/",
-                                                  },
-                                                );
-                                                setTimeout(
-                                                  () => router.refresh(),
-                                                  50,
-                                                );
-                                              }}
-                                              className="block border-b border-b-[#e8e8e8] hover:border-b mx-1 hover:border-b-secondary text-nowrap min-w-[10rem]"
-                                            >
-                                              <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 w-full mb-0.5 py-3">
-                                                {displayName}
-                                              </div>
-                                            </Link>
-                                            {/* )} */}
-                                          </li>
-                                        );
-                                      },
-                                    )}
-                                  </ul>
-                                )}
+                                      displayName = displayName.replace(
+                                        /-/g,
+                                        " ",
+                                      );
+                                      return (
+                                        <li key={itemIndex}>
+                                          {/* {item?.slug && ( */}
+                                          <Link
+                                            href={
+                                              item.slug
+                                                ? `${category.route}/${item.slug}`
+                                                : `#`
+                                            }
+                                            onClick={() => {
+                                              //Save parent key in cookie
+                                              Cookies.set(
+                                                "productMenuKey",
+                                                category.paramKey,
+                                                {
+                                                  path: "/",
+                                                },
+                                              );
+                                              setTimeout(
+                                                () => router.refresh(),
+                                                50,
+                                              );
+                                            }}
+                                            className="block border-b border-b-[#e8e8e8] hover:border-b mx-1 hover:border-b-secondary text-nowrap min-w-[10rem]"
+                                          >
+                                            <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 w-full mb-0.5 py-3">
+                                              {displayName}
+                                            </div>
+                                          </Link>
+                                          {/* )} */}
+                                        </li>
+                                      );
+                                    },
+                                  )}
+                                </ul>
+                              )}
+                            </div>
+                          ))}
+                      </div>
+                    )}
+
+                    {/* Other dropdown menus */}
+                    {haveChild && !isProduct && (
+                      <div className="absolute overflow-hidden -left-1 rounded-[0.5rem] hidden group-hover:block bg-white custom-drop-shadow2 z-50 w-fit max-w-[15rem]">
+                        {item?.submenu?.map((child: any, index: number) => {
+                          return (
+                            <Link
+                              key={index}
+                              href={child?.href || "#"}
+                              className="block border-b border-b-[#e8e8e8] hover:border-b hover:border-b-secondary"
+                              onClick={() => {
+                                setTimeout(() => router.refresh(), 50);
+                              }}
+                            >
+                              <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 text-nowrap mb-0.5 py-3">
+                                {child?.label}
                               </div>
-                            ))}
-                        </div>
-                      )}
-                      {/* Other dropdown menus */}
-                      {haveChild && !isProduct && (
-                        <div className="absolute overflow-hidden -left-1 rounded-[0.5rem] hidden group-hover:block bg-white custom-drop-shadow2 z-50 w-fit max-w-[15rem]">
-                          {item?.submenu?.map((child: any, index: number) => {
-                            return (
-                              <Link
-                                key={index}
-                                href={child?.href || "#"}
-                                className="block border-b border-b-[#e8e8e8] hover:border-b hover:border-b-secondary"
-                                onClick={() => {
-                                  setTimeout(() => router.refresh(), 50);
-                                }}
-                              >
-                                <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 text-nowrap mb-0.5 py-3">
-                                  {child?.label}
-                                </div>
-                              </Link>
-                            );
-                          })}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </nav>
 
             {/* ACTIONS + MOBILE NAV */}
@@ -494,9 +453,9 @@ export default function NavigationBar({
                                 src={
                                   item?.images?.[0]?.url
                                     ? `${url}/${item?.images?.[0]?.url.replace(
-                                        /^\/+/,
-                                        "",
-                                      )}`
+                                      /^\/+/,
+                                      "",
+                                    )}`
                                     : "/images/fallback.png"
                                 }
                                 height={100}
