@@ -251,24 +251,26 @@ const ProductListingPage = ({
             <CommonHeroSection heroSectionData={heroSectionData} />
           </div>
 
-          <div className=" w-full flex mt-4  items-center justify-center">
-            <div className="wrapper w-full items-center  p-4 rounded-lg border border-gray-200 bg-white relative">
-              <div
-                className={`text-gray-700 text-subtitle leading-relaxed ${
-                  !isDescriptionExpanded
-                    ? "line-clamp-2 overflow-hidden italic"
-                    : ""
-                }`}
-                dangerouslySetInnerHTML={{ __html: descriptionContent }}
-              />
-              <button
-                onClick={() => setIsDescriptionExpanded((prev) => !prev)}
-                className="mt-2 text-secondary font-semibold hover:underline"
-              >
-                {isDescriptionExpanded ? "Read less" : "Read More"}
-              </button>
+          {metaData?.data?.[0]?.editorcontent && (
+            <div className=" w-full flex mt-4  items-center justify-center">
+              <div className="wrapper w-full items-center  p-4 rounded-lg border border-gray-200 bg-white relative">
+                <div
+                  className={`text-gray-700 text-subtitle leading-relaxed ${
+                    !isDescriptionExpanded
+                      ? "line-clamp-2 overflow-hidden italic"
+                      : ""
+                  }`}
+                  dangerouslySetInnerHTML={{ __html: descriptionContent }}
+                />
+                <button
+                  onClick={() => setIsDescriptionExpanded((prev) => !prev)}
+                  className="mt-2 text-secondary font-semibold hover:underline"
+                >
+                  {isDescriptionExpanded ? "Read less" : "Read More"}
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           <div className="wrapper mx-auto pb-8 pt-4 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-black">
