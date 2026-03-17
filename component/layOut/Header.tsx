@@ -112,7 +112,7 @@ export default function NavigationBar({
     <>
 
       <div
-        className={`w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] ${scrolled ? " bg-linear-to-r from-[#1c2a3a]/90 via-[#1f2f44]/90 to-[#16222f]/90 " : "bg-transparent"} `}
+        className={`w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] ${shouldUseSolidHeader ? " bg-linear-to-r from-[#1c2a3a]/90 via-[#1f2f44]/90 to-[#16222f]/90 " : "bg-transparent"} `}
       >
         {/* <div className="w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] "> */}
         <div className="  h-full  h-[4.625rem] w-full max-w-[101.625rem] flex items-center justify-between 2xl:px-0 sm:px-8 px-6">
