@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import Link from "next/link";
 // const categories1 = [
 //   {
 //     type: 'intro',
@@ -61,7 +61,8 @@ export default function ProductCategories({ homeCategories }: any) {
             }
 
             return (
-              <div
+              <Link
+                href={item?.link}
                 key={i}
                 className="relative rounded-2xl overflow-hidden group min-h-106.25"
               >
@@ -79,7 +80,7 @@ export default function ProductCategories({ homeCategories }: any) {
                     {item.title}
                   </h3>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>
