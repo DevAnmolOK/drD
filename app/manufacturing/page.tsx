@@ -61,8 +61,11 @@ export default async function FacilityPage() {
 
                 <div className="relative h-[20rem] sm:h-[25rem] md:h-[31.25rem] rounded-xl overflow-hidden shadow-xl">
                   <Image
-                    src="/images/infra.jpg"
-                    alt="Manufacturing Infrastructure"
+                    src={infrastructureData?.section?.image || `/fallback.png`}
+                    alt={
+                      infrastructureData?.section?.imageAlt ||
+                      "Manufacturing Infrastructure"
+                    }
                     fill
                     className="object-cover"
                   />
