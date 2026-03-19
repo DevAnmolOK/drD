@@ -1,5 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 export default function HeroLeft({ heroData }: any) {
   const router = useRouter();
 
@@ -18,8 +19,8 @@ export default function HeroLeft({ heroData }: any) {
       {/* Buttons */}
       <div className="flex flex-wrap gap-4 mb-12">
         {heroData.buttons.map((btn: any, i: number) => (
-          <button
-            onClick={() => router.push(btn.href)}
+          <Link
+            href={btn?.href}
             key={i}
             className={
               btn.variant === "primary"
@@ -28,9 +29,10 @@ export default function HeroLeft({ heroData }: any) {
             }
           >
             {btn.label}
-          </button>
+          </Link>
         ))}
       </div>
+
       {/* Feature Boxes */}
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {heroData.features.map((item: any, i: number) => (
