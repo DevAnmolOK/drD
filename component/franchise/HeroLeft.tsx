@@ -20,7 +20,7 @@ export default function HeroLeft({ heroData }: any) {
       <div className="flex flex-wrap gap-4 mb-12">
         {heroData.buttons.map((btn: any, i: number) => (
           <Link
-            href={btn?.href}
+            href={btn.href}
             key={i}
             className={
               btn.variant === "primary"
