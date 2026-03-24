@@ -10,7 +10,17 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "drdpharma.whdev.in", 
+        hostname: "drdpharma.whdev.in",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "drdpharma.in",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.drdpharma.in",
         pathname: "/**",
       },
     ],

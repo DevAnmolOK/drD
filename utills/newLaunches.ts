@@ -7,7 +7,7 @@ export async function getNewLaunchesProducts() {
           "Content-Type": "application/json",
           "x-secret-key": `${process.env.NEXT_PUBLIC_SECRET_API_KEY}`,
         },
-        cache: "no-store", // prevents caching (optional)
+        next: { revalidate: 60 },
       },
     );
 
