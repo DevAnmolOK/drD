@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import { publicMediaUrl } from "@/lib/publicMediaUrl";
 import { MdOutlineArrowDownward } from "react-icons/md";
 
 interface CommonHeroSectionProps {
@@ -17,9 +18,9 @@ export default function CommonHeroSection({
           <img
             alt={heroSectionData?.background?.imageAlt || "logo"}
             className="absolute inset-0 w-full h-full object-cover opacity-40"
-            src={
-              heroSectionData?.background?.imageSrc || "/images/fallback.png"
-            }
+            src={publicMediaUrl(
+              heroSectionData?.background?.imageSrc || "/images/fallback.png",
+            )}
           />
         )}
 

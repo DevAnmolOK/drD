@@ -21,16 +21,37 @@ const getCacheConfig = (
   return customRevalidate ?? revalidateMap[strategy!];
 };
 
-// Retry logic with exponential backoff
+function isRetryableNetworkError(error: unknown): boolean {
+  if (!(error && typeof error === "object")) return false;
+  const e = error as { code?: string; message?: string };
+  const code = e.code;
+  if (
+    code === "ECONNRESET" ||
+    code === "ECONNREFUSED" ||
+    code === "ETIMEDOUT" ||
+    code === "EPIPE" ||
+    code === "ENOTFOUND"
+  ) {
+    return true;
+  }
+  const msg = typeof e.message === "string" ? e.message : "";
+  return /ECONNRESET|ECONNREFUSED|ETIMEDOUT|socket hang up/i.test(msg);
+}
+
+// Retry logic with exponential backoff (parallel prerender / nginx can drop connections).
 async function retryRequest<T>(
   fn: () => Promise<T>,
-  retries: number = 2,
-  delay: number = 1000,
+  retries: number = 4,
+  delay: number = 800,
 ): Promise<T> {
   try {
     return await fn();
   } catch (error) {
     if (retries === 0) throw error;
+    const retryable =
+      isRetryableNetworkError(error) ||
+      (error instanceof AxiosError && !error.response);
+    if (!retryable) throw error;
 
     await new Promise((resolve) => setTimeout(resolve, delay));
     return retryRequest(fn, retries - 1, delay * 2);
@@ -46,7 +67,7 @@ export async function apiFetch<T = any>(options: FetchOptions): Promise<T> {
     cache = "dynamic",
     customRevalidate,
     tags = [],
-    retry = 2,
+    retry = 4,
     timeout,
     headers = {},
   } = options;

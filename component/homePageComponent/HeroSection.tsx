@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { title } from "process";
 import HeroSectionSlider from "./heroSectionSlider";
+import { publicMediaUrl } from "@/lib/publicMediaUrl";
 export default async function HeroSection({ homeBannerSection }: any) {
   const { background, badgeText, buttonLink, description, buttonText, title } =
     homeBannerSection.data.data || {};
@@ -17,7 +18,7 @@ export default async function HeroSection({ homeBannerSection }: any) {
               <div
                 className="absolute inset-0 bg-no-repeat bg-cover bg-[position:50%_20%]  sm:bg-center md:bg-[position:100%_100%] "
                 style={{
-                  backgroundImage: `url(${t?.background?.imageSrc})`,
+                  backgroundImage: `url(${publicMediaUrl(t?.background?.imageSrc) || "none"})`,
                 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[#006511] to-transparent opacity-10"></div>

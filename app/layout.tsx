@@ -39,6 +39,9 @@ export const metadata: Metadata = {
   },
 };
 
+// Avoid build-time prerender: parallel fetches to the local API cause ECONNRESET under load.
+export const dynamic = "force-dynamic";
+
 export default async function RootLayout({
   children,
 }: Readonly<{
