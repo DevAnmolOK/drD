@@ -41,6 +41,32 @@ function shouldBypassOptimizer(absoluteUrl: string): boolean {
   }
 }
 
+/** Mobile app / product dashboard CDN (NEXT_PUBLIC_PRODUCT_URL). Optimizer fetch from this VPS often fails. */
+function collectProductDashboardHostnames(): Set<string> {
+  const hosts = new Set<string>();
+  hosts.add("app.drdpharma.in");
+  const raw = process.env.NEXT_PUBLIC_PRODUCT_URL?.trim();
+  if (raw) {
+    try {
+      hosts.add(new URL(raw).hostname);
+    } catch {
+      /* ignore */
+    }
+  }
+  return hosts;
+}
+
+const PRODUCT_DASHBOARD_HOSTS = collectProductDashboardHostnames();
+
+function shouldBypassProductDashboardUrl(absoluteUrl: string): boolean {
+  try {
+    const u = new URL(absoluteUrl);
+    return PRODUCT_DASHBOARD_HOSTS.has(u.hostname);
+  } catch {
+    return false;
+  }
+}
+
 export default function drdImageLoader({
   src,
   width,
@@ -58,6 +84,9 @@ export default function drdImageLoader({
 
   if (normalized.startsWith("http://") || normalized.startsWith("https://")) {
     if (shouldBypassOptimizer(normalized)) {
+      return normalized;
+    }
+    if (shouldBypassProductDashboardUrl(normalized)) {
       return normalized;
     }
   }
