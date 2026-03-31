@@ -36,7 +36,7 @@ export default function OurDivison({ data }: any) {
                 "
               >
                 <div className="mb-4">
-                  <div className="w-20 h-18 flex items-center justify-center">
+                  {/* <div className="w-20 h-18 flex items-center justify-center">
                     {item.image && (
                       <Image
                         src={item.image}
@@ -44,6 +44,16 @@ export default function OurDivison({ data }: any) {
                         width={128}
                         height={40}
                         className="object-contain w-full"
+                      />
+                    )}
+                  </div> */}
+                  <div className="w-28 h-20 relative flex items-center justify-center bg-gray-50 rounded-md">
+                    {item.image && (
+                      <Image
+                        src={item.image}
+                        alt={item.title}
+                        fill
+                        className="object-contain p-2"
                       />
                     )}
                   </div>
