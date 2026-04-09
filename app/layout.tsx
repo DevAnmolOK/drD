@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     apple: "/images/dr-d.png",
   },
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
   },
 };
 
