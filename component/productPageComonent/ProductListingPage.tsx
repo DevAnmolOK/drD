@@ -240,7 +240,7 @@ const ProductListingPage = ({
   }
   return (
     <>
-      {hasEnquired && (
+      {/* {hasEnquired && ( */}
         <>
           <div className=" w-full mb-4">
             {/* <Banner
@@ -335,9 +335,9 @@ const ProductListingPage = ({
             />
           </div>
         </>
-      )}
+      {/* )} */}
 
-      {showGateModal && (
+      {/* {showGateModal && (
         <EnquiryGateModal
           slug={slug}
           onSuccess={() => {
@@ -345,7 +345,7 @@ const ProductListingPage = ({
             setShowGateModal(false);
           }}
         />
-      )}
+      )} */}
     </>
   );
 };
