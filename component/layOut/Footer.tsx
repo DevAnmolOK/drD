@@ -165,10 +165,10 @@ export default function Footer({ data }: any) {
         <div className="border-t border-[#626263] text-white/40 mt-8 pt-4 flex flex-col md:flex-row justify-between  gap-4">
           <p className=" text-sm font-normal align-middle">
             {bottomBar?.copyright}{" "}
-            <a href="https://www.webhopers.com/" target="_blank">
+            {/* <a href="https://www.webhopers.com/" target="_blank">
               <span style={{ color: "#1d74e3" }}>Web</span>
               <span style={{ color: "#fd842f" }}>Hopers</span>{" "}
-            </a>
+            </a> */}
           </p>
 
           <div className="flex gap-4  text-sm font-normal align-middle">

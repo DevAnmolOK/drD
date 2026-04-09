@@ -98,7 +98,6 @@ const EnquiryForm = ({
           label: loc.value,
         })) || [];
       setLocations(mapped);
-
     } catch (error) {
       console.error("Faild to fetch Address", error);
       return null;
@@ -209,7 +208,6 @@ const EnquiryForm = ({
             .map((l) => l.value)
             .join(", ")}`
         : `City: ${formData.city}`;
-
 
     const payload = {
       name: formData.name,
