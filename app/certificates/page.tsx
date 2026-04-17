@@ -30,9 +30,6 @@ async function fetchCertificates() {
 const baseUrl = process.env.NEXT_PUBLIC_PRODUCT_URL;
 
 export default async function Certificates() {
-  // const { data } = await fetchData(
-  //   "certificate?populate[slug][populate]=true&populate[seo][populate][canonical_links]=true&populate[Images][fields][0]=url",
-  // );
   const { certificates } = await fetchCertificates();
   const resp = await CertificatePageEndPoints.getCertificatePage();
 

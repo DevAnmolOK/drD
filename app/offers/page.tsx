@@ -1,5 +1,4 @@
-import React from "react";
-import { FiPercent, FiClock, FiXCircle } from "react-icons/fi";
+import {  FiClock, FiXCircle } from "react-icons/fi";
 import OffersList from "../../component/offerPageComponent/OfersList";
 import CommonHeroSection from "../../component/common/CommonHeroSection";
 import { QuickLinksPageEndPoints } from "../../lib/service/QuickLinks";
