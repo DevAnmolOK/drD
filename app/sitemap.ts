@@ -3,16 +3,15 @@ import type { MetadataRoute } from "next";
 import { BlogEndPoints } from "@/lib/service/BlogsEndPoints";
 import { safeFetch } from "@/utills/seo/helper";
 import fetchProductSlug from "@/utills/seo/fetchProductSlug";
+import { Boogaloo } from "next/font/google";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-//   const [pages, blogs, services, prices, caseStudies] = await Promise.all([
   const [productSlug, blogs] = await Promise.all([
     safeFetch(fetchProductSlug),
     safeFetch(BlogEndPoints.getAllBlogSlug),
-    // safeFetch(siteMap.getServices),
-    // safeFetch(siteMap.getPrices),
-    // safeFetch(siteMap.getCaseStudy),
   ]);
+  
+  const blogEndpoints = blogs.status ? blogs.data : []
 
   const baseUrl = process.env.NEXT_PUBLIC_API_URL_IMAGE;
 
@@ -100,8 +99,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
 
     // Dynamic: blogs
-    ...blogs?.data?.map((blogs: any) => ({
-      url: `${baseUrl}/${blogs.slug}`,
+    ...blogEndpoints?.map((blogs: any) => ({
+      url: `${baseUrl}/${blogs?.slug}`,
       lastModified: new Date(blogs.updated_at ?? new Date()),
     })),
 
