@@ -1,5 +1,5 @@
 import ClientProductDetails from "../../../component/productPageComonent/ProductDetails";
-// import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 import CommonHeroSection from "../../../component/common/CommonHeroSection";
 // import BreadcrumbSchemaOnly from "@/components/breadcrumbsScema/breadcrumbsSchema";
@@ -32,119 +32,112 @@ async function getProductBySlug(slug: string) {
 
 const baseUrl = process.env.NEXT_PUBLIC_PRODUCT_URL;
 
-// export async function generateMetadata({
-//   params,
-// }: ProductBySlugProps): Promise<Metadata> {
-//   const { slug } = await params;
+export async function generateMetadata({
+  params,
+}: ProductBySlugProps): Promise<Metadata> {
+  const { slug } = await params;
 
-//   try {
-//     const res = await fetch(
-//       `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/products?slug=${slug}`,
-//       {
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         cache: "no-store",
-//       },
-//     );
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/products?slug=${slug}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        cache: "no-store",
+      },
+    );
 
-//     if (!res.ok) {
-//       throw new Error(`Failed to fetch metadata for slug: ${slug}`);
-//     }
+    if (!res.ok) {
+      throw new Error(`Failed to fetch metadata for slug: ${slug}`);
+    }
 
-//     const result = await res.json();
+    const result = await res.json();
 
-//     const logo = await fetch(
-//       `${process.env.NEXT_PUBLIC_IMAGE_URL}/api/global-setting?populate=logo`,
-//     );
+    const meta = result?.products?.[0]?.seo;
 
-//     const logoData = await logo.json();
+    if (!meta) {
+      return {
+        title: "product Not Found",
+        description: "The requested product could not be found.",
+      };
+    }
 
-//     const meta = result?.products?.[0]?.seo;
+    const dashboardCanonical = result?.products?.[0]?.canonicalUrl;
+    const canonical = `/product/${slug}`;
 
-//     if (!meta) {
-//       return {
-//         title: "product Not Found",
-//         description: "The requested product could not be found.",
-//       };
-//     }
+    const canonicalUrl = dashboardCanonical
+      ? dashboardCanonical
+      : `${process.env.NEXT_PUBLIC_CLIENT_URL}${canonical}`;
 
-//     const dashboardCanonical = result?.products?.[0]?.canonicalUrl;
-//     const canonical = `/product/${slug}`;
+    const image = result?.products?.[0]?.images?.[0]?.url;
+    const appleIconUrl = `${baseUrl}/icons/apple-touch-icon.png`;
 
-//     const canonicalUrl = dashboardCanonical
-//       ? dashboardCanonical
-//       : `${process.env.NEXT_PUBLIC_CLIENT_URL}${canonical}`;
+    return meta
+      ? {
+          title: meta?.metaTitle,
+          description: meta?.metaDescription || meta?.metaKeywords,
 
-//     const image = result?.products?.[0]?.images?.[0]?.url;
-//     const appleIconUrl = `${baseUrl}/icons/apple-touch-icon.png`;
+          // icons: baseUrl + `/${image}`,
+          icons: {
+            icon: baseUrl + `/${image}`, // regular favicon
+            apple: appleIconUrl, // apple-touch-icon
+            shortcut: appleIconUrl, // optional
+            other: [
+              {
+                rel: "apple-touch-icon-precomposed",
+                url: appleIconUrl,
+              },
+            ],
+          },
 
-//     return meta
-//       ? {
-//           title: meta?.metaTitle,
-//           description: meta?.metaDescription || meta?.metaKeywords,
+          twitter: {
+            card: "summary_large_image",
+            description: meta?.metaDescription || meta?.metaKeywords,
+            title: meta?.metaTitle,
+            images: [
+              {
+                url: baseUrl + `/${image}`,
 
-//           // icons: baseUrl + `/${image}`,
-//           icons: {
-//             icon: baseUrl + `/${image}`, // regular favicon
-//             apple: appleIconUrl, // apple-touch-icon
-//             shortcut: appleIconUrl, // optional
-//             other: [
-//               {
-//                 rel: "apple-touch-icon-precomposed",
-//                 url: appleIconUrl,
-//               },
-//             ],
-//           },
+                width: 1200,
+                height: 630,
+              },
+            ],
+          },
 
-//           twitter: {
-//             card: "summary_large_image",
-//             description: meta?.metaDescription || meta?.metaKeywords,
-//             title: meta?.metaTitle,
-//             images: [
-//               {
-//                 url: baseUrl + `/${image}`,
+          alternates: {
+            canonical: canonicalUrl,
+          },
 
-//                 width: 1200,
-//                 height: 630,
-//               },
-//             ],
-//           },
+          openGraph: {
+            title: meta?.metaTitle,
+            description: meta?.metaDescription || meta?.metaKeywords,
+            type: "website",
+            images: [
+              {
+                url: baseUrl + `/${image}`,
+                width: 800,
+                height: 600,
+              },
+            ],
 
-//           alternates: {
-//             canonical: canonicalUrl,
-//           },
-
-//           openGraph: {
-//             title: meta?.metaTitle,
-//             description: meta?.metaDescription || meta?.metaKeywords,
-//             type: "website",
-//             images: [
-//               {
-//                 url: baseUrl + `/${image}`,
-//                 width: 800,
-//                 height: 600,
-//               },
-//             ],
-
-//             locale: "en-IN",
-//           },
-//         }
-//       : {};
-//   } catch (error) {
-//     console.error("Error generating metadata:", error);
-//     return {
-//       title: "Error",
-//       description: "Unable to load metadata at this time.",
-//     };
-//   }
-// }
+            locale: "en-IN",
+          },
+        }
+      : {};
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+    return {
+      title: "Error",
+      description: "Unable to load metadata at this time.",
+    };
+  }
+}
 
 export default async function ProductDetails({ params }: ProductBySlugProps) {
   const { slug } = await params;
   const singleProduct = await getProductBySlug(slug);
-
   const header = singleProduct?.products[0]?.details;
 
   const heroSectionData = {
@@ -152,8 +145,6 @@ export default async function ProductDetails({ params }: ProductBySlugProps) {
     title: {
       normal: singleProduct?.products?.[0]?.details,
     },
-    // description:
-    //   "Empower your pharma business with precise financial analytics. Calculate gross margins and net profits instantly to make informed pricing decisions.",
     buttonText: "Scroll to use",
     background: {
       imageAlt: "Modern laboratory background",
@@ -170,16 +161,9 @@ export default async function ProductDetails({ params }: ProductBySlugProps) {
         title={header}
       /> */}
 
-      {/* <div className=" bg-white">
-        <div className="lg:max-w-[81vw] max-w-[90vw] w-full h-full mx-auto relative sm:mb-0 ">
-          <Banner pageName={header} color="text-white" />
-        </div>
-      </div> */}
       <CommonHeroSection heroSectionData={heroSectionData} />
 
       <div className=" h-full w-full flex items-center justify-center   pt-[3rem] pb-[5rem]  flex-col ">
-        {/* <div className="text-4xl font-bold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent"> */}
-        {/* </div> */}
         <ClientProductDetails singleProduct={singleProduct} />
       </div>
     </>

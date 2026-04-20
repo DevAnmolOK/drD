@@ -8,14 +8,6 @@ export const BlogEndPoints = {
     });
   },
 
-  // /api/v1/posts/{slug}
-  // blogDetails: (slug: string) => {
-  //   return apiFetch({
-  //     endpoint: `posts/${slug}`,
-  //     cache: "no-store",
-  //   });
-  // },
-
   getBlogBySlug: (slug: string) => {
     return apiFetch({
       endpoint: `posts/${slug}`,
@@ -41,6 +33,13 @@ export const BlogEndPoints = {
   getBlogCategories: () => {
     return apiFetch({
       endpoint: "categories",
+      cache: "no-store",
+    });
+  },
+
+  getAllBlogSlug: () => {
+    return apiFetch({
+      endpoint: "post-slugs",
       cache: "no-store",
     });
   },

@@ -1,35 +1,32 @@
 import dynamic from "next/dynamic";
-// import { createMetaData } from "@/utils/fetchData";
-// import type { Metadata } from "next";
-// import Banner from "@/components/HeroBanner";
-// import BreadcrumbSchemaOnly from "@/components/breadcrumbsScema/breadcrumbsSchema";
 
 import CommonHeroSection from "../../../component/common/CommonHeroSection";
 import ProductcategoryPage from "../../../component/productPageComonent/ProductcategoryPage";
-
 import { QuickLinksPageEndPoints } from "../../../lib/service/QuickLinks";
 
-// const ComponentsProduct = dynamic(
-//   () => import("../../../components/productPageComponent/Product")
-// );
+import { headers } from "next/headers";
+import { getAbsoluteUrl } from "@/utills/seo/getAbsoluteUrl";
+import { buildMetadata } from "@/utills/seo/generateMetaData";
 
-// const ComponentsProduct = dynamic(
-//   () => import("../../../../components/productPageComponent/Product")
-// );
+export async function generateMetadata() {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "/events";
+  const pageUrl = getAbsoluteUrl(pathname);
+  const data = await QuickLinksPageEndPoints.getNewLaunchBanner();
+  const data1 = data?.seo_meta;
+  const data2 = data?.heroSectionData;
+  return buildMetadata({
+    pathname: pathname,
+    seo: {
+      metaTitle: data1?.seo_title || "Manufacturing",
+      metaDescription: data1?.seo_description,
+      canonical: pageUrl,
+      ogImage: data2?.background?.imageSrc || "/images/dpharma-logo.svg",
+    },
+  });
+}
 
-// export async function generateMetadata(): Promise<Metadata> {
-//   try {
-//     const data = await createMetaData(
-//       "/product/new-launch-products",
-//       "newly-launch-product-page",
-//     );
 
-//     return { ...data };
-//   } catch (error) {
-//     console.error("Error generating metadata:", error);
-//     return {};
-//   }
-// }
 
 interface NewLaunchProductsProps {
   params: Promise<{ typeId: string }>;

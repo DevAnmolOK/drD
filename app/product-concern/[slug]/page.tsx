@@ -34,140 +34,126 @@ async function fetchProductCategoryData(slug: string) {
   }
 }
 
-// async function fetchCategoryMetaData(slug: string) {
-//   try {
-//     const res = await fetch(
-//       `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/seo/get?modal=product_concerns&slug=${slug}`,
-//       {
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json",
-//           "x-api-key": `${process.env.NEXT_PUBLIC_SECRET_API_KEY}`,
-//         },
-//       },
-//     );
+async function fetchCategoryMetaData(slug: string) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/seo/get?modal=product_concerns&slug=${slug}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": `${process.env.NEXT_PUBLIC_SECRET_API_KEY}`,
+        },
+      },
+    );
 
-//     if (!res.ok) {
-//       throw new Error("Failed to fetch product data");
-//     }
-//     const data = await res.json();
-//     return data;
-//   } catch (error) {
-//     console.error("Error fetching product category data:", error);
-//     return null;
-//   }
-// }
+    if (!res.ok) {
+      throw new Error("Failed to fetch product data");
+    }
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching product category data:", error);
+    return null;
+  }
+}
 
 const baseUrl = process.env.NEXT_PUBLIC_IMAGE_URL;
 
-// export async function generateMetadata({
-//   params,
-// }: DivisionPreviewProps): Promise<Metadata> {
-//   const { slug } = await params;
+export async function generateMetadata({
+  params,
+}: DivisionPreviewProps): Promise<Metadata> {
+  const { slug } = await params;
 
-//   try {
-//     const res = await fetch(
-//       `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/seo/get?modal=product_concerns&slug=${slug}`,
-//       {
-//         method: "GET",
-//         headers: {
-//           "Content-Type": "application/json",
-//           "x-api-key": `${process.env.NEXT_PUBLIC_SECRET_API_KEY}`,
-//         },
-//         cache: "no-store",
-//       },
-//     );
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/seo/get?modal=product_concerns&slug=${slug}`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": `${process.env.NEXT_PUBLIC_SECRET_API_KEY}`,
+        },
+        cache: "no-store",
+      },
+    );
 
-//     if (!res.ok) {
-//       throw new Error(`Failed to fetch metadata for slug: ${slug}`);
-//     }
+    if (!res.ok) {
+      throw new Error(`Failed to fetch metadata for slug: ${slug}`);
+    }
 
-//     const result = await res.json();
+    const result = await res.json();
 
-//     const logo = await fetch(
-//       `${process.env.NEXT_PUBLIC_IMAGE_URL}/api/global-setting?populate=logo`,
-//     );
+    const meta = result?.data?.[0]?.seo;
 
-//     const logoData = await logo.json();
-//     const logoo = logoData?.data?.logo?.url;
+    if (!meta) {
+      return {
+        title: "product Not Found",
+        description: "The requested product could not be found.",
+      };
+    }
 
-//     const meta = result?.data?.[0]?.seo;
+    const dashboardCanonical = result?.data?.[0]?.canonicalUrl;
+    const canonical = `product-concern/${slug}`;
 
-//     if (!meta) {
-//       return {
-//         title: "product Not Found",
-//         description: "The requested product could not be found.",
-//       };
-//     }
+    const canonicalUrl = dashboardCanonical
+      ? dashboardCanonical
+      : `${process.env.NEXT_PUBLIC_CLIENT_URL}${canonical}`;
 
-//     const dashboardCanonical = result?.data?.[0]?.canonicalUrl;
-//     const canonical = `/product-category/${slug}`;
+    const appleIconUrl = `${baseUrl}/icons/apple-touch-icon.png`;
 
-//     const canonicalUrl = dashboardCanonical
-//       ? dashboardCanonical
-//       : `${process.env.NEXT_PUBLIC_CLIENT_URL}${canonical}`;
+    return meta
+      ? {
+        title: meta?.metaTitle,
+        description: meta?.metaDescription || meta?.metaKeywords,
 
-//     const appleIconUrl = `${baseUrl}/icons/apple-touch-icon.png`;
+        icons: {
+          icon: `/images/dpharma-logo.svg`,
+          apple: `/images/dpharma-logo.svg`,
+        },
 
-//     return meta
-//       ? {
-//           title: meta?.metaTitle,
-//           description: meta?.metaDescription || meta?.metaKeywords,
+        twitter: {
+          card: "summary_large_image",
+          description: meta?.metaDescription || meta?.metaKeywords,
+          title: meta?.metaTitle,
+          images: [
+            {
+              url: `/images/dpharma-logo.svg`,
 
-//           icons: {
-//             icon: baseUrl + `${logoo}`, // regular favicon
-//             apple: appleIconUrl, // apple-touch-icon
-//             shortcut: appleIconUrl, // optional
-//             other: [
-//               {
-//                 rel: "apple-touch-icon-precomposed",
-//                 url: appleIconUrl,
-//               },
-//             ],
-//           },
+              width: 1200,
+              height: 630,
+            },
+          ],
+        },
 
-//           twitter: {
-//             card: "summary_large_image",
-//             description: meta?.metaDescription || meta?.metaKeywords,
-//             title: meta?.metaTitle,
-//             images: [
-//               {
-//                 url: baseUrl + `${logoo}`,
+        alternates: {
+          canonical: canonicalUrl,
+        },
 
-//                 width: 1200,
-//                 height: 630,
-//               },
-//             ],
-//           },
+        openGraph: {
+          title: meta?.metaTitle,
+          description: meta?.metaDescription || meta?.metaKeywords,
+          type: "website",
+          images: [
+            {
+              url: `/images/dpharma-logo.svg`,
+              width: 800,
+              height: 600,
+            },
+          ],
 
-//           alternates: {
-//             canonical: canonicalUrl,
-//           },
-
-//           openGraph: {
-//             title: meta?.metaTitle,
-//             description: meta?.metaDescription || meta?.metaKeywords,
-//             type: "website",
-//             images: [
-//               {
-//                 url: baseUrl + `${logoo}`,
-//                 width: 800,
-//                 height: 600,
-//               },
-//             ],
-
-//             locale: "en-IN",
-//           },
-//         }
-//       : {};
-//   } catch (error) {
-//     console.error("Error generating metadata:", error);
-//     return {
-//       title: "Error",
-//       description: "Unable to load metadata at this time.",
-//     };
-//   }
-// }
+          locale: "en-IN",
+        },
+      }
+      : {};
+  } catch (error) {
+    console.error("Error generating metadata:", error);
+    return {
+      title: "Error",
+      description: "Unable to load metadata at this time.",
+    };
+  }
+}
 
 export default async function ProductConcern({ params }: DivisionPreviewProps) {
   const { slug } = await params;

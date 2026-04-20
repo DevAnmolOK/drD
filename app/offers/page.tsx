@@ -3,6 +3,28 @@ import OffersList from "../../component/offerPageComponent/OfersList";
 import CommonHeroSection from "../../component/common/CommonHeroSection";
 import { QuickLinksPageEndPoints } from "../../lib/service/QuickLinks";
 
+import { headers } from "next/headers";
+import { getAbsoluteUrl } from "@/utills/seo/getAbsoluteUrl";
+import { buildMetadata } from "@/utills/seo/generateMetaData";
+
+export async function generateMetadata() {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "/offers";
+  const pageUrl = getAbsoluteUrl(pathname);
+  const data = await QuickLinksPageEndPoints.getOfferPageBanner();
+  const data1 = data?.seo_meta;
+  const data2 = data?.heroSectionData;
+  return buildMetadata({
+    pathname: pathname,
+    seo: {
+      metaTitle: data1?.seo_title || "Manufacturing",
+      metaDescription: data1?.seo_description,
+      canonical: pageUrl,
+      ogImage: data2?.background?.imageSrc || "/images/dpharma-logo.svg",
+    },
+  });
+}
+
 interface BaseOffer {
   id: number;
   title: string;
@@ -45,20 +67,6 @@ async function fetchOffers() {
 const OffersPage = async () => {
   const { vallidOffers, exppiredOffers } = await fetchOffers();
   const data = await QuickLinksPageEndPoints.getOfferPageBanner();
-  // const heroSectionData = {
-  //   badgeText: "Breadcrumbs",
-  //   title: {
-  //     normal: "MANUFACTURING",
-  //     //   highlight: "Calculator",
-  //   },
-  //   description: `Redefining pharmaceutical production with WHO-GMP compliant facilities. Our commitment to excellence ensures every dosage meets the highest global standards of safety and efficacy.`,
-  //   buttonText: "Vision Plus",
-  //   background: {
-  //     imageAlt: "Modern laboratory background",
-  //     imageSrc:
-  //       "https://lh3.googleusercontent.com/aida-public/AB6AXuAwvm5ETO-TKsTWwaU8LCyzg9_K10k9m_wLJBcUhNBfsIbCh3XFB6qm0JivbnpoV9nMk7tGsinPjktVcHIYKe3CuVcX2GvixCp1aDSIJf3fzaCmGCvkKvIgTtYSObSkv7pqvNHdXJMWpJAnYXg7-QAk1L2_mKmtoA9WcDBuOyVg7TclDoKf3Gb72fSeHTxltbWL5_KU6OtNIEamEJhM8UyZPVcX6Mo5Zn9HZFyqJ7i3HC0l-f6t3o6zhSTZ5Y-t7O8Ebd20rHBTUj3_",
-  //   },
-  // };
   return (
     <>
       {/* <BreadcrumbSchemaOnly
@@ -69,8 +77,6 @@ const OffersPage = async () => {
       <CommonHeroSection heroSectionData={data?.heroSectionData} />
       <div className="min-h-screen w-full flex flex-col ">
         <div className="wrapper w-full h-full mx-auto relative sm:mb-0 mb-[1.5rem]  ">
-          {/* Hero Section */}
-          {/* <Banner pageName="Offers" color="text-white" /> */}
           {/* Valid Offers */}
           <OffersList
             title="Available Offers"

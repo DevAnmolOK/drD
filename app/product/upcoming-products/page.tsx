@@ -1,26 +1,27 @@
-// import dynamic from "next/dynamic";
-// import { createMetaData } from "@/utils/fetchData";
-// import type { Metadata } from "next";
-// import Banner from "@/components/HeroBanner";
-
 import CommonHeroSection from "../../../component/common/CommonHeroSection";
 import ProductcategoryPage from "../../../component/productPageComonent/ProductcategoryPage";
 import { QuickLinksPageEndPoints } from "../../../lib/service/QuickLinks";
-// import BreadcrumbSchemaOnly from "@/components/breadcrumbsScema/breadcrumbsSchema";
+import { headers } from "next/headers";
+import { getAbsoluteUrl } from "@/utills/seo/getAbsoluteUrl";
+import { buildMetadata } from "@/utills/seo/generateMetaData";
 
-// export async function generateMetadata(): Promise<Metadata> {
-//   try {
-//     const data = await createMetaData(
-//       "/product/upcoming-products",
-//       "up-comming-product-page",
-//     );
-
-//     return { ...data };
-//   } catch (error) {
-//     console.error("Error generating metadata:", error);
-//     return {};
-//   }
-// }
+export async function generateMetadata() {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "/events";
+  const pageUrl = getAbsoluteUrl(pathname);
+  const data = await QuickLinksPageEndPoints.getCommingSoonBanner();
+  const data1 = data?.seo_meta;
+  const data2 = data?.heroSectionData;
+  return buildMetadata({
+    pathname: pathname,
+    seo: {
+      metaTitle: data1?.seo_title || "Manufacturing",
+      metaDescription: data1?.seo_description,
+      canonical: pageUrl,
+      ogImage: data2?.background?.imageSrc || "/images/dpharma-logo.svg",
+    },
+  });
+}
 
 interface UpcommingProductsProps {
   params: Promise<{ typeId: string }>;
@@ -62,14 +63,6 @@ export default async function UpcommingProducts({
       moq: data?.min_order_qty,
     }));
 
-    // fallback if no product
-    // if (
-    //   !Array.isArray(products?.products) ||
-    //   products?.products?.length === 0
-    // ) {
-    //   throw new Error("No products found");
-    // }
-
     if (
       !Array.isArray(products?.products) ||
       products?.products?.length === 0
@@ -83,20 +76,7 @@ export default async function UpcommingProducts({
     const prdtkey = "upcoming";
     const data = await QuickLinksPageEndPoints.getCommingSoonBanner();
 
-    const heroSectionData = {
-      badgeText: "Breadcrumbs",
-      title: {
-        normal: "Blogs",
-      },
-      description:
-        "Empower your pharma business with precise financial analytics. Calculate gross margins and net profits instantly to make informed pricing decisions.",
-      buttonText: "Scroll to use",
-      background: {
-        imageAlt: "Modern laboratory background",
-        imageSrc:
-          "https://lh3.googleusercontent.com/aida-public/AB6AXuDlhCxl2Vxag4giglyO3LRkbo1CCD0M2C2xp8aInGg_GtvGQQTne3cPlp4jncbvfjJQ_Xgtjh22jGzKNrHyiH5djBaJD-qol6WT4TXPCHPkfDmXqGNEJBdTSiFfdhxFLO6gCo8h3f1FobHNsLIP1KgizrslMR0Q0tZHzpU0md3rnJ0Stq3MCkjS76TSVHCBBzYISDJrEU5zOL1EJLtiO4teKHAtUwhRSMYV60XhybXAJZm5Moq-MFo9dEJJ6Zrmo-UWJ8sF_9x5U_uD",
-      },
-    };
+   
 
     return (
       <>

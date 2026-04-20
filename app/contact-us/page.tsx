@@ -6,19 +6,34 @@ import CommonHeroSection from "../../component/common/CommonHeroSection";
 import { ContactUsEndPoints } from "../../lib/service/ContactUsPageEndPoints";
 import Map from "@/component/contact/map";
 import Image from "next/image";
+import { headers } from "next/headers";
+import { getAbsoluteUrl } from "@/utills/seo/getAbsoluteUrl";
+import { buildMetadata } from "@/utills/seo/generateMetaData";
+
+export async function generateMetadata() {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "/events";
+  const pageUrl = getAbsoluteUrl(pathname);
+  const data = await ContactUsEndPoints.contactUsPage();
+  const data1 = data?.seoMeta;
+  const data2 = data?.ContactUSPageData?.heroSectionData;
+  return buildMetadata({
+    pathname: pathname,
+    seo: {
+      metaTitle: data1?.seo_title || "Manufacturing",
+      metaDescription: data1?.seo_description,
+      canonical: pageUrl,
+      ogImage: data2?.background?.imageSrc || "/images/dpharma-logo.svg",
+    },
+  });
+}
+
 
 export default async function ContactUSPage() {
   const contactUSPageData = await ContactUsEndPoints.contactUsPage();
   const { officeData, heroSectionData } =
     contactUSPageData.ContactUSPageData || {};
 
-  // const map = {
-  //   heading_start: "Visit our",
-  //   heading_bold: "headquarters",
-  //   heading_end: "or reach out to us online",
-  //   embdData:
-  //     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54773.00740713477!2d76.82159773491381!3d30.90587516593629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ff569da45e4bb%3A0xde121e5eea7ece12!2sDr.%20D%20Pharma%20-%20Derma%20Range%20%7C%20Ortho%20Range%20%7C%20Gynae%20Range!5e0!3m2!1sen!2sin!4v1771331898755!5m2!1sen!2sin",
-  // };
 
   return (
     <div className="scroll-smooth  transition-colors duration-300 ">

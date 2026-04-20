@@ -1,14 +1,14 @@
 import type { MetadataRoute } from "next";
 
-// import { siteMap } from "@/lib/api/endpoints";
+import { BlogEndPoints } from "@/lib/service/BlogsEndPoints";
 import { safeFetch } from "@/utills/seo/helper";
 import fetchProductSlug from "@/utills/seo/fetchProductSlug";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 //   const [pages, blogs, services, prices, caseStudies] = await Promise.all([
-  const [productSlug] = await Promise.all([
+  const [productSlug, blogs] = await Promise.all([
     safeFetch(fetchProductSlug),
-    // safeFetch(siteMap.getBlogs),
+    safeFetch(BlogEndPoints.getAllBlogSlug),
     // safeFetch(siteMap.getServices),
     // safeFetch(siteMap.getPrices),
     // safeFetch(siteMap.getCaseStudy),
@@ -99,11 +99,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.7,
     },
 
-    //Dynamic: blogs
-    // ...blogs?.data?.map((blogs: any) => ({
-    //   url: `${baseUrl}/${blogs.slug}`,
-    //   lastModified: new Date(blogs.updated_at ?? new Date()),
-    // })),
+    // Dynamic: blogs
+    ...blogs?.data?.map((blogs: any) => ({
+      url: `${baseUrl}/${blogs.slug}`,
+      lastModified: new Date(blogs.updated_at ?? new Date()),
+    })),
 
     //Dynamic: product
     ...productSlug?.map((slug: any) => ({

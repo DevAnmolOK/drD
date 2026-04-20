@@ -6,11 +6,10 @@ import VisionMission from "@/component/aboutPage/VisionMission";
 import CommonHeroSection from "@/component/common/CommonHeroSection";
 import { AboutPageEndPoints } from "@/lib/service/AboutUsPageEndPoints";
 import CoreValuesSection from "@/component/aboutPage/CoreValuesSection";
+
 import { headers } from "next/headers";
 import { getAbsoluteUrl } from "@/utills/seo/getAbsoluteUrl";
 import { buildMetadata } from "@/utills/seo/generateMetaData";
-
-
 export async function generateMetadata() {
   const headersList = await headers();
   const pathname = headersList.get("x-pathname") || "/about-us";

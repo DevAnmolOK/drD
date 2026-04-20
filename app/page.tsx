@@ -17,6 +17,29 @@ import LatestBlogs from "@/component/homePageComponent/LatestBlogs";
 import { HomePageEndPoints } from "@/lib/service/HomePageEndPoints";
 import fetchProducts from "@/utills/fetchProdutcs";
 import VideoBanner from "@/component/video/VideoBanner";
+import { headers } from "next/headers";
+import { getAbsoluteUrl } from "@/utills/seo/getAbsoluteUrl";
+import { buildMetadata } from "@/utills/seo/generateMetaData";
+
+export async function generateMetadata() {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "/";
+  const pageUrl = getAbsoluteUrl(pathname);
+  const data = await HomePageEndPoints.homeBannerSection();
+  const data1 = data?.data?.seo_meta;
+  const data2 = data?.data?.data;
+  return buildMetadata({
+    pathname: pathname,
+    seo: {
+      metaTitle: data1?.seo_title || "Dr D Pharma",
+      metaDescription: data1?.seo_description,
+      canonical: pageUrl,
+      ogImage:
+        data2?.[1]?.background?.imageSrc ||
+        "/images/dpharma-logo.svg",
+    },
+  });
+}
 
 export default async function Home() {
   const homeBannerSection = await HomePageEndPoints.homeBannerSection();

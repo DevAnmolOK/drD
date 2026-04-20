@@ -1,17 +1,30 @@
 import React from "react";
 import { FiPercent, FiClock, FiXCircle } from "react-icons/fi";
-// import OffersList from "../../../components/offerPageComponent/OfersList";
 import PromotionList from "../../component/promotionPageComponent/PromotionList";
 import CommonHeroSection from "../../component/common/CommonHeroSection";
 import { QuickLinksPageEndPoints } from "../../lib/service/QuickLinks";
-// import Banner from "@/components/HeroBanner";
-// import { createMetaData } from "@/utils/fetchData";
-// import type { Metadata } from "next";
-// import BreadcrumbSchemaOnly from "@/components/breadcrumbsScema/breadcrumbsSchema";
-// export async function generateMetadata(): Promise<Metadata> {
-//   const data = await createMetaData("/promotions", "promotion-page");
-//   return { ...data };
-// }
+
+import { headers } from "next/headers";
+import { getAbsoluteUrl } from "@/utills/seo/getAbsoluteUrl";
+import { buildMetadata } from "@/utills/seo/generateMetaData";
+
+export async function generateMetadata() {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "/offers";
+  const pageUrl = getAbsoluteUrl(pathname);
+  const data = await QuickLinksPageEndPoints.getPromotionBanner();
+  const data1 = data?.seo_meta;
+  const data2 = data?.heroSectionData;
+  return buildMetadata({
+    pathname: pathname,
+    seo: {
+      metaTitle: data1?.seo_title || "Manufacturing",
+      metaDescription: data1?.seo_description,
+      canonical: pageUrl,
+      ogImage: data2?.background?.imageSrc || "/images/dpharma-logo.svg",
+    },
+  });
+}
 
 async function fetchOffers() {
   try {
@@ -37,21 +50,7 @@ async function fetchOffers() {
 const PromotionPage = async () => {
   const { promo } = await fetchOffers();
   const data = await QuickLinksPageEndPoints.getPromotionBanner();
-  // const { heroSectionData } = bannerResp?.heroSectionData || {};
-  // const heroSectionData = {
-  //   badgeText: "Breadcrumbs",
-  //   title: {
-  //     normal: "MANUFACTURING",
-  //     //   highlight: "Calculator",
-  //   },
-  //   description: `Redefining pharmaceutical production with WHO-GMP compliant facilities. Our commitment to excellence ensures every dosage meets the highest global standards of safety and efficacy.`,
-  //   buttonText: "Vision Plus",
-  //   background: {
-  //     imageAlt: "Modern laboratory background",
-  //     imageSrc:
-  //       "https://lh3.googleusercontent.com/aida-public/AB6AXuAwvm5ETO-TKsTWwaU8LCyzg9_K10k9m_wLJBcUhNBfsIbCh3XFB6qm0JivbnpoV9nMk7tGsinPjktVcHIYKe3CuVcX2GvixCp1aDSIJf3fzaCmGCvkKvIgTtYSObSkv7pqvNHdXJMWpJAnYXg7-QAk1L2_mKmtoA9WcDBuOyVg7TclDoKf3Gb72fSeHTxltbWL5_KU6OtNIEamEJhM8UyZPVcX6Mo5Zn9HZFyqJ7i3HC0l-f6t3o6zhSTZ5Y-t7O8Ebd20rHBTUj3_",
-  //   },
-  // };
+
   return (
     <>
       {/* <BreadcrumbSchemaOnly
@@ -62,10 +61,6 @@ const PromotionPage = async () => {
       <CommonHeroSection heroSectionData={data?.heroSectionData} />
       <div className="min-h-screen w-full">
         <div className="wrapper w-full h-full mx-auto relative sm:mb-0 mb-[1.5rem]">
-          {/* Hero Section */}
-          {/* <Banner pageName="Promotions" color="text-white" /> */}
-
-          {/* Valid Offers */}
           <PromotionList
             title="Promotions"
             icon={<FiClock className="w-6 h-6 text-green-600" />}
