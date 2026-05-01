@@ -44,6 +44,29 @@ export default function Footer({ data }: any) {
                 </Link>
               ))}
             </div>
+            <div className=" flex sm:flex-row  flex-col justify-start items-start  gap-4 mt-4 md:mt-4">
+              <Link
+                href={`https://play.google.com/store/apps/details?id=com.designtech.pharma_app`}
+                className=" h-15 w-full relative  "
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={`/app/GooglePlayStore.svg`}
+                  alt="Dr D Pharma Android App"
+                  fill
+                  className="object-contain"
+                />
+              </Link>
+              <div className=" h-15 w-full relative ">
+                <Image
+                  src={`/app/IOSAppStore.svg`}
+                  alt="Dr D Pharma Android App"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </div>
           </div>
 
           {/* right section */}
