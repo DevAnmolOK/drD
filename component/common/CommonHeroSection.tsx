@@ -1,9 +1,7 @@
-/** @format */
-
-import React from "react";
 import Link from "next/link";
 import { publicMediaUrl } from "@/lib/publicMediaUrl";
 import { MdOutlineArrowDownward } from "react-icons/md";
+import Breadcrumb from "../schema/BreadCrumbs";
 
 interface CommonHeroSectionProps {
   heroSectionData: any;
@@ -27,6 +25,9 @@ export default function CommonHeroSection({
         <div className="absolute inset-0 bg-gradient-to-r from-[#1e293b] via-[#1e293b]/70 to-transparent"></div>
         <div className="relative wrapper mx-auto z-10 w-full">
           <div className="">
+            <div className=" bg-red-900/50 w-fit px-4 py-2 rounded-full text-white text-xs font-light mb-6">
+              <Breadcrumb customBread={false} />
+            </div>
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">
               {heroSectionData?.title?.normal}{" "}
               {heroSectionData?.title?.highlight && (
