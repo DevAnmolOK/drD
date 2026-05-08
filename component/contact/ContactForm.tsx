@@ -255,9 +255,9 @@ export default function ContactForm() {
             <label
               className="absolute left-0 top-3 text-description transition-all pointer-events-none origin-left
             peer-focus:-translate-y-6 peer-focus:scale-[0.85]
-            peer-[&:not(:placeholder-shown)]:-translate-y-6
-            peer-[&:not(:placeholder-shown)]:scale-[0.85]
-            peer-[&:not(:placeholder-shown)]:text-link"
+            peer-not-placeholder-shown:-translate-y-6
+            peer-not-placeholder-shown:scale-[0.85]
+            peer-not-placeholder-shown:text-link"
             >
               Full Name
             </label>
@@ -279,9 +279,9 @@ export default function ContactForm() {
             <label
               className="absolute left-0 top-3 text-description transition-all pointer-events-none origin-left
             peer-focus:-translate-y-6 peer-focus:scale-[0.85]
-            peer-[&:not(:placeholder-shown)]:-translate-y-6
-            peer-[&:not(:placeholder-shown)]:scale-[0.85]
-            peer-[&:not(:placeholder-shown)]:text-link"
+           peer-not-placeholder-shown:-translate-y-6
+            peer-not-placeholder-shown:scale-[0.85]
+           peer-not-placeholder-shown:text-link"
             >
               Email Address
             </label>
@@ -307,9 +307,9 @@ export default function ContactForm() {
             <label
               className="absolute left-0 top-3 text-description transition-all pointer-events-none origin-left
             peer-focus:-translate-y-6 peer-focus:scale-[0.85]
-            peer-[&:not(:placeholder-shown)]:-translate-y-6
-            peer-[&:not(:placeholder-shown)]:scale-[0.85]
-            peer-[&:not(:placeholder-shown)]:text-link"
+            peer-not-placeholder-shown:-translate-y-6
+            peer-not-placeholder-shown:scale-[0.85]
+            peer-not-placeholder-shown:text-link"
             >
               Phone Number
             </label>
@@ -337,7 +337,7 @@ export default function ContactForm() {
             peer-focus:-translate-y-6 peer-focus:scale-[0.85]
             peer-[&:has(option:checked:not([value='']))]:-translate-y-6
             peer-[&:has(option:checked:not([value='']))]:scale-[0.85]
-            peer-[&:not(:placeholder-shown)]:text-link"
+            peer-not-placeholder-shown:text-link"
             >
               Business Type
             </label>
@@ -370,9 +370,9 @@ export default function ContactForm() {
                 <label
                   className="absolute left-0 top-3 text-description transition-all pointer-events-none origin-left
                 peer-focus:-translate-y-6 peer-focus:scale-[0.85]
-                peer-[&:not(:placeholder-shown)]:-translate-y-6
-                peer-[&:not(:placeholder-shown)]:scale-[0.85]
-                peer-[&:not(:placeholder-shown)]:text-link"
+                peer-not-placeholder-shown:-translate-y-6
+                peer-not-placeholder-shown:scale-[0.85]
+                peer-not-placeholder-shown:text-link"
                 >
                   Pin Code
                 </label>
@@ -394,9 +394,9 @@ export default function ContactForm() {
                 <label
                   className="absolute left-0 top-3 text-description transition-all pointer-events-none origin-left
                 peer-focus:-translate-y-6 peer-focus:scale-[0.85]
-                peer-[&:not(:placeholder-shown)]:-translate-y-6
-                peer-[&:not(:placeholder-shown)]:scale-[0.85]
-                peer-[&:not(:placeholder-shown)]:text-link"
+                peer-not-placeholder-shown:-translate-y-6
+                peer-not-placeholder-shown:scale-[0.85]
+                peer-not-placeholder-shown:text-link"
                 >
                   State
                 </label>
@@ -421,9 +421,9 @@ export default function ContactForm() {
                 <label
                   className="absolute left-0 top-3 text-description transition-all pointer-events-none origin-left
                 peer-focus:-translate-y-6 peer-focus:scale-[0.85]
-                peer-[&:not(:placeholder-shown)]:-translate-y-6
-                peer-[&:not(:placeholder-shown)]:scale-[0.85]
-                peer-[&:not(:placeholder-shown)]:text-link"
+                peer-not-placeholder-shown:-translate-y-6
+                peer-not-placeholder-shown:scale-[0.85]
+                peer-not-placeholder-shown:text-link"
                 >
                   City
                 </label>
@@ -532,8 +532,8 @@ export default function ContactForm() {
             <label
               className="absolute left-0 top-3 text-description transition-all pointer-events-none origin-left
                 peer-focus:-translate-y-6 peer-focus:scale-[0.85]
-                peer-[&:not(:placeholder-shown)]:-translate-y-6
-                peer-[&:not(:placeholder-shown)]:scale-[0.85]"
+                peer-not-placeholder-shown:-translate-y-6
+                peer-not-placeholder-shown:scale-[0.85]"
             >
               City
             </label>
@@ -578,8 +578,8 @@ export default function ContactForm() {
           <label
             className="absolute left-0 top-3 text-description transition-all pointer-events-none origin-left
           peer-focus:-translate-y-6 peer-focus:scale-[0.85]
-          peer-[&:not(:placeholder-shown)]:-translate-y-6
-          peer-[&:not(:placeholder-shown)]:scale-[0.85]"
+          peer-not-placeholder-shown:-translate-y-6
+          peer-not-placeholder-shown:scale-[0.85]"
           >
             Your Message
           </label>

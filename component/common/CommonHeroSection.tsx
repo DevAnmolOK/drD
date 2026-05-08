@@ -11,7 +11,7 @@ export default function CommonHeroSection({
 }: CommonHeroSectionProps) {
   return (
     <section>
-      <div className="relative min-h-112.5 overflow-hidden bg-[#1e293b] pt-[7.5rem] md:pt-[8.5rem] pb-20">
+      <div className="relative min-h-112.5 overflow-hidden bg-[#1e293b] pt-30 md:pt-34 pb-20">
         {heroSectionData?.background?.imageAlt && (
           <img
             alt={heroSectionData?.background?.imageAlt || "logo"}
@@ -22,7 +22,7 @@ export default function CommonHeroSection({
           />
         )}
 
-        <div className="absolute inset-0 bg-gradient-to-r from-[#1e293b] via-[#1e293b]/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-linear-to-rfrom-[#1e293b] via-[#1e293b]/70 to-transparent"></div>
         <div className="relative wrapper mx-auto z-10 w-full">
           <div className="">
             <div className=" bg-red-900/50 w-fit px-4 py-2 rounded-full text-white text-xs font-light mb-6">

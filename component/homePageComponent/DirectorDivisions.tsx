@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 export default function DirectorDivisions({ homeDirectorData }: any) {
   const {
@@ -22,7 +23,7 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
         <div className="w-full md:w-1/2 h-full bg-[#1D2F3E] " />
         <div className="w-full md:w-1/2 h-full bg-color-secondary" />
       </div>
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 items-start">
+      <div className="relative z-10 w-full max-w-360 mx-auto grid grid-cols-1 md:grid-cols-2 items-start">
         <div className="flex flex-col justify-center py-16 px-6 sm:px-10 md:px-16 lg:pl-24 lg:pr-12">
           <div className="max-w-2xl text-white">
             <h2 className="text-3xl md:text-[3rem] leading-tight mb-8 text-center md:text-left">
@@ -31,7 +32,7 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
             </h2>
             <div className="flex flex-col sm:flex-row items-center sm:items-start gap-8 mb-6 flex-wrap">
               {/* Photo */}
-              <div className="relative w-[180px] h-[180px] md:w-[240px] md:h-[240px] flex-shrink-0 rounded-2xl overflow-hidden ">
+              <div className="relative w-45 h-45 md:w-60 md:h-60 shrink-0 rounded-2xl overflow-hidden ">
                 <Image
                   src={photo}
                   alt={name}
@@ -51,11 +52,12 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
 
                 <div className="flex justify-center sm:justify-start gap-3">
                   {socials?.map((s: any, i: number) => (
-                    <a
+                    <Link
                       key={i}
                       href={s.url}
                       className="w-10 h-10 bg-white rounded-lg flex items-center justify-center"
                       target="__blank"
+                      rel="noopener noreferrer"
                     >
                       <Image
                         src={s.icon}
@@ -64,7 +66,7 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
                         height={50}
                         className="object-contain w-full h-full"
                       />
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -90,7 +92,7 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
                   key={i}
                   className="bg-white rounded-full w-32 h-32 md:w-36 md:h-36 flex items-center justify-center shadow-lg shadow-black/5 hover:shadow-xl transition-all hover:-translate-y-1 cursor-pointer"
                 >
-                  <div className="relative w-[6.188rem] h-[6rem] md:w-24 md:h-24">
+                  <div className="relative w-[6.188rem] h-24 md:w-24 md:h-24">
                     <Image
                       src={logo.icon}
                       alt="Division Logo"

@@ -105,7 +105,7 @@ export default async function ThankYouPage({
 
       <section className="wrapper relative mx-auto flex min-h-[calc(100vh-10rem)] items-center py-14 md:py-20">
         <div className="grid w-full gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(19rem,0.9fr)]">
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#253746] p-8 text-white shadow-[0_28px_80px_rgba(37,55,70,0.2)] md:p-12">
+          <div className="relative overflow-hidden rounded-4xl border border-white/10 bg-[#253746] p-8 text-white shadow-[0_28px_80px_rgba(37,55,70,0.2)] md:p-12">
             <div className="absolute right-0 top-0 h-44 w-44 rounded-full bg-[#ee4223]/18 blur-3xl" />
             <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-white/8 blur-3xl" />
 
@@ -145,21 +145,21 @@ export default async function ThankYouPage({
               </div>
 
               <div className="grid gap-4 pt-2 md:grid-cols-3">
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/7 p-5 backdrop-blur-sm">
+                <div className="rounded-3xl border border-white/10 bg-white/7 p-5 backdrop-blur-sm">
                   <FiClock className="mb-4 text-2xl text-[#ffb097]" />
                   <p className="text-sm uppercase tracking-[0.18em] text-white/55">
                     Response Window
                   </p>
                   <p className="mt-2 text-xl font-medium">Within 2 hours</p>
                 </div>
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/7 p-5 backdrop-blur-sm">
+                <div className="rounded-3xl border border-white/10 bg-white/7 p-5 backdrop-blur-sm">
                   <FiPackage className="mb-4 text-2xl text-[#ffb097]" />
                   <p className="text-sm uppercase tracking-[0.18em] text-white/55">
                     Request Status
                   </p>
                   <p className="mt-2 text-xl font-medium">Queued for review</p>
                 </div>
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/7 p-5 backdrop-blur-sm">
+                <div className="rounded-3xl border border-white/10 bg-white/7 p-5 backdrop-blur-sm">
                   <FiPhoneCall className="mb-4 text-2xl text-[#ffb097]" />
                   <p className="text-sm uppercase tracking-[0.18em] text-white/55">
                     Follow-Up
@@ -171,7 +171,7 @@ export default async function ThankYouPage({
           </div>
 
           <aside className="grid gap-6">
-            <div className="rounded-[2rem] border border-[#253746]/10 bg-white/88 p-8 shadow-[0_18px_50px_rgba(20,44,82,0.08)] backdrop-blur-sm">
+            <div className="rounded-4xl border border-[#253746]/10 bg-white/88 p-8 shadow-[0_18px_50px_rgba(20,44,82,0.08)] backdrop-blur-sm">
               <p className="text-sm uppercase tracking-[0.22em] text-[#253746]/55">
                 What Happens Next
               </p>
@@ -189,7 +189,7 @@ export default async function ThankYouPage({
               </div>
             </div>
 
-            <div className="rounded-[2rem] border border-[#ee4223]/12 bg-[#fff6f1] p-8 shadow-[0_16px_45px_rgba(238,66,35,0.08)]">
+            <div className="rounded-4xl border border-[#ee4223]/12 bg-[#fff6f1] p-8 shadow-[0_16px_45px_rgba(238,66,35,0.08)]">
               <div className="flex items-start gap-4">
                 <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#ee4223] text-white">
                   <FiMail className="text-xl" />

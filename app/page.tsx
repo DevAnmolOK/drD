@@ -33,9 +33,7 @@ export async function generateMetadata() {
       metaTitle: data1?.seo_title || "Dr D Pharma",
       metaDescription: data1?.seo_description,
       canonical: pageUrl,
-      ogImage:
-        data2?.[1]?.background?.imageSrc ||
-        "/images/dpharma-logo.svg",
+      ogImage: data2?.[1]?.background?.imageSrc || "/images/dpharma-logo.svg",
     },
   });
 }
@@ -48,7 +46,8 @@ export default async function Home() {
   const homeCategories = await HomePageEndPoints.homeCategories();
   const homeProductRange = await HomePageEndPoints.homeProductRange();
   const homeLifeEasy = await HomePageEndPoints.homeLifeEasy();
-  const homeManufacturingPartners = await HomePageEndPoints.homeManufacturingPartners();
+  const homeManufacturingPartners =
+    await HomePageEndPoints.homeManufacturingPartners();
   const homeChooseUs = await HomePageEndPoints.homeChooseUs();
   const homeBlogs = await HomePageEndPoints.homeBlogs();
   const homeTestimonials = await HomePageEndPoints.homeTestimonials();
@@ -68,11 +67,16 @@ export default async function Home() {
       <DirectorDivisions homeDirectorData={homeDirectorData} />
       <PcdFranchise homeLifeEasy={homeLifeEasy} />
       <VideoBanner homeVideoSection={data} />
-      <ManifacturingPartners homeManufacturingPartners={homeManufacturingPartners} />
+      <ManifacturingPartners
+        homeManufacturingPartners={homeManufacturingPartners}
+      />
       <WhyUs homeChooseUs={homeChooseUs} />
       <GlobalPresence homeGlobalFootprint={homeGlobalFootprint} />
       <OurStrengths homeOurStrengths={homeOurStrengths} />
-      <ProductList homeProductListing={homeProductListing} productData={produts?.products} />
+      <ProductList
+        homeProductListing={homeProductListing}
+        productData={produts?.products}
+      />
       <PtrPtsCalculator />
       <Reviews homeTestimonials={homeTestimonials} />
       <LatestBlogs homeBlogs={homeBlogs} />

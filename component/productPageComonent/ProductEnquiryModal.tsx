@@ -110,7 +110,7 @@ const ProductEnquiryModal: React.FC<EnquiryModalProps> = ({
     //   onClick={onClose}
     // >
     <div
-      className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 px-4 pt-[5rem]"
+      className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 px-4 pt-20"
       onClick={onClose}
     >
       <div
@@ -127,10 +127,10 @@ const ProductEnquiryModal: React.FC<EnquiryModalProps> = ({
 
         <div className="flex flex-col lg:flex-row h-full max-h-[80vh]">
           {/* Product Details Panel - Hidden on mobile, visible on desktop */}
-          <div className="hidden lg:flex lg:w-2/5 bg-gradient-to-br from-primary1/5 to-primary1/10 p-6 flex-col">
+          <div className="hidden lg:flex lg:w-2/5 bg-linear-to-br from-primary1/5 to-primary1/10 p-6 flex-col">
             {/* Product Image */}
             <div className="bg-bgSecondary rounded-xl p-4 mb-6 shadow-md">
-              <div className="relative w-full h-[16rem] rounded-lg overflow-hidden">
+              <div className="relative w-full h-64 rounded-lg overflow-hidden">
                 <Image
                   src={
                     data?.images?.[0]?.url
@@ -178,7 +178,7 @@ const ProductEnquiryModal: React.FC<EnquiryModalProps> = ({
             {/* Mobile Product Info */}
             <div className="lg:hidden mb-6">
               <div className="flex gap-4 mb-4">
-                <div className="relative w-20 h-20 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                <div className="relative w-20 h-20 bg-gray-100 rounded-lg overflow-hidden shrink-0">
                   <Image
                     src={
                       data?.images?.[0]?.url

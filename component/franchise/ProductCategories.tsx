@@ -25,7 +25,7 @@ export default function ProductCategories({ data }: any) {
                 shadow-sm
                 hover:shadow-md
                 transition
-                min-h-[180px]
+                min-h-45
                 flex flex-col
               "
             >

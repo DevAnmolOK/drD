@@ -281,7 +281,7 @@ const EnquiryForm = ({
 
   return (
     <div className="bg-white rounded-2xl border border-[#e8e8e8] overflow-hidden  ">
-      <div className="px-6 pt-6 pb-4   bg-gradient-to-r from-[#253746]  to-[#162836] text-white">
+      <div className="px-6 pt-6 pb-4   bg-linear-to-r from-[#253746]  to-[#162836] text-white">
         <h2 className="text-2xl font-bold flex items-center">
           <FiMessageSquare className="mr-3" />
           {heading}
