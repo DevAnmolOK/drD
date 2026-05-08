@@ -15,10 +15,41 @@ import {
 
 import ProductEnquiryForm from "../productPageComonent/ProductEnquiryForm";
 
+type MongoDecimal = { $numberDecimal?: string };
+
+interface ProductImage {
+  url?: string;
+}
+
+interface ProductType {
+  name?: string;
+}
+
+interface ProductPackingType {
+  name?: string;
+}
+
+interface ProductPackingVariant {
+  price?: MongoDecimal;
+  packing?: string;
+  packing_qty?: string;
+  packing_type?: ProductPackingType[];
+}
+
+interface EnquiryProductData {
+  _id?: string;
+  name?: string;
+  details?: string;
+  min_order_qty?: string | number;
+  images?: ProductImage[];
+  type_id?: ProductType[];
+  packingVarient?: ProductPackingVariant[];
+}
+
 interface EnquiryModalProps {
   isOpen: boolean;
   onClose: () => void;
-  data: any;
+  data: EnquiryProductData;
 }
 
 const ProductEnquiryModal: React.FC<EnquiryModalProps> = ({
@@ -28,9 +59,6 @@ const ProductEnquiryModal: React.FC<EnquiryModalProps> = ({
 }) => {
   if (!isOpen) return null;
 
-  const url = process.env.NEXT_PUBLIC_PRODUCT_URL;
-
-  type MongoDecimal = { $numberDecimal: string };
   function getDecimalValue(val: unknown): number {
     return Number((val as MongoDecimal)?.$numberDecimal ?? 0);
   }
@@ -39,7 +67,7 @@ const ProductEnquiryModal: React.FC<EnquiryModalProps> = ({
   const name: string = data?.name || "Product name not available";
   const id: string = data?._id || "";
   const detail: string = data?.details || "";
-  const qty = data?.min_order_qty || "1";
+  const qty = String(data?.min_order_qty || "1");
   const baseUrl = process.env.NEXT_PUBLIC_PRODUCT_URL;
 
   const productDetails = [
@@ -186,7 +214,6 @@ const ProductEnquiryModal: React.FC<EnquiryModalProps> = ({
 
             {/* Form Component */}
             <ProductEnquiryForm
-              onClose={onClose}
               pid={id}
               pName={name}
               pDetail={detail}

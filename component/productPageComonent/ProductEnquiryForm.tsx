@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, FormEvent, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import {
   IoPersonOutline,
   IoMailOutline,
@@ -11,16 +12,20 @@ import {
 } from "react-icons/io5";
 import { FiMessageSquare } from "react-icons/fi";
 import { TbBuildingEstate } from "react-icons/tb";
-import { BsSignpost } from "react-icons/bs";
 import { RiSignpostLine } from "react-icons/ri";
 
 interface ProductEnquiryFormProp {
-  onClose: () => void;
   pid: string;
   pName: string;
   pDetail: string;
   qty: string;
   price: number;
+}
+
+interface PostalLookupResponse {
+  city?: Array<{ value?: string }>;
+  states?: Array<{ value?: string }>;
+  message?: string;
 }
 
 interface FormData {
@@ -41,13 +46,13 @@ interface FormData {
 }
 
 export default function ProductEnquiryForm({
-  onClose,
   pid,
   pName,
   pDetail,
   qty,
   price,
 }: ProductEnquiryFormProp) {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
     pid,
     price,
@@ -76,7 +81,7 @@ export default function ProductEnquiryForm({
     }
   }, [formData.pincode]);
 
-  const fetchPinCodeDetails = async (zip: any) => {
+  const fetchPinCodeDetails = async (zip: string) => {
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_POSTAL_API_URL}/api/postal/service/get?pincode=${zip}`,
@@ -89,11 +94,11 @@ export default function ProductEnquiryForm({
           cache: "no-store",
         },
       );
-      const data = await res.json();
+      const data: PostalLookupResponse = await res.json();
       setFormData((prev) => ({
         ...prev,
-        city: data?.city?.[0]?.value || data?.message,
-        state: data?.states?.[0]?.value || data?.message,
+        city: data?.city?.[0]?.value || data?.message || "",
+        state: data?.states?.[0]?.value || data?.message || "",
       }));
     } catch (error) {
       console.error("Faild to fetch Address", error);
@@ -113,7 +118,7 @@ export default function ProductEnquiryForm({
     }
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      [name]: newValue,
     }));
     if (errors[name as keyof FormData]) {
       setErrors((prev) => ({
@@ -214,10 +219,6 @@ export default function ProductEnquiryForm({
       await response.json();
 
       setIsSubmitted(true);
-      setTimeout(() => {
-        setIsSubmitted(false);
-        onClose();
-      }, 3000);
 
       setFormData({
         pid,
@@ -231,10 +232,11 @@ export default function ProductEnquiryForm({
         city: "",
         pincode: "",
         state: "",
-        manufacturer: "PCD pharma franchise",
+        manufacturer: "PCD Pharma Franchise",
         quantity: qty,
         message: "",
       });
+      router.push("/thank-you");
     } catch (error) {
       console.error("Error submitting enquiry:", error);
       alert(`Failed to submit enquiry. Please try again later.${error}`);

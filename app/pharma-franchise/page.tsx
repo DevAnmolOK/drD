@@ -26,7 +26,6 @@ export async function generateMetadata() {
   });
 }
 
-
 export default async function page() {
   const resp = await FranchisePageEndPoints.franchisePage();
   const {

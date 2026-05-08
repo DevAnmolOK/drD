@@ -1,5 +1,7 @@
 "use client";
 import React, { useState, ChangeEvent, FormEvent, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import type { SelectedProduct } from "@/component/productPageComonent/ProductListingPage";
 import {
   FiUser,
   FiMail,
@@ -8,15 +10,24 @@ import {
   FiSend,
   FiBriefcase,
   FiMapPin,
-  FiCheck,
 } from "react-icons/fi";
-import { TbBuildingEstate } from "react-icons/tb";
-import { BsSignpost } from "react-icons/bs";
 
 interface EnquiryFormProps {
   heading: string;
-  selectedProducts?: any[];
-  setSelectedProducts?: React.Dispatch<React.SetStateAction<any[]>>;
+  selectedProducts?: SelectedProduct[];
+  setSelectedProducts?: React.Dispatch<React.SetStateAction<SelectedProduct[]>>;
+}
+
+interface Option {
+  value: string;
+  label: string;
+}
+
+interface PostalLookupResponse {
+  city?: Array<{ value?: string }>;
+  states?: Array<{ value?: string }>;
+  location?: Array<{ value: string }>;
+  message?: string;
 }
 
 interface FormData {
@@ -28,7 +39,7 @@ interface FormData {
   pincode: string;
   state: string;
   message: string;
-  selectedLocations: { value: string; label: string }[];
+  selectedLocations: Option[];
 }
 
 interface FormErrors {
@@ -48,6 +59,7 @@ const EnquiryForm = ({
   selectedProducts,
   setSelectedProducts,
 }: EnquiryFormProps) => {
+  const router = useRouter();
   const [formData, setFormData] = useState<FormData>({
     name: "",
     email: "",
@@ -59,9 +71,7 @@ const EnquiryForm = ({
     message: "",
     selectedLocations: [],
   });
-  const [locations, setLocations] = useState<
-    { value: string; label: string }[]
-  >([]);
+  const [locations, setLocations] = useState<Option[]>([]);
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -72,7 +82,7 @@ const EnquiryForm = ({
     }
   }, [formData.pincode]);
 
-  const fetchPinCodeDetails = async (zip: any) => {
+  const fetchPinCodeDetails = async (zip: string) => {
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_POSTAL_API_URL}/api/postal/service/get?pincode=${zip}`,
@@ -85,15 +95,15 @@ const EnquiryForm = ({
           cache: "no-store",
         },
       );
-      const data = await res.json();
+      const data: PostalLookupResponse = await res.json();
       setFormData((prev) => ({
         ...prev,
-        city: data?.city?.[0]?.value || data?.message,
-        state: data?.states?.[0]?.value || data?.message,
+        city: data?.city?.[0]?.value || data?.message || "",
+        state: data?.states?.[0]?.value || data?.message || "",
       }));
 
       const mapped =
-        data?.location?.map((loc: any) => ({
+        data?.location?.map((loc) => ({
           value: loc.value,
           label: loc.value,
         })) || [];
@@ -113,7 +123,7 @@ const EnquiryForm = ({
     if (name === "pincode") {
       newValue = value.replace(/\D/g, "").slice(0, 6);
     }
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: newValue }));
     if (errors[name as keyof FormErrors]) {
       setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
@@ -157,14 +167,14 @@ const EnquiryForm = ({
       newErrors.message = "Message must be at least 10 characters";
     }
 
-    if (formData.businessType === "PCD Pharma Franchise") {
+    if (formData.businessType === "pcd") {
       if (!formData.pincode.trim()) newErrors.pincode = "Pincode is required";
       if (!formData.state.trim()) newErrors.state = "State is required";
       if (!formData.city.trim()) newErrors.city = "City is required";
       // if (locations.length > 0 && formData.selectedLocations.length === 0) {
       //   newErrors.locations = "Please select at least one location";
       // }
-    } else if (formData.businessType === "Third-party Manufacturing") {
+    } else if (formData.businessType === "thirdparty") {
       if (!formData.city.trim()) newErrors.city = "City is required";
     }
 
@@ -183,9 +193,9 @@ const EnquiryForm = ({
     const productDetails = (selectedProducts ?? [])
       .map(
         (p, index) =>
-          `${index + 1}. Name: ${p.name},, Price: ₹${
-            Number(p?.price?.["$numberDecimal"]) || 0
-          }, Min Order Qty: ${p.minOrderQty}, Enquiry Qty: ${
+          `${index + 1}. Name: ${p.name},, Price: ₹${Number(
+            p.price || 0,
+          )}, Min Order Qty: ${p.minOrderQty}, Enquiry Qty: ${
             p.quantityForEnquiry
           }`,
       )
@@ -201,7 +211,7 @@ const EnquiryForm = ({
     //     : `City: ${formData.city}`;
 
     const address =
-      formData.businessType === "PCD Pharma Franchise"
+      formData.businessType === "pcd"
         ? `Pincode: ${formData.pincode}, City: ${formData.city}, State: ${
             formData.state
           }, Locations: ${formData.selectedLocations
@@ -259,6 +269,7 @@ const EnquiryForm = ({
         message: "",
         selectedLocations: [],
       });
+      router.push("/thank-you?source=product");
     } catch (error) {
       console.error("Error submitting enquiry:", error);
       alert("Failed to submit enquiry. Please try again later.");

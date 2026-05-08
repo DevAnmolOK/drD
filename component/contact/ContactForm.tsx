@@ -1,11 +1,18 @@
 "use client";
 
 import { FormEvent, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { MdExpandMore, MdSend } from "react-icons/md";
 
 interface Option {
   value: string;
   label: string;
+}
+
+interface PostalLookupResponse {
+  city?: Array<{ value?: string }>;
+  states?: Array<{ value?: string }>;
+  location?: Array<{ value: string }>;
 }
 
 interface FormErrors {
@@ -22,6 +29,7 @@ interface FormErrors {
 }
 
 export default function ContactForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     full_name: "",
     email: "",
@@ -62,7 +70,7 @@ export default function ContactForm() {
         },
       );
 
-      const data = await res.json();
+      const data: PostalLookupResponse = await res.json();
 
       setFormData((p) => ({
         ...p,
@@ -71,9 +79,9 @@ export default function ContactForm() {
       }));
 
       const mapped =
-        data?.location?.map((l: any) => ({
-          value: l.value,
-          label: l.value,
+        data?.location?.map((location) => ({
+          value: location.value,
+          label: location.value,
         })) || [];
 
       setLocations(mapped);
@@ -190,8 +198,6 @@ export default function ContactForm() {
 
       if (!res.ok) throw new Error();
 
-      setSubmitMessage("Thank you! We will contact you shortly.");
-
       setFormData({
         full_name: "",
         email: "",
@@ -207,6 +213,7 @@ export default function ContactForm() {
 
       setLocations([]);
       setErrors({});
+      router.push("/thank-you?source=contact");
     } catch {
       setSubmitMessage("Something went wrong. Please try again.");
     } finally {
