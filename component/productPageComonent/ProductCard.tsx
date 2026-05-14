@@ -90,11 +90,11 @@ export default function ProductCard({ data }: ProductCardProps) {
                   </p>
                 </div> */}
               </div>
-              <div className="w-[40%]   flex items-center justify-center rounded-[0.75rem] border   border-gray-100 bg-gray-50">
-                <div className="relative aspect-square w-[12rem] overflow-hidden">
+              <div className="w-[40%]   flex items-center justify-center rounded-xl border   border-gray-100 bg-gray-50">
+                <div className="relative aspect-square w-48 overflow-hidden">
                   <Image
                     src={imageUrl || "/fallback.png"}
-                    alt={data.name}
+                    alt={`${data.name}-${data.composition} ${data.type} for PCD Franchise`}
                     fill
                     className="object-contain "
                     quality={100}

@@ -26,11 +26,12 @@ export function buildMetadata({
   let description = seo.metaDescription || desMessge;
 
   const metadataBase = new URL(
-    process.env.NEXT_PUBLIC_META_URL || "https://www.drdpharma.in",
+    process.env.META_URL || "https://www.drdpharma.in",
   );
   // const baseUrl = process.env.NEXT_PUBLIC_CLIENT_URL || "https://logicsmd.com";
 
-  // const canonicalUrl = seo.canonical || `${baseUrl}${pathname}`;
+  // const canonicalUrl =
+  //   `${metadataBase}${seo.canonical}` || `${metadataBase}${pathname}`;
 
   // const ogImage = seo.ogImage || `${baseUrl}/og-default.jpg`;
 
@@ -38,19 +39,6 @@ export function buildMetadata({
     metadataBase,
     title,
     description,
-
-    // robots: {
-    //   index: !seo.noIndex,
-    //   follow: !seo.noIndex,
-
-    //   googleBot: {
-    //     index: !seo.noIndex,
-    //     follow: !seo.noIndex,
-    //     "max-snippet": -1,
-    //     "max-video-preview": -1,
-    //     "max-image-preview": "large",
-    //   },
-    // },
 
     alternates: {
       canonical: seo.canonical || pathname,

@@ -5,9 +5,11 @@ import Breadcrumb from "../schema/BreadCrumbs";
 
 interface CommonHeroSectionProps {
   heroSectionData: any;
+  productData?: any;
 }
 export default function CommonHeroSection({
   heroSectionData,
+  productData,
 }: CommonHeroSectionProps) {
   return (
     <section>
@@ -28,19 +30,25 @@ export default function CommonHeroSection({
             <div className=" bg-red-900/50 w-fit px-4 py-2 rounded-full text-white text-xs font-light mb-6">
               <Breadcrumb customBread={false} />
             </div>
+
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">
-              {heroSectionData?.title?.normal}{" "}
+              {/* {productData
+                ? `${productData} `
+                : `${heroSectionData?.title?.normal}`} */}
+              {heroSectionData?.title?.normal}
               {heroSectionData?.title?.highlight && (
                 <span className="text-[#e11d48] italic">
                   {heroSectionData?.title?.highlight}
                 </span>
               )}
             </h1>
+
             {heroSectionData?.description && (
               <p className="text-xl text-slate-300 leading-relaxed mb-8">
                 {heroSectionData?.description}
               </p>
             )}
+
             <div className="flex flex-wrap gap-4">
               <Link
                 href={`${heroSectionData?.buttonLink}`}

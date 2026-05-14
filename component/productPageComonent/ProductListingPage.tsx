@@ -105,6 +105,7 @@ const ProductListingPage = ({
     }
     setIsChecking(false);
   }, []);
+
   // submit form to see the data
   const handleGateEnquirySubmit = (e: any) => {
     e.preventDefault();
@@ -241,100 +242,103 @@ const ProductListingPage = ({
   return (
     <>
       {/* {hasEnquired && ( */}
-        <>
-          <div className=" w-full mb-4">
-            {/* <Banner
+      <>
+        <div className=" w-full mb-4">
+          {/* <Banner
           pageName={slug.replace(/-/g, " ").toUpperCase()}
           color="text-white"
         /> */}
 
-            <CommonHeroSection heroSectionData={heroSectionData} />
-          </div>
+          <CommonHeroSection
+            heroSectionData={heroSectionData}
+            productData={products[0]?.type_id[0]?.name || ""}
+          />
+        </div>
 
-          {metaData?.data?.[0]?.editorcontent && (
-            <div className=" w-full flex mt-4  items-center justify-center">
-              <div className="wrapper w-full items-center  p-4 rounded-lg border border-gray-200 bg-white relative">
-                <div
-                  className={`text-gray-700 text-subtitle leading-relaxed ${
-                    !isDescriptionExpanded
-                      ? "line-clamp-2 overflow-hidden italic"
-                      : ""
-                  }`}
-                  dangerouslySetInnerHTML={{ __html: descriptionContent }}
-                />
-                <button
-                  onClick={() => setIsDescriptionExpanded((prev) => !prev)}
-                  className="mt-2 text-secondary font-semibold hover:underline"
-                >
-                  {isDescriptionExpanded ? "Read less" : "Read More"}
-                </button>
+        {metaData?.data?.[0]?.editorcontent && (
+          <div className=" w-full flex mt-4  items-center justify-center">
+            <div className="wrapper w-full items-center  p-4 rounded-lg border border-gray-200 bg-white relative">
+              <div
+                className={`text-gray-700 text-subtitle leading-relaxed ${
+                  !isDescriptionExpanded
+                    ? "line-clamp-2 overflow-hidden italic"
+                    : ""
+                }`}
+                dangerouslySetInnerHTML={{ __html: descriptionContent }}
+              />
+              <button
+                onClick={() => setIsDescriptionExpanded((prev) => !prev)}
+                className="mt-2 text-secondary font-semibold hover:underline"
+              >
+                {isDescriptionExpanded ? "Read less" : "Read More"}
+              </button>
+            </div>
+          </div>
+        )}
+
+        <div className="wrapper mx-auto pb-8 pt-4 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-black">
+            <div className="col-span-2">
+              <ProductList
+                isType={istype}
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                filteredProducts={products}
+                selectedProducts={selectedProducts} // controlled
+                handleGetSelectedProduct={setSelectedProducts} // update parent
+                totalProducts={totalProducts}
+                menuData={menu}
+                slugg={slug}
+                parentsKey={parentKey}
+                handleParentKey={handleParentKey}
+                handleSlug={handleSlug}
+              />
+              <div
+                ref={observerRef}
+                className="h-10 flex items-center justify-center my-4"
+              >
+                {loading && (
+                  <span className="text-gray-500">
+                    Loading more products...
+                  </span>
+                )}
+                {!hasMore && products.length > 0 && (
+                  <span className="text-gray-400">No more products</span>
+                )}
               </div>
             </div>
-          )}
 
-          <div className="wrapper mx-auto pb-8 pt-4 w-full">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 text-black">
-              <div className="col-span-2">
-                <ProductList
-                  isType={istype}
-                  searchTerm={searchTerm}
-                  setSearchTerm={setSearchTerm}
-                  filteredProducts={products}
-                  selectedProducts={selectedProducts} // controlled
-                  handleGetSelectedProduct={setSelectedProducts} // update parent
-                  totalProducts={totalProducts}
-                  menuData={menu}
-                  slugg={slug}
-                  parentsKey={parentKey}
-                  handleParentKey={handleParentKey}
-                  handleSlug={handleSlug}
-                />
-                <div
-                  ref={observerRef}
-                  className="h-10 flex items-center justify-center my-4"
-                >
-                  {loading && (
-                    <span className="text-gray-500">
-                      Loading more products...
-                    </span>
-                  )}
-                  {!hasMore && products.length > 0 && (
-                    <span className="text-gray-400">No more products</span>
-                  )}
-                </div>
-              </div>
-
-              <div className="col-span-1 lg:block hidden">
-                <div className="sticky top-28">
-                  <div className="lg:block hidden">
-                    <FloatingEnquiryPanel
-                      selectedProducts={selectedProducts}
-                      onRemoveProduct={(id: any) => {
-                        setSelectedProducts((prev) =>
-                          prev.filter((p) => p.id !== id),
-                        );
-                      }}
-                    />
-                  </div>
-                  <EnquiryForm
-                    heading="Product Enquiry"
+            <div className="col-span-1 lg:block hidden">
+              <div className="sticky top-28">
+                <div className="lg:block hidden">
+                  <FloatingEnquiryPanel
                     selectedProducts={selectedProducts}
-                    setSelectedProducts={setSelectedProducts}
+                    onRemoveProduct={(id: any) => {
+                      setSelectedProducts((prev) =>
+                        prev.filter((p) => p.id !== id),
+                      );
+                    }}
                   />
                 </div>
+                <EnquiryForm
+                  heading="Product Enquiry"
+                  selectedProducts={selectedProducts}
+                  setSelectedProducts={setSelectedProducts}
+                />
               </div>
             </div>
           </div>
+        </div>
 
-          <div className="lg::hidden block">
-            <FloatingEnquiryPanel
-              selectedProducts={selectedProducts}
-              onRemoveProduct={(id: any) => {
-                setSelectedProducts((prev) => prev.filter((p) => p.id !== id));
-              }}
-            />
-          </div>
-        </>
+        <div className="lg::hidden block">
+          <FloatingEnquiryPanel
+            selectedProducts={selectedProducts}
+            onRemoveProduct={(id: any) => {
+              setSelectedProducts((prev) => prev.filter((p) => p.id !== id));
+            }}
+          />
+        </div>
+      </>
       {/* )} */}
 
       {/* {showGateModal && (

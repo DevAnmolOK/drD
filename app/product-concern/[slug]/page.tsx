@@ -104,47 +104,47 @@ export async function generateMetadata({
 
     return meta
       ? {
-        title: meta?.metaTitle,
-        description: meta?.metaDescription || meta?.metaKeywords,
-
-        icons: {
-          icon: `/images/dpharma-logo.svg`,
-          apple: `/images/dpharma-logo.svg`,
-        },
-
-        twitter: {
-          card: "summary_large_image",
-          description: meta?.metaDescription || meta?.metaKeywords,
-          title: meta?.metaTitle,
-          images: [
-            {
-              url: `/images/dpharma-logo.svg`,
-
-              width: 1200,
-              height: 630,
-            },
-          ],
-        },
-
-        alternates: {
-          canonical: canonicalUrl,
-        },
-
-        openGraph: {
           title: meta?.metaTitle,
           description: meta?.metaDescription || meta?.metaKeywords,
-          type: "website",
-          images: [
-            {
-              url: `/images/dpharma-logo.svg`,
-              width: 800,
-              height: 600,
-            },
-          ],
 
-          locale: "en-IN",
-        },
-      }
+          icons: {
+            icon: `/images/dpharma-logo.svg`,
+            apple: `/images/dpharma-logo.svg`,
+          },
+
+          twitter: {
+            card: "summary_large_image",
+            description: meta?.metaDescription || meta?.metaKeywords,
+            title: meta?.metaTitle,
+            images: [
+              {
+                url: `/images/dpharma-logo.svg`,
+
+                width: 1200,
+                height: 630,
+              },
+            ],
+          },
+
+          alternates: {
+            canonical: canonicalUrl,
+          },
+
+          openGraph: {
+            title: meta?.metaTitle,
+            description: meta?.metaDescription || meta?.metaKeywords,
+            type: "website",
+            images: [
+              {
+                url: `/images/dpharma-logo.svg`,
+                width: 800,
+                height: 600,
+              },
+            ],
+
+            locale: "en-IN",
+          },
+        }
       : {};
   } catch (error) {
     console.error("Error generating metadata:", error);
