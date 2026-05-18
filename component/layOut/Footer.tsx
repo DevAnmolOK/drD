@@ -7,7 +7,7 @@ interface FooterProps {
   data: any;
   ProductCategory: any;
 }
-export default function Footer({ data , ProductCategory }: FooterProps) { 
+export default function Footer({ data, ProductCategory }: FooterProps) {
   const { bottomBar } = data || {};
 
   return (
