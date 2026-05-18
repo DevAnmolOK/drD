@@ -3,8 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import NavigationBar from "../component/layOut/Header";
-import Footer from "@/component/layOut/Footer";
-import localFont from "next/font/local";
+import Footer from "@/component/layOut/Footer";import MobileContactCTA from "@/component/common/MobileContactCTA";import localFont from "next/font/local";
 import fetchProductMenu from "@/utills/fetchProductMenu";
 import { CommonEndPoints } from "../lib/service/CommonEndPoints";
 import { getNewLaunchesProducts } from "@/utills/newLaunches";
@@ -117,6 +116,7 @@ export default async function RootLayout({
           expiredOffers={expiredOffers}
           promo={promo}
         />
+        <MobileContactCTA phoneNumber={footer?.contact?.phone?.numbers?.[0]} />
         {children}
         <Footer data={footer} />
       </body>
