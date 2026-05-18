@@ -22,15 +22,19 @@ interface ProductListingPageProps {
   parentKey: string | null;
   metaData?: any;
   heroSectionData?: any;
+  customCategory?: string;
+  pathname?: string;
 }
 
 const ProductListingPage = ({
   product,
   istype,
   slug,
+  pathname,
   parentKey,
   metaData,
   heroSectionData,
+  customCategory,
 }: ProductListingPageProps) => {
   // For Enquirey Modal
   const [isChecking, setIsChecking] = useState(true);
@@ -51,6 +55,33 @@ const ProductListingPage = ({
   const [loading, setLoading] = useState(false);
   const [isDescriptionExpanded, setIsDescriptionExpanded] = useState(false);
   const observerRef = useRef<HTMLDivElement | null>(null);
+
+  // const productCategoryArray = [
+  //   {
+  //     key: "Product Form",
+  //     data: menu?.productTypes || [],
+  //     paramKey: "type_slug",
+  //     route: "/product-forms",
+  //   },
+  //   {
+  //     key: "Therapathic",
+  //     data: menu?.categories || [],
+  //     paramKey: "therapatic_slug",
+  //     route: "/product-category",
+  //   },
+  //   {
+  //     key: "Concerns",
+  //     data: menu?.concerns || [],
+  //     paramKey: "concern_slug",
+  //     route: "/product-concern",
+  //   },
+  //   {
+  //     key: "Speciality",
+  //     data: menu?.specialities || [],
+  //     paramKey: "speciality_slug",
+  //     route: "/product-speciality",
+  //   },
+  // ];
 
   // ----------------------
   // Load from localStorage on mount & merge
@@ -239,6 +270,7 @@ const ProductListingPage = ({
       </div>
     );
   }
+
   return (
     <>
       {/* {hasEnquired && ( */}
@@ -251,7 +283,7 @@ const ProductListingPage = ({
 
           <CommonHeroSection
             heroSectionData={heroSectionData}
-            productData={products[0]?.type_id[0]?.name || ""}
+            productData={customCategory}
           />
         </div>
 

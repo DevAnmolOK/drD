@@ -12,8 +12,7 @@ const serverBaseURL =
     ? process.env.API_INTERNAL_URL
     : process.env.NEXT_PUBLIC_API_URL!;
 const insecureLocalHttps =
-  !isBrowser &&
-  serverBaseURL.startsWith("https://127.0.0.1");
+  !isBrowser && serverBaseURL.startsWith("https://127.0.0.1");
 
 function deepRewriteLoopbackUrls<T>(data: T): T {
   if (data === null || data === undefined) return data;
@@ -53,10 +52,10 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-	(response) => {
-		if (response.data !== undefined) {
-			response.data = deepRewriteLoopbackUrls(response.data);
-		}
+  (response) => {
+    if (response.data !== undefined) {
+      response.data = deepRewriteLoopbackUrls(response.data);
+    }
     console.log(` API Response: ${response.status} ${response.config.url}`);
     return response;
   },

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { TransformProducts } from "../../../utills/transformProducts";
 import ProductListingPage from "../../../component/productPageComonent/ProductListingPage";
 import { ProductApiEndPoints } from "../../../lib/service/ProdcutsApiEndPoints";
+import { headers } from "next/headers";
 interface DivisionPreviewProps {
   params: Promise<{ slug: string }>;
 }
@@ -12,7 +13,7 @@ async function fetchProductCategoryData(slug: string) {
   const url = process.env.NEXT_PUBLIC_PRODUCTS_API_URL;
   try {
     const res = await fetch(
-      `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/products?type_id=${slug}`,
+      `${process.env.NEXT_PUBLIC_PRODUCTS_API_URL}/products?type_slug=${slug}`,
       {
         method: "GET",
         headers: {
@@ -153,6 +154,8 @@ export async function generateMetadata({
 }
 
 export default async function ProductForm({ params }: DivisionPreviewProps) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "";
   const { slug } = await params;
 
   const bannerResp = await ProductApiEndPoints.productBanner();
@@ -161,6 +164,7 @@ export default async function ProductForm({ params }: DivisionPreviewProps) {
   const cookieStore = await cookies();
   const parentKey = cookieStore.get("productMenuKey")?.value || null;
   const productData = await fetchProductCategoryData(slug);
+  const products = productData?.products || [];
 
   // const categoryMetaData = await fetchCategoryMetaData(slug);
 
@@ -168,6 +172,16 @@ export default async function ProductForm({ params }: DivisionPreviewProps) {
     ? { ...productData, products: TransformProducts(productData.products) }
     : null;
 
+  let customCategory = "";
+  if (pathname.includes("product-category")) {
+    customCategory = products[0]?.category_id[0]?.name || "";
+  } else if (pathname.includes("product-speciality")) {
+    customCategory = products[0]?.speciality_id[0]?.name || "";
+  } else if (pathname.includes("product-concern")) {
+    customCategory = products[0]?.concern_id[0]?.name || "";
+  } else if (pathname.includes("product-forms")) {
+    customCategory = products[0]?.type_id[0]?.name || "";
+  }
 
   return (
     <>
@@ -190,6 +204,7 @@ export default async function ProductForm({ params }: DivisionPreviewProps) {
                   istype={true}
                   slug={slug}
                   parentKey={parentKey}
+                  customCategory={customCategory}
                 />
               ) : (
                 "No data found"

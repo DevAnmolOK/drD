@@ -1,63 +1,102 @@
 "use client";
 
-import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import React, { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+import { publicMediaUrl } from "@/lib/publicMediaUrl";
 
-interface CenterSliderProps {
-  children: React.ReactNode;
+interface SliderProps {
+  slides: any[];
 }
 
-export default function HeroSectionSlider({ children }: CenterSliderProps) {
-  const [mounted, setMounted] = React.useState(false);
+export default function HeroSectionSlider({ slides }: SliderProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
+  const startAutoplay = () => {
+    stopAutoplay();
 
-  if (!mounted) return null;
-
-  const settings = {
-    className: "center",
-    centerMode: true,
-    infinite: true,
-    centerPadding: "0px",
-    slidesToShow: 1,
-    speed: 2000,
-    arrows: false,
-    dots: false,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    fade: true,
-    slidesToScroll: 1,
-    waitForAnimate: false,
-    // responsive: [
-    //   {
-    //     breakpoint: 1024,
-    //     settings: { slidesToShow: 2, centerPadding: "40px" },
-    //   },
-    //   {
-    //     breakpoint: 768,
-    //     settings: { slidesToShow: 2, centerPadding: "20px" },
-    //   },
-    //   {
-    //     breakpoint: 640,
-    //     settings: { slidesToShow: 1, centerPadding: "0px" },
-    //   },
-    // ],
+    intervalRef.current = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % slides.length);
+    }, 3000);
   };
 
+  const stopAutoplay = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+  };
+
+  useEffect(() => {
+    if (slides?.length > 1) {
+      startAutoplay();
+    }
+
+    return () => stopAutoplay();
+  }, [slides?.length]);
+
   return (
-    <div className=" w-full ">
-      <Slider {...settings}>
-        {React.Children.map(children, (child, i) => (
-          <div key={i} className="outline-none ">
-            {child}
-          </div>
-        ))}
-      </Slider>
+    <div
+      className="w-full relative overflow-hidden"
+      onMouseEnter={stopAutoplay}
+      onMouseLeave={startAutoplay}
+    >
+      <div className="relative w-full h-[51rem]">
+        {slides?.map((t: any, i: number) => {
+          const isActive = activeIndex === i;
+
+          return (
+            <div
+              key={i}
+              className={`absolute inset-0 transition-opacity duration-[2000ms] ease-in-out ${
+                isActive
+                  ? "opacity-100 z-10 pointer-events-auto"
+                  : "opacity-0 z-0 pointer-events-none"
+              }`}
+            >
+              <div className="h-[51rem] relative w-full flex justify-center items-center">
+                {/* Background */}
+                <div
+                  className="absolute inset-0 bg-no-repeat bg-cover bg-[position:50%_20%] sm:bg-center md:bg-[position:100%_100%]"
+                  style={{
+                    backgroundImage: `url(${
+                      publicMediaUrl(t?.background?.imageSrc) || "none"
+                    })`,
+                  }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#006511] to-transparent opacity-10"></div>
+                </div>
+
+                {/* Content */}
+                <div className="px-8 relative z-10 w-full flex text-white md:mb-0 sm:pb-[3rem] max-w-[101.625rem] md:mt-[15rem]">
+                  <div className="h-full items-center justify-center flex flex-col lg:mt-[1.25rem]">
+                    <div className="flex flex-col pb-[2rem]">
+                      {/* ONLY ACTIVE H1 */}
+                      {isActive && (
+                        <h1 className="text-[3rem] md:text-[5.25rem] align-middle sm:leading-[1.1190] font-bold w-full lg:w-[65%] text-white mt-[1rem] sm:mt-0">
+                          {t?.title?.normal}
+                        </h1>
+                      )}
+
+                      <div className="flex sm:flex-row flex-col sm:mt-20 mt-8 w-full lg:w-[40%] gap-10">
+                        <Link
+                          href={t?.buttonLink || "#"}
+                          className="bg-white cursor-pointer w-[7.125rem] h-fit sm:px-4 py-1 align-middle text-black flex gap-1 leading-[1.6250] text-base font-normal items-center text-nowrap justify-center"
+                        >
+                          {t?.badgeText}
+                        </Link>
+
+                        <div className="text-lg md:text-base leading-[1.6250] font-normal align-middle">
+                          {t?.description}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

@@ -32,15 +32,15 @@ export default function CommonHeroSection({
             </div>
 
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">
-              {/* {productData
+              {productData
                 ? `${productData} `
-                : `${heroSectionData?.title?.normal}`} */}
-              {heroSectionData?.title?.normal}
+                : `${heroSectionData?.title?.normal}`}
+              {/* {heroSectionData?.title?.normal}
               {heroSectionData?.title?.highlight && (
                 <span className="text-[#e11d48] italic">
                   {heroSectionData?.title?.highlight}
                 </span>
-              )}
+              )} */}
             </h1>
 
             {heroSectionData?.description && (

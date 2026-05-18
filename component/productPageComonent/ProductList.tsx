@@ -223,6 +223,7 @@ const ProductList: React.FC<ProductListProps> = ({
               className="w-full pl-10 pr-4 py-3 rounded-xl border placeholder:text-subitle border-gray-200 focus:ring-2 focus:ring-secondary/50 focus:border-none "
             />
           </div>
+
           <div className=" flex md:flex-row flex-col gap-4 justify-between">
             {/* --- custom dropdowns --- */}
             <div className="flex sm:flex-row flex-col gap-4  w-full">
@@ -238,7 +239,7 @@ const ProductList: React.FC<ProductListProps> = ({
                   </span>
                 </button>
                 {openParent && (
-                  <ul className="absolute  w-[12rem]  shadow-lg rounded-xl border border-gray-200 bg-white z-10">
+                  <ul className="absolute  w-48  shadow-lg rounded-xl border border-gray-200 bg-white z-10">
                     {productCategoryArray.map((item: any, index: any) => (
                       <li
                         key={index}
@@ -274,7 +275,7 @@ const ProductList: React.FC<ProductListProps> = ({
                   </span>
                 </button>
                 {openChild && parent?.data.length > 0 && (
-                  <ul className="absolute  w-[14rem]  shadow-lg rounded-xl border border-gray-200 bg-white z-10 max-h-60 overflow-y-auto">
+                  <ul className="absolute  w-56  shadow-lg rounded-xl border border-gray-200 bg-white z-10 max-h-60 overflow-y-auto">
                     {parent?.data?.map(
                       (c: any, index: number) =>
                         c?.slug && (
@@ -410,7 +411,7 @@ const ProductList: React.FC<ProductListProps> = ({
                       </Link>
                     </td>
                     <td className="px-6 py-4 ">
-                      <span className="inline-flex items-center px-3 py-1 rounded-[.5rem]  text-xs flex-col  bg-bgSecondarytwo/10 font-medium bg-link/10 text-primary1/80">
+                      <span className="inline-flex items-center px-3 py-1 rounded-lg  text-xs flex-col  bg-bgSecondarytwo/10 font-medium bg-link/10 text-primary1/80">
                         {/* {product?.speciality_id?.map(
                           (spec: any, index: any) => (
                             <div key={index}>{spec?.name || "N/A"} </div>
@@ -428,13 +429,13 @@ const ProductList: React.FC<ProductListProps> = ({
                       </span>
                     </td>
                     <td className="px-4 py-4 ">
-                      <span className="inline-flex items-center px-3 py-1 rounded-[.5rem] text-xs font-medium bg-bgSecondaryone/10 text-black ">
+                      <span className="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-bgSecondaryone/10 text-black ">
                         {product?.category_id?.[0]?.name || "N/A"}
                       </span>
                     </td>
                     {isType && (
                       <td className="px-4 py-4 ">
-                        <span className="inline-flex items-center px-3 py-1 rounded-[.5rem] text-xs font-medium bg-secondary/20 text-primary2/80">
+                        <span className="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-secondary/20 text-primary2/80">
                           {product.type_id?.[0]?.name}
                         </span>
                       </td>

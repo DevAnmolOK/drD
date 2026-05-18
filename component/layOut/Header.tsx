@@ -111,7 +111,7 @@ export default function NavigationBar({
   return (
     <>
 
-      <div
+      <header
         className={`w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] ${shouldUseSolidHeader ? " bg-linear-to-r from-[#1c2a3a]/90 via-[#1f2f44]/90 to-[#16222f]/90 " : "bg-transparent"} `}
       >
         {/* <div className="w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] "> */}
@@ -498,7 +498,7 @@ export default function NavigationBar({
             </div>
           </div>
         )}
-      </div>
+      </header>
     </>
   );
 }

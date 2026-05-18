@@ -3,7 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Footer({ data }: any) {
+interface FooterProps {
+  data: any;
+  ProductCategory: any;
+}
+export default function Footer({ data , ProductCategory }: FooterProps) { 
   const { bottomBar } = data || {};
 
   return (
@@ -75,12 +79,12 @@ export default function Footer({ data }: any) {
             <div className="flex sm:flex-row flex-col w-full">
               {/* menu */}
               <div className="  sm:w-[25%]">
-                <h3 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8">
+                <h4 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8">
                   {data?.informationMenu?.title}
-                </h3>
+                </h4>
 
                 <div className="grid grid-cols-2 gap-5 text-white">
-                  <div className="text-base align-middle font-normal leading-[1.5000] flex flex-col gap-5">
+                  <div className="text-base align-middle font-normal leading-normal flex flex-col gap-5">
                     {data?.informationMenu?.column1?.map(
                       (data: any, index: any) => (
                         <Link key={index} href={data?.href}>
@@ -90,10 +94,9 @@ export default function Footer({ data }: any) {
                     )}
                   </div>
                 </div>
-              </div>
-              <div className="  sm:w-[32.5%] ">
-                <div className="grid grid-cols-2 gap-6   mt-14">
-                  <div className="text-base align-middle font-normal leading-[1.5000] flex flex-col gap-5">
+
+                <div className="grid grid-cols-2 gap-6   mt-6">
+                  <div className="text-base align-middle font-normal leading-normal flex flex-col gap-5">
                     {data?.informationMenu?.column2?.map(
                       (data: any, index: any) => (
                         <Link key={index} href={data?.href}>
@@ -104,8 +107,30 @@ export default function Footer({ data }: any) {
                   </div>
                 </div>
               </div>
+
+              <div className="  sm:w-[32.5%] ">
+                <h4 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8">
+                  Product Catrgorey
+                </h4>
+                <div className="grid grid-cols-2 gap-5 text-white">
+                  <div className="text-base align-middle font-normal leading-normal flex flex-col gap-4">
+                    {ProductCategory?.map((data: any, index: any) => (
+                      <Link
+                        key={index}
+                        href={`/product-speciality/${data?.slug}`}
+                      >
+                        {data?.name}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
               {/*  MAP */}
               <div className="  sm:w-[42.5%]">
+                <h4 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8">
+                  Contact
+                </h4>
                 <div className="relative w-full h-[16.188rem]  overflow-hidden sm:mt-0 mt-8">
                   <iframe
                     title="Global Presence"
@@ -149,7 +174,7 @@ export default function Footer({ data }: any) {
               </div>
 
               <div className="flex items-center gap-4  lg:w-[32.5%]">
-                <div className="min-h-[2.75rem] min-w-[2.75rem] relative  border  border-white p-3 rounded-sm">
+                <div className="min-h-11 min-w-11 relative  border  border-white p-3 rounded-sm">
                   <Image
                     src={data?.contact?.email?.icon}
                     alt={data?.contact?.phone?.alt || "email"}

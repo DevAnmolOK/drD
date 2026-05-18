@@ -59,10 +59,10 @@ export default function PtrPtsCalculator() {
   const [mrp, setMrp] = useState<number | string>("");
   const [gst, setGst] = useState<number>(ui.gstDefault);
   const [retailerMargin, setRetailerMargin] = useState<number>(
-    ui.retailerDefault
+    ui.retailerDefault,
   );
   const [stockistMargin, setStockistMargin] = useState<number>(
-    ui.stockistDefault
+    ui.stockistDefault,
   );
 
   const [results, setResults] = useState({
@@ -116,20 +116,19 @@ export default function PtrPtsCalculator() {
         <div className="flex flex-col justify-center  lg:p-12 lg:pr-60 lg:pl-0 ">
           <div className="max-w-lg w-full m-auto lg:ml-auto lg:mr-0">
             <div className="flex items-center gap-3 mb-2">
-              <h1 className=" text-4xl lg:text-[3rem] font-bold text-black leading-tight">
-                {ui.headings.titleMain}
-                  {" "}
+              <h2 className=" text-4xl lg:text-[3rem] font-bold text-black leading-tight">
+                {ui.headings.titleMain}{" "}
                 <span className="text-black font-normal  ml-2">
                   {ui.headings.titleSub}
                 </span>
-              </h1>
+              </h2>
             </div>
             <p className="text-lg mb-10 leading-relaxed font-normal">
               {ui.headings.desc}
             </p>
-            <h2 className="text-lg lg:text-[1.75rem] font-bold mb-6 text-black">
+            <h3 className="text-lg lg:text-[1.75rem] font-bold mb-6 text-black">
               {ui.headings.inputTitle}
-            </h2>
+            </h3>
             <div className="space-y-6 mb-40 lg:mb-0">
               {/* MRP */}
               <div>
@@ -173,9 +172,7 @@ export default function PtrPtsCalculator() {
                 );
               })}
 
-              <Button  onClick={handleReset}>
-                {ui.buttons.reset}
-              </Button>
+              <Button onClick={handleReset}>{ui.buttons.reset}</Button>
             </div>
           </div>
         </div>
@@ -201,9 +198,11 @@ export default function PtrPtsCalculator() {
                   <p className="text-black text-base font-normal tracking-widest mb-1">
                     {card.title}
                   </p>
-                  <p className={`${ui.theme.accent} text-2xl lg:text-3xl font-bold tracking-wide `}>
+                  <p
+                    className={`${ui.theme.accent} text-2xl lg:text-3xl font-bold tracking-wide `}
+                  >
                     {formatCurrency(
-                      results[card.key as keyof typeof results] as number
+                      results[card.key as keyof typeof results] as number,
                     )}
                   </p>
                   <p className="text-black text-base mt-1 font-medium ">
@@ -223,7 +222,7 @@ export default function PtrPtsCalculator() {
                   item.key === "mrp"
                     ? formatCurrency(Number(mrp) || 0)
                     : formatCurrency(
-                        results[item.key as keyof typeof results] as number
+                        results[item.key as keyof typeof results] as number,
                       );
 
                 return (

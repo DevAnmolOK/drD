@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { TransformProducts } from "../../../utills/transformProducts";
 import ProductListingPage from "../../../component/productPageComonent/ProductListingPage";
 import { ProductApiEndPoints } from "../../../lib/service/ProdcutsApiEndPoints";
+import { headers } from "next/headers";
 interface DivisionPreviewProps {
   params: Promise<{ slug: string }>;
 }
@@ -98,51 +99,49 @@ export async function generateMetadata({
       ? dashboardCanonical
       : `${process.env.NEXT_PUBLIC_CLIENT_URL}${canonical}`;
 
-
-
     return meta
       ? {
-        title: meta?.metaTitle,
-        description: meta?.metaDescription || meta?.metaKeywords,
-
-        icons: {
-          icon: `/images/dpharma-logo.svg`,
-          apple: `/images/dpharma-logo.svg`,
-        },
-
-        twitter: {
-          card: "summary_large_image",
-          description: meta?.metaDescription || meta?.metaKeywords,
-          title: meta?.metaTitle,
-          images: [
-            {
-              url: `/images/dpharma-logo.svg`,
-
-              width: 1200,
-              height: 630,
-            },
-          ],
-        },
-
-        alternates: {
-          canonical: canonicalUrl,
-        },
-
-        openGraph: {
           title: meta?.metaTitle,
           description: meta?.metaDescription || meta?.metaKeywords,
-          type: "website",
-          images: [
-            {
-              url: `/images/dpharma-logo.svg`,
-              width: 800,
-              height: 600,
-            },
-          ],
 
-          locale: "en-IN",
-        },
-      }
+          icons: {
+            icon: `/images/dpharma-logo.svg`,
+            apple: `/images/dpharma-logo.svg`,
+          },
+
+          twitter: {
+            card: "summary_large_image",
+            description: meta?.metaDescription || meta?.metaKeywords,
+            title: meta?.metaTitle,
+            images: [
+              {
+                url: `/images/dpharma-logo.svg`,
+
+                width: 1200,
+                height: 630,
+              },
+            ],
+          },
+
+          alternates: {
+            canonical: canonicalUrl,
+          },
+
+          openGraph: {
+            title: meta?.metaTitle,
+            description: meta?.metaDescription || meta?.metaKeywords,
+            type: "website",
+            images: [
+              {
+                url: `/images/dpharma-logo.svg`,
+                width: 800,
+                height: 600,
+              },
+            ],
+
+            locale: "en-IN",
+          },
+        }
       : {};
   } catch (error) {
     console.error("Error generating metadata:", error);
@@ -156,6 +155,9 @@ export async function generateMetadata({
 export default async function Productspeciality({
   params,
 }: DivisionPreviewProps) {
+  const headersList = await headers();
+  const pathname = headersList.get("x-pathname") || "";
+
   const { slug } = await params;
   const bannerResp = await ProductApiEndPoints.productBanner();
   // const { heroSectionData } = bannerResp?.data || {};
@@ -167,20 +169,18 @@ export default async function Productspeciality({
     ? { ...productData, products: TransformProducts(productData.products) }
     : null;
 
-  const heroSectionData = {
-    badgeText: "Breadcrumbs",
-    title: {
-      normal: "Blogs",
-    },
-    description:
-      "Empower your pharma business with precise financial analytics. Calculate gross margins and net profits instantly to make informed pricing decisions.",
-    buttonText: "Scroll to use",
-    background: {
-      imageAlt: "Modern laboratory background",
-      imageSrc:
-        "https://lh3.googleusercontent.com/aida-public/AB6AXuDlhCxl2Vxag4giglyO3LRkbo1CCD0M2C2xp8aInGg_GtvGQQTne3cPlp4jncbvfjJQ_Xgtjh22jGzKNrHyiH5djBaJD-qol6WT4TXPCHPkfDmXqGNEJBdTSiFfdhxFLO6gCo8h3f1FobHNsLIP1KgizrslMR0Q0tZHzpU0md3rnJ0Stq3MCkjS76TSVHCBBzYISDJrEU5zOL1EJLtiO4teKHAtUwhRSMYV60XhybXAJZm5Moq-MFo9dEJJ6Zrmo-UWJ8sF_9x5U_uD",
-    },
-  };
+  const products = productData?.products || [];
+  let customCategory = "";
+  if (pathname.includes("product-category")) {
+    customCategory = products[0]?.category_id[0]?.name || "";
+  } else if (pathname.includes("product-speciality")) {
+    customCategory = products[0]?.speciality_id[0]?.name || "";
+  } else if (pathname.includes("product-concern")) {
+    customCategory = products[0]?.concern_id[0]?.name || "";
+  } else if (pathname.includes("product-forms")) {
+    customCategory = products[0]?.type_id[0]?.name || "";
+  }
+
   return (
     <>
       {/* <BreadcrumbSchemaOnly
@@ -203,6 +203,7 @@ export default async function Productspeciality({
                   istype={true}
                   slug={slug}
                   parentKey={parentKey}
+                  customCategory={customCategory}
                 />
               ) : (
                 "No data found"

@@ -105,7 +105,7 @@ export default async function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
-        <NavigationBar
+        <NavigationBar  
           navBar={navBar}
           productMenu={productMenu}
           certificates={certificates}
@@ -118,7 +118,7 @@ export default async function RootLayout({
         />
         <MobileContactCTA phoneNumber={footer?.contact?.phone?.numbers?.[0]} />
         {children}
-        <Footer data={footer} />
+        <Footer data={footer} ProductCategory={productMenu?.specialities} />
       </body>
     </html>
   );
