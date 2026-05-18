@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
+import Image from "next/image";
 import { FiXCircle } from "react-icons/fi";
 
 interface BaseOffer {
@@ -51,11 +52,13 @@ const OfferCard: React.FC<OfferProps> = ({ offer, isExpired = false }) => {
           : "border-link/10 hover:border-secondary/30"
       }`}
     >
-      <div className="relative">
-        <img
+      <div className="relative h-[20rem] w-full overflow-hidden">
+        <Image
           src={imageUrl}
           alt={offer.title}
-          className="w-full h-[20rem] object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute top-4 right-4">
           {isExpired && (

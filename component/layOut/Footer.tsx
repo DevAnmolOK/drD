@@ -7,7 +7,7 @@ interface FooterProps {
   data: any;
   ProductCategory: any;
 }
-export default function Footer({ data, ProductCategory }: FooterProps) {
+export default function Footer({ data , ProductCategory }: FooterProps) { 
   const { bottomBar } = data || {};
 
   return (
@@ -19,7 +19,6 @@ export default function Footer({ data, ProductCategory }: FooterProps) {
               <Image
                 src={data?.brand?.logo}
                 alt={data?.brand?.name}
-                unoptimized
                 fill
                 className="object-contain"
               />
@@ -41,7 +40,6 @@ export default function Footer({ data, ProductCategory }: FooterProps) {
                   <Image
                     src={Icon?.icon}
                     alt="Dr D Pharma social media"
-                    unoptimized
                     fill
                     className="object-contain rounded-sm"
                   />
@@ -153,7 +151,6 @@ export default function Footer({ data, ProductCategory }: FooterProps) {
                   <Image
                     src={data?.contact?.phone?.icon}
                     alt={data?.contact?.phone?.alt || "phone"}
-                    unoptimized
                     fill
                     className="object-contain p-2"
                   />
@@ -178,7 +175,6 @@ export default function Footer({ data, ProductCategory }: FooterProps) {
                   <Image
                     src={data?.contact?.email?.icon}
                     alt={data?.contact?.phone?.alt || "email"}
-                    unoptimized
                     fill
                     className="object-contain p-2"
                   />
@@ -196,7 +192,6 @@ export default function Footer({ data, ProductCategory }: FooterProps) {
                   <Image
                     src={data?.contact?.address?.icon}
                     alt={data?.contact?.address?.alt || "address"}
-                    unoptimized
                     fill
                     className="object-contain p-2"
                   />

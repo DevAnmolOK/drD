@@ -110,7 +110,6 @@ export default function NavigationBar({
 
   return (
     <>
-
       <header
         className={`w-full items-center justify-center flex h-[6.25rem]  z-100 sticky top-0  border-b border-[#FFFFFF2E] ${shouldUseSolidHeader ? " bg-linear-to-r from-[#1c2a3a]/90 via-[#1f2f44]/90 to-[#16222f]/90 " : "bg-transparent"} `}
       >
@@ -123,7 +122,6 @@ export default function NavigationBar({
                   src={headerImage?.src}
                   alt="Dr D Pharma"
                   fill
-                  unoptimized
                   className=""
                 />
               )}
@@ -166,19 +164,20 @@ export default function NavigationBar({
 
                 return (
                   <div
-                    className={`relative group px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${isActive
-                      ? "text-white border-b border-white"
-                      : "text-white"
-                      }`}
+                    className={`relative group px-2 pb-1 text-base tracking-wide font-semibold align-middle transition ${
+                      isActive
+                        ? "text-white border-b border-white"
+                        : "text-white"
+                    }`}
                     key={index}
                   >
                     {isProduct ? (
                       <Link
                         href={item?.href || "#"}
                         className="hover:text-red-600 transition"
-                      //     onClick={() => {
-                      //       setTimeout(() => router.refresh(), 50);
-                      //     }}
+                        //     onClick={() => {
+                        //       setTimeout(() => router.refresh(), 50);
+                        //     }}
                       >
                         {
                           <div
@@ -207,9 +206,9 @@ export default function NavigationBar({
                       <Link
                         href={item?.href || "#"}
                         className="hover:text-red-600 transition"
-                      // onClick={() => {
-                      //   setTimeout(() => router.refresh(), 50);
-                      // }}
+                        // onClick={() => {
+                        //   setTimeout(() => router.refresh(), 50);
+                        // }}
                       >
                         <div
                           className={`cursor-pointer text-[1.0369rem] font-inter font-medium  text-nowrap flex items-center gap-1 `}
@@ -219,44 +218,43 @@ export default function NavigationBar({
                       </Link>
                     )}
 
-                      {/* Dropdown menu for Products */}
-                      {isProduct && (
-                        <div className="absolute -left-1 rounded-[0.5rem] hidden group-hover:block bg-white custom-drop-shadow2 z-50 w-fit max-w-[15rem]">
-                          {productCategoryArray
-                            ?.filter(
-                              (category: any) => category.data?.length > 0,
-                            )
-                            .map((category: any, categoryIndex: any) => (
-                              <div
-                                className="relative group"
-                                key={categoryIndex}
-                                onMouseEnter={() =>
-                                  setHoveredProductCategory(categoryIndex)
-                                }
-                                onMouseLeave={() =>
-                                  setHoveredProductCategory(null)
-                                }
-                              >
-                                <div className="block border-b border-b-[#e8e8e8] hover:border-b mx-1 hover:border-b-secondary cursor-pointer group">
-                                  <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 text-nowrap mb-0.5 py-3 flex justify-between ">
-                                    <span className="">{category.key}</span>
-                                    <span className="">
-                                      {category.data?.length > 0 && (
-                                        <BiCaretDown
-                                          className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
-                                          size={14}
-                                        />
-                                      )}
-                                    </span>
-                                  </div>
+                    {/* Dropdown menu for Products */}
+                    {isProduct && (
+                      <div className="absolute -left-1 rounded-[0.5rem] hidden group-hover:block bg-white custom-drop-shadow2 z-50 w-fit max-w-[15rem]">
+                        {productCategoryArray
+                          ?.filter((category: any) => category.data?.length > 0)
+                          .map((category: any, categoryIndex: any) => (
+                            <div
+                              className="relative group"
+                              key={categoryIndex}
+                              onMouseEnter={() =>
+                                setHoveredProductCategory(categoryIndex)
+                              }
+                              onMouseLeave={() =>
+                                setHoveredProductCategory(null)
+                              }
+                            >
+                              <div className="block border-b border-b-[#e8e8e8] hover:border-b mx-1 hover:border-b-secondary cursor-pointer group">
+                                <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 text-nowrap mb-0.5 py-3 flex justify-between ">
+                                  <span className="">{category.key}</span>
+                                  <span className="">
+                                    {category.data?.length > 0 && (
+                                      <BiCaretDown
+                                        className=" inline ml-1 text-current transition-transform duration-500 ease-in-out group-hover:-rotate-90"
+                                        size={14}
+                                      />
+                                    )}
+                                  </span>
                                 </div>
+                              </div>
 
                               {category.data?.length > 0 && (
                                 <ul
-                                  className={`absolute overflow-visible max-h-[25rem] overflow-y-scroll left-full top-0 rounded-[0.5rem] bg-white custom-drop-shadow2 z-[50] w-fit min-w-[15rem] ${hoveredProductCategory === categoryIndex
-                                    ? "block"
-                                    : "hidden"
-                                    }`}
+                                  className={`absolute overflow-visible max-h-[25rem] overflow-y-scroll left-full top-0 rounded-[0.5rem] bg-white custom-drop-shadow2 z-[50] w-fit min-w-[15rem] ${
+                                    hoveredProductCategory === categoryIndex
+                                      ? "block"
+                                      : "hidden"
+                                  }`}
                                 >
                                   {category.data.map(
                                     (item: any, itemIndex: any) => {
@@ -449,20 +447,21 @@ export default function NavigationBar({
                             }}
                           >
                             <div className="flex gap-2">
-                              <img
-                                src={
-                                  item?.images?.[0]?.url
-                                    ? `${url}/${item?.images?.[0]?.url.replace(
-                                      /^\/+/,
-                                      "",
-                                    )}`
-                                    : "/images/fallback.png"
-                                }
-                                height={100}
-                                width={100}
-                                alt={item?.name || "VisionPuls Healthcare"}
-                                className="object-contain"
-                              />
+                              <div className="relative h-[100px] w-[100px] flex-shrink-0 overflow-hidden">
+                                <Image
+                                  src={
+                                    item?.images?.[0]?.url
+                                      ? `${url}/${item?.images?.[0]?.url.replace(
+                                          /^\/+/,
+                                          "",
+                                        )}`
+                                      : "/images/fallback.png"
+                                  }
+                                  alt={item?.name || "VisionPuls Healthcare"}
+                                  fill
+                                  className="object-contain"
+                                />
+                              </div>
 
                               <div className="flex flex-col">
                                 <div className="flex gap-1 items-center justify-between">

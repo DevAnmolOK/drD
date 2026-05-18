@@ -77,7 +77,6 @@ img {
   }
 }
 
-
 @media (min-width: 768px) and (max-width: 1300px) {
   html {
     font-size: 12px;
@@ -265,11 +264,17 @@ input[type="number"] {
   vertical-align: middle;
 }
 
-@media (min-width: 640px) {
-  .blog-content h2 {
-    font-size: 1.5rem; /* sm:text-2xl */
-  }
+.blog-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
+
+.blog-content video,
+.blog-content iframe {
+  max-width: 100%;
+}
+
 .blog-content h3 {
   font-size: 1.5rem;
 }
@@ -468,7 +473,6 @@ input[type="number"] {
 .slick-dots {
   bottom: -35px !important;
 }
-
 
 /* ----------------------- Hero Section ----------------------- */
 @keyframes fadeUp {

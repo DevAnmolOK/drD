@@ -27,7 +27,6 @@ export default function TrustedSection({ homeTrustedBy }: any) {
                       src={item?.icon}
                       alt={item?.label}
                       fill
-                      unoptimized
                       className="object-contain w-full h-full"
                     />
                   )}

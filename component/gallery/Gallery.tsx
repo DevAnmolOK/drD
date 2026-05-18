@@ -156,7 +156,10 @@ export default function Gallery({ galleryData }: GalleryProps) {
             const videoSrc = resolveVideoSrc(item);
 
             return (
-              <div key={index} className="relative w-full h-55 rounded-xl overflow-hidden group">
+              <div
+                key={index}
+                className="relative w-full h-55 rounded-xl overflow-hidden group"
+              >
                 <video
                   src={videoSrc || undefined}
                   className="absolute inset-0 w-full h-full object-cover"
@@ -222,11 +225,13 @@ export default function Gallery({ galleryData }: GalleryProps) {
             >
               <FiX size={24} />
             </button>
-            <div className="relative overflow-hidden rounded-xl">
-              <img
-                src={activeImage}
+            <div className="relative overflow-hidden rounded-xl w-full h-[85vh]">
+              <Image
+                src={activeImage || "/images/fallback.png"}
                 alt="Gallery preview"
-                className="max-w-full max-h-[85vh] object-contain block shadow-2xl"
+                fill
+                sizes="100vw"
+                className="object-contain block shadow-2xl"
               />
             </div>
           </div>

@@ -141,7 +141,7 @@ export default function ClientProductDetails({
                   fill
                   className="w-full h-full object-contain  sm:p-2"
                   quality={100}
-                  unoptimized={true}
+                  sizes="(max-width: 768px) 100vw, 40vw"
                 />
               </div>
               {singleProduct?.products?.[0]?.images?.length > 0 && (
@@ -161,9 +161,9 @@ export default function ClientProductDetails({
                           img?.url ? `${baseUrl}/${img?.url}` : "/fallback.png"
                         }
                         fill
-                        unoptimized
                         alt={`Product ${index + 1}`}
                         className="w-full h-full object-contain sm:p-4"
+                        sizes="8rem"
                       />
                     </div>
                   ))}

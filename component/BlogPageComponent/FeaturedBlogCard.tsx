@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MdCalendarToday, MdAccessTime, MdArrowForward } from "react-icons/md";
@@ -23,9 +24,11 @@ export default function FeaturedBlogCard({ post }: any) {
           <div className="grid md:grid-cols-2 gap-0">
             {/* Image */}
             <div className="relative h-64 md:h-full overflow-hidden">
-              <img
-                src={post.image}
+              <Image
+                src={post.image || "/images/fallback.png"}
                 alt={post.title}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute top-4 left-4">
@@ -62,7 +65,7 @@ export default function FeaturedBlogCard({ post }: any) {
                   {post?.author}
                 </span>
                 <button className="flex items-center gap-2 text-secondary font-semibold group-hover:gap-3 transition-all">
-                  Read 
+                  Read
                   <MdArrowForward className="w-5 h-5" />
                 </button>
               </div>

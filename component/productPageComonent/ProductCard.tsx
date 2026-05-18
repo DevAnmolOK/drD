@@ -99,7 +99,6 @@ export default function ProductCard({ data }: ProductCardProps) {
                     className="object-contain "
                     quality={100}
                     sizes="11rem"
-                    unoptimized={true}
                   />
                 </div>
               </div>

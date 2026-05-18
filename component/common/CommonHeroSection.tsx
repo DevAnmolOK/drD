@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { publicMediaUrl } from "@/lib/publicMediaUrl";
 import { MdOutlineArrowDownward } from "react-icons/md";
@@ -15,13 +16,18 @@ export default function CommonHeroSection({
     <section>
       <div className="relative min-h-112.5 overflow-hidden bg-[#1e293b] pt-30 md:pt-34 pb-20">
         {heroSectionData?.background?.imageAlt && (
-          <img
-            alt={heroSectionData?.background?.imageAlt || "logo"}
-            className="absolute inset-0 w-full h-full object-cover opacity-40"
-            src={publicMediaUrl(
-              heroSectionData?.background?.imageSrc || "/images/fallback.png",
-            )}
-          />
+          <div className="absolute inset-0">
+            <Image
+              src={publicMediaUrl(
+                heroSectionData?.background?.imageSrc || "/images/fallback.png",
+              )}
+              alt={heroSectionData?.background?.imageAlt || "logo"}
+              fill
+              priority
+              className="object-cover opacity-40"
+              sizes="100vw"
+            />
+          </div>
         )}
 
         <div className="absolute inset-0 bg-linear-to-rfrom-[#1e293b] via-[#1e293b]/70 to-transparent"></div>

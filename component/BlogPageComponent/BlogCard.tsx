@@ -22,8 +22,8 @@ export default function BlogCard({ post }: any) {
             src={post?.image || "/images/fallback.png"}
             alt={post?.name || "Blog Image"}
             fill
-            unoptimized
             quality={100}
+            sizes="(max-width: 768px) 100vw, 33vw"
             className="w-full h-full object-contain sm:object-cover group-hover:scale-110 transition-transform duration-500"
           />
           {post?.categories?.length > 0 && (
