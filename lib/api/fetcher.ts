@@ -180,6 +180,7 @@ export async function apiPost<T = any>(
 
       throw { status, message, endpoint, errors };
     }
+    
     throw error;
   }
 }
