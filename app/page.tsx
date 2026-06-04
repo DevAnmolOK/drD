@@ -19,6 +19,7 @@ import VideoBanner from "@/component/video/VideoBanner";
 import { headers } from "next/headers";
 import { getAbsoluteUrl } from "@/utills/seo/getAbsoluteUrl";
 import { buildMetadata } from "@/utills/seo/generateMetaData";
+import QuickAnswers from "@/component/gallery/QuickAnswer";
 
 export async function generateMetadata() {
   const headersList = await headers();
@@ -56,6 +57,8 @@ export default async function Home() {
   const homeProductListing = await HomePageEndPoints.homeProductListing();
   const produts = await fetchProducts();
   const { data } = await HomePageEndPoints.homeVideoSection();
+  const faq = await HomePageEndPoints.homeFaq();
+
 
   return (
     <>
@@ -79,6 +82,7 @@ export default async function Home() {
       />
       <PtrPtsCalculator />
       <Reviews homeTestimonials={homeTestimonials} />
+      <QuickAnswers faqData={faq?.data} showImage={false} />
       <LatestBlogs homeBlogs={homeBlogs} />
     </>
   );

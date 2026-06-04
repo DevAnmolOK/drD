@@ -10,7 +10,7 @@ export async function generateMetadata() {
   const headersList = await headers();
   const pathname = headersList.get("x-pathname") || "/about-us";
   const pageUrl = getAbsoluteUrl(pathname);
- const data = await GalleryPageEndPoints.gallery();
+  const data = await GalleryPageEndPoints.gallery();
   const data1 = data?.seo_meta;
   const data2 = data?.heroSectionData;
   return buildMetadata({
@@ -32,7 +32,10 @@ export default async function page() {
     <div>
       <CommonHeroSection heroSectionData={heroSectionData} />
       <Gallery galleryData={GalleryData} />
-      <QuickAnswers faqSection={faq} />
+      <QuickAnswers heading={faq?.heading}
+        faqData={faq?.faqData}
+        faq_image={faq?.faq_image}
+      />
     </div>
   );
 }

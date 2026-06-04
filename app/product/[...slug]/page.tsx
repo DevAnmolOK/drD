@@ -1,5 +1,6 @@
 import ClientProductDetails from "../../../component/productPageComonent/ProductDetails";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import CommonHeroSection from "../../../component/common/CommonHeroSection";
 // import BreadcrumbSchemaOnly from "@/components/breadcrumbsScema/breadcrumbsSchema";
@@ -22,7 +23,16 @@ async function getProductBySlug(slug: string) {
       },
     );
     if (!res.ok) throw new Error("Failed to fetch productDetails");
+
     const data = await res.json();
+    if (
+      !data ||
+      !data.products ||
+      !Array.isArray(data.products) ||
+      data.products.length === 0
+    ) {
+      notFound();
+    }
     return data;
   } catch (err) {
     console.error("API fetch error:", err);
@@ -76,55 +86,55 @@ export async function generateMetadata({
 
     return meta
       ? {
+        title: meta?.metaTitle,
+        description: meta?.metaDescription || meta?.metaKeywords,
+
+        // icons: baseUrl + `/${image}`,
+        icons: {
+          icon: baseUrl + `/${image}`, // regular favicon
+          apple: appleIconUrl, // apple-touch-icon
+          shortcut: appleIconUrl, // optional
+          other: [
+            {
+              rel: "apple-touch-icon-precomposed",
+              url: appleIconUrl,
+            },
+          ],
+        },
+
+        twitter: {
+          card: "summary_large_image",
+          description: meta?.metaDescription || meta?.metaKeywords,
+          title: meta?.metaTitle,
+          images: [
+            {
+              url: baseUrl + `/${image}`,
+
+              width: 1200,
+              height: 630,
+            },
+          ],
+        },
+
+        alternates: {
+          canonical: canonicalUrl,
+        },
+
+        openGraph: {
           title: meta?.metaTitle,
           description: meta?.metaDescription || meta?.metaKeywords,
+          type: "website",
+          images: [
+            {
+              url: baseUrl + `/${image}`,
+              width: 800,
+              height: 600,
+            },
+          ],
 
-          // icons: baseUrl + `/${image}`,
-          icons: {
-            icon: baseUrl + `/${image}`, // regular favicon
-            apple: appleIconUrl, // apple-touch-icon
-            shortcut: appleIconUrl, // optional
-            other: [
-              {
-                rel: "apple-touch-icon-precomposed",
-                url: appleIconUrl,
-              },
-            ],
-          },
-
-          twitter: {
-            card: "summary_large_image",
-            description: meta?.metaDescription || meta?.metaKeywords,
-            title: meta?.metaTitle,
-            images: [
-              {
-                url: baseUrl + `/${image}`,
-
-                width: 1200,
-                height: 630,
-              },
-            ],
-          },
-
-          alternates: {
-            canonical: canonicalUrl,
-          },
-
-          openGraph: {
-            title: meta?.metaTitle,
-            description: meta?.metaDescription || meta?.metaKeywords,
-            type: "website",
-            images: [
-              {
-                url: baseUrl + `/${image}`,
-                width: 800,
-                height: 600,
-              },
-            ],
-
-            locale: "en-IN",
-          },
-        }
+          locale: "en-IN",
+        },
+      }
       : {};
   } catch (error) {
     console.error("Error generating metadata:", error);

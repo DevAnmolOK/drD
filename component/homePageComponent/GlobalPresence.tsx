@@ -53,8 +53,8 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
                     />
                   )}
                 </div>
-                <div className="text-center flex justify-center py-4 flex-col">
-                  {locations?.map((loc: any ,index:any) => {
+                {/* <div className="text-center flex justify-center py-4 flex-col">
+                  {locations?.map((loc: any, index: any) => {
                     return (
                       <h3 className="text-sm font-medium text-black border border-[#0f2a3c]/30 rounded-full max-w-80 m-auto  px-4 py-2 mt-4" key={index}>
                         <FaLocationDot
@@ -65,7 +65,7 @@ export default function GlobalPresence({ homeGlobalFootprint }: any) {
                       </h3>
                     );
                   })}
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

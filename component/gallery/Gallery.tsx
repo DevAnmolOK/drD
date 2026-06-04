@@ -212,26 +212,27 @@ export default function Gallery({ galleryData }: GalleryProps) {
         //           </div>
         //         </div>
         <div
-          className="fixed inset-0 z-999 bg-black/80 flex items-center justify-center p-4 cursor-pointer "
+          className="fixed inset-0 z-[1000] bg-black/85 flex items-center justify-center p-4 cursor-pointer"
           onClick={() => setActiveImage(null)}
         >
           <div
-            className="relative w-fit max-w-5xl max-h-[50rem] flex flex-col items-center"
+            className="relative w-full max-w-4xl h-[80vh] flex flex-col items-center justify-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setActiveImage(null)}
-              className="absolute -top-12 -right-2 md:-right-8 bg-white hover:bg-secondary text-black hover:text-white rounded-full p-2 shadow-lg transition transform hover:scale-110 z-50"
+              className="absolute -top-12 right-2 md:-right-8 bg-white hover:bg-secondary text-black hover:text-white rounded-full p-2 shadow-lg transition transform hover:scale-110 z-[1010]"
             >
               <FiX size={24} />
             </button>
-            <div className="relative overflow-hidden rounded-xl w-full h-[85vh]">
+            <div className="relative w-full h-full rounded-xl overflow-hidden">
               <Image
                 src={activeImage || "/images/fallback.png"}
                 alt="Gallery preview"
                 fill
-                sizes="100vw"
-                className="object-contain block shadow-2xl"
+                sizes="(max-width: 1024px) 100vw, 1024px"
+                className="object-contain block"
+                priority
               />
             </div>
           </div>
@@ -240,7 +241,7 @@ export default function Gallery({ galleryData }: GalleryProps) {
 
       {activeVideo && (
         <div
-          className="fixed inset-0 z-999 bg-black/80 flex items-center justify-center p-4 cursor-pointer"
+          className="fixed inset-0 z-[1000] bg-black/85 flex items-center justify-center p-4 cursor-pointer"
           onClick={() => setActiveVideo(null)}
         >
           <div
@@ -249,7 +250,7 @@ export default function Gallery({ galleryData }: GalleryProps) {
           >
             <button
               onClick={() => setActiveVideo(null)}
-              className="absolute -top-12 -right-2 md:-right-8 bg-white hover:bg-secondary text-black hover:text-white rounded-full p-2 shadow-lg transition transform hover:scale-110 z-50"
+              className="absolute -top-12 -right-2 md:-right-8 bg-white hover:bg-secondary text-black hover:text-white rounded-full p-2 shadow-lg transition transform hover:scale-110 z-[1010]"
             >
               <FiX size={24} />
             </button>

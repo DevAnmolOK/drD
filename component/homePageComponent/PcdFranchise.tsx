@@ -58,7 +58,7 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
           </h2>
 
           <Button
-            href={leftCard.button.href}
+            href={leftCard?.button?.link}
             bgColor="#ffffff"
             textColor="#253746"
             className="mt-8"
@@ -73,9 +73,9 @@ export default function PcdFranchise({ homeLifeEasy }: any) {
           <h2 className="text-2xl  lg:text-[3rem] leading-tight text-[#253746] py-2">
             {rightSection.left_heading}
             <span className="font-semibold ">
-                {" "}
+              {" "}
               {rightSection.bold_heading}
-                {" "}
+              {" "}
             </span>
             {rightSection.right_heading}
           </h2>

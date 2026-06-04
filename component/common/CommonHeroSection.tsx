@@ -12,14 +12,15 @@ export default function CommonHeroSection({
   heroSectionData,
   productData,
 }: CommonHeroSectionProps) {
+
   return (
     <section>
       <div className="relative min-h-112.5 overflow-hidden bg-[#1e293b] pt-30 md:pt-34 pb-20">
-        {heroSectionData?.background?.imageAlt && (
+        {heroSectionData?.background?.imageSrc && (
           <div className="absolute inset-0">
             <Image
               src={publicMediaUrl(
-                heroSectionData?.background?.imageSrc || "/images/fallback.png",
+                heroSectionData?.background?.imageSrc || "/Webp/PCDPharma.webp",
               )}
               alt={heroSectionData?.background?.imageAlt || "logo"}
               fill
@@ -55,7 +56,7 @@ export default function CommonHeroSection({
               </p>
             )}
 
-            <div className="flex flex-wrap gap-4">
+            {/* <div className="flex flex-wrap gap-4">
               <Link
                 href={`${heroSectionData?.buttonLink}`}
                 className="rounded-full px-6 py-3  bg-secondary text-white align-middle leading-[1.4063]  text-base font-semibold  hover:bg-red-700 transition flex items-center z-0 "
@@ -65,7 +66,7 @@ export default function CommonHeroSection({
                   <MdOutlineArrowDownward />
                 </span>
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

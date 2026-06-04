@@ -112,7 +112,7 @@ export default function ClientProductDetails({
   const gst =
     Number(
       singleProduct?.products?.[0]?.packingVarient?.[0]?.gst?.[
-        "$numberDecimal"
+      "$numberDecimal"
       ],
     ) || 0;
 
@@ -150,11 +150,10 @@ export default function ClientProductDetails({
                     <div
                       key={index}
                       onClick={() => handleImageSelect(index)}
-                      className={`aspect-square relative rounded-lg overflow-hidden border-2 transition-all cursor-pointer bg-gray-50 ${
-                        selectedImage === index
-                          ? "border-secondary/60"
-                          : "border-gray-200"
-                      }`}
+                      className={`aspect-square relative rounded-lg overflow-hidden border-2 transition-all cursor-pointer bg-gray-50 ${selectedImage === index
+                        ? "border-secondary/60"
+                        : "border-gray-200"
+                        }`}
                     >
                       <Image
                         src={
@@ -228,7 +227,7 @@ export default function ClientProductDetails({
                   ₹
                   {
                     singleProduct?.products?.[0]?.packingVarient?.[0]?.price?.[
-                      "$numberDecimal"
+                    "$numberDecimal"
                     ]
                   }
                 </div>
@@ -321,11 +320,10 @@ export default function ClientProductDetails({
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`py-4 px-2 border-b-2 font-semibold text-xl transition-colors ${
-                      activeTab === tab
-                        ? "border-secondary text-secondary"
-                        : "border-transparent text-gray-500 hover:text-gray-700"
-                    }`}
+                    className={`py-4 px-2 border-b-2 font-semibold text-xl transition-colors ${activeTab === tab
+                      ? "border-secondary text-secondary"
+                      : "border-transparent text-gray-500 hover:text-gray-700"
+                      }`}
                   >
                     {tab.charAt(0).toUpperCase() + tab.slice(1)}
                   </button>

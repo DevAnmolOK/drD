@@ -14,7 +14,7 @@ const getCacheConfig = (
   }
   const revalidateMap = {
     static: 3600,
-    dynamic: 600,
+    dynamic: 30,
     realtime: 10,
   };
   //build

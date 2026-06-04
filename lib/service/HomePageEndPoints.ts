@@ -108,4 +108,11 @@ export const HomePageEndPoints = {
       cache: "dynamic",
     });
   },
+  // /api/v1/section/home-faq
+  homeFaq: () => {
+    return apiFetch({
+      endpoint: "section/home-faq",
+      cache: "dynamic",
+    });
+  },
 };
