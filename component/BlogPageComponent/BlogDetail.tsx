@@ -1,14 +1,9 @@
 "use client";
-import { useState } from "react";
 import TableOfContents from "./TableOfContents";
 
 import EnquiryForm from "../common/EnquireyForm";
 
-import {
-  FaRegCalendarAlt as Calendar,
-  FaRegClock as Clock,
-  FaChartLine as TrendingUp,
-} from "react-icons/fa";
+import { FaRegClock as Clock, FaChartLine as TrendingUp } from "react-icons/fa";
 import { FaHandPointLeft } from "react-icons/fa";
 import Link from "next/link";
 import BlogCard from "./BlogCard";
@@ -18,8 +13,8 @@ import { MdCreate } from "react-icons/md";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL_IMAGE;
 
-function addBaseUrlToImages(html: string) {
-  if (!html) return html;
+function addBaseUrlToImages(html?: string) {
+  if (!html) return "";
   return html.replace(
     /<img\s+[^>]*src="(\/[^"]+)"/g,
     `<img src="${BASE_URL}$1"`,
@@ -27,13 +22,51 @@ function addBaseUrlToImages(html: string) {
 }
 
 interface BlogDetailProps {
-  data?: any;
-  recent?: any;
-  related?: any;
-  services?: any;
+  data?: BlogDetailData;
+  recent?: BlogListItem[];
+  related?: BlogListItem[];
+  services?: BlogServiceItem[];
 }
 
-function Exampl({ updatedAt }: any) {
+interface BlogAuthorDetails {
+  avatar?: string;
+  email?: string;
+  name?: string;
+}
+
+interface BlogDetailData {
+  author?: string;
+  authorDetails?: BlogAuthorDetails;
+  authorUrl?: string;
+  content?: string;
+  date?: string;
+  description?: string;
+  image?: string;
+  name?: string;
+  readTime?: string;
+  title?: string;
+  updated_at?: string;
+}
+
+interface BlogListItem {
+  category?: string;
+  id?: number | string;
+  image?: string;
+  name?: string;
+  readTime?: string;
+  slug?: string;
+  title?: string;
+}
+
+interface BlogServiceItem {
+  id?: number | string;
+  title?: string;
+  url?: string;
+}
+
+function Exampl({ updatedAt }: { updatedAt?: string }) {
+  if (!updatedAt) return null;
+
   const formattedDate = new Date(updatedAt)
     .toLocaleDateString("en-GB", {
       day: "2-digit",
@@ -50,12 +83,6 @@ const BlogDetailPage = ({
   related,
   services,
 }: BlogDetailProps) => {
-  const [isBookmarked, setIsBookmarked] = useState(false);
-  const [likes, setLikes] = useState(234);
-  const [hasLiked, setHasLiked] = useState(false);
-  const [showShareMenu, setShowShareMenu] = useState(false);
-  const [activeSection, setActiveSection] = useState("");
-
   const router = useRouter();
   return (
     <div className="min-h-screen ">
@@ -120,7 +147,7 @@ const BlogDetailPage = ({
                   }}
                 >
                   <img
-                    src={data?.authorDetails.avatar || "/fallback.jpg"}
+                    src={data?.authorDetails?.avatar || "/fallback.jpg"}
                     alt={data?.authorDetails?.name || ""}
                     className="w-14 h-14 rounded-full object-cover ring-4 ring-blue-50"
                   />
@@ -149,7 +176,7 @@ const BlogDetailPage = ({
 
                   <span className="flex items-center gap-1">
                     <Clock className="w-4 h-4 text-black" />
-                    {data.readTime || "5 min read"}
+                    {data?.readTime || "5 min read"}
                   </span>
                 </div>
               </div>
@@ -177,14 +204,14 @@ const BlogDetailPage = ({
               <EnquiryForm heading="Get In Touch With Us" />
 
               {/* Services */}
-              {services?.length > 0 && (
+              {(services?.length ?? 0) > 0 && (
                 <div className="bg-white rounded-xl shadow-custom-lg p-6  border-gray-100">
                   <h3 className="text-Vulcan text-xl sm:text-2xl font-bold mb-3 tracking-[-2%] leading-[130%] align-middle flex items-center gap-2">
                     <TrendingUp className="w-5 h-5 text-bgSecondary" />
                     Services
                   </h3>
                   <nav className="">
-                    {services?.map((item: any) => (
+                    {services?.map((item) => (
                       <Link
                         key={item.id}
                         href={`/services${item.url}`}
@@ -205,7 +232,7 @@ const BlogDetailPage = ({
                   Recent Articles
                 </h3>
                 <div className="space-y-6">
-                  {recent?.map((post: any, index: any) => (
+                  {recent?.map((post, index) => (
                     <Link
                       href={`/${post?.slug}`}
                       onClick={() => {
@@ -220,7 +247,7 @@ const BlogDetailPage = ({
                           alt={post?.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         />
-                        {post?.category?.length > 0 && (
+                        {(post?.category?.length ?? 0) > 0 && (
                           <div className="absolute top-2 right-2">
                             <span className="text-white bg-secondary px-3 py-1 rounded-full text-xs font-semibold">
                               {post?.category}
@@ -245,7 +272,7 @@ const BlogDetailPage = ({
       <div className="wrapper mx-auto pb-16 pt-12 ">
         <h3 className="font-bold text-gray-900 mb-4">Related Articles</h3>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {related?.map((post: any) => (
+          {related?.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
         </div>

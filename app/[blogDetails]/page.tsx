@@ -1,60 +1,119 @@
 import { BlogEndPoints } from "../../lib/service/BlogsEndPoints";
 import CommonHeroSection from "../../component/common/CommonHeroSection";
 import BlogDetailPage from "../../component/BlogPageComponent/BlogDetail";
+import { getAbsoluteUrl } from "@/utills/seo/getAbsoluteUrl";
+import { buildMetadata } from "@/utills/seo/generateMetaData";
+import { cache } from "react";
 // import BlogPostSchema from "@/component/schemas/BlogPostSchema";
-
 
 interface BlogDetailPageProps {
   params: Promise<{ blogDetails: string }>;
 }
 
-import { headers } from "next/headers";
-import { getAbsoluteUrl } from "@/utills/seo/getAbsoluteUrl";
-import { buildMetadata } from "@/utills/seo/generateMetaData";
+type BlogSlugItem = {
+  slug?: string;
+};
+
+type BlogSummary = {
+  id?: number | string;
+  [key: string]: unknown;
+};
+
+const getBlogBySlug = cache((slug: string) => BlogEndPoints.getBlogBySlug(slug));
+
+export async function generateStaticParams() {
+  try {
+    const response = await BlogEndPoints.getAllBlogSlug();
+    const slugs: BlogSlugItem[] = Array.isArray(response?.data)
+      ? response.data
+      : [];
+
+    return slugs
+      .map((blog) => blog.slug)
+      .filter((slug: string | undefined): slug is string => Boolean(slug))
+      .map((blogDetails: string) => ({ blogDetails }));
+  } catch (error) {
+    console.error("Failed to fetch blog slugs for static params:", error);
+    return [];
+  }
+}
 
 export async function generateMetadata({ params }: BlogDetailPageProps) {
-  const headersList = await headers();
-  const pathname = headersList.get("x-pathname") || "/about-us";
-  const pageUrl = getAbsoluteUrl(pathname);
   const { blogDetails } = await params;
-  const data = await BlogEndPoints.getBlogBySlug(blogDetails);
-  const data1 = data?.seo_meta;
-  const data2 = data?.data;
-  return buildMetadata({
-    pathname: pathname,
-    seo: {
-      metaTitle: data1?.seo_title || "Manufacturing",
-      metaDescription: data1?.seo_description,
-      canonical: pageUrl,
-      ogImage: data2?.image || "/images/dpharma-logo.svg",
-    },
-  });
+  const pathname = `/${blogDetails}`;
+  const pageUrl = getAbsoluteUrl(pathname);
+
+  try {
+    const data = await getBlogBySlug(blogDetails);
+    const data1 = data?.seo_meta;
+    const data2 = data?.data;
+
+    return buildMetadata({
+      pathname,
+      seo: {
+        metaTitle: data1?.seo_title || data2?.name || "Blog",
+        metaDescription: data1?.seo_description || data2?.description,
+        canonical: pageUrl,
+        ogImage: data2?.image || "/images/dpharma-logo.svg",
+      },
+    });
+  } catch (error) {
+    console.error(
+      `Failed to generate blog metadata for slug "${blogDetails}":`,
+      error,
+    );
+
+    return buildMetadata({
+      pathname,
+      seo: {
+        metaTitle: blogDetails.replace(/-/g, " "),
+        canonical: pageUrl,
+        ogImage: "/images/dpharma-logo.svg",
+      },
+    });
+  }
 }
 
 export default async function BlogDetails({ params }: BlogDetailPageProps) {
   const { blogDetails } = await params;
-  const BlogDetail = await BlogEndPoints.getBlogBySlug(blogDetails);
+  const BlogDetail = await getBlogBySlug(blogDetails);
   const Blogdata = BlogDetail?.data;
 
   const cate1 = Blogdata?.category_id;
-  const relatedBOne = await BlogEndPoints.getSearchedBlog(
-    `/filters?categories=${cate1}`,
-  );
+  const [relatedBOneResult, recentBlogResult] = await Promise.allSettled([
+    cate1
+      ? BlogEndPoints.getBlogsByCategory(cate1)
+      : Promise.resolve({ data: [] }),
+    BlogEndPoints.getRecentBlog(),
+  ]);
 
-  const mergedBlogs = [
-    ...(relatedBOne?.data || []),
-  ];
+  if (relatedBOneResult.status === "rejected") {
+    console.error(
+      `Failed to load related blogs for category "${cate1}":`,
+      relatedBOneResult.reason,
+    );
+  }
+
+  if (recentBlogResult.status === "rejected") {
+    console.error("Failed to load recent blogs:", recentBlogResult.reason);
+  }
+
+  const relatedBOne =
+    relatedBOneResult.status === "fulfilled" ? relatedBOneResult.value : null;
+  const RecentBlog =
+    recentBlogResult.status === "fulfilled" ? recentBlogResult.value : null;
+
+  const mergedBlogs: BlogSummary[] = Array.isArray(relatedBOne?.data)
+    ? relatedBOne.data
+    : [];
 
   const uniqueBlogs = Array.from(
-    new Map(mergedBlogs.map((blog: any) => [blog.id, blog])).values(),
+    new Map(mergedBlogs.map((blog) => [blog.id, blog])).values(),
   );
 
-  const filteredBlogs = uniqueBlogs.filter(
-    (blog: any) => blog.id !== Blogdata?.id,
-  );
+  const filteredBlogs = uniqueBlogs.filter((blog) => blog.id !== Blogdata?.id);
 
   const relatedBlogs = filteredBlogs.slice(0, 3);
-  const RecentBlog = await BlogEndPoints?.getRecentBlog();
   const recentBlog = RecentBlog?.data.slice(0, 3);
 
   const heroSectionData = {
