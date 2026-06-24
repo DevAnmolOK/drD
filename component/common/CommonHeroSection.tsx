@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+
 import { publicMediaUrl } from "@/lib/publicMediaUrl";
 import { MdOutlineArrowDownward } from "react-icons/md";
 import Breadcrumb from "../schema/BreadCrumbs";
@@ -7,10 +7,12 @@ import Breadcrumb from "../schema/BreadCrumbs";
 interface CommonHeroSectionProps {
   heroSectionData: any;
   productData?: any;
+  customBread?: boolean;
 }
 export default function CommonHeroSection({
   heroSectionData,
   productData,
+  customBread = false,
 }: CommonHeroSectionProps) {
 
   return (
@@ -35,7 +37,7 @@ export default function CommonHeroSection({
         <div className="relative wrapper mx-auto z-10 w-full">
           <div className="">
             <div className=" bg-red-900/50 w-fit px-4 py-2 rounded-full text-white text-xs font-light mb-6">
-              <Breadcrumb customBread={false} />
+              <Breadcrumb customBread={customBread} />
             </div>
 
             <h1 className="text-5xl md:text-6xl font-serif font-bold text-white leading-tight mb-6">

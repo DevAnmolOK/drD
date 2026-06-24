@@ -7,7 +7,7 @@ export const BlogEndPoints = {
   blogList: () => {
     return apiFetch({
       endpoint: `posts`,
-      cache: "dynamic",
+      cache: "no-store",
       customRevalidate: BLOG_LIST_REVALIDATE,
       tags: ["blogs"],
     });
@@ -17,7 +17,7 @@ export const BlogEndPoints = {
     return apiFetch({
       endpoint: `posts/${slug}`,
       throw404: true,
-      cache: "dynamic",
+      cache: "no-store",
       customRevalidate: BLOG_DETAIL_REVALIDATE,
       tags: ["blogs", `blog:${slug}`],
     });
@@ -31,7 +31,7 @@ export const BlogEndPoints = {
 
     return apiFetch({
       endpoint,
-      cache: "dynamic",
+      cache: "no-store",
       customRevalidate: BLOG_LIST_REVALIDATE,
       tags: ["blogs"],
     });

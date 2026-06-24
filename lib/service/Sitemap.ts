@@ -1,5 +1,3 @@
-
-
 import { apiFetch } from "../api/fetcher";
 
 export const AboutPageEndPoints = {
@@ -9,5 +7,13 @@ export const AboutPageEndPoints = {
       cache: "dynamic",
     });
   },
-  
+};
+
+export const RedirectionData = {
+  getRedirection: () => {
+    return apiFetch({
+      endpoint: `url-redirector`,
+      cache: "no-store",
+    });
+  },
 };

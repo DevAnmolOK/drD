@@ -50,7 +50,7 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
                   {role}
                 </p>
 
-                <div className="flex justify-center sm:justify-start gap-3">
+                {/* <div className="flex justify-center sm:justify-start gap-3">
                   {socials?.map((s: any, i: number) => (
                     <Link
                       key={i}
@@ -68,7 +68,7 @@ export default function DirectorDivisions({ homeDirectorData }: any) {
                       />
                     </Link>
                   ))}
-                </div>
+                </div> */}
               </div>
             </div>
 

@@ -78,6 +78,8 @@ export default async function BlogDetails({ params }: BlogDetailPageProps) {
   const { blogDetails } = await params;
   const BlogDetail = await getBlogBySlug(blogDetails);
   const Blogdata = BlogDetail?.data;
+  
+
 
   const cate1 = Blogdata?.category_id;
   const [relatedBOneResult, recentBlogResult] = await Promise.allSettled([
@@ -98,10 +100,8 @@ export default async function BlogDetails({ params }: BlogDetailPageProps) {
     console.error("Failed to load recent blogs:", recentBlogResult.reason);
   }
 
-  const relatedBOne =
-    relatedBOneResult.status === "fulfilled" ? relatedBOneResult.value : null;
-  const RecentBlog =
-    recentBlogResult.status === "fulfilled" ? recentBlogResult.value : null;
+  const relatedBOne = relatedBOneResult.status === "fulfilled" ? relatedBOneResult.value : null;
+  const RecentBlog = recentBlogResult.status === "fulfilled" ? recentBlogResult.value : null;
 
   const mergedBlogs: BlogSummary[] = Array.isArray(relatedBOne?.data)
     ? relatedBOne.data
@@ -130,6 +130,7 @@ export default async function BlogDetails({ params }: BlogDetailPageProps) {
     },
   };
 
+  
   return (
     <>
       {/* <BlogPostSchema
@@ -160,7 +161,7 @@ export default async function BlogDetails({ params }: BlogDetailPageProps) {
         description={`${BlogDetail?.seo_meta?.seo_description} || "Explore the latest updates, in-depth guides, and industry expertise on web design, healthcare technology, SEO, and digital marketing"`}
       /> */}
 
-      <CommonHeroSection heroSectionData={heroSectionData} />
+      <CommonHeroSection heroSectionData={heroSectionData} customBread={true} />
 
       <div>
         <BlogDetailPage

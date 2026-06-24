@@ -54,24 +54,13 @@ const Breadcrumb: React.FC<BreadcrumbProps> = ({
           <>
             <li>
               <Link
-                href="/category/our-blog"
+                href="/blogs"
                 className="hover:underline sm:mr-0 mr-2"
                 onClick={() => {
                   setTimeout(() => router.refresh(), 50);
                 }}
               >
-                /category
-              </Link>
-            </li>
-            <li>
-              <Link
-                href="/category/our-blog"
-                className="hover:underline sm:mr-0 mr-2"
-                onClick={() => {
-                  setTimeout(() => router.refresh(), 50);
-                }}
-              >
-                /our-blog
+                /Blogs
               </Link>
             </li>
           </>

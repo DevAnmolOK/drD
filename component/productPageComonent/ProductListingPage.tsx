@@ -275,17 +275,7 @@ const ProductListingPage = ({
     <>
       {/* {hasEnquired && ( */}
       <>
-        <div className=" w-full mb-4">
-          {/* <Banner
-          pageName={slug.replace(/-/g, " ").toUpperCase()}
-          color="text-white"
-        /> */}
-
-          <CommonHeroSection
-            heroSectionData={heroSectionData}
-            productData={customCategory}
-          />
-        </div>
+       
 
         {metaData?.data?.[0]?.editorcontent && (
           <div className=" w-full flex mt-4  items-center justify-center">

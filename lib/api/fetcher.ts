@@ -76,6 +76,8 @@ export async function apiFetch<T = any>(options: FetchOptions): Promise<T> {
 
   // Create cached function if cache is enabled
   const fetchFunction = async () => {
+    // console.log("serverBaseURL:", serverBaseURL);
+    // console.log("endpoint:", endpoint);
     try {
       const response = await retryRequest(
         () =>

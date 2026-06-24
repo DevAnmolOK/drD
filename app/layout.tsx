@@ -47,15 +47,41 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const navBar = await CommonEndPoints.menu();
-  const footer = await CommonEndPoints.footerMenu();
-  const productMenu = await fetchProductMenu();
-  const newLaunchProducts = await getNewLaunchesProducts();
-  const upcomingProducts = await getUpcomingProducts();
-  const { promo } = await getPromotionalOffers();
-  const { validOffers, expiredOffers } = await fetchOffers();
-  const { certificates } = await fetchCertificates();
-  const AllBlogs = await BlogEndPoints.blogList();
+  // const navBar = await CommonEndPoints.menu();
+  // const footer = await CommonEndPoints.footerMenu();
+  // const productMenu = await fetchProductMenu();
+  // const newLaunchProducts = await getNewLaunchesProducts();
+  // const upcomingProducts = await getUpcomingProducts();
+  // const { promo } = await getPromotionalOffers();
+  // const { validOffers, expiredOffers } = await fetchOffers();
+  // const { certificates } = await fetchCertificates();
+  // const AllBlogs = await BlogEndPoints.blogList();
+
+  const [
+    navBar,
+    footer,
+    productMenu,
+    newLaunchProducts,
+    upcomingProducts,
+    promoData,
+    offersData,
+    certificatesData,
+    allBlogs,
+  ] = await Promise.all([
+    CommonEndPoints.menu(),
+    CommonEndPoints.footerMenu(),
+    fetchProductMenu(),
+    getNewLaunchesProducts(),
+    getUpcomingProducts(),
+    getPromotionalOffers(),
+    fetchOffers(),
+    fetchCertificates(),
+    BlogEndPoints.blogList(),
+  ]);
+
+  const { promo } = promoData;
+  const { validOffers, expiredOffers } = offersData;
+  const { certificates } = certificatesData;
 
   return (
     <html lang="en">
@@ -105,11 +131,11 @@ export default async function RootLayout({
             style={{ display: "none", visibility: "hidden" }}
           ></iframe>
         </noscript>
-        <NavigationBar  
+        <NavigationBar
           navBar={navBar}
           productMenu={productMenu}
           certificates={certificates}
-          AllBlogs={AllBlogs}
+          AllBlogs={allBlogs}
           newLaunchProducts={newLaunchProducts}
           upCommingProducts={upcomingProducts}
           validOffers={validOffers}

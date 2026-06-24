@@ -1,14 +1,44 @@
 import { NextResponse, type NextRequest } from "next/server";
 // import { RedirectionData } from "./lib/api/endpoints";
 // import { fetchData } from "./utils/fetchData";
+import { RedirectionData } from "./lib/service/Sitemap";
 
-const checkMethods: any = {
-    Exact: "exact",
-    Contains: "contains",
-    "Starts With": "startsWith",
-    "End With": "endsWith",
-    Regex: "regex",
+// const checkMethods: any = {
+//     Exact: "exact",
+//     Contains: "contains",
+//     "Starts With": "startsWith",
+//     "End With": "endsWith",
+//     Regex: "regex",
+// };
+const checkMethods:any = {
+  exact: "exact",
+  contains: "contains",
+  starts_with: "startsWith",
+  ends_with: "endsWith",
+  regex: "regex",
 };
+
+export interface RedirectSource {
+    id: number;
+    check: "exact" | "contains" | string;
+    url: string;
+}
+
+export interface RedirectItem {
+    id: number;
+    documentId: string;
+    status_code: string;
+    description: string | null;
+    target_path: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    source: RedirectSource;
+}
+
+export interface RedirectsResponse {
+    data: RedirectItem[];
+}
 
 export async function proxy(request: NextRequest) {
     // Create headers object with x-pathname for breadcrumb schema
@@ -51,101 +81,118 @@ export async function proxy(request: NextRequest) {
     // }
 
     // --------------------------------------------Handle redirects----------------------------------------------
-    // function normalize(url: string) {
-    //     return url !== "/" ? url.replace(/\/$/, "") : url;
-    // }
-
-    // let redirects = await RedirectionData.getRedirection();
-
-    // if (redirects?.data?.length > 0) {
-    //     const newPath = redirects.data.find((item: any) => {
-    //         const method = checkMethods[item.source.check];
-    //         const sourceUrl = normalize(item.source.url);
-    //         const currentPath = request.nextUrl.pathname;
-
-    //         switch (method) {
-    //             case "exact":
-    //                 return currentPath === sourceUrl;
-    //             case "contains":
-    //                 return currentPath.includes(sourceUrl);
-    //             case "startsWith":
-    //                 return currentPath.startsWith(sourceUrl);
-    //             case "endsWith":
-    //                 return currentPath.endsWith(sourceUrl);
-    //             case "regex":
-    //                 try {
-    //                     const regex = new RegExp(sourceUrl);
-    //                     return regex.test(currentPath);
-    //                 } catch (e) {
-    //                     console.error("Invalid regex pattern:", sourceUrl);
-    //                     return false;
-    //                 }
-    //             default:
-    //                 return false;
-    //         }
-    //     });
+    function normalize(url: string) {
+        return url !== "/" ? url.replace(/\/$/, "") : url;
+    }
 
 
-    //     if (newPath) {
-    //         const statusCodeStr = newPath.status_code?.split("_")?.[1] || "301";
 
-    //         let statusCode = parseInt(statusCodeStr, 10);
-
-    //         if (isNaN(statusCode)) statusCode = 301;
-
-    //         if (statusCode === 410) {
-    //             return new NextResponse(
-    //                 `<!DOCTYPE html>
-    //         <html>
-    //           <head>
-    //             <title>410 Gone</title>
-    //             <meta name="viewport" content="width=device-width, initial-scale=1">
-    //             <style>
-    //               body { font-family: Open Sans; text-align: center; padding: 50px; }
-    //               h1 { font-size: 50px; }
-    //               body { font: 20px Helvetica, Open Sans; color: #333; }
-    //               article { display: block; text-align: left; max-width: 650px; margin: 0 auto; }
-    //               a { color: #dc8100; text-decoration: none; }
-    //               a:hover { color: #333; text-decoration: none; }
-    //             </style>
-    //           </head>
-    //           <body>
-    //             <article>
-    //               <h1>410 Gone</h1>
-    //               <p>The resource you requested is no longer available on this website.</p>
-    //               <a href="/">Return to the homepage</a>
-    //             </article>
-    //           </body>
-    //         </html>`,
-    //                 {
-    //                     status: 410,
-    //                     statusText: "Gone",
-    //                     headers: {
-    //                         "Content-Type": "text/html",
-    //                         "x-url": path,
-    //                         "x-status": statusCode.toString(),
-    //                     },
-    //                 },
-    //             );
-    //         }
-    //         if (newPath?.target_path) {
-    //             // Create a new response with the redirect
-    //             const targetUrl = new URL(newPath.target_path, request.nextUrl.origin);
-
-    //             // Workaround for custom status code
-    //             const response = new NextResponse(null, {
-    //                 status: statusCode,
-    //                 headers: {
-    //                     Location: targetUrl.toString(),
-    //                     "x-url": path,
-    //                     "x-status": statusCode.toString(),
-    //                 },
-    //             });
-
-    //             return response;
-    //         }
+    // try {
+    //     const response = await fetch(
+    //       "http://drdpharma.in/api/v1/url-redirector",
+    //       {
+    //         cache: "no-store",
+    //       },
+    //     );
+    //     if (response.ok) {
+    //         redirects = await response.json();
     //     }
+    // } catch (e) {
+    //     console.error("Redirect API failed:", e);
     // }
+    let redirects = await RedirectionData.getRedirection();
+
+    // console.log("Redirects:", redirects);
+
+    if (redirects?.data?.length > 0) {
+        const newPath = redirects.data.find((item: any) => {
+            const method = checkMethods[item.source.check];
+            const sourceUrl = normalize(item.source.url);
+            const currentPath = request.nextUrl.pathname;
+
+            switch (method) {
+                case "exact":
+                    return currentPath === sourceUrl;
+                case "contains":
+                    return currentPath.includes(sourceUrl);
+                case "startsWith":
+                    return currentPath.startsWith(sourceUrl);
+                case "endsWith":
+                    return currentPath.endsWith(sourceUrl);
+                case "regex":
+                    try {
+                        const regex = new RegExp(sourceUrl);
+                        return regex.test(currentPath);
+                    } catch (e) {
+                        console.error("Invalid regex pattern:", sourceUrl);
+                        return false;
+                    }
+                default:
+                    return false;
+            }
+        });
+
+
+        if (newPath) {
+            const statusCodeStr = newPath.status_code?.split("_")?.[1] || "301";
+
+            let statusCode = parseInt(statusCodeStr, 10);
+
+            if (isNaN(statusCode)) statusCode = 301;
+
+            if (statusCode === 410) {
+                return new NextResponse(
+                    `<!DOCTYPE html>
+            <html>
+              <head>
+                <title>410 Gone</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <style>
+                  body { font-family: Open Sans; text-align: center; padding: 50px; }
+                  h1 { font-size: 50px; }
+                  body { font: 20px Helvetica, Open Sans; color: #333; }
+                  article { display: block; text-align: left; max-width: 650px; margin: 0 auto; }
+                  a { color: #dc8100; text-decoration: none; }
+                  a:hover { color: #333; text-decoration: none; }
+                </style>
+              </head>
+              <body>
+                <article>
+                  <h1>410 Gone</h1>
+                  <p>The resource you requested is no longer available on this website.</p>
+                  <a href="/">Return to the homepage</a>
+                </article>
+              </body>
+            </html>`,
+                    {
+                        status: 410,
+                        statusText: "Gone",
+                        headers: {
+                            "Content-Type": "text/html",
+                            "x-url": path,
+                            "x-status": statusCode.toString(),
+                        },
+                    },
+                );
+            }
+            if (newPath?.target_path) {
+                // Create a new response with the redirect
+                const targetUrl = new URL(newPath.target_path, request.nextUrl.origin);
+
+                // Workaround for custom status code
+                const response = new NextResponse(null, {
+                    status: statusCode,
+                    headers: {
+                        Location: targetUrl.toString(),
+                        "x-url": path,
+                        "x-status": statusCode.toString(),
+                    },
+                });
+
+                return response;
+            }
+        }
+    }
 
     // ------------------------------ CORS & Default Response -------------------------------
 

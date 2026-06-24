@@ -10,7 +10,7 @@ import { buildMetadata } from "@/utills/seo/generateMetaData";
 
 export async function generateMetadata() {
   const headersList = await headers();
-  const pathname = headersList.get("x-pathname") || "/about-us";
+  const pathname = headersList.get("x-pathname") || "/";
   const pageUrl = getAbsoluteUrl(pathname);
   const data = await FranchisePageEndPoints.franchisePage();
   const data1 = data?.seo_meta;

@@ -4,6 +4,7 @@ import { TransformProducts } from "../../../utills/transformProducts";
 import ProductListingPage from "../../../component/productPageComonent/ProductListingPage";
 import { ProductApiEndPoints } from "../../../lib/service/ProdcutsApiEndPoints";
 import { headers } from "next/headers";
+import CommonHeroSection from "../../../component/common/CommonHeroSection";
 interface DivisionPreviewProps {
   params: Promise<{ slug: string }>;
 }
@@ -183,6 +184,7 @@ export default async function ProductForm({ params }: DivisionPreviewProps) {
     customCategory = products[0]?.type_id[0]?.name || "";
   }
 
+
   return (
     <>
       {/* <BreadcrumbSchemaOnly
@@ -194,7 +196,17 @@ export default async function ProductForm({ params }: DivisionPreviewProps) {
         <div className=" w-full h-full mx-auto relative sm:mb-0 mb-[1.5rem]">
           <div className="pt-[0rem] pb-[2.5rem]">
             {/* show fetched data */}
+            <div className=" w-full mb-4">
+              {/* <Banner
+          pageName={slug.replace(/-/g, " ").toUpperCase()}
+          color="text-white"
+        /> */}
 
+              <CommonHeroSection
+                heroSectionData={bannerResp?.heroSectionData}
+                productData={customCategory}
+              />
+            </div>
             <div className="text-black">
               {productData ? (
                 <ProductListingPage
