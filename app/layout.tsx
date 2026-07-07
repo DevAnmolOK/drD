@@ -92,12 +92,12 @@ export default async function RootLayout({
           content="7RfPynaXIu4_xDVY-mWN4NBiwPEsW1DRaa0vCH6tBos"
         />
         {/* Google tag (gtag.js)  */}
-        {/* <script
+        <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-QCVHYXSSHL"
-        /> */}
+        /> 
         {/* GA init */}
-        {/* <script
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -106,7 +106,7 @@ export default async function RootLayout({
               gtag('config', 'G-QCVHYXSSHL');
             `,
           }}
-        /> */}
+        />
         {/* <!-- Google tag (gtag.js) --> */}
 
         <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18304894371"></script>
