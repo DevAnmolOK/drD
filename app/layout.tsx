@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import NavigationBar from "../component/layOut/Header";
-import Footer from "@/component/layOut/Footer";import MobileContactCTA from "@/component/common/MobileContactCTA";import localFont from "next/font/local";
+import Footer from "@/component/layOut/Footer"; import MobileContactCTA from "@/component/common/MobileContactCTA"; import localFont from "next/font/local";
 import fetchProductMenu from "@/utills/fetchProductMenu";
 import { CommonEndPoints } from "../lib/service/CommonEndPoints";
 import { getNewLaunchesProducts } from "@/utills/newLaunches";
@@ -92,12 +92,12 @@ export default async function RootLayout({
           content="7RfPynaXIu4_xDVY-mWN4NBiwPEsW1DRaa0vCH6tBos"
         />
         {/* Google tag (gtag.js)  */}
-        <script
+        {/* <script
           async
-          src={`https://www.googletagmanager.com/gtag/js?id=id=G-QCVHYXSSHL`}
-        />
+          src="https://www.googletagmanager.com/gtag/js?id=G-QCVHYXSSHL"
+        /> */}
         {/* GA init */}
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
@@ -106,7 +106,19 @@ export default async function RootLayout({
               gtag('config', 'G-QCVHYXSSHL');
             `,
           }}
-        />
+        /> */}
+        {/* <!-- Google tag (gtag.js) --> */}
+
+        <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18304894371"></script>
+        <Script id="google-ads-tag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+              gtag('config', 'AW-18304894371');
+              `}
+        </Script>
 
         <Script id="gtm-script" strategy="afterInteractive">
           {`
