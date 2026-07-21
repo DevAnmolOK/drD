@@ -13,7 +13,12 @@ export default function MobileContactCTA({ phoneNumber }: MobileContactCTAProps)
   const rawPhone = phoneNumber?.trim() || "+919041246545";
   const numericPhone = rawPhone.replace(/[^\d+]/g, "");
   const phoneHref = `tel:${numericPhone}`;
-  const whatsappHref = `https://wa.me/${numericPhone.replace(/^\+/, "")}`;
+  const whatsappMessage = `Hello! I'd like to know more about your PCD Pharma Franchise. Please share your product catalog and pricing`;
+
+  const whatsappHref = `https://wa.me/${numericPhone.replace(
+    /^\+/,
+    "",
+  )}?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <div className="fixed bottom-4 lg:right-4 z-50 mx-auto flex lg:flex-col w-full lg:w-fit lg:item-end items-center  lg:justify-end justify-between gap-2 rounded-full bg-white/95 lg:bg-transparent px-2 py-2 shadow-2xl lg:shadow-none ring-1 lg:ring-0 ring-slate-200  backdrop-blur-sm ">
@@ -32,7 +37,7 @@ export default function MobileContactCTA({ phoneNumber }: MobileContactCTAProps)
         href={phoneHref}
         className="flex min-w-24 flex-1 items-center justify-center gap-2 rounded-full bg-bgSecondarytwo px-3 py-2 lg:py-3 text-xs font-semibold uppercase tracking-wide text-white transition hover:bg-emerald-700"
       >
-        <FiPhoneCall className="h-4 w-4 lg:h-18 lg:w-18 lg:p-2" />     
+        <FiPhoneCall className="h-4 w-4 lg:h-18 lg:w-18 lg:p-2" />
         <span className="lg:hidden">Call</span>
       </Link>
 
