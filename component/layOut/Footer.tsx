@@ -7,9 +7,12 @@ interface FooterProps {
   data: any;
   ProductCategory: any;
 }
-export default function Footer({ data , ProductCategory }: FooterProps) { 
+export default function Footer({ data, ProductCategory }: FooterProps) {
   const { bottomBar } = data || {};
+  const midpoint = Math.ceil(ProductCategory.length / 2);
 
+  const firstColumn = ProductCategory.slice(0, midpoint);
+  const secondColumn = ProductCategory.slice(midpoint);
   return (
     <footer className="bg-gradient-to-r from-[#1c2a3a] via-[#1f2f44] to-[#16222f] text-white w-full">
       <div className="wrapper mx-auto w-full  pb-6 pt-14">
@@ -74,14 +77,14 @@ export default function Footer({ data , ProductCategory }: FooterProps) {
           {/* right section */}
           <div className="md:w-[74%] ">
             {/* info */}
-            <div className="flex sm:flex-row flex-col w-full">
+            <div className="flex sm:flex-row flex-col w-full gap-12 sm:gap-0">
               {/* menu */}
-              <div className="  sm:w-[25%]">
+              <div className="  sm:w-[20%] ">
                 <h4 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8">
                   {data?.informationMenu?.title}
                 </h4>
 
-                <div className="grid grid-cols-2 gap-5 text-white">
+                <div className="gap-5 text-white">
                   <div className="text-base align-middle font-normal leading-normal flex flex-col gap-5">
                     {data?.informationMenu?.column1?.map(
                       (data: any, index: any) => (
@@ -93,7 +96,7 @@ export default function Footer({ data , ProductCategory }: FooterProps) {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-6   mt-6">
+                <div className=" gap-6   mt-6">
                   <div className="text-base align-middle font-normal leading-normal flex flex-col gap-5">
                     {data?.informationMenu?.column2?.map(
                       (data: any, index: any) => (
@@ -106,13 +109,27 @@ export default function Footer({ data , ProductCategory }: FooterProps) {
                 </div>
               </div>
 
-              <div className="  sm:w-[32.5%] ">
-                <h4 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8">
+              <div className="  sm:w-[40%]   ">
+                <h4 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8 ">
                   Product Catrgorey
                 </h4>
+
                 <div className="grid grid-cols-2 gap-5 text-white">
-                  <div className="text-base align-middle font-normal leading-normal flex flex-col gap-4">
-                    {ProductCategory?.map((data: any, index: any) => (
+                  {/* First column */}
+                  <div className="text-base font-normal leading-normal flex flex-col gap-4">
+                    {firstColumn.map((data: any, index: number) => (
+                      <Link
+                        key={index}
+                        href={`/product-speciality/${data?.slug}`}
+                      >
+                        {data?.name}
+                      </Link>
+                    ))}
+                  </div>
+
+                  {/* Second column */}
+                  <div className="text-base font-normal leading-normal flex flex-col gap-4">
+                    {secondColumn.map((data: any, index: number) => (
                       <Link
                         key={index}
                         href={`/product-speciality/${data?.slug}`}
@@ -122,10 +139,11 @@ export default function Footer({ data , ProductCategory }: FooterProps) {
                     ))}
                   </div>
                 </div>
+
               </div>
 
               {/*  MAP */}
-              <div className="  sm:w-[42.5%]">
+              <div className="  sm:w-[40%]">
                 <h4 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8">
                   Contact
                 </h4>

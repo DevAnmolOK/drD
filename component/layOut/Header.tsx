@@ -298,9 +298,9 @@ export default function NavigationBar({
                                                 50,
                                               );
                                             }}
-                                            className="block border-b border-b-[#e8e8e8] hover:border-b mx-1 hover:border-b-secondary text-nowrap min-w-[10rem]"
+                                            className="block border-b border-b-[#e8e8e8] hover:border-b mx-1 hover:border-b-secondary text-nowrap max-w-60"
                                           >
-                                            <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 w-full mb-0.5 py-3">
+                                            <div className="text-[#051B2E] text-[1.0369rem] font-normal pl-4 pr-4 w-full mb-0.5 py-3 max-w-56  text-wrap">
                                               {displayName}
                                             </div>
                                           </Link>
