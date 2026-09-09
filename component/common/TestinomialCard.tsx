@@ -65,6 +65,10 @@ export default function TestimonialCard(data: {
 }) {
   const [expanded, setExpanded] = useState(false);
 
+  const [imgSrc, setImgSrc] = useState(
+    data.user.avatar || "/images/test1.png"
+  );
+
   return (
     <div className="relative w-full h-full flex flex-col">
       <div className="bg-[#FFFFFF] rounded-[24px] p-6 shadow-sm flex flex-col h-full">
@@ -86,9 +90,8 @@ export default function TestimonialCard(data: {
 
         {/* Text */}
         <p
-          className={`text-[#5C5D5E] text-base leading-relaxed font-normal ${
-            expanded ? "" : "line-clamp-4"
-          }`}
+          className={`text-[#5C5D5E] text-base leading-relaxed font-normal ${expanded ? "" : "line-clamp-4"
+            }`}
         >
           “{data.text}”
         </p>
@@ -106,11 +109,13 @@ export default function TestimonialCard(data: {
 
       {/* User */}
       <div className="flex items-center gap-3 mt-4 pl-6">
-        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow">
+        <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow bg-gray-100 shrink-0">
           <Image
-            src={data.user.avatar}
+            src={imgSrc}
             alt={data.user.name}
             fill
+            unoptimized
+            onError={() => setImgSrc("/images/test1.png")}
             className="object-cover"
           />
         </div>

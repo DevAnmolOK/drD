@@ -83,6 +83,17 @@ export default function drdImageLoader({
   }
 
   if (normalized.startsWith("http://") || normalized.startsWith("https://")) {
+    try {
+      const u = new URL(normalized);
+      if (
+        u.hostname.includes("googleusercontent.com") ||
+        u.hostname.includes("google.com")
+      ) {
+        return normalized;
+      }
+    } catch {
+      /* ignore */
+    }
     if (shouldBypassOptimizer(normalized)) {
       return normalized;
     }
