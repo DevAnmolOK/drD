@@ -111,7 +111,7 @@ export default function Footer({ data, ProductCategory }: FooterProps) {
 
               <div className="  sm:w-[40%]   ">
                 <h4 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8 ">
-                  Product Catrgorey
+                  Product Category
                 </h4>
 
                 <div className="grid grid-cols-2 gap-5 text-white">
@@ -139,7 +139,6 @@ export default function Footer({ data, ProductCategory }: FooterProps) {
                     ))}
                   </div>
                 </div>
-
               </div>
 
               {/*  MAP */}

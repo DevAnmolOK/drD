@@ -41,6 +41,33 @@ export interface RedirectsResponse {
 }
 
 export async function proxy(request: NextRequest) {
+
+        // Redirect non-www domain to www
+    // const hostname = request.nextUrl.hostname;
+const hostname = request.headers.get("host");
+
+console.log("REDIRECT DEBUG HOST:", hostname);
+console.log("REDIRECT DEBUG URL:", request.url);
+
+if (hostname?.split(":")[0] === "drdpharma.in") {
+    const url = new URL(request.url);
+
+    url.protocol = "https:";
+    url.hostname = "www.drdpharma.in";
+    url.port = "";
+
+    console.log("REDIRECTING TO:", url.toString());
+
+    return NextResponse.redirect(url, 301);
+}
+
+    // if (hostname === "drdpharma.in") {
+    //     const url = request.nextUrl.clone();
+
+    //     url.hostname = "www.drdpharma.in";
+
+    //     return NextResponse.redirect(url, 301);
+    // }
     // Create headers object with x-pathname for breadcrumb schema
     const headers = new Headers(request.headers);
     headers.set("x-pathname", request.nextUrl.pathname);
@@ -239,6 +266,10 @@ export async function proxy(request: NextRequest) {
 }
 
 // Updated matcher to include all routes except static files
+// export const config = {
+//     matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+// };
+
 export const config = {
-    matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+    matcher: ["/:path*"],
 };
