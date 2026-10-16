@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,16 +10,15 @@ interface FooterProps {
 }
 export default function Footer({ data, ProductCategory }: FooterProps) {
   const { bottomBar } = data || {};
-  const midpoint = Math.ceil(ProductCategory.length / 2);
-
-  const firstColumn = ProductCategory.slice(0, midpoint);
-  const secondColumn = ProductCategory.slice(midpoint);
+  const categories = ProductCategory || [];
+  const INITIAL_COUNT = 15;
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT);
   return (
-    <footer className="bg-gradient-to-r from-[#1c2a3a] via-[#1f2f44] to-[#16222f] text-white w-full">
+    <footer className="bg-linear-to-r from-[#1c2a3a] via-[#1f2f44] to-[#16222f] text-white w-full">
       <div className="wrapper mx-auto w-full  pb-6 pt-14">
         <div className=" flex md:flex-row flex-col gap-12 w-full  justify-end">
           <div className="  md:w-[24%]">
-            <div className="relative w-[5.625rem] h-[4.625rem]">
+            <div className="relative w-22.5 h-18.5">
               <Image
                 src={data?.brand?.logo}
                 alt={data?.brand?.name}
@@ -27,7 +27,7 @@ export default function Footer({ data, ProductCategory }: FooterProps) {
               />
             </div>
 
-            <p className="text-base  leading-[1.7500] text-white font-normal align-middle mt-[1rem] ">
+            <p className="text-base  leading-[1.7500] text-white font-normal align-middle mt-4 ">
               {data?.brand?.description}
             </p>
 
@@ -38,7 +38,7 @@ export default function Footer({ data, ProductCategory }: FooterProps) {
                   href={Icon?.link || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-[2.5rem] h-[2.5rem] relative flex items-center justify-center transition cursor-pointer hover:scale-110 duration-300"
+                  className="w-10 h-10 relative flex items-center justify-center transition cursor-pointer hover:scale-110 duration-300"
                 >
                   <Image
                     src={Icon?.icon}
@@ -109,57 +109,66 @@ export default function Footer({ data, ProductCategory }: FooterProps) {
                 </div>
               </div>
 
-              <div className="  sm:w-[40%]   ">
-                <h4 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8 ">
-                  Product Catrgorey
-                </h4>
-
-                <div className="grid grid-cols-2 gap-5 text-white">
-                  {/* First column */}
-                  <div className="text-base font-normal leading-normal flex flex-col gap-4">
-                    {firstColumn.map((data: any, index: number) => (
-                      <Link
-                        key={index}
-                        href={`/product-speciality/${data?.slug}`}
-                      >
-                        {data?.name}
-                      </Link>
-                    ))}
-                  </div>
-
-                  {/* Second column */}
-                  <div className="text-base font-normal leading-normal flex flex-col gap-4">
-                    {secondColumn.map((data: any, index: number) => (
-                      <Link
-                        key={index}
-                        href={`/product-speciality/${data?.slug}`}
-                      >
-                        {data?.name}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-
-              </div>
-
-              {/*  MAP */}
-              <div className="  sm:w-[40%]">
+              <div className="sm:w-[80%]">
                 <h4 className="text-[1.25rem] font-bold leading-[1.2000] align-middle mb-8">
-                  Contact
+                  Product Category
                 </h4>
-                <div className="relative w-full h-[16.188rem]  overflow-hidden sm:mt-0 mt-8">
-                  <iframe
-                    title="Global Presence"
-                    src={data?.map?.embedUrl}
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    className="rounded-md"
-                  ></iframe>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 text-white">
+                  {categories.map((item: any, index: number) => {
+                    const isHidden = index >= visibleCount;
+                    return (
+                      <Link
+                        key={index}
+                        href={`/product-speciality/${item?.slug}`}
+                        className={`text-base font-normal leading-normal hover:text-[#e0e0e0] transition-colors ${
+                          isHidden ? "hidden" : "block"
+                        }`}
+                      >
+                        {item?.name}
+                      </Link>
+                    );
+                  })}
                 </div>
+
+                {categories.length > INITIAL_COUNT && (
+                  <div className="flex flex-wrap items-center gap-4 mt-6">
+                    {visibleCount < categories.length && (
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setVisibleCount((prev) =>
+                            Math.min(prev + 15, categories.length),
+                          )
+                        }
+                        className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 hover:bg-white/20 border border-white/20 rounded-md transition duration-200 cursor-pointer"
+                      >
+                        <span>Load More</span>
+                        <span className="text-xs text-white/60">
+                          ({categories.length - visibleCount} more)
+                        </span>
+                      </button>
+                    )}
+                    {visibleCount < categories.length && (
+                      <button
+                        type="button"
+                        onClick={() => setVisibleCount(categories.length)}
+                        className="text-sm font-medium text-white/70 hover:text-white underline cursor-pointer"
+                      >
+                        View All
+                      </button>
+                    )}
+                    {visibleCount > INITIAL_COUNT && (
+                      <button
+                        type="button"
+                        onClick={() => setVisibleCount(INITIAL_COUNT)}
+                        className="text-sm font-medium text-white/70 hover:text-white underline cursor-pointer"
+                      >
+                        Show Less
+                      </button>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
             {/* contact */}
